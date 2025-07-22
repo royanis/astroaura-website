@@ -45,7 +45,7 @@ This is the official marketing website for AstroAura - a cosmic astrology app. T
 ```
 astroaura-website/
 ├── assets/                    # All app assets organized by type
-│   ├── app_screenshots/       # Complete app interface screenshots (25+ total)
+│   ├── app_screenshots/       # Complete app interface screenshots (28 total)
 │   │   ├── astro_match/      # Synastry compatibility (3 screenshots)
 │   │   │   ├── astro_match_mainpage.png           # Main compatibility interface
 │   │   │   ├── astro_match_results.png            # Compatibility results display
@@ -53,12 +53,33 @@ astroaura-website/
 │   │   ├── cosmic_chat/      # AI chat interface (2 screenshots)
 │   │   │   ├── cosmic_chate_mainpage.png          # Chat homepage interface
 │   │   │   └── cosmic_chat_aichat.png             # Live AI conversation view
-│   │   ├── cosmic_weather/   # Transit calendar & dashboard (5 images)
-│   │   ├── explore_dashboard/ # Main app dashboard screenshot
-│   │   ├── homepage/         # App homepage screenshot
-│   │   ├── horoscope_page/   # Daily/weekly/monthly horoscope views (3 images)
-│   │   ├── loading_page/     # AstroAura loading screen
-│   │   ├── natal_chart/      # Birth chart & insights (9 detailed images)
+│   │   ├── cosmic_weather/   # Transit calendar & dashboard (5 screenshots)
+│   │   │   ├── cosmic_weather_dashboard_01.png    # Primary cosmic weather dashboard
+│   │   │   ├── cosmic_weather_dashboard_02.png.png # Secondary dashboard view
+│   │   │   ├── cosmic_weather_transit_calendar.png # Monthly transit calendar
+│   │   │   ├── cosmic_weather_transit_detailed.png # Detailed transit analysis
+│   │   │   └── cosmic_weather_zodiac_wheel.png    # Interactive zodiac wheel
+│   │   ├── explore_dashboard/ # Main app dashboard (1 screenshot)
+│   │   │   └── explore_dashborard.png             # Main app navigation dashboard
+│   │   ├── homepage/         # App homepage (1 screenshot)
+│   │   │   └── Homepage.png                       # AstroAura app homepage
+│   │   ├── horoscope_page/   # Daily/weekly/monthly horoscope views (3 screenshots)
+│   │   │   ├── horscope_daily.png                 # Daily horoscope interface
+│   │   │   ├── horoscope_weekly.png               # Weekly horoscope view
+│   │   │   └── horoscope_monthly.png              # Monthly horoscope predictions
+│   │   ├── loading_page/     # AstroAura loading screen (1 screenshot)
+│   │   │   └── AstroAura_Loading_Screen.png       # App loading/splash screen
+│   │   ├── natal_chart/      # Birth chart & insights (9 detailed screenshots)
+│   │   │   ├── natal_chart_main_page.png          # Main natal chart interface
+│   │   │   ├── natal_chart_birthchart.png         # Visual birth chart display
+│   │   │   ├── natal_chart_quick_insights_01_coreself.png # Core self quick insights
+│   │   │   ├── natal_chart_quick_insights_02_love.png     # Love & relationships quick insights
+│   │   │   ├── natal_chart_quick_insights_03_career.png   # Career & purpose quick insights
+│   │   │   ├── natal_chart_quick_insights_04_growth.png   # Personal growth quick insights
+│   │   │   ├── natal_chart_detailed_insights_01_coreself.png # Core self detailed analysis
+│   │   │   ├── natal_chart_detailed_insights_02_love.png     # Love & relationships detailed analysis
+│   │   │   ├── natal_chart_detailed_insights_03_career.png   # Career & purpose detailed analysis
+│   │   │   └── natal_chart_detailed_insights_04_growth.png   # Personal growth detailed analysis
 │   │   └── tarot/           # Tarot reading interface (3 screenshots)
 │   │       ├── tarot_homepage.png                 # Main tarot interface
 │   │       ├── tarot_reading.png                  # Active tarot reading view
@@ -319,7 +340,7 @@ This AstroAura website is **COMPLETE** and exceeds initial specifications:
 ### ✅ **What's Implemented**
 - **6 Complete AstroAura Pages**: Homepage, Features, Contact, Privacy, About, Cosmic Insights
 - **Bonus PetBuddy Site**: Complete separate pet care app marketing website
-- **Advanced Asset Library**: 125+ total assets including 25+ app screenshots, complete tarot deck, zodiac/planet icons
+- **Advanced Asset Library**: 125+ total assets including 28 app screenshots, complete tarot deck, zodiac/planet icons
 - **Cosmic Design System**: Consistent branding with 150-star animated starfields
 - **Interactive Elements**: Zodiac wheels, floating animations, hover effects, tarot interactions
 - **Mobile Responsive**: Works beautifully across all device sizes with hamburger navigation
@@ -331,7 +352,7 @@ This AstroAura website is **COMPLETE** and exceeds initial specifications:
 - **Professional Quality**: Exceeds industry standards for app marketing sites
 - **Cosmic Branding**: Perfectly represents AstroAura's mystical aesthetic with 11 archetypes
 - **User Conversion**: Multiple CTAs, trust indicators (4.9⭐, 100K users), feature-specific conversions
-- **Content Rich**: 6 comprehensive pages plus 25+ detailed app screenshots showcasing all major features
+- **Content Rich**: 6 comprehensive pages plus 28 detailed app screenshots showcasing all major features
 - **Social Ready**: Complete Open Graph, Twitter Cards, social media integration (4 platforms)
 - **Multi-Project Value**: Includes complete PetBuddy website as bonus deliverable
 
