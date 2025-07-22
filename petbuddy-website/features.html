@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore PetBuddy's comprehensive features: health tracking, smart reminders, growth charts, pet journal, and more. The complete pet care app for iOS and Android.">
+    <title>PetBuddy Features - Complete Pet Care Tracking App | Health Records, Reminders & More</title>
+    
+    <!-- Canonical Tag -->
+    <link rel="canonical" href="https://petbuddyapp.com/features.html">
+    
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    
+    <!-- Facebook Open Graph Tags -->
+    <meta property="og:title" content="PetBuddy Features - Complete Pet Care Management">
+    <meta property="og:description" content="Discover all the features that make PetBuddy the ultimate pet care app. Health tracking, reminders, growth charts, and more.">
+    <meta property="og:image" content="https://petbuddyapp.com/img/features-og-image.jpg">
+    <meta property="og:url" content="https://petbuddyapp.com/features.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PetBuddy Features - Complete Pet Care Management">
+    <meta name="twitter:description" content="Discover all the features that make PetBuddy the ultimate pet care app. Health tracking, reminders, growth charts, and more.">
+    <meta name="twitter:image" content="https://petbuddyapp.com/img/features-twitter-card.jpg">
+    
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "PetBuddy Features",
+      "description": "Comprehensive list of PetBuddy app features for pet care management",
+      "url": "https://petbuddyapp.com/features.html",
+      "isPartOf": {
+        "@type": "SoftwareApplication",
+        "name": "PetBuddy",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": ["Android", "iOS"]
+      }
+    }
+    </script>
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            --mint-green: #8ED3C4;
+            --light-mint: #b5e4d9;
+            --peach: #FFCDC2;
+            --light-peach: #FFE5DF;
+            --dark-text: #444444;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --border-radius: 12px;
+            --max-width: 1200px;
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--white);
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+        h2 { font-size: clamp(2rem, 4vw, 3rem); }
+        h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+        
+        p { margin-bottom: 1.5rem; }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-align: center;
+            box-shadow: var(--shadow);
+            font-size: 1.1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--mint-green);
+            color: var(--dark-text);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background-color: var(--light-mint);
+        }
+        
+        .btn-secondary {
+            background-color: var(--peach);
+            color: var(--dark-text);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--light-peach);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--mint-green);
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            font-weight: 600;
+            position: relative;
+            color: var(--dark-text);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--mint-green);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-text);
+        }
+        
+        /* Page Header */
+        .page-header {
+            padding: 140px 0 60px;
+            background: linear-gradient(135deg, var(--light-mint) 0%, var(--light-peach) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('img/pattern-bg.svg');
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .page-title {
+            margin-bottom: 1.5rem;
+            color: var(--dark-text);
+        }
+        
+        .page-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .header-cta {
+            margin-top: 2rem;
+        }
+        
+        /* Features Overview Grid */
+        .features-overview {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+        
+        .features-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, var(--mint-green) 0%, var(--light-mint) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--white);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+        }
+        
+        .feature-name {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-text);
+        }
+        
+        .feature-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .feature-link {
+            color: var(--mint-green);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+        
+        .feature-link:hover {
+            gap: 10px;
+        }
+        
+        /* Detailed Feature Sections */
+        .feature-detail {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .feature-detail:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+        
+        .feature-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .feature-detail:nth-child(even) .feature-content {
+            flex-direction: row-reverse;
+        }
+        
+        .feature-text {
+            flex: 1;
+        }
+        
+        .feature-title {
+            margin-bottom: 1.5rem;
+            color: var(--dark-text);
+        }
+        
+        .feature-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--light-mint);
+            opacity: 0.5;
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            z-index: -1;
+        }
+        
+        .feature-subtitle {
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        .feature-benefits {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-benefits li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .feature-benefits i {
+            color: var(--mint-green);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+        
+        .feature-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .feature-image img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transition: var(--transition);
+        }
+        
+        .feature-image:hover img {
+            transform: scale(1.02);
+        }
+        
+        .feature-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--peach);
+            color: var(--dark-text);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        /* Comparison Section */
+        .comparison-section {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+        
+        .comparison-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--white);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comparison-table th {
+            background-color: var(--mint-green);
+            color: var(--white);
+            font-weight: 700;
+        }
+        
+        .comparison-table td:first-child {
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .check-icon {
+            color: var(--mint-green);
+            font-size: 1.2rem;
+        }
+        
+        .cross-icon {
+            color: #ff6b6b;
+            font-size: 1.2rem;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 100px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .faq-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+        
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .faq-question i {
+            transition: var(--transition);
+            color: var(--mint-green);
+        }
+        
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 25px 25px;
+        }
+        
+        .faq-item.active .faq-question {
+            color: var(--mint-green);
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--mint-green) 0%, var(--peach) 100%);
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+        
+        .cta-text {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-white {
+            background-color: var(--white);
+            color: var(--mint-green);
+            font-size: 1.2rem;
+            padding: 16px 36px;
+        }
+        
+        .btn-white:hover {
+            background-color: var(--light-gray);
+            transform: translateY(-3px);
+        }
+        
+        .btn-transparent {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            font-size: 1.2rem;
+            padding: 14px 34px;
+        }
+        
+        .btn-transparent:hover {
+            background-color: var(--white);
+            color: var(--mint-green);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-text);
+            color: var(--white);
+            padding: 80px 0 20px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--mint-green);
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo img {
+            height: 35px;
+            margin-right: 10px;
+        }
+        
+        .footer-desc {
+            margin-bottom: 30px;
+            color: #ccc;
+            line-height: 1.8;
+        }
+        
+        .footer-title {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--mint-green);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--mint-green);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: var(--white);
+        }
+        
+        .social-link:hover {
+            background-color: var(--mint-green);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        .copyright-heart {
+            color: var(--peach);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .feature-content {
+                gap: 40px;
+            }
+            
+            .feature-benefits {
+                font-size: 0.95rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background-color: var(--white);
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+                text-align: center;
+                gap: 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                padding: 15px 0;
+                width: 100%;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .feature-content {
+                flex-direction: column !important;
+                text-align: center;
+            }
+            
+            .feature-detail:nth-child(even) .feature-content {
+                flex-direction: column !important;
+            }
+            
+            .feature-benefits {
+                text-align: left;
+                max-width: 500px;
+                margin: 0 auto 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .feature-title {
+                font-size: 1.8rem;
+            }
+            
+            .feature-card {
+                padding: 30px 20px;
+            }
+            
+            .faq-question {
+                padding: 20px;
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 12px 24px;
+                font-size: 1rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="img/logo.png" alt="PetBuddy Logo" width="40" height="40">
+                PetBuddy
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html" class="active">Features</a></li>
+                    <li><a href="why-petbuddy.html">Why PetBuddy</a></li>
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container header-content">
+            <h1 class="page-title">Features That Make Pet Care Easy</h1>
+            <p class="page-subtitle">Discover the comprehensive tools and features that help over 50,000 pet parents provide better care for their furry family members. From health tracking to memory preservation, PetBuddy has everything you need.</p>
+            <div class="header-cta">
+                <a href="https://apps.apple.com/us/app/petbuddy-pet-care-companion/id6745491480" class="btn btn-primary">Download Now</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Overview Grid -->
+    <section class="features-overview">
+        <div class="container">
+            <div class="features-intro">
+                <h2>All-in-One Pet Care Solution</h2>
+                <p>PetBuddy combines all essential pet care tools into one intuitive app. Click on any feature below to learn more about how it can help you become a better pet parent.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3 class="feature-name">Health Tracking</h3>
+                    <p class="feature-description">Comprehensive health records management including vaccinations, medications, vet visits, and medical history.</p>
+                    <a href="#health-tracking" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-name">Growth Charts</h3>
+                    <p class="feature-description">Visual tracking of weight, height, and other measurements with breed-specific comparisons.</p>
+                    <a href="#growth-charts" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3 class="feature-name">Smart Reminders</h3>
+                    <p class="feature-description">Customizable notifications for medications, appointments, grooming, and daily care tasks.</p>
+                    <a href="#reminders" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-paw"></i>
+                    </div>
+                    <h3 class="feature-name">Care Activity Log</h3>
+                    <p class="feature-description">Track daily activities including walks, meals, medications, and bathroom breaks.</p>
+                    <a href="#activity-log" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="feature-name">Pet Journal</h3>
+                    <p class="feature-description">Create a digital scrapbook with photos, videos, and milestone memories.</p>
+                    <a href="#pet-journal" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="feature-name">Privacy & Security</h3>
+                    <p class="feature-description">All data stored locally on your device with no cloud uploads or data collection.</p>
+                    <a href="#privacy" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Detailed Feature: Health Tracking -->
+    <section id="health-tracking" class="feature-detail">
+        <div class="container">
+            <div class="feature-content">
+                <div class="feature-text">
+                    <span class="feature-number">01</span>
+                    <h2 class="feature-title">Complete Health Records Management</h2>
+                    <p class="feature-subtitle">Keep all your pet's medical information organized and easily accessible. Never miss an important vaccination or forget medication details again.</p>
+                    
+                    <ul class="feature-benefits">
+                        <li><i class="fas fa-check-circle"></i> Track vaccination history with automatic renewal reminders</li>
+                        <li><i class="fas fa-check-circle"></i> Record medications with dosage and schedule details</li>
+                        <li><i class="fas fa-check-circle"></i> Store vet visit notes and recommendations</li>
+                        <li><i class="fas fa-check-circle"></i> Monitor allergies and medical conditions</li>
+                        <li><i class="fas fa-check-circle"></i> Export records for vet appointments or travel</li>
+                    </ul>
+                    
+                    <p>With PetBuddy's health tracking, you'll always be prepared for vet visits and emergencies. Share records with family members, pet sitters, or new veterinarians instantly.</p>
+                </div>
+                <div class="feature-image">
+                    <span class="feature-badge">Most Popular</span>
+                    <img src="img/app-screenshot-2.png" alt="PetBuddy Health Tracking Interface" width="560" height="600" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Detailed Feature: Growth Charts -->
+    <section id="growth-charts" class="feature-detail">
+        <div class="container">
+            <div class="feature-content">
+                <div class="feature-text">
+                    <span class="feature-number">02</span>
+                    <h2 class="feature-title">Visual Growth & Development Tracking</h2>
+                    <p class="feature-subtitle">Monitor your pet's physical development with intuitive charts and graphs. Compare growth patterns against breed standards to ensure healthy development.</p>
+                    
+                    <ul class="feature-benefits">
+                        <li><i class="fas fa-check-circle"></i> Interactive weight and height charts</li>
+                        <li><i class="fas fa-check-circle"></i> Breed-specific growth comparisons</li>
+                        <li><i class="fas fa-check-circle"></i> Track multiple measurements over time</li>
+                        <li><i class="fas fa-check-circle"></i> Set growth milestones and goals</li>
+                        <li><i class="fas fa-check-circle"></i> Export data for veterinary consultations</li>
+                    </ul>
+                    
+                    <p>Identify potential health issues early by tracking growth trends. Perfect for puppies, kittens, and pets with specific dietary needs.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="img/app-screenshot-6.png" alt="PetBuddy Growth Charts" width="560" height="600" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Detailed Feature: Smart Reminders -->
+    <section id="reminders" class="feature-detail">
+        <div class="container">
+            <div class="feature-content">
+                <div class="feature-text">
+                    <span class="feature-number">03</span>
+                    <h2 class="feature-title">Never Miss Important Pet Care Tasks</h2>
+                    <p class="feature-subtitle">Customizable reminders ensure your pet receives timely care. From medications to grooming appointments, PetBuddy keeps you on schedule.</p>
+                    
+                    <ul class="feature-benefits">
+                        <li><i class="fas fa-check-circle"></i> Flexible notification scheduling</li>
+                        <li><i class="fas fa-check-circle"></i> Recurring reminders for routine care</li>
+                        <li><i class="fas fa-check-circle"></i> Multiple reminder categories</li>
+                        <li><i class="fas fa-check-circle"></i> Calendar view of upcoming tasks</li>
+                        <li><i class="fas fa-check-circle"></i> Snooze and reschedule options</li>
+                    </ul>
+                    
+                    <p>Perfect for busy households or multiple pet owners. Everyone stays informed about pet care responsibilities.</p>
+                </div>
+                <div class="feature-image">
+                    <span class="feature-badge">Smart Automation</span>
+                    <img src="img/app-screenshot-5.png" alt="PetBuddy Smart Reminders" width="560" height="600" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Detailed Feature: Activity Log -->
+    <section id="activity-log" class="feature-detail">
+        <div class="container">
+            <div class="feature-content">
+                <div class="feature-text">
+                    <span class="feature-number">04</span>
+                    <h2 class="feature-title">Daily Care Activity Tracking</h2>
+                    <p class="feature-subtitle">Log and monitor all daily pet care activities in one place. Perfect for households with multiple caregivers or pet sitters.</p>
+                    
+                    <ul class="feature-benefits">
+                        <li><i class="fas fa-check-circle"></i> Quick activity logging with one tap</li>
+                        <li><i class="fas fa-check-circle"></i> Track feeding times and portions</li>
+                        <li><i class="fas fa-check-circle"></i> Record walk duration and routes</li>
+                        <li><i class="fas fa-check-circle"></i> Monitor bathroom breaks and patterns</li>
+                        <li><i class="fas fa-check-circle"></i> View activity history and trends</li>
+                    </ul>
+                    
+                    <p>Ensure consistent care across all family members. Identify patterns that might indicate health issues early.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="img/app-screenshot-4.png" alt="PetBuddy Activity Log" width="560" height="600" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Detailed Feature: Pet Journal -->
+    <section id="pet-journal" class="feature-detail">
+        <div class="container">
+            <div class="feature-content">
+                <div class="feature-text">
+                    <span class="feature-number">05</span>
+                    <h2 class="feature-title">Preserve Precious Memories Forever</h2>
+                    <p class="feature-subtitle">Create a beautiful digital scrapbook of your pet's life journey. Capture milestones, funny moments, and everyday adventures.</p>
+                    
+                    <ul class="feature-benefits">
+                        <li><i class="fas fa-check-circle"></i> Add photos, videos, and text entries</li>
+                        <li><i class="fas fa-check-circle"></i> Organize entries with custom tags</li>
+                        <li><i class="fas fa-check-circle"></i> Create milestone celebrations</li>
+                        <li><i class="fas fa-check-circle"></i> Search entries by date or category</li>
+                        <li><i class="fas fa-check-circle"></i> Backup and export memories</li>
+                    </ul>
+                    
+                    <p>From first days home to senior years, document your unique bond. Share memories with family or keep them private.</p>
+                </div>
+                <div class="feature-image">
+                    <span class="feature-badge">Most Loved</span>
+                    <img src="img/app-screenshot-3.png" alt="PetBuddy Pet Journal" width="560" height="600" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Detailed Feature: Privacy -->
+    <section id="privacy" class="feature-detail">
+        <div class="container">
+            <div class="feature-content">
+                <div class="feature-text">
+                    <span class="feature-number">06</span>
+                    <h2 class="feature-title">Your Pet's Data Stays Private</h2>
+                    <p class="feature-subtitle">Unlike other pet apps, PetBuddy stores all data locally on your device. No cloud uploads, no data mining, no privacy concerns.</p>
+                    
+                    <ul class="feature-benefits">
+                        <li><i class="fas fa-check-circle"></i> 100% local data storage</li>
+                        <li><i class="fas fa-check-circle"></i> No account registration required</li>
+                        <li><i class="fas fa-check-circle"></i> Works completely offline</li>
+                        <li><i class="fas fa-check-circle"></i> Manual backup options</li>
+                        <li><i class="fas fa-check-circle"></i> Complete data control</li>
+                    </ul>
+                    
+                    <p>Your pet's health information and personal moments remain completely private. You decide what to share and with whom.</p>
+                </div>
+                <div class="feature-image">
+                    <span class="feature-badge">Privacy First</span>
+                    <img src="img/app-screenshot-1.png" alt="PetBuddy Privacy Features" width="560" height="600" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Comparison Section -->
+    <section class="comparison-section">
+        <div class="container">
+            <div class="comparison-header">
+                <h2>How PetBuddy Compares</h2>
+                <p>See why pet parents choose PetBuddy over other solutions for managing their pet's care.</p>
+            </div>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Features</th>
+                        <th>PetBuddy</th>
+                        <th>Paper Records</th>
+                        <th>Other Pet Apps</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Comprehensive Health Tracking</td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                        <td><i class="fas fa-times cross-icon"></i></td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Growth Charts & Analytics</td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                        <td><i class="fas fa-times cross-icon"></i></td>
+                        <td>Limited</td>
+                    </tr>
+                    <tr>
+                        <td>Smart Reminders</td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                        <td><i class="fas fa-times cross-icon"></i></td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Works Offline</td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                        <td>Few</td>
+                    </tr>
+                    <tr>
+                        <td>Complete Privacy</td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                        <td>Rare</td>
+                    </tr>
+                    <tr>
+                        <td>Digital Pet Journal</td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                        <td><i class="fas fa-times cross-icon"></i></td>
+                        <td>Limited</td>
+                    </tr>
+                    <tr>
+                        <td>Easy to Share</td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                        <td><i class="fas fa-times cross-icon"></i></td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                    </tr>
+                    <tr>
+                        <td>All-in-One Solution</td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                        <td><i class="fas fa-times cross-icon"></i></td>
+                        <td>Some</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Get answers to common questions about PetBuddy's features and functionality.</p>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I use PetBuddy for multiple pets?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Currently, PetBuddy supports one pet profile per app installation. We're actively developing multi-pet support, which will be available in a future update. This feature will allow you to create separate profiles for each pet with individual health records, journals, and reminders.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How does the offline functionality work?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>PetBuddy stores all data locally on your device, so you can access and update your pet's information anywhere, anytime - even without an internet connection. This means you can log activities, view health records, and check reminders whether you're at the vet, traveling, or in areas with poor connectivity.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I backup my pet's data?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! PetBuddy allows you to create local backups of your journal entries and associated images. You can export this data to your device's storage and import it back if needed. We're working on expanding backup capabilities to include all app data in future updates.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How accurate are the growth charts?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>PetBuddy's growth charts are based on general breed standards and veterinary guidelines. While they provide helpful benchmarks, every pet is unique. Always consult with your veterinarian for personalized growth assessments and health advice specific to your pet.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I share my pet's information with my vet?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! You can export health records, growth charts, and activity logs to share with your veterinarian. This feature is particularly useful for appointments, emergencies, or when switching to a new vet. The exported data can be shared via email or messaging apps.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Start Using These Features Today</h2>
+                <p class="cta-text">Join thousands of pet parents who are already providing better care with PetBuddy. Download now and see the difference comprehensive pet care management can make.</p>
+                <div class="cta-buttons">
+                    <a href="https://apps.apple.com/us/app/petbuddy-pet-care-companion/id6745491480" class="btn btn-white" target="_blank" rel="noopener noreferrer">Download for iOS</a>
+                    <a href="#" class="btn btn-transparent">Coming Soon for Android</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <img src="img/logo.png" alt="PetBuddy Logo" width="35" height="35">
+                        PetBuddy
+                    </div>
+                    <p class="footer-desc">Your complete companion app for better pet parenting. Track health, schedule reminders, and capture precious moments.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/petbuddyapp" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://twitter.com/petbuddyapp" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://instagram.com/petbuddyapp" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="why-petbuddy.html">Why PetBuddy</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Features</h3>
+                    <ul class="footer-links">
+                        <li><a href="#health-tracking">Health Tracking</a></li>
+                        <li><a href="#growth-charts">Growth Charts</a></li>
+                        <li><a href="#reminders">Smart Reminders</a></li>
+                        <li><a href="#activity-log">Care Logging</a></li>
+                        <li><a href="#pet-journal">Pet Journal</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Contact</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> royanis@gmail.com</li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>Built with <span class="copyright-heart">❤️</span> for every pet parent. © 2025 PetBuddy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 100;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+        
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all FAQ items
+                faqItems.forEach(faqItem => {
+                    faqItem.classList.remove('active');
+                });
+                
+                // If current item wasn't active, open it
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+        
+        // Lazy Loading for Images
+        if ('IntersectionObserver' in window) {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+            
+            images.forEach(img => imageObserver.observe(img));
+        }
+        
+        // Scroll Animation
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.feature-card, .feature-detail');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
+                
+                if (elementTop < window.innerHeight - 100 && elementBottom > 0) {
+                    element.classList.add('fade-in-up');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
