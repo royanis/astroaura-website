@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Explore AstroAura's cosmic features: AI-powered chat, natal charts, tarot readings, transit tracking, and personalized horoscopes. Your complete astrology companion.">
-    <title>AstroAura Features - Complete Cosmic Astrology App | AI Chat, Natal Charts & Tarot</title>
+    <title>AstroAura Features - Complete Cosmic Astrology App | AI Chat, Birth Charts & Tarot</title>
     
     <!-- Canonical Tag -->
     <link rel="canonical" href="https://astroaura.app/features.html">
@@ -298,8 +298,12 @@
         
         .page-title {
             margin-bottom: 1.5rem;
-            color: var(--cosmic-gold);
-            text-shadow: 0 2px 20px rgba(240, 199, 94, 0.5);
+            color: var(--starlight);
+            text-shadow: 0 0 30px rgba(240, 199, 94, 0.6);
+            background: linear-gradient(135deg, var(--cosmic-gold) 0%, var(--starlight) 50%, var(--cosmic-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .page-subtitle {
@@ -447,7 +451,7 @@
             color: rgba(240, 199, 94, 0.3);
             position: absolute;
             top: -20px;
-            left: -20px;
+            left: 20px;
             z-index: -1;
         }
         
@@ -843,6 +847,15 @@
             50% { transform: scale(1.1); }
         }
         
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
         /* Responsive Design */
         @media (max-width: 1024px) {
             .feature-content {
@@ -961,7 +974,7 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="container header-content">
-            <h1 class="page-title">Cosmic Features for Your Spiritual Journey</h1>
+            <h1 class="page-title floating">Cosmic Features for Your Spiritual Journey</h1>
             <p class="page-subtitle">Discover the comprehensive suite of astrological tools designed to illuminate your path. From AI-powered cosmic chat to detailed natal chart analysis, explore everything AstroAura offers for your celestial awakening.</p>
             <div class="header-cta">
                 <a href="#download" class="btn btn-primary">Begin Your Journey</a>
@@ -991,9 +1004,9 @@
                     <div class="feature-icon">
                         <i class="fas fa-chart-pie"></i>
                     </div>
-                    <h3 class="feature-name">Natal Chart Analysis</h3>
-                    <p class="feature-description">Discover your cosmic blueprint with detailed birth chart readings and planetary interpretations.</p>
-                    <a href="#natal-charts" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="feature-name">Birth Chart Analysis</h3>
+                    <p class="feature-description">Interactive birth chart generation with cosmic journey experience and detailed planetary interpretations.</p>
+                    <a href="#birth-charts" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
                 <div class="feature-card">
@@ -1009,9 +1022,9 @@
                     <div class="feature-icon">
                         <i class="fas fa-globe"></i>
                     </div>
-                    <h3 class="feature-name">Real-Time Transits</h3>
-                    <p class="feature-description">Track current planetary movements and understand their influence on your personal journey.</p>
-                    <a href="#transits" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="feature-name">Day Planner</h3>
+                    <p class="feature-description">Real-time planetary transit tracking with cosmic weather dashboard and personalized daily guidance.</p>
+                    <a href="#day-planner" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
                 <div class="feature-card">
@@ -1027,9 +1040,9 @@
                     <div class="feature-icon">
                         <i class="fas fa-user-circle"></i>
                     </div>
-                    <h3 class="feature-name">Cosmic Archetypes</h3>
-                    <p class="feature-description">Explore your celestial personality through 11 unique archetypes revealing your spiritual nature.</p>
-                    <a href="#archetypes" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="feature-name">Personal Wellness Journal</h3>
+                    <p class="feature-description">Personal wellness journal with mood tracking, astro tags, and analytics for your spiritual growth.</p>
+                    <a href="#journal" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -1066,29 +1079,60 @@
         </div>
     </section>
     
-    <!-- Detailed Feature: Natal Charts -->
-    <section id="natal-charts" class="feature-detail">
+    <!-- Detailed Feature: Birth Charts -->
+    <section id="birth-charts" class="feature-detail">
         <div class="container">
             <div class="feature-content">
                 <div class="feature-text">
                     <span class="feature-number">02</span>
-                    <h2 class="feature-title">Complete Birth Chart Analysis</h2>
-                    <p class="feature-subtitle">Discover your cosmic blueprint with detailed natal chart interpretations. Understand planetary positions, house meanings, and aspect patterns.</p>
+                    <h2 class="feature-title">Interactive Birth Chart Generation</h2>
+                    <p class="feature-subtitle">Interactive birth chart generation with cosmic journey experience. Discover your cosmic blueprint with detailed interpretations of planetary positions, houses, and aspects.</p>
                     
                     <ul class="feature-benefits">
-                        <li><i class="fas fa-star"></i> Interactive birth chart visualization</li>
+                        <li><i class="fas fa-star"></i> Interactive birth chart with cosmic journey experience</li>
                         <li><i class="fas fa-star"></i> Detailed planetary position interpretations</li>
                         <li><i class="fas fa-star"></i> House-by-house analysis and meanings</li>
                         <li><i class="fas fa-star"></i> Major aspect pattern identification</li>
-                        <li><i class="fas fa-star"></i> Personalized chart summary and insights</li>
+                        <li><i class="fas fa-star"></i> Enhanced birth data collection with location search</li>
                     </ul>
                     
-                    <p>Your complete astrological identity revealed through precise calculations and expert interpretations.</p>
+                    <p>Your complete cosmic blueprint revealed through interactive visualization and expert interpretations with enhanced onboarding experience.</p>
                 </div>
                 <div class="feature-image">
                     <div class="feature-mockup">
                         <div class="feature-mockup-content">
-                            <img src="assets/app_screenshots/natal_chart/natal_chart_birthchart.png" alt="Natal Chart Interface" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                            <img src="assets/app_screenshots/natal_chart/natal_chart_birthchart.png" alt="Birth Chart Interface" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Detailed Feature: Day Planner -->
+    <section id="day-planner" class="feature-detail">
+        <div class="container">
+            <div class="feature-content">
+                <div class="feature-text">
+                    <span class="feature-number">03</span>
+                    <h2 class="feature-title">Day Planner & Cosmic Weather</h2>
+                    <p class="feature-subtitle">Real-time planetary transit tracking with cosmic weather dashboard. Get personalized daily guidance with actionable insights and smart notifications.</p>
+                    
+                    <ul class="feature-benefits">
+                        <li><i class="fas fa-star"></i> Real-time planetary transit tracking with J2000.0 epoch calculations</li>
+                        <li><i class="fas fa-star"></i> Cosmic weather dashboard with impact analysis</li>
+                        <li><i class="fas fa-star"></i> Transit calendar with detailed planetary movements</li>
+                        <li><i class="fas fa-star"></i> Smart notifications with anti-spam protection (max 5/day)</li>
+                        <li><i class="fas fa-star"></i> Personalized daily guidance with actionable insights</li>
+                    </ul>
+                    
+                    <p>Transform your daily planning with cosmic intelligence and personalized astrological guidance.</p>
+                </div>
+                <div class="feature-image">
+                    <span class="feature-badge">Real-time</span>
+                    <div class="feature-mockup">
+                        <div class="feature-mockup-content">
+                            <img src="assets/app_screenshots/cosmic_weather/cosmic_weather_dashboard_01.png" alt="Day Planner Interface" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
                         </div>
                     </div>
                 </div>
@@ -1101,25 +1145,56 @@
         <div class="container">
             <div class="feature-content">
                 <div class="feature-text">
-                    <span class="feature-number">03</span>
+                    <span class="feature-number">04</span>
                     <h2 class="feature-title">Complete Tarot Guidance</h2>
                     <p class="feature-subtitle">Access the full 78-card tarot deck with AI-powered interpretations. Receive guidance for love, career, spiritual growth, and life decisions.</p>
                     
                     <ul class="feature-benefits">
-                        <li><i class="fas fa-star"></i> Complete Major and Minor Arcana deck</li>
-                        <li><i class="fas fa-star"></i> Multiple spread options for different questions</li>
-                        <li><i class="fas fa-star"></i> AI-enhanced card interpretations</li>
-                        <li><i class="fas fa-star"></i> Daily card draws for guidance</li>
-                        <li><i class="fas fa-star"></i> Reading history and pattern tracking</li>
+                        <li><i class="fas fa-star"></i> Complete 78-card tarot deck with Major and Minor Arcana</li>
+                        <li><i class="fas fa-star"></i> Card readings, interpretations, and personal card collections</li>
+                        <li><i class="fas fa-star"></i> AI-enhanced interpretations for deeper insights</li>
+                        <li><i class="fas fa-star"></i> Multiple spread options for different life questions</li>
+                        <li><i class="fas fa-star"></i> Reading history and personal pattern tracking</li>
                     </ul>
                     
-                    <p>Ancient wisdom meets modern technology for profound spiritual insights and practical guidance.</p>
+                    <p>Ancient wisdom meets AI technology for profound spiritual insights, personal card collections, and practical life guidance.</p>
                 </div>
                 <div class="feature-image">
                     <span class="feature-badge">Mystical</span>
                     <div class="feature-mockup">
                         <div class="feature-mockup-content">
                             <img src="assets/app_screenshots/tarot/tarot_reading.png" alt="Tarot Reading Interface" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Detailed Feature: Personal Wellness Journal -->
+    <section id="journal" class="feature-detail">
+        <div class="container">
+            <div class="feature-content">
+                <div class="feature-text">
+                    <span class="feature-number">05</span>
+                    <h2 class="feature-title">Personal Wellness Journal</h2>
+                    <p class="feature-subtitle">Personal wellness journal with mood tracking, astro tags, and analytics. Track your spiritual growth and connect cosmic events to your personal experiences.</p>
+                    
+                    <ul class="feature-benefits">
+                        <li><i class="fas fa-star"></i> Personal wellness journal with mood tracking</li>
+                        <li><i class="fas fa-star"></i> Astro tags to connect experiences with cosmic events</li>
+                        <li><i class="fas fa-star"></i> Analytics and insights into your spiritual patterns</li>
+                        <li><i class="fas fa-star"></i> Image picker integration for visual memories</li>
+                        <li><i class="fas fa-star"></i> Private, secure storage of your personal reflections</li>
+                    </ul>
+                    
+                    <p>Document your cosmic journey and discover patterns in your spiritual growth through mindful reflection.</p>
+                </div>
+                <div class="feature-image">
+                    <span class="feature-badge">Mindful</span>
+                    <div class="feature-mockup">
+                        <div class="feature-mockup-content">
+                            <img src="assets/app_screenshots/journal/journal_entry.png" alt="Wellness Journal Interface" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
                         </div>
                     </div>
                 </div>
@@ -1152,13 +1227,13 @@
                         <td><i class="fas fa-times cross-icon"></i></td>
                     </tr>
                     <tr>
-                        <td>Complete Natal Chart Analysis</td>
+                        <td>Interactive Birth Chart Analysis</td>
                         <td><i class="fas fa-check check-icon"></i></td>
                         <td>Limited</td>
                         <td><i class="fas fa-check check-icon"></i></td>
                     </tr>
                     <tr>
-                        <td>Real-Time Transit Tracking</td>
+                        <td>Day Planner with Cosmic Weather</td>
                         <td><i class="fas fa-check check-icon"></i></td>
                         <td><i class="fas fa-times cross-icon"></i></td>
                         <td><i class="fas fa-check check-icon"></i></td>
@@ -1188,10 +1263,10 @@
                         <td>Expensive</td>
                     </tr>
                     <tr>
-                        <td>Cosmic Archetype Analysis</td>
+                        <td>Personal Wellness Journal</td>
                         <td><i class="fas fa-check check-icon"></i></td>
                         <td><i class="fas fa-times cross-icon"></i></td>
-                        <td>Rare</td>
+                        <td><i class="fas fa-times cross-icon"></i></td>
                     </tr>
                 </tbody>
             </table>
@@ -1315,10 +1390,10 @@
                     <h3 class="footer-title">Celestial Features</h3>
                     <ul class="footer-links">
                         <li><a href="#cosmic-chat">AI Cosmic Chat</a></li>
-                        <li><a href="#natal-charts">Natal Charts</a></li>
+                        <li><a href="#birth-charts">Birth Charts</a></li>
+                        <li><a href="#day-planner">Day Planner</a></li>
                         <li><a href="#tarot-readings">Tarot Guidance</a></li>
-                        <li><a href="#transits">Real-Time Transits</a></li>
-                        <li><a href="#compatibility">Compatibility</a></li>
+                        <li><a href="#journal">Wellness Journal</a></li>
                     </ul>
                 </div>
                 

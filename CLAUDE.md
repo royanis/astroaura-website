@@ -1,369 +1,196 @@
-# Claude Context - AstroAura Website
+# CLAUDE.md
 
-## 🌟 Project Overview
+## Project Overview
 
-This is the official marketing website for AstroAura - a cosmic astrology app. The website serves as a production-ready marketing channel showcasing the app's features with perfect brand consistency. **COMPLETED**: Full HTML/CSS implementation with cosmic theme replacing the original Next.js approach.
+**AstroAura** is a production-ready, multi-lingual astrology and wellness mobile app for Android and iOS. Features responsive design from small phones to tablets with complete localization support.
 
-## 🎨 Design System & Brand Guidelines
+### Core Requirements
+- **Production-ready code** - No placeholder implementations
+- **Complete localization** - All UI strings use ARB system (11 languages)
+- **Responsive design** - Adaptive UI for all device sizes
+- **Accessibility compliance** - Full semantic labels and adaptive UI
 
-### Color Palette
-- **Cosmic Gold**: `#F0C75E` - Primary brand color for CTAs, highlights, and interactive elements
-- **Cosmic Purple**: `#3A2B71` - Secondary brand color for accents and borders
-- **Deep Space**: `#0A0A0A` - Main background color for cosmic depth
-- **Starlight**: `#FFFFFF` - Primary text color for cosmic contrast
-- **Nebula Pink**: `#FF6B9D` - Accent color for interactive states
-- **Cosmic Blue**: `#4A90E2` - Supporting color for variety in gradients
+## Development Commands
 
-### Typography
-- **Headlines**: Georgia (serif) - Elegant cosmic headers matching app typography
-- **Body Text**: Inter (sans-serif) - Modern, readable body text via Google Fonts
-- **Font Weights**: 400, 500, 600, 700, 800 for varied emphasis
+### Flutter
+- **Build**: `flutter build apk` / `flutter build ios`
+- **Run**: `flutter run` (dev) / `flutter run --release` (prod)
+- **Test**: `flutter test`
+- **Analyze**: `flutter analyze`
+- **Format**: `dart format .`
+- **Clean**: `flutter clean`
+- **Dependencies**: `flutter pub get`
+- **Code Generation**: `flutter packages pub run build_runner build`
 
-### Visual Elements
-- **Starfield Background**: JavaScript-generated animated starfield on every page
-- **Cosmic Animations**: Float, glow, twinkle, shimmer, and orbit effects
-- **Interactive Elements**: Hover transformations, smooth transitions, cosmic cursor trails
-- **Glassmorphism**: Backdrop-filter blur effects with cosmic transparency
-- **Responsive Breakpoints**: Mobile-first approach (480px, 768px, 1024px, 1440px+)
+### Localization
+- **Generate**: `flutter gen-l10n`
+- **Location**: `lib/l10n/` with template `app_en.arb`
+- **Languages**: en, de, fr, hi, zh, bn, ta, te, kn, es, pt
+- **Required**: English (primary), Hindi, Kannada for new strings
+- **Current Status**: 4460+ localized strings with comprehensive coverage
+- **Remove unused**: `dart run remove_unused_localizations_keys:main`
 
-## 🛠️ Tech Stack & Architecture
+#### Localization Guidelines
+- Add all new strings to `app_en.arb` first
+- Add Hindi (`app_hi.arb`) and Kannada (`app_kn.arb`) translations
+- Use semantic keys describing purpose, not content
+- Never hardcode strings in UI
+- Use `l10n.conjunctionOr` and `l10n.conjunctionAnd` instead of "or"/"and"
 
-### Core Technologies - **UPDATED IMPLEMENTATION**
-- **Framework**: Pure HTML/CSS/JavaScript (simplified from Next.js for reliability)
-- **Styling**: Custom CSS with CSS Variables + Advanced animations
-- **Icons**: Font Awesome 6.4.0 for consistent iconography
-- **Fonts**: Google Fonts (Inter + Georgia) for cosmic typography
-- **Deployment**: Static hosting ready (GitHub Pages, Netlify, Vercel)
+### Assets
+- **App Icons**: `flutter packages pub run flutter_launcher_icons:main`
+- **Splash Screen**: `flutter packages pub run flutter_native_splash:create`
 
-### Key External Resources
-- Font Awesome CDN: `6.4.0` for cosmic icons
-- Google Fonts: Inter (400-800) + Georgia (400,700)
-- No build process required - direct browser deployment
+## Architecture
 
-## 📁 Codebase Structure - **CURRENT IMPLEMENTATION**
+### Structure
+- **Domain Layer** (`lib/domain/`): Business entities and interfaces
+- **Data Layer** (`lib/data/`): Repository implementations and data models
+- **Presentation Layer** (`lib/presentation/`, `lib/features/*/presentation/`): UI and state management
 
-```
-astroaura-website/
-├── assets/                    # All app assets organized by type
-│   ├── app_screenshots/       # Complete app interface screenshots (28 total)
-│   │   ├── astro_match/      # Synastry compatibility (3 screenshots)
-│   │   │   ├── astro_match_mainpage.png           # Main compatibility interface
-│   │   │   ├── astro_match_results.png            # Compatibility results display
-│   │   │   └── astro_match_compatibilityinsights.png # Detailed synastry insights
-│   │   ├── cosmic_chat/      # AI chat interface (2 screenshots)
-│   │   │   ├── cosmic_chate_mainpage.png          # Chat homepage interface
-│   │   │   └── cosmic_chat_aichat.png             # Live AI conversation view
-│   │   ├── cosmic_weather/   # Transit calendar & dashboard (5 screenshots)
-│   │   │   ├── cosmic_weather_dashboard_01.png    # Primary cosmic weather dashboard
-│   │   │   ├── cosmic_weather_dashboard_02.png.png # Secondary dashboard view
-│   │   │   ├── cosmic_weather_transit_calendar.png # Monthly transit calendar
-│   │   │   ├── cosmic_weather_transit_detailed.png # Detailed transit analysis
-│   │   │   └── cosmic_weather_zodiac_wheel.png    # Interactive zodiac wheel
-│   │   ├── explore_dashboard/ # Main app dashboard (1 screenshot)
-│   │   │   └── explore_dashborard.png             # Main app navigation dashboard
-│   │   ├── homepage/         # App homepage (1 screenshot)
-│   │   │   └── Homepage.png                       # AstroAura app homepage
-│   │   ├── horoscope_page/   # Daily/weekly/monthly horoscope views (3 screenshots)
-│   │   │   ├── horscope_daily.png                 # Daily horoscope interface
-│   │   │   ├── horoscope_weekly.png               # Weekly horoscope view
-│   │   │   └── horoscope_monthly.png              # Monthly horoscope predictions
-│   │   ├── loading_page/     # AstroAura loading screen (1 screenshot)
-│   │   │   └── AstroAura_Loading_Screen.png       # App loading/splash screen
-│   │   ├── natal_chart/      # Birth chart & insights (9 detailed screenshots)
-│   │   │   ├── natal_chart_main_page.png          # Main natal chart interface
-│   │   │   ├── natal_chart_birthchart.png         # Visual birth chart display
-│   │   │   ├── natal_chart_quick_insights_01_coreself.png # Core self quick insights
-│   │   │   ├── natal_chart_quick_insights_02_love.png     # Love & relationships quick insights
-│   │   │   ├── natal_chart_quick_insights_03_career.png   # Career & purpose quick insights
-│   │   │   ├── natal_chart_quick_insights_04_growth.png   # Personal growth quick insights
-│   │   │   ├── natal_chart_detailed_insights_01_coreself.png # Core self detailed analysis
-│   │   │   ├── natal_chart_detailed_insights_02_love.png     # Love & relationships detailed analysis
-│   │   │   ├── natal_chart_detailed_insights_03_career.png   # Career & purpose detailed analysis
-│   │   │   └── natal_chart_detailed_insights_04_growth.png   # Personal growth detailed analysis
-│   │   └── tarot/           # Tarot reading interface (3 screenshots)
-│   │       ├── tarot_homepage.png                 # Main tarot interface
-│   │       ├── tarot_reading.png                  # Active tarot reading view
-│   │       └── tarot_cardbrowser.png              # Tarot card browser/library
-│   ├── fonts/               # Custom font files (if any)
-│   ├── icon/
-│   │   └── icon.png         # Favicon and app icons
-│   ├── icons/
-│   │   ├── app_icon.png      # Main app logo with cosmic glow
-│   │   ├── sun_icon.png      # Solar energy indicator
-│   │   ├── moon_icon.png     # Lunar energy indicator
-│   │   ├── icon.png         # Additional icon variant
-│   │   ├── zodiac/           # 12 zodiac sign icons (♈-♓)
-│   │   ├── planets/          # 11 planetary icons (☉,☽,☿,♀,♂,♃,♄,♅,♆,♇,⊕)
-│   │   └── aspects/          # 5 astrological aspect icons
-│   └── images/
-│       ├── backgrounds/      # Cosmic backgrounds & gradients
-│       │   ├── cosmic_background.png     # Main hero background
-│       │   ├── cosmic_gates_background.png # Mystical gateway
-│       │   ├── nebula_gradient.png       # Cosmic nebula
-│       │   └── stars_background.png      # Starfield texture
-│       ├── archetypes/       # 11 personality archetypes
-│       │   ├── README.md    # Archetype documentation
-│       │   ├── advisor_final.png         # The Cosmic Advisor
-│       │   ├── builder_final.png        # The Builder
-│       │   ├── career_final.png         # The Career Navigator
-│       │   ├── communicator_final.png   # The Communicator
-│       │   ├── creator_final.png        # The Creator
-│       │   ├── explorer_final.png       # The Explorer
-│       │   ├── growth_final.png         # The Growth Seeker
-│       │   ├── healer_final.png         # The Healer
-│       │   ├── leader_final.png         # The Leader
-│       │   ├── love_final.png           # The Love Guide
-│       │   └── protector_final.png      # The Protector
-│       ├── icons/           # Duplicate icon structure for images
-│       └── tarot/           # Complete 78-card tarot deck
-│           ├── major/       # 22 Major Arcana cards
-│           ├── cups/        # 14 Cups suit cards (Ace-King)
-│           ├── wands/       # 14 Wands suit cards  
-│           ├── swords/      # 14 Swords suit cards
-│           └── pentacles/   # 14 Pentacles suit cards
-├── petbuddy-website/        # 🐾 Separate PetBuddy app marketing site
-│   ├── index.html          # PetBuddy homepage
-│   ├── features.html       # Pet tracking features
-│   ├── contact.html        # PetBuddy contact page
-│   ├── privacy.html        # Pet data privacy policy
-│   ├── why-petbuddy.html   # Value proposition page
-│   ├── img/               # PetBuddy app screenshots & assets
-│   └── untitled folder/   # Additional PetBuddy assets
-├── index.html               # 🏠 Homepage - Cosmic welcome & app showcase
-├── features.html            # ⚡ Features - Comprehensive app functionality
-├── contact.html             # 📞 Contact - Cosmic support & community
-├── privacy.html             # 🛡️ Privacy - Sacred data protection policy
-├── about.html               # 🌟 About - Our cosmic story & mission
-├── cosmic-insights.html     # 🌙 Cosmic Insights - Daily wisdom & astrology
-├── astroaura_website_plan.md # 📋 Original website planning document
-└── CLAUDE.md               # 📝 This comprehensive documentation
-```
+### Core Features (`lib/features/`)
+- **Cosmic Chat** (`cosmic_chat/`): AI-powered astrological guidance with personalized insights
+- **Natal Chart** (`natal_chart/`): Interactive birth chart generation with cosmic journey experience
+- **Transit Engine** (`transit_engine/`): Real-time planetary transit tracking with cosmic weather dashboard
+- **Horoscope** (`horoscope/`): Daily personalized insights and astrological guidance
+- **Journal** (`journal/`): Personal wellness journal with mood tracking, astro tags, and analytics
+- **Tarot** (`tarot/`): Card readings, interpretations, and personal card collections
+- **Astro Match** (`astro_match/`): Compatibility analysis with celebration animations
+- **Settings** (`settings/`): App configuration with notification management
+- **Onboarding** (`onboarding/`): User setup with enhanced birth data collection and location search
 
-### **COMPLETED PAGES** ✨
-All pages feature consistent cosmic design with unique content:
+### State Management
+- **Provider Pattern**: Primary state management with centralized organization
+- **Service Locator**: Dependency injection using `get_it`
+- **App Providers** (`lib/providers/app_providers.dart`): Centralized provider management
 
-1. **index.html** - Homepage with hero section, interactive zodiac wheel, feature showcase
-2. **features.html** - Comprehensive app features with detailed sections & FAQ
-3. **contact.html** - Support options, contact form, cosmic community links
-4. **privacy.html** - Complete privacy policy with cosmic data protection focus
-5. **about.html** - Company story, mission, and technology showcase (team section removed)  
-6. **cosmic-insights.html** - Astrological content, daily forecasts, zodiac wisdom
+### Data Storage
+- **SQLite**: Primary database using `sqflite`
+- **Hive**: High-performance NoSQL caching
+- **Secure Storage**: Encrypted sensitive data using `flutter_secure_storage`
+- **Shared Preferences**: App settings with migration support
 
-## 🎯 Development Preferences & Conventions - **UPDATED**
+### Core Services (`lib/core/services/`)
+- **EphemerisService**: Astronomical calculations and planetary positions
+- **NotificationService**: Local notifications with timezone awareness and release build optimization
+- **LocationService**: GPS functionality with API fallbacks
+- **ConnectivityService**: Network monitoring and offline capabilities
+- **AdService**: Advertisement integration with privacy compliance
+- **AdHelper**: Ad configuration and helper utilities
+- **AdTrackingManager**: iOS ATT compliance and tracking management
+- **InterstitialAdManager**: Full-screen ad management
+- **PlatformNotificationAdapter**: Cross-platform notification handling
 
-### Code Style
-- **HTML5**: Semantic markup with proper accessibility attributes
-- **CSS Variables**: Consistent design tokens using `:root` custom properties
-- **JavaScript**: Modern ES6+ with vanilla DOM manipulation (no frameworks)
-- **File Naming**: kebab-case for HTML files, PascalCase for asset naming
-- **CSS Architecture**: Custom CSS with component-based organization
+## UI & Design
 
-### Cosmic Design Patterns
-- **Starfield Generation**: JavaScript function creates animated star particles
-- **Glassmorphism Effects**: `backdrop-filter: blur()` with cosmic transparency
-- **Hover Transformations**: `transform: translateY(-10px)` for floating effects
-- **Color Gradients**: `linear-gradient()` combining cosmic gold, purple, pink
-- **CSS Animations**: `@keyframes` for twinkle, float, shimmer, orbit effects
+### Theme System
+- **Color Palette**: Golden primary (#F0C75E), cosmic purple secondary (#3A2B71)
+- **Typography**: Georgia headlines, Arial body text with responsive scaling
+- **Gradients**: 15+ specialized gradients for astrological themes
 
-### Asset Management
-- **Direct Asset References**: `/assets/` path structure for all images
-- **Consistent Alt Text**: Descriptive accessibility text for all images
-- **Icon Integration**: Font Awesome classes for cosmic iconography
-- **Background Integration**: CSS background-image for cosmic textures
+### Responsive Design
+- **Screen Categories**: Small (<360px), Medium (360-600px), Large (600-840px), XLarge (>840px)
+- **Touch Targets**: Minimum sizes with accessibility compliance
 
-### Animation Guidelines
-- **Hardware Acceleration**: `transform3d()` and `will-change` properties
-- **Smooth Transitions**: 300ms duration standard with `ease` timing
-- **Meaningful Motion**: Cosmic-themed animations (float, twinkle, orbit)
-- **Performance Optimization**: RequestAnimationFrame for complex animations
+## Development Standards
 
-## 🚀 Deployment Configuration - **UPDATED**
+### Code Quality
+- Production-ready implementations only
+- Comprehensive null safety and strong typing
+- Robust error handling with user-friendly fallbacks
+- Performance optimization for various device capabilities
 
-### Static Hosting Ready
-- **No Build Process**: Direct deployment of HTML/CSS/JS files
-- **Any Static Host**: GitHub Pages, Netlify, Vercel, Surge.sh compatible
-- **CDN Integration**: External resources (Font Awesome, Google Fonts) via CDN
-- **Optimized Assets**: All images and resources properly referenced
+### File Organization
+- Feature structure: `presentation/`, `data/`, `domain/` pattern with complete feature modules
+- Model generation with `build_runner` for type-safe data models
+- Repository pattern with interface segregation and adapter patterns
+- Service injection through `get_it` dependency container
+- Provider-based state management with centralized app providers
 
-### Local Development
-```bash
-# No build process needed - serve directly
-python -m http.server 8000    # Python simple server
-live-server                   # VS Code Live Server extension
-open index.html              # Direct browser opening
-```
+### Testing
+- Widget tests in `test/` directory
+- Unit tests with proper mocking
+- Integration tests for critical flows
 
-### Production Deployment
-- Upload entire `astroaura-website/` folder to static hosting
-- Ensure proper HTTPS for security and performance
-- Configure custom domain if needed
+## Key Dependencies
 
-## 🎨 Asset Usage Strategy - **CURRENT IMPLEMENTATION**
+### Core
+- `flutter_localizations`: Multi-language support
+- `provider`: State management (v6.1.1)
+- `get_it`: Service locator (v7.6.7)
+- `flutter_screenutil`: Responsive scaling (v5.9.0)
 
-### Homepage (index.html)
-- **Hero Background**: JavaScript starfield (150 animated stars) + cosmic gradient overlays
-- **App Icon**: `assets/icons/app_icon.png` with CSS glow effects
-- **Trust Indicators**: 4.9⭐ rating, 100K+ users, 1M+ readings displayed
-- **Interactive Elements**: Floating planets, cosmic particles, 12-sign zodiac wheel with hover effects
-- **Feature Grid**: 8 main app features with cosmic icons and descriptions
-- **App Store Badges**: iOS/Android download links with proper styling
+### Data & Storage
+- `sqflite`: SQLite database (v2.3.2)
+- `hive`: NoSQL storage (v2.2.3)
+- `flutter_secure_storage`: Encrypted storage (v10.0.0-beta.4)
+- `shared_preferences`: Key-value storage (v2.2.2)
 
-### Features Page (features.html)  
-- **6 Core Features**: Detailed breakdown with cosmic-themed cards and glassmorphism
-- **AI Cosmic Chat**: Dedicated section with chat interface mockup
-- **Natal Chart Analysis**: Comprehensive birth chart feature explanation
-- **Tarot Readings**: Interactive tarot section with card animations
-- **Comparison Table**: Features vs competitors with checkmarks
-- **Interactive FAQ**: 8-question accordion with smooth expand/collapse animations
-- **Feature-Specific CTAs**: Download buttons contextual to each feature
+### UI & Experience
+- `flutter_local_notifications`: Notification system (v19.1.0)
+- `google_mobile_ads`: Monetization (v4.0.0)
+- `timezone`: Timezone handling (v0.10.1)
+- `image_picker`: Media integration (v1.0.7)
+- `fl_chart`: Chart widgets (v0.70.2)
+- `table_calendar`: Calendar components (v3.0.9)
 
-### Contact Page (contact.html)
-- **3 Contact Options**: Cosmic Support, Share Journey, Community cards with hover effects
-- **Contact Information**: Updated to use royanis@gmail.com for all inquiries
-- **Full Contact Form**: Name, email, subject, message with cosmic validation styling
-- **Response Times**: Clear 24-48 hour response commitment displayed
-- **Social Media**: Facebook, Twitter, Instagram, TikTok integration
-- **FAQ Section**: 8 comprehensive Q&A items with expand/collapse functionality
-- **Support Categories**: Technical, account, billing, and general inquiries
-- **Hero Image**: REMOVED - No longer includes cosmic loading screen in hero section
+### Utilities
+- `intl`: Internationalization (v0.19.0)
+- `url_launcher`: External links (v6.2.5)
+- `share_plus`: Content sharing (v10.1.4)
+- `connectivity_plus`: Network monitoring (v6.1.3)
+- `permission_handler`: System permissions (v11.3.1)
+- `app_tracking_transparency`: iOS tracking consent (v2.0.6+1)
 
-### Privacy Page (privacy.html)
-- **Sacred Data Theme**: Cosmic approach to data protection ("sacred data" language)
-- **Sticky Navigation**: Jump-to-section navigation with smooth scrolling
-- **Comprehensive Sections**: Data collection, usage, sharing, retention, security
-- **GDPR Compliance**: European data protection regulation information
-- **Data Flow Visualization**: Animated secure data handling diagram
-- **Contact Section**: Privacy-specific contact information and rights
+## Transit Engine
 
-### About Page (about.html)
-- **Origin Story**: Detailed narrative bridging ancient wisdom with modern AI
-- **4 Core Values**: Animated cards for Authenticity, Empowerment, Innovation, Community
-- **Technology Section**: Orbiting animation showing AI + Astrology + Psychology fusion
-- **Mission Statement**: Clear value proposition and cosmic philosophy
-- **Download CTA**: Final conversion section with app store links
-- **Team Section**: REMOVED - No longer includes team member profiles
+The core system powering real-time planetary transit tracking and cosmic weather forecasting.
 
-### Cosmic Insights Page (cosmic-insights.html)
-- **Today's Cosmic Energy**: Daily forecast card with current cosmic weather
-- **Lunar Wisdom**: Moon phase and lunar guidance section
-- **6 Planetary Influences**: Grid showing current planetary energies (Sun, Moon, Mercury, Venus, Mars, Jupiter)
-- **Interactive Zodiac Wheel**: 12 signs with detailed hover descriptions
-- **Daily Tarot Wisdom**: 3 featured cards with interpretations
-- **Cosmic Blog**: 3 featured articles with cosmic insights and astrology wisdom
-- **Personalized CTA**: Get your personalized cosmic reading call-to-action
+### Key Components
+- **Services**: TransitCalculationService, TransitActionService, TransitNotificationService, TransitStorytellingService, TransitThemeService
+- **Models**: TransitAction, TransitAlert, TransitStory, LifeTheme, AlertTypes, NotificationPreferences
+- **UI**: TransitProvider, CosmicWeatherDashboard, TransitCalendar, ActionCards, DayPlannerDashboard, WeatherImpactMeter
 
-### PetBuddy Website (petbuddy-website/)
-- **Separate Project**: Complete pet care app marketing site with different branding
-- **5 HTML Pages**: Homepage, features, contact, privacy, why-petbuddy
-- **Pet-Focused Assets**: App screenshots, pet care icons, pet-themed imagery
-- **iOS/Android Focus**: Pet tracking app with health, nutrition, and care features
+### Features
+- **Astronomical Accuracy**: J2000.0 epoch calculations with standardized orb tolerances
+- **Smart Notifications**: Anti-spam protection with optimal timing and release build compatibility
+- **Personalization**: 5 cosmic archetypes with cultural adaptation
+- **Performance**: 3-hour synchronized caching with lazy loading
 
-## 📱 Responsive Design Strategy
+## Notification System
 
-### Mobile (320px - 767px)
-- Single column layouts
-- Touch-friendly buttons (44px minimum)
-- Hamburger navigation menu
-- Scaled down animations
+### Production-Ready Configuration
+- **Android**: Release build optimized with proper receivers and timing compensation
+- **iOS**: Background modes configured for reliable delivery
+- **Dependencies**: flutter_local_notifications v19.1.0+, timezone v0.10.1+
+- **Permissions**: Battery optimization exemption for Android, proper iOS permission flow
 
-### Tablet (768px - 1023px)
-- Two-column layouts where appropriate
-- Larger touch targets maintained
-- Mixed navigation (some desktop features)
+### Key Features
+- **Smart Daily Limiting**: Maximum 5 notifications per day with priority-based scheduling
+- **Release Build Support**: 45-second timing compensation for Android release builds
+- **Battery Optimization**: Automatic exemption request for reliable Android delivery
+- **Background Processing**: iOS fetch mode enabled for background notifications
+- **Error Handling**: Comprehensive fallbacks and initialization retry logic
+- **Analytics**: Delivery tracking and success rate monitoring
+- **Anti-Spam Protection**: Intelligent batching prevents notification overload
 
-### Desktop (1024px+)
-- Multi-column layouts
-- Full navigation bar
-- Enhanced animations and effects
-- Larger asset displays
+### Daily Notification Management
+- **Maximum Daily Limit**: 5 notifications per day (configurable)
+- **Priority Order**: Horoscope → Journal → Tarot → Daily Weather → Astro Match/Chat
+- **Smart Scheduling**: Single notifications for Astro Match and Chat (reduced from 2 each)
+- **Proactive Transit Alerts**: Limited to 3 per day to reserve slots for core notifications
+- **Configurable Timing**: Individual time settings for each notification type
 
-## 🔧 Development Guidelines - **UPDATED**
+### Testing Commands
+- **Clean Rebuild**: `flutter clean && flutter pub get && flutter build apk --release`
+- **Test Notifications**: Use NotificationService.testNotificationSystem()
+- **Debug Pending**: Use NotificationService.printPendingNotifications()
+- **Force Reschedule**: Use TransitNotificationService.forceRescheduleDailyNotifications() to test new limits
 
-### When Adding New Pages
-1. Create new `.html` file in root directory
-2. Copy cosmic page template structure from existing pages
-3. Update navigation links in all existing pages' `<nav>` sections (ensure Privacy link is included)
-4. Add footer links in all pages' `<footer>` sections  
-5. Include starfield JavaScript and cosmic animations
-6. Test mobile responsiveness across breakpoints
-
-### When Creating Cosmic Components
-1. Use CSS Variables for consistent cosmic color scheme
-2. Implement glassmorphism with `backdrop-filter: blur(20px)`
-3. Add hover transformations (`transform: translateY(-10px)`)
-4. Include accessibility attributes (`aria-label`, `alt` text)
-5. Apply cosmic animations (float, twinkle, glow effects)
-6. Test across different browsers for backdrop-filter support
-
-### When Using Assets
-1. Reference assets via `assets/` directory path structure
-2. Provide descriptive alt text for cosmic accessibility  
-3. Maintain consistent aspect ratios from original designs
-4. Use CSS `background-image` for decorative cosmic elements
-5. Implement proper fallbacks for older browsers
-
-## 🎯 Performance Targets
-
-- **Lighthouse Score**: 90+ across all metrics
-- **First Contentful Paint**: < 2s
-- **Largest Contentful Paint**: < 2.5s
-- **Cumulative Layout Shift**: < 0.1
-- **Time to Interactive**: < 3s
-
-## 🔍 SEO Configuration
-
-### Meta Tags
-- Complete Open Graph tags for social sharing
-- Twitter Card configuration
-- Structured data for app information
-- Proper canonical URLs
-- XML sitemap generation
-
-### Content Strategy
-- Semantic HTML structure
-- Descriptive headings hierarchy
-- Alt text for all images
-- Internal linking structure
-- Fast loading times for Core Web Vitals
-
-## 🛡️ Security Considerations
-
-- **Static Site Security**: No server-side components or dynamic vulnerabilities
-- **No Sensitive Data**: No API keys, passwords, or user data exposed
-- **HTTPS Enforcement**: Secure hosting with SSL/TLS encryption required
-- **CDN Trust**: Only trusted CDNs used (Font Awesome, Google Fonts)
-- **No Third-Party Scripts**: Pure vanilla JavaScript implementation
-- **Contact Form**: Client-side validation with secure submission handling
-
-## 🚀 **WEBSITE STATUS: PRODUCTION READY PLUS** ✨
-
-This AstroAura website is **COMPLETE** and exceeds initial specifications:
-
-### ✅ **What's Implemented**
-- **6 Complete AstroAura Pages**: Homepage, Features, Contact, Privacy, About, Cosmic Insights
-- **Navigation System**: All pages include Privacy link in navigation menu
-- **Contact Integration**: Updated contact information using royanis@gmail.com
-- **Streamlined Content**: Removed team section from about page, cleaned contact page hero
-- **Bonus PetBuddy Site**: Complete separate pet care app marketing website
-- **Advanced Asset Library**: 125+ total assets including 28 app screenshots, complete tarot deck, zodiac/planet icons
-- **Cosmic Design System**: Consistent branding with 150-star animated starfields
-- **Interactive Elements**: Zodiac wheels, floating animations, hover effects, tarot interactions
-- **Mobile Responsive**: Works beautifully across all device sizes with hamburger navigation
-- **SEO Optimized**: Complete meta tags, Open Graph, Twitter Cards, Schema.org markup
-- **Accessibility Ready**: Alt texts, ARIA labels, keyboard navigation, semantic HTML
-- **Performance Optimized**: Lightweight CSS/JS, CDN resources, optimized assets
-
-### 🎯 **Perfect for Marketing Plus**
-- **Professional Quality**: Exceeds industry standards for app marketing sites
-- **Cosmic Branding**: Perfectly represents AstroAura's mystical aesthetic with 11 archetypes
-- **User Conversion**: Multiple CTAs, trust indicators (4.9⭐, 100K users), feature-specific conversions
-- **Content Rich**: 6 comprehensive pages plus 28 detailed app screenshots showcasing all major features
-- **Social Ready**: Complete Open Graph, Twitter Cards, social media integration (4 platforms)
-- **Multi-Project Value**: Includes complete PetBuddy website as bonus deliverable
-
-### 🚀 **Ready to Launch Plus**
-Simply upload the entire `astroaura-website/` folder to any static hosting service (GitHub Pages, Netlify, Vercel) and both cosmic websites are live! No build process or configuration needed.
-
-**Bonus Discovery**: The PetBuddy website in the `/petbuddy-website/` folder is also production-ready with complete pet care app marketing content.
-
-**The stars have aligned - your cosmic website (and pet care bonus) awaits! ✨🌟🐾**
+### Common Issues & Solutions
+- **Too Many Notifications**: System now limits to 5 per day automatically with priority scheduling
+- **Debug works, Release doesn't**: Check Android receiver configuration and timing compensation
+- **iOS Background Issues**: Ensure "fetch" background mode is enabled in Info.plist
+- **Battery Optimization**: App must request exemption for reliable Android notifications
+- **Permission Timing**: iOS requires proper permission flow with delays between requests
+- **Notification Overload**: Use forceRescheduleDailyNotifications() to reset and apply new limits
