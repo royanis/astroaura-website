@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AstroAura - Your cosmic companion for astrology insights, natal chart analysis, tarot readings, and spiritual guidance. Discover your celestial path with AI-powered cosmic wisdom.">
-    <title>AstroAura - Your Cosmic Companion for Astrology & Spiritual Guidance</title>
+    <meta name="description" content="AstroAura - The world's first multilingual astrology super app. Experience cosmic wisdom in 11 languages with AI-powered insights, natal charts, tarot readings, and cosmic weather. Coming Soon.">
+    <title>AstroAura - World's First Multilingual Astrology Super App | Coming Soon</title>
     
     <!-- Canonical Tag -->
     <link rel="canonical" href="https://astroaura.app/">
@@ -20,16 +20,16 @@
     <link rel="icon" href="assets/icons/app_icon.png" type="image/png">
     
     <!-- Facebook Open Graph Tags -->
-    <meta property="og:title" content="AstroAura - Your Cosmic Companion for Astrology">
-    <meta property="og:description" content="Discover your cosmic destiny with AI-powered astrology insights, natal chart analysis, tarot readings, and personalized horoscopes.">
+    <meta property="og:title" content="AstroAura - World's First Multilingual Astrology Super App">
+    <meta property="og:description" content="Experience the world's first multilingual astrology super app in 11 languages. AI-powered cosmic insights, birth charts, tarot readings, and cosmic weather. Coming Soon.">
     <meta property="og:image" content="https://astroaura.app/assets/images/og-image.jpg">
     <meta property="og:url" content="https://astroaura.app">
     <meta property="og:type" content="website">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AstroAura - Your Cosmic Companion for Astrology">
-    <meta name="twitter:description" content="Discover your cosmic destiny with AI-powered astrology insights, natal chart analysis, tarot readings, and personalized horoscopes.">
+    <meta name="twitter:title" content="AstroAura - World's First Multilingual Astrology Super App">
+    <meta name="twitter:description" content="Experience the world's first multilingual astrology super app in 11 languages. AI-powered cosmic insights, birth charts, tarot readings, and cosmic weather. Coming Soon.">
     <meta name="twitter:image" content="https://astroaura.app/assets/images/twitter-card.jpg">
     
     <!-- Schema.org markup -->
@@ -38,7 +38,7 @@
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "AstroAura",
-      "description": "AI-powered astrology companion for cosmic insights and spiritual guidance",
+      "description": "World's first multilingual astrology super app supporting 11 languages with AI-powered cosmic insights and spiritual guidance",
       "applicationCategory": "LifestyleApplication",
       "operatingSystem": ["Android", "iOS"],
       "offers": {
@@ -306,15 +306,16 @@
         }
         
         .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-            padding: 100px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 0 80px;
+            position: relative;
         }
         
         .hero-text {
             z-index: 2;
+            text-align: center;
+            margin-bottom: 60px;
         }
         
         .hero-title {
@@ -388,9 +389,24 @@
         }
         
         /* Hero Visuals - Floating Cosmic Elements */
+        .hero-content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 60px;
+            align-items: center;
+            margin-top: 40px;
+        }
+        
+        .hero-description-section {
+            text-align: left;
+        }
+        
         .hero-visuals {
             position: relative;
-            height: 600px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .cosmic-element {
@@ -475,8 +491,8 @@
         }
         
         .feature-mockup {
-            width: 300px;
-            height: 600px;
+            width: 280px;
+            height: 560px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 30px;
             backdrop-filter: blur(20px);
@@ -1018,9 +1034,13 @@
         
         /* Responsive Design */
         @media (max-width: 1024px) {
-            .hero-content {
+            .hero-content-wrapper {
                 grid-template-columns: 1fr;
-                gap: 60px;
+                gap: 40px;
+                text-align: center;
+            }
+            
+            .hero-description-section {
                 text-align: center;
             }
             
@@ -1028,7 +1048,7 @@
                 height: 400px;
             }
             
-            .app-preview {
+            .feature-mockup {
                 width: 250px;
                 height: 500px;
             }
@@ -1140,38 +1160,50 @@
     <section class="hero">
         <div class="container hero-content">
             <div class="hero-text">
-                <h1 class="hero-title floating">Unlock Your Cosmic Destiny</h1>
-                <p class="hero-subtitle">Journey into the mysteries of the universe with AstroAura, your AI-powered cosmic companion. Discover personalized astrology insights, explore your natal chart, receive divine tarot guidance, and connect with your celestial path.</p>
-                
-                <ul class="hero-features">
-                    <li><i class="fas fa-star"></i> AI-Powered Cosmic Chat for instant guidance</li>
-                    <li><i class="fas fa-chart-pie"></i> Interactive Birth Chart analysis</li>
-                    <li><i class="fas fa-eye"></i> Day Planner with cosmic weather dashboard</li>
-                    <li><i class="fas fa-heart"></i> Cosmic compatibility matching</li>
-                </ul>
-                
-                <div class="hero-buttons">
-                    <a href="#download" class="btn btn-primary">Begin Your Journey</a>
-                    <a href="features.html" class="btn btn-secondary">Explore Features</a>
+                <h1 class="hero-title floating">The World's First Multilingual Astrology Super App</h1>
+            </div>
+            
+            <div class="hero-content-wrapper">
+                <div class="hero-description-section">
+                    <p class="hero-subtitle">Journey into the mysteries of the universe with AstroAura, your AI-powered cosmic companion. Experience astrology in 11 languages with personalized insights, interactive birth charts, divine tarot guidance, and cosmic weather forecasting. Coming Soon to transform your celestial journey.</p>
+                    
+                    <ul class="hero-features">
+                        <li><i class="fas fa-globe"></i> 11 Languages - First truly multilingual astrology app</li>
+                        <li><i class="fas fa-star"></i> AI-Powered Cosmic Chat for instant guidance</li>
+                        <li><i class="fas fa-chart-pie"></i> Interactive Birth Chart analysis</li>
+                        <li><i class="fas fa-eye"></i> Day Planner with cosmic weather dashboard</li>
+                        <li><i class="fas fa-heart"></i> Cosmic compatibility matching</li>
+                    </ul>
+                    
+                    <div class="hero-buttons">
+                        <a href="#download" class="btn btn-primary">Join the Waitlist</a>
+                        <a href="features.html" class="btn btn-secondary">Explore Features</a>
+                    </div>
                 </div>
                 
-                <div class="download-section">
-                    <a href="#" class="store-badge" title="Download on the App Store">
-                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" width="150" height="55">
-                    </a>
-                    <a href="#" class="store-badge" title="Get it on Google Play">
-                        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" width="170" height="55">
-                    </a>
+                <div class="hero-visuals">
+                    <div class="cosmic-element"></div>
+                    <div class="cosmic-element"></div>
+                    <div class="cosmic-element"></div>
+                    <div class="feature-mockup" style="position: relative; top: 0; left: 0; transform: none;">
+                        <div class="feature-mockup-content">
+                            <img src="assets/app_screenshots/homepage/Homepage.png" alt="AstroAura App Homepage" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <div class="hero-visuals">
-                <div class="cosmic-element"></div>
-                <div class="cosmic-element"></div>
-                <div class="cosmic-element"></div>
-                <div class="feature-mockup" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                    <div class="feature-mockup-content">
-                        <img src="assets/app_screenshots/homepage/Homepage.png" alt="AstroAura App Homepage" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+            <div class="download-section" style="background: rgba(240, 199, 94, 0.1); padding: 20px; border-radius: 15px; border: 2px solid rgba(240, 199, 94, 0.3); text-align: center; margin-top: 40px;">
+                <h3 style="color: var(--cosmic-gold); margin-bottom: 15px; font-family: 'Georgia', serif;">🚀 Coming Soon to App Stores</h3>
+                <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 15px; font-size: 1.1rem;">Be the first to experience the world's first multilingual astrology super app</p>
+                <div style="display: flex; gap: 20px; justify-content: center; align-items: center; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.1); padding: 10px 20px; border-radius: 25px;">
+                        <i class="fab fa-apple" style="font-size: 1.5rem; color: var(--cosmic-gold);"></i>
+                        <span style="color: var(--starlight); font-weight: 600;">iOS App Store</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.1); padding: 10px 20px; border-radius: 25px;">
+                        <i class="fab fa-google-play" style="font-size: 1.5rem; color: var(--cosmic-gold);"></i>
+                        <span style="color: var(--starlight); font-weight: 600;">Google Play Store</span>
                     </div>
                 </div>
             </div>
@@ -1183,25 +1215,24 @@
         <div class="container">
             <div class="trust-content">
                 <div class="trust-item">
-                    <div class="rating-stars">★★★★★</div>
-                    <div class="trust-number">4.9</div>
-                    <div class="trust-label">App Store Rating</div>
-                </div>
-                <div class="trust-item">
-                    <div class="trust-number">100K+</div>
-                    <div class="trust-label">Cosmic Souls Connected</div>
-                </div>
-                <div class="trust-item">
-                    <div class="trust-number">1M+</div>
-                    <div class="trust-label">Readings Delivered</div>
-                </div>
-                <div class="trust-item">
                     <div class="trust-number">11</div>
-                    <div class="trust-label">Cosmic Archetypes</div>
+                    <div class="trust-label">Languages Supported</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-number">1st</div>
+                    <div class="trust-label">Multilingual Astrology App</div>
                 </div>
                 <div class="trust-item">
                     <div class="trust-number">78</div>
                     <div class="trust-label">Tarot Cards</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-number">12</div>
+                    <div class="trust-label">Zodiac Signs</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-number">AI</div>
+                    <div class="trust-label">Powered Insights</div>
                 </div>
             </div>
         </div>
@@ -1321,18 +1352,22 @@
         <div class="container">
             <div class="cta-content">
                 <h2 class="cta-title">Your Cosmic Awakening Awaits</h2>
-                <p class="cta-text">Join thousands of souls who have discovered their celestial purpose through AstroAura. Download now and begin your journey into the infinite wisdom of the cosmos.</p>
-                <a href="#" class="btn btn-cosmic">Download AstroAura Now</a>
+                <p class="cta-text">Be among the first to experience the world's first multilingual astrology super app. Join our exclusive waitlist and get early access when AstroAura launches.</p>
+                <a href="#" class="btn btn-cosmic">Join the Waitlist</a>
                 
                 <div class="qr-code-section">
                     <div class="qr-divider">
-                        <span>or scan to download</span>
+                        <span>Coming Soon to</span>
                     </div>
-                    <div class="qr-code-container">
-                        <div class="qr-mockup">
-                            <div class="qr-mockup-inner">📱</div>
+                    <div style="display: flex; gap: 30px; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 30px;">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px);">
+                            <i class="fab fa-apple" style="font-size: 3rem; color: var(--starlight);"></i>
+                            <span style="color: var(--starlight); font-weight: 600; font-size: 1.1rem;">iOS App Store</span>
                         </div>
-                        <p class="qr-caption">Scan with your iPhone camera</p>
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px);">
+                            <i class="fab fa-google-play" style="font-size: 3rem; color: var(--starlight);"></i>
+                            <span style="color: var(--starlight); font-weight: 600; font-size: 1.1rem;">Google Play Store</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1387,15 +1422,6 @@
                     </ul>
                 </div>
                 
-                <div>
-                    <h3 class="footer-title">Cosmic Wisdom</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Daily Horoscopes</a></li>
-                        <li><a href="#">Zodiac Insights</a></li>
-                        <li><a href="#">Cosmic Archetypes</a></li>
-                        <li><a href="#">Astrology Basics</a></li>
-                    </ul>
-                </div>
             </div>
             
             <div class="copyright">
