@@ -435,9 +435,9 @@
         
         .zodiac-wheel {
             position: relative;
-            width: 400px;
-            height: 400px;
-            margin: 60px auto;
+            width: clamp(320px, 40vw, 400px);
+            height: clamp(320px, 40vw, 400px);
+            margin: clamp(40px, 6vw, 60px) auto;
             border: 3px solid var(--cosmic-gold);
             border-radius: 50%;
             background: rgba(240, 199, 94, 0.1);
@@ -446,15 +446,15 @@
         
         .zodiac-sign {
             position: absolute;
-            width: 60px;
-            height: 60px;
+            width: clamp(50px, 12vw, 60px);
+            height: clamp(50px, 12vw, 60px);
             background: rgba(255, 255, 255, 0.1);
             border: 2px solid var(--cosmic-gold);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
             color: var(--cosmic-gold);
             cursor: pointer;
             transition: var(--transition);
@@ -573,9 +573,9 @@
         
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: clamp(25px, 4vw, 40px);
+            margin-top: clamp(40px, 6vw, 60px);
         }
         
         .blog-article {
@@ -801,7 +801,16 @@
             color: var(--nebula-pink);
         }
         
-        /* Responsive Design */
+        /* Responsive Design - Mobile First Approach */
+        
+        /* Large tablets and small desktops */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 24px;
+            }
+        }
+        
+        /* Tablets */
         @media (max-width: 1024px) {
             .forecast-content,
             .tarot-content {
@@ -811,12 +820,26 @@
             }
             
             .zodiac-wheel {
-                width: 350px;
-                height: 350px;
+                width: clamp(300px, 40vw, 350px);
+                height: clamp(300px, 40vw, 350px);
+            }
+            
+            .blog-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
             }
         }
         
+        /* Mobile devices */
         @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .nav-container {
+                padding: 1rem 16px;
+            }
+            
             .nav-links {
                 display: none;
                 position: absolute;
@@ -830,6 +853,7 @@
                 padding: 20px 0;
                 text-align: center;
                 gap: 0;
+                z-index: 999;
             }
             
             .nav-links.active {
@@ -846,40 +870,165 @@
                 display: block;
             }
             
+            .page-header {
+                padding: 120px 0 60px;
+            }
+            
+            .page-title {
+                font-size: clamp(2rem, 6vw, 2.8rem);
+            }
+            
+            .page-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .daily-forecast,
+            .planetary-influences,
+            .zodiac-compatibility,
+            .tarot-guidance,
+            .cosmic-blog,
+            .cta-section {
+                padding: 60px 0;
+            }
+            
             .zodiac-wheel {
-                width: 300px;
-                height: 300px;
+                width: min(300px, 80vw);
+                height: min(300px, 80vw);
+            }
+            
+            .zodiac-sign {
+                width: clamp(50px, 12vw, 60px);
+                height: clamp(50px, 12vw, 60px);
+                font-size: clamp(1rem, 3vw, 1.5rem);
             }
             
             .tarot-cards {
                 grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .page-title {
-                font-size: 2rem;
-            }
-            
-            .zodiac-wheel {
-                width: 250px;
-                height: 250px;
-            }
-            
-            .zodiac-sign {
-                width: 45px;
-                height: 45px;
-                font-size: 1.2rem;
+                gap: 20px;
             }
             
             .tarot-card {
-                width: 100px;
-                height: 150px;
+                width: 100%;
+                height: clamp(140px, 40vw, 160px);
                 font-size: 1.5rem;
             }
             
             .blog-grid {
                 grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+        
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+            
+            .page-header {
+                padding: 100px 0 50px;
+            }
+            
+            .page-title {
+                font-size: clamp(1.8rem, 7vw, 2.5rem);
+                margin-bottom: 1rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .daily-forecast,
+            .planetary-influences,
+            .zodiac-compatibility,
+            .tarot-guidance,
+            .cosmic-blog,
+            .cta-section {
+                padding: 50px 0;
+            }
+            
+            .zodiac-wheel {
+                width: min(250px, 75vw);
+                height: min(250px, 75vw);
+            }
+            
+            .zodiac-sign {
+                width: clamp(40px, 10vw, 50px);
+                height: clamp(40px, 10vw, 50px);
+                font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+            }
+            
+            .tarot-cards {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .tarot-card {
+                width: 100%;
+                height: clamp(120px, 35vw, 150px);
+                font-size: 1.3rem;
+            }
+            
+            .btn {
+                padding: 14px 28px;
+                font-size: 1rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+        }
+        
+        /* Extra small devices */
+        @media (max-width: 375px) {
+            .page-title {
+                font-size: clamp(1.6rem, 8vw, 2.2rem);
+            }
+            
+            .zodiac-wheel {
+                width: min(220px, 70vw);
+                height: min(220px, 70vw);
+            }
+            
+            .zodiac-sign {
+                width: clamp(35px, 9vw, 45px);
+                height: clamp(35px, 9vw, 45px);
+                font-size: clamp(0.8rem, 2vw, 1rem);
+            }
+            
+            .btn {
+                padding: 12px 24px;
+                font-size: 0.95rem;
+            }
+        }
+        
+        /* Landscape mobile optimization */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .page-header {
+                padding: 100px 0 40px;
+            }
+            
+            .daily-forecast,
+            .planetary-influences,
+            .zodiac-compatibility,
+            .tarot-guidance,
+            .cosmic-blog,
+            .cta-section {
+                padding: 40px 0;
             }
         }
         

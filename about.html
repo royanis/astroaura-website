@@ -267,9 +267,9 @@
         .story-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: clamp(40px, 6vw, 60px);
             align-items: center;
-            margin-bottom: 80px;
+            margin-bottom: clamp(60px, 8vw, 80px);
         }
         
         .story-text h2 {
@@ -290,14 +290,14 @@
         
         .cosmic-illustration {
             width: 100%;
-            max-width: 400px;
-            height: 400px;
+            max-width: clamp(350px, 40vw, 400px);
+            height: clamp(350px, 40vw, 400px);
             background: linear-gradient(135deg, var(--cosmic-gold) 0%, var(--nebula-pink) 50%, var(--cosmic-blue) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 6rem;
+            font-size: clamp(5rem, 12vw, 6rem);
             color: var(--starlight);
             box-shadow: 0 0 60px rgba(240, 199, 94, 0.4);
             margin: 0 auto;
@@ -403,15 +403,15 @@
         }
         
         .tech-circle {
-            width: 300px;
-            height: 300px;
+            width: clamp(250px, 35vw, 300px);
+            height: clamp(250px, 35vw, 300px);
             background: rgba(240, 199, 94, 0.1);
             border: 2px solid var(--cosmic-gold);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: clamp(3rem, 8vw, 4rem);
             color: var(--cosmic-gold);
             margin: 0 auto;
             position: relative;
@@ -423,8 +423,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 400px;
-            height: 400px;
+            width: clamp(350px, 40vw, 400px);
+            height: clamp(350px, 40vw, 400px);
         }
         
         .floating-icon {
@@ -751,7 +751,16 @@
             color: var(--nebula-pink);
         }
         
-        /* Responsive Design */
+        /* Responsive Design - Mobile First Approach */
+        
+        /* Large tablets and small desktops */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 24px;
+            }
+        }
+        
+        /* Tablets */
         @media (max-width: 1024px) {
             .story-content,
             .tech-content {
@@ -759,9 +768,28 @@
                 gap: 40px;
                 text-align: center;
             }
+            
+            .cosmic-illustration {
+                width: clamp(320px, 40vw, 350px);
+                height: clamp(320px, 40vw, 350px);
+            }
+            
+            .tech-circle {
+                width: clamp(280px, 35vw, 300px);
+                height: clamp(280px, 35vw, 300px);
+            }
         }
         
+        /* Mobile devices */
         @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .nav-container {
+                padding: 1rem 16px;
+            }
+            
             .nav-links {
                 display: none;
                 position: absolute;
@@ -775,6 +803,7 @@
                 padding: 20px 0;
                 text-align: center;
                 gap: 0;
+                z-index: 999;
             }
             
             .nav-links.active {
@@ -791,59 +820,182 @@
                 display: block;
             }
             
+            .page-header {
+                padding: 120px 0 60px;
+            }
+            
+            .page-title {
+                font-size: clamp(2rem, 6vw, 2.8rem);
+            }
+            
+            .page-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .story-section,
+            .mission-section,
+            .technology-section,
+            .team-section,
+            .cta-section {
+                padding: 60px 0;
+            }
+            
             .cosmic-illustration {
-                width: 300px;
-                height: 300px;
-                font-size: 4rem;
+                width: min(300px, 80vw);
+                height: min(300px, 80vw);
+                font-size: clamp(3rem, 8vw, 4rem);
             }
             
             .tech-circle {
-                width: 250px;
-                height: 250px;
-                font-size: 3rem;
+                width: min(250px, 70vw);
+                height: min(250px, 70vw);
+                font-size: clamp(2.5rem, 6vw, 3rem);
             }
             
             .floating-icons {
-                width: 300px;
-                height: 300px;
+                width: min(300px, 80vw);
+                height: min(300px, 80vw);
+            }
+            
+            .floating-icon {
+                font-size: clamp(1.5rem, 4vw, 2rem);
+            }
+            
+            .member-avatar {
+                width: clamp(100px, 20vw, 120px);
+                height: clamp(100px, 20vw, 120px);
+                font-size: clamp(2.5rem, 5vw, 3rem);
             }
             
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
             }
         }
         
+        /* Small mobile devices */
         @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+            
+            .page-header {
+                padding: 100px 0 50px;
+            }
+            
             .page-title {
-                font-size: 2rem;
+                font-size: clamp(1.8rem, 7vw, 2.5rem);
+                margin-bottom: 1rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .story-section,
+            .mission-section,
+            .technology-section,
+            .team-section,
+            .cta-section {
+                padding: 50px 0;
             }
             
             .cosmic-illustration {
-                width: 250px;
-                height: 250px;
-                font-size: 3rem;
+                width: min(250px, 75vw);
+                height: min(250px, 75vw);
+                font-size: clamp(2.5rem, 7vw, 3rem);
             }
             
             .tech-circle {
-                width: 200px;
-                height: 200px;
-                font-size: 2.5rem;
+                width: min(200px, 60vw);
+                height: min(200px, 60vw);
+                font-size: clamp(2rem, 5vw, 2.5rem);
             }
             
             .floating-icons {
-                width: 250px;
-                height: 250px;
+                width: min(250px, 75vw);
+                height: min(250px, 75vw);
             }
             
             .floating-icon {
-                font-size: 1.5rem;
+                font-size: clamp(1.2rem, 3vw, 1.5rem);
             }
             
             .member-avatar {
-                width: 100px;
-                height: 100px;
-                font-size: 2.5rem;
+                width: clamp(90px, 18vw, 100px);
+                height: clamp(90px, 18vw, 100px);
+                font-size: clamp(2rem, 4vw, 2.5rem);
+            }
+            
+            .value-card,
+            .team-member {
+                padding: 30px 20px;
+            }
+            
+            .btn {
+                padding: 14px 28px;
+                font-size: 1rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            
+            .cta-text {
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* Extra small devices */
+        @media (max-width: 375px) {
+            .page-title {
+                font-size: clamp(1.6rem, 8vw, 2.2rem);
+            }
+            
+            .cosmic-illustration {
+                width: min(220px, 70vw);
+                height: min(220px, 70vw);
+                font-size: clamp(2rem, 6vw, 2.5rem);
+            }
+            
+            .tech-circle {
+                width: min(180px, 55vw);
+                height: min(180px, 55vw);
+                font-size: clamp(1.8rem, 4vw, 2rem);
+            }
+            
+            .value-card,
+            .team-member {
+                padding: 25px 15px;
+            }
+            
+            .btn {
+                padding: 12px 24px;
+                font-size: 0.95rem;
+            }
+        }
+        
+        /* Landscape mobile optimization */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .page-header {
+                padding: 100px 0 40px;
+            }
+            
+            .story-section,
+            .mission-section,
+            .technology-section,
+            .team-section,
+            .cta-section {
+                padding: 40px 0;
             }
         }
         

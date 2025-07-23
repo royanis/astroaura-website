@@ -336,9 +336,9 @@
         
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: clamp(25px, 4vw, 40px);
+            margin-bottom: clamp(40px, 6vw, 60px);
         }
         
         .feature-card {
@@ -429,7 +429,7 @@
         .feature-content {
             display: flex;
             align-items: center;
-            gap: 60px;
+            gap: clamp(30px, 6vw, 60px);
         }
         
         .feature-detail:nth-child(even) .feature-content {
@@ -487,13 +487,13 @@
         }
         
         .feature-mockup {
-            width: 300px;
-            height: 600px;
+            width: clamp(280px, 30vw, 300px);
+            height: clamp(560px, 60vw, 600px);
             background: rgba(255, 255, 255, 0.1);
             border-radius: 30px;
             backdrop-filter: blur(20px);
             border: 2px solid rgba(240, 199, 94, 0.3);
-            padding: 20px;
+            padding: clamp(15px, 2vw, 20px);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             transition: var(--transition);
         }
@@ -857,13 +857,46 @@
         }
         
         /* Responsive Design */
+        /* Responsive Design - Mobile First Approach */
+        
+        /* Large tablets and small desktops */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 24px;
+            }
+            
+            .feature-content {
+                gap: 50px;
+            }
+        }
+        
+        /* Tablets */
         @media (max-width: 1024px) {
             .feature-content {
                 gap: 40px;
             }
+            
+            .features-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
+            }
+            
+            .feature-mockup {
+                width: clamp(250px, 30vw, 280px);
+                height: clamp(500px, 60vw, 560px);
+            }
         }
         
+        /* Mobile devices */
         @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .nav-container {
+                padding: 1rem 16px;
+            }
+            
             .nav-links {
                 display: none;
                 position: absolute;
@@ -877,6 +910,7 @@
                 padding: 20px 0;
                 text-align: center;
                 gap: 0;
+                z-index: 999;
             }
             
             .nav-links.active {
@@ -893,9 +927,37 @@
                 display: block;
             }
             
+            .page-header {
+                padding: 120px 0 60px;
+            }
+            
+            .page-title {
+                font-size: clamp(2rem, 6vw, 2.8rem);
+            }
+            
+            .page-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .feature-card {
+                padding: 30px 20px;
+            }
+            
+            .feature-icon {
+                width: clamp(60px, 15vw, 70px);
+                height: clamp(60px, 15vw, 70px);
+                font-size: 2rem;
+            }
+            
             .feature-content {
                 flex-direction: column !important;
                 text-align: center;
+                gap: 30px;
             }
             
             .feature-detail:nth-child(even) .feature-content {
@@ -908,28 +970,81 @@
                 margin: 0 auto 2rem;
             }
             
+            .feature-mockup {
+                width: clamp(200px, 60vw, 250px);
+                height: clamp(400px, 120vw, 500px);
+            }
+            
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+            
+            .comparison-table th,
+            .comparison-table td {
+                padding: 12px 8px;
+            }
+            
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
             }
         }
         
+        /* Small mobile devices */
         @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+            
+            .page-header {
+                padding: 100px 0 50px;
+            }
+            
             .page-title {
-                font-size: 2.5rem;
+                font-size: clamp(1.8rem, 7vw, 2.5rem);
+                margin-bottom: 1rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
             }
             
             .feature-title {
-                font-size: 2rem;
+                font-size: clamp(1.5rem, 5vw, 2rem);
             }
             
             .feature-card {
-                padding: 30px 20px;
+                padding: 25px 15px;
+            }
+            
+            .feature-icon {
+                width: clamp(50px, 12vw, 60px);
+                height: clamp(50px, 12vw, 60px);
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+            }
+            
+            .feature-mockup {
+                width: clamp(180px, 70vw, 220px);
+                height: clamp(360px, 140vw, 440px);
+                padding: 15px;
             }
             
             .faq-question {
-                padding: 20px;
-                font-size: 1rem;
+                padding: 16px;
+                font-size: 0.95rem;
+            }
+            
+            .faq-answer {
+                padding: 16px;
+                font-size: 0.9rem;
             }
             
             .btn {
@@ -940,6 +1055,47 @@
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
+                text-align: center;
+            }
+            
+            .comparison-table {
+                font-size: 0.8rem;
+            }
+            
+            .comparison-table th,
+            .comparison-table td {
+                padding: 10px 6px;
+            }
+        }
+        
+        /* Extra small devices */
+        @media (max-width: 375px) {
+            .page-title {
+                font-size: clamp(1.6rem, 8vw, 2.2rem);
+            }
+            
+            .feature-card {
+                padding: 20px 12px;
+            }
+            
+            .btn {
+                padding: 12px 24px;
+                font-size: 0.95rem;
+            }
+            
+            .comparison-table {
+                font-size: 0.75rem;
+            }
+        }
+        
+        /* Landscape mobile optimization */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .page-header {
+                padding: 100px 0 40px;
+            }
+            
+            .feature-content {
+                gap: 25px;
             }
         }
     </style>
