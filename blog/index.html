@@ -56,6 +56,7 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="../styles/blog.css">
+    <link rel="stylesheet" href="../styles/enhanced-blog-additions.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Georgia:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -148,23 +149,39 @@
                 </div>
             </section>
             
+            <!-- Blog Filters -->
+            <section class="blog-filters">
+                <div class="filters-container">
+                    <div class="filter-group">
+                        <label for="topic-filter">
+                            <i class="fas fa-tags"></i>
+                            Filter by Topic:
+                        </label>
+                        <div id="topic-filter" class="filter-dropdown"></div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="date-filter">
+                            <i class="fas fa-calendar"></i>
+                            Filter by Date:
+                        </label>
+                        <div id="date-filter" class="filter-dropdown"></div>
+                    </div>
+                </div>
+            </section>
+            
             <!-- Blog Posts -->
             <section class="blog-posts">
                 <h2>Latest Cosmic Insights</h2>
                 <div id="posts-container" class="posts-grid">
                     <!-- Dynamic content will be loaded here -->
-                    <div class="post-placeholder">
-                        <h3>🚀 Coming Soon!</h3>
-                        <p>Our AI cosmic team is preparing amazing astrological insights for you. Check back soon for daily horoscope predictions, birth chart wisdom, and spiritual guidance.</p>
-                        <div class="placeholder-cta">
-                            <a href="../features.html" class="cta-btn">Explore App Features</a>
-                        </div>
-                    </div>
                 </div>
                 
-                <!-- Load More Button -->
                 <div class="load-more" style="display: none;">
-                    <button id="load-more-btn" class="load-more-btn">Load More Posts</button>
+                    <button id="load-more-btn" class="load-more-btn">
+                        <i class="fas fa-plus-circle"></i>
+                        Load More Cosmic Wisdom
+                    </button>
                 </div>
             </section>
         </div>
@@ -264,6 +281,6 @@
     </footer>
     
     <!-- JavaScript -->
-    <script src="js/blog.js"></script>
+    <script src="js/enhanced-blog.js"></script>
 </body>
 </html>

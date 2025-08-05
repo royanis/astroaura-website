@@ -1403,6 +1403,9 @@
             box-shadow: 0 15px 40px rgba(240, 199, 94, 0.4);
         }
     </style>
+    
+    <!-- Enhanced Blog Styles for Homepage Preview -->
+    <link rel="stylesheet" href="styles/enhanced-blog-additions.css">
 </head>
 <body>
     <!-- Starfield Background -->
@@ -1660,6 +1663,31 @@
         </div>
     </section>
     
+    <!-- Blog Section -->
+    <section class="blog-preview-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🌟 Cosmic Insights Blog</h2>
+                <p class="section-subtitle">Daily AI-powered astrology wisdom, cosmic weather updates, and spiritual guidance</p>
+            </div>
+            
+            <div class="blog-preview-grid" id="homepage-blog-preview">
+                <!-- Dynamic blog posts will load here -->
+                <div class="blog-preview-loading">
+                    <div class="loading-spinner"></div>
+                    <p>Loading latest cosmic insights...</p>
+                </div>
+            </div>
+            
+            <div class="blog-cta">
+                <a href="blog/index.html" class="btn btn-cosmic-outline">
+                    <i class="fas fa-blog"></i>
+                    Explore All Cosmic Insights
+                </a>
+            </div>
+        </div>
+    </section>
+    
     <!-- CTA Section -->
     <section class="cta-section" id="download">
         <div class="container">
@@ -1764,6 +1792,120 @@
         
         // Initialize starfield
         createStarfield();
+        
+        // Load blog preview when page loads
+        window.addEventListener('load', function() {
+            loadBlogPreview();
+        });
+        
+        // Load blog preview for homepage
+        async function loadBlogPreview() {
+            const previewContainer = document.getElementById('homepage-blog-preview');
+            if (!previewContainer) return;
+            
+            try {
+                const response = await fetch('blog/posts_index.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    const posts = data.posts || [];
+                    
+                    if (posts.length > 0) {
+                        renderBlogPreview(previewContainer, posts.slice(0, 3));
+                    } else {
+                        renderBlogPreviewPlaceholder(previewContainer);
+                    }
+                } else {
+                    renderBlogPreviewPlaceholder(previewContainer);
+                }
+            } catch (error) {
+                console.log('Blog preview loading error:', error);
+                renderBlogPreviewPlaceholder(previewContainer);
+            }
+        }
+        
+        function renderBlogPreview(container, posts) {
+            container.innerHTML = '';
+            
+            posts.forEach(post => {
+                const previewCard = document.createElement('div');
+                previewCard.className = 'blog-preview-card';
+                
+                const postDate = new Date(post.date);
+                const relativeTime = getRelativeTime(postDate);
+                const topicBadge = getTopicBadge(post);
+                
+                previewCard.innerHTML = `
+                    <div class="preview-card-content">
+                        <div class="preview-topic-badge">${topicBadge}</div>
+                        <h4 class="preview-title">
+                            <a href="blog/posts/${post.slug}.html">${post.title}</a>
+                        </h4>
+                        <p class="preview-excerpt">${post.meta_description.substring(0, 120)}...</p>
+                        <div class="preview-meta">
+                            <span class="preview-date">${relativeTime}</span>
+                            <a href="blog/posts/${post.slug}.html" class="preview-link">
+                                Read More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(previewCard);
+            });
+        }
+        
+        function renderBlogPreviewPlaceholder(container) {
+            container.innerHTML = `
+                <div class="blog-preview-placeholder">
+                    <div class="placeholder-icon">
+                        <i class="fas fa-blog"></i>
+                    </div>
+                    <h4>🚀 Cosmic Blog Coming Soon!</h4>
+                    <p>Our AI team is preparing authentic astrology content for you. Daily insights and cosmic wisdom await!</p>
+                    <a href="blog/index.html" class="preview-link">
+                        Visit Blog <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            `;
+        }
+        
+        function getRelativeTime(date) {
+            const now = new Date();
+            const diffInSeconds = Math.floor((now - date) / 1000);
+            
+            if (diffInSeconds < 3600) {
+                const minutes = Math.floor(diffInSeconds / 60);
+                return `${minutes} minute${minutes !== 1 ? 's' : ''} ago`;
+            } else if (diffInSeconds < 86400) {
+                const hours = Math.floor(diffInSeconds / 3600);
+                return `${hours} hour${hours !== 1 ? 's' : ''} ago`;
+            } else if (diffInSeconds < 604800) {
+                const days = Math.floor(diffInSeconds / 86400);
+                return `${days} day${days !== 1 ? 's' : ''} ago`;
+            } else {
+                return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            }
+        }
+        
+        function getTopicBadge(post) {
+            const title = post.title.toLowerCase();
+            const keywords = (post.keywords || []).join(' ').toLowerCase();
+            const content = `${title} ${keywords}`;
+            
+            if (content.includes('mercury') && content.includes('retrograde')) {
+                return '☿ Mercury Retrograde';
+            } else if (content.includes('moon') || content.includes('lunar')) {
+                return '🌙 Moon Phases';
+            } else if (content.includes('zodiac') || content.includes('sign')) {
+                return '♈ Zodiac Signs';
+            } else if (content.includes('tarot') || content.includes('card')) {
+                return '🔮 Tarot Guidance';
+            } else if (content.includes('cosmic') && content.includes('weather')) {
+                return '🌌 Cosmic Weather';
+            } else {
+                return '🌟 Cosmic Insights';
+            }
+        }
         
         // Mobile Menu Toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');

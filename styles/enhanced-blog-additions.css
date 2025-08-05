@@ -1,0 +1,363 @@
+/* Enhanced Blog System Additions */
+
+/* Blog Filters */
+.blog-filters {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border: 1px solid rgba(240, 199, 94, 0.2);
+}
+
+.filters-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 200px;
+}
+
+.filter-group label {
+    color: var(--cosmic-gold);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-select {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(240, 199, 94, 0.3);
+    border-radius: 8px;
+    padding: 0.75rem;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-select:hover,
+.filter-select:focus {
+    border-color: rgba(240, 199, 94, 0.6);
+    background: rgba(255, 255, 255, 0.15);
+    outline: none;
+}
+
+.filter-select option {
+    background: var(--deep-space);
+    color: white;
+    padding: 0.5rem;
+}
+
+/* Month Headers */
+.month-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3rem 0 1.5rem 0;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, rgba(58, 43, 113, 0.3) 0%, rgba(30, 58, 138, 0.3) 100%);
+    border-radius: 10px;
+    border-left: 4px solid var(--cosmic-gold);
+}
+
+.month-title {
+    color: var(--cosmic-gold);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.month-stats {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.month-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Enhanced Blog Post Cards */
+.blog-post-card.enhanced {
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-post-card.enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--cosmic-gold) 0%, transparent 100%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.blog-post-card.enhanced:hover::before {
+    transform: translateX(0);
+}
+
+.post-topic-badge {
+    background: linear-gradient(135deg, var(--cosmic-gold) 0%, #FFA500 100%);
+    color: var(--deep-space);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Homepage Blog Preview */
+.blog-preview-section {
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(58, 43, 113, 0.1) 100%);
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-preview-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="star"><stop offset="0%" stop-color="%23F0C75E" stop-opacity="0.8"/><stop offset="100%" stop-color="%23F0C75E" stop-opacity="0"/></radialGradient></defs><circle cx="20" cy="30" r="1" fill="url(%23star)"/><circle cx="80" cy="20" r="0.5" fill="url(%23star)"/><circle cx="60" cy="70" r="0.8" fill="url(%23star)"/><circle cx="10" cy="80" r="0.6" fill="url(%23star)"/><circle cx="90" cy="60" r="1.2" fill="url(%23star)"/></svg>') repeat;
+    opacity: 0.3;
+    animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.3; }
+    100% { opacity: 0.6; }
+}
+
+.blog-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.blog-preview-loading {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(240, 199, 94, 0.3);
+    border-top: 3px solid var(--cosmic-gold);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.blog-preview-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid rgba(240, 199, 94, 0.2);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-preview-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(240, 199, 94, 0.1) 0%, transparent 70%);
+    transform: scale(0);
+    transition: transform 0.6s ease;
+}
+
+.blog-preview-card:hover::before {
+    transform: scale(1);
+}
+
+.blog-preview-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(240, 199, 94, 0.4);
+    border-color: rgba(240, 199, 94, 0.6);
+}
+
+.preview-card-content {
+    position: relative;
+    z-index: 2;
+}
+
+.preview-topic-badge {
+    background: linear-gradient(135deg, var(--cosmic-purple) 0%, var(--cosmic-gold) 100%);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.preview-title {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+.preview-title a {
+    color: var(--starlight);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.preview-title a:hover {
+    color: var(--cosmic-gold);
+}
+
+.preview-excerpt {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.preview-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(240, 199, 94, 0.2);
+}
+
+.preview-date {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+}
+
+.preview-link {
+    color: var(--cosmic-gold);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.preview-link:hover {
+    color: var(--starlight);
+    transform: translateX(3px);
+}
+
+.blog-cta {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.btn-cosmic-outline {
+    background: transparent;
+    border: 2px solid var(--cosmic-gold);
+    color: var(--cosmic-gold);
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.4s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-cosmic-outline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(240, 199, 94, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.btn-cosmic-outline:hover::before {
+    left: 100%;
+}
+
+.btn-cosmic-outline:hover {
+    background: var(--cosmic-gold);
+    color: var(--deep-space);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(240, 199, 94, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .filters-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .filter-group {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .month-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .month-posts-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .blog-preview-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .preview-meta {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+}
