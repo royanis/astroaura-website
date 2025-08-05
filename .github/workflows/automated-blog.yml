@@ -53,30 +53,17 @@ jobs:
           git add .
           
           # Get the latest post info for commit message
-          LATEST_POST=$(python -c "
-          import json
-          try:
-              with open('blog/posts_index.json') as f:
-                  data = json.load(f)
-                  posts = data.get('posts', [])
-                  if posts:
-                      latest = max(posts, key=lambda x: x.get('date', ''))
-                      print(f\"{latest['title'][:60]}...\")
-                  else:
-                      print('New blog post')
-          except:
-              print('New blog post')
-          ")
+          LATEST_POST=$(python -c "import json; posts = json.load(open('blog/posts_index.json')).get('posts', []); print('{}...'.format(max(posts, key=lambda x: x.get('date', ''))['title'][:60]) if posts else 'New blog post')" 2>/dev/null || echo "New blog post")
           
-          git commit -m "🤖 Auto-generated trending blog post: $LATEST_POST
-
-📊 Generated via automated trending topic research
-✨ Astrological insights for current trends  
-📈 SEO optimized with trending keywords
-
-🤖 Generated with [AstroAura Blog Automation](https://github.com/astroaura/blog-automation)
-
-Co-Authored-By: AstroAura-Bot <bot@astroaura.me>"
+          # Create commit message
+          COMMIT_MSG="🤖 Auto-generated trending blog post: $LATEST_POST"
+          COMMIT_MSG="$COMMIT_MSG"$'\n\n'"📊 Generated via automated trending topic research"
+          COMMIT_MSG="$COMMIT_MSG"$'\n'"✨ Astrological insights for current trends"
+          COMMIT_MSG="$COMMIT_MSG"$'\n'"📈 SEO optimized with trending keywords"
+          COMMIT_MSG="$COMMIT_MSG"$'\n\n'"🤖 Generated with AstroAura Blog Automation"
+          COMMIT_MSG="$COMMIT_MSG"$'\n\n'"Co-Authored-By: AstroAura-Bot <bot@astroaura.me>"
+          
+          git commit -m "$COMMIT_MSG"
           
           git push
           
