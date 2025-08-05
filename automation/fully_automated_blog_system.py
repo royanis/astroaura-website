@@ -328,8 +328,9 @@ WantedBy=multi-user.target"""
             print("4. Start service: sudo systemctl start astroaura-blog-automation")
             
         elif sys.argv[1] == "--run":
-            blog_dir = "/Users/atyuha/Documents/M.Tech/01 General Learning/03 Projects/astroaura_website/astroaura-website/blog"
-            repo_path = "/Users/atyuha/Documents/M.Tech/01 General Learning/03 Projects/astroaura_website/astroaura-website"
+            # Use relative paths from the automation directory
+            blog_dir = "../blog"
+            repo_path = ".."
             
             scheduler = BlogScheduler(blog_dir, repo_path)
             scheduler.run_forever()
@@ -337,8 +338,9 @@ WantedBy=multi-user.target"""
         elif sys.argv[1] == "--test":
             print("🧪 Testing automated blog system...")
             
-            blog_dir = "/Users/atyuha/Documents/M.Tech/01 General Learning/03 Projects/astroaura_website/astroaura-website/blog"
-            repo_path = "/Users/atyuha/Documents/M.Tech/01 General Learning/03 Projects/astroaura_website/astroaura-website"
+            # Use relative paths from the automation directory
+            blog_dir = "../blog"
+            repo_path = ".."
             
             orchestrator = AutomatedBlogOrchestrator(blog_dir, repo_path)
             orchestrator.generate_and_deploy_post()

@@ -455,7 +455,8 @@ def main():
     if len(sys.argv) > 1 and sys.argv[1] == "--generate":
         print("🌟 Generating Trending Topic Blog Posts...")
         
-        blog_dir = "/Users/atyuha/Documents/M.Tech/01 General Learning/03 Projects/astroaura_website/astroaura-website/blog"
+        # Use relative path from the automation directory
+        blog_dir = "../blog"
         generator = EnhancedBlogGenerator(blog_dir)
         
         # Generate 2 trending posts
