@@ -1,25 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-<title>AstroAura Cosmic Insights Blog</title>
-<subtitle>AI-powered astrology insights with trending topics and cosmic wisdom from the world's first multilingual astrology app.</subtitle>
-<link href="https://astroaura.me/blog" rel="alternate" type="text/html" />
-<link href="https://astroaura.me/blog/atom.xml" rel="self" type="application/atom+xml" />
-<id>https://astroaura.me/blog</id>
-<updated>2025-08-05T22:48:18.227263+00:00</updated>
-<author><name>AstroAura AI Cosmic Team</name><email>cosmic@astroaura.me</email></author>
-<generator version="2.0">AstroAura Enhanced Blog System</generator>
-<entry>
-<title>Mindfulness and Mental Health Through an Astrological Lens: Your Cosmic Guide</title>
-<link href="https://astroaura.me/blog/posts/mindfulness-and-mental-health-through-an-astrologi.html" rel="alternate" type="text/html" />
-<id>https://astroaura.me/blog/posts/mindfulness-and-mental-health-through-an-astrologi.html</id>
-<published>2025-08-05T22:48:18.226851+00:00</published>
-<updated>2025-08-05T22:48:18.226851+00:00</updated>
-<summary type="text">Discover how Moon cycles and emotional balance influences Mindfulness and Mental Health. Get authentic astrological insights and practical cosmic guidance from AstroAura's expert team.</summary>
-<author><name>AstroAura AI Cosmic Team</name></author>
-<category term="moon-phases" label="Moon Phases" />
-<category term="mental-health" label="Mental Health" />
-<category term="mindfulness" label="Mindfulness" />
-<category term="wellness" label="Wellness" />
-<category term="trending-topics" label="Trending Topics" />
-</entry>
-</feed>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>AstroAura Cosmic Insights Blog</title><subtitle>AI-powered astrology insights, cosmic weather updates, and spiritual guidance from the world's first multilingual astrology app.</subtitle><link href="https://astroaura.me/blog" rel="alternate" type="text/html" /><link href="https://astroaura.me/blog/atom.xml" rel="self" type="application/atom+xml" /><id>https://astroaura.me/blog</id><updated>2025-08-05T22:49:52.366900Z</updated><author><name>AstroAura AI Cosmic Team</name><email>cosmic@astroaura.me</email></author><generator version="1.0">AstroAura Blog Automation System</generator><entry><title>Moon Phase Meditation: Working with Waxing Gibbous Energy Explained: What Today's Cosmic Energy Reveals</title><link href="https://astroaura.me/blog/posts/moon-phase-meditation-working-with-waxing-gibbous-.html" rel="alternate" type="text/html" /><id>https://astroaura.me/blog/posts/moon-phase-meditation-working-with-waxing-gibbous-.html</id><published>2025-08-05T22:49:52.166225Z</published><updated>2025-08-05T22:49:52.166225Z</updated><summary type="text">## Harnessing the Crescendo: Moon Phase Meditation for the Waxing Gibbous in Leo Season  Hello, stargazers!  August 5th, 2025, finds us basking in the r...</summary><author><name>AstroAura AI Cosmic Team</name></author><category term="leo" label="Leo" /><category term="waxing-gibbous" label="Waxing-Gibbous" /></entry><entry><title>Mindfulness and Mental Health Through an Astrological Lens: Your Cosmic Guide</title><link href="https://astroaura.me/blog/posts/mindfulness-and-mental-health-through-an-astrologi.html" rel="alternate" type="text/html" /><id>https://astroaura.me/blog/posts/mindfulness-and-mental-health-through-an-astrologi.html</id><published>2025-08-05T22:48:18.226851+00:00Z</published><updated>2025-08-05T22:48:18.226851+00:00Z</updated><summary type="text">Discover how Moon cycles and emotional balance influences Mindfulness and Mental Health. Get authentic astrological insights and practical cosmic guidance from AstroAura's expert team.</summary><author><name>AstroAura AI Cosmic Team</name></author><category term="moon-phases" label="Moon-Phases" /><category term="mental-health" label="Mental-Health" /><category term="mindfulness" label="Mindfulness" /><category term="wellness" label="Wellness" /><category term="trending-topics" label="Trending-Topics" /></entry></feed>
