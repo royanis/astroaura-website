@@ -1,0 +1,98 @@
+name: Automated Blog Generation
+
+on:
+  schedule:
+    # Run 3 times daily at optimal engagement times (UTC)
+    - cron: '0 13 * * *'  # 9:00 AM EST / 6:00 AM PST
+    - cron: '0 19 * * *'  # 3:00 PM EST / 12:00 PM PST  
+    - cron: '0 0 * * *'   # 8:00 PM EST / 5:00 PM PST
+  
+  # Allow manual triggering
+  workflow_dispatch:
+    inputs:
+      force_generate:
+        description: 'Force generate post even if recent posts exist'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  generate-blog-post:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install dependencies
+      run: |
+        cd automation
+        pip install -r requirements.txt
+        
+    - name: Generate trending blog post
+      env:
+        GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+      run: |
+        cd automation
+        python fully_automated_blog_system.py --test
+        
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "bot@astroaura.me"
+        git config --local user.name "AstroAura Bot"
+        
+        # Only commit if there are changes
+        if [[ -n $(git status --porcelain) ]]; then
+          git add .
+          
+          # Get the latest post info for commit message
+          LATEST_POST=$(python -c "
+          import json
+          try:
+              with open('blog/posts_index.json') as f:
+                  data = json.load(f)
+                  posts = data.get('posts', [])
+                  if posts:
+                      latest = max(posts, key=lambda x: x.get('date', ''))
+                      print(f\"{latest['title'][:60]}...\")
+                  else:
+                      print('New blog post')
+          except:
+              print('New blog post')
+          ")
+          
+          git commit -m "🤖 Auto-generated trending blog post: $LATEST_POST
+
+📊 Generated via automated trending topic research
+✨ Astrological insights for current trends  
+📈 SEO optimized with trending keywords
+
+🤖 Generated with [AstroAura Blog Automation](https://github.com/astroaura/blog-automation)
+
+Co-Authored-By: AstroAura-Bot <bot@astroaura.me>"
+          
+          git push
+          
+          echo "✅ New blog post generated and deployed"
+        else
+          echo "ℹ️ No new post needed at this time"
+        fi
+
+  # Optional: Notify about new posts
+  notify:
+    runs-on: ubuntu-latest
+    needs: generate-blog-post
+    if: success()
+    
+    steps:
+    - name: Send success notification
+      run: |
+        echo "🌟 Automated blog generation completed successfully"
+        # Add webhook notifications here if needed

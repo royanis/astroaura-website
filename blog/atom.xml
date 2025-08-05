@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>AstroAura Cosmic Insights Blog</title>
+<subtitle>AI-powered astrology insights with trending topics and cosmic wisdom from the world's first multilingual astrology app.</subtitle>
+<link href="https://astroaura.me/blog" rel="alternate" type="text/html" />
+<link href="https://astroaura.me/blog/atom.xml" rel="self" type="application/atom+xml" />
+<id>https://astroaura.me/blog</id>
+<updated>2025-08-05T17:34:27.823141+00:00</updated>
+<author><name>AstroAura AI Cosmic Team</name><email>cosmic@astroaura.me</email></author>
+<generator version="2.0">AstroAura Enhanced Blog System</generator>
+<entry>
+<title>Mindfulness and Mental Health Through an Astrological Lens: Your Cosmic Guide</title>
+<link href="https://astroaura.me/blog/posts/mindfulness-and-mental-health-through-an-astrologi.html" rel="alternate" type="text/html" />
+<id>https://astroaura.me/blog/posts/mindfulness-and-mental-health-through-an-astrologi.html</id>
+<published>2025-08-05T17:34:27.822178+00:00</published>
+<updated>2025-08-05T17:34:27.822178+00:00</updated>
+<summary type="text">Discover how Moon cycles and emotional balance influences Mindfulness and Mental Health. Get authentic astrological insights and practical cosmic guidance from AstroAura's expert team.</summary>
+<author><name>AstroAura AI Cosmic Team</name></author>
+<category term="moon-phases" label="Moon Phases" />
+<category term="mental-health" label="Mental Health" />
+<category term="mindfulness" label="Mindfulness" />
+<category term="wellness" label="Wellness" />
+<category term="trending-topics" label="Trending Topics" />
+</entry>
+</feed>

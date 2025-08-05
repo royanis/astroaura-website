@@ -84,159 +84,90 @@
     
     <!-- Main Content -->
     <main class="blog-index">
-        <div class="blog-container">
-            <!-- Blog Header -->
-            <section class="blog-intro">
-                <div class="intro-content">
-                    <h1 class="blog-title">🌟 AstroAura Cosmic Insights Blog</h1>
-                    <p class="blog-description">Explore the mysteries of the universe with AI-powered astrological insights, cosmic weather updates, and spiritual guidance. Discover personalized horoscope predictions, tarot wisdom, and birth chart analysis from our multilingual astrology experts.</p>
-                    
-                    <div class="blog-stats">
-                        <div class="stat">
-                            <i class="fas fa-globe"></i>
-                            <span>11 Languages</span>
-                        </div>
-                        <div class="stat">
-                            <i class="fas fa-robot"></i>
-                            <span>AI-Powered</span>
-                        </div>
-                        <div class="stat">
-                            <i class="fas fa-clock"></i>
-                            <span>Daily Updates</span>
-                        </div>
-                        <div class="stat">
-                            <i class="fas fa-star"></i>
-                            <span>Expert Insights</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <!-- Simple Header -->
+        <div class="blog-simple-header">
+            <h1 class="blog-title">🌟 Cosmic Insights</h1>
+            <p class="blog-subtitle">Authentic astrology and cosmic wisdom</p>
+        </div>
+        
+        <!-- Navigation Tabs -->
+        <div class="blog-nav-tabs">
+            <button class="nav-tab active" data-tab="for-you">For you</button>
+            <button class="nav-tab" data-tab="following">Following</button>
+            <button class="nav-tab" data-tab="featured">Featured</button>
+        </div>
             
-            <!-- Featured Topics -->
-            <section class="featured-topics">
-                <h2>Explore Cosmic Topics</h2>
-                <div class="topics-grid">
-                    <div class="topic-card">
-                        <i class="fas fa-moon"></i>
-                        <h3>Daily Horoscopes</h3>
-                        <p>Personalized predictions and cosmic guidance for your zodiac sign</p>
-                    </div>
-                    <div class="topic-card">
-                        <i class="fas fa-chart-pie"></i>
-                        <h3>Birth Chart Analysis</h3>
-                        <p>Deep insights into your natal chart and planetary influences</p>
-                    </div>
-                    <div class="topic-card">
-                        <i class="fas fa-eye"></i>
-                        <h3>Tarot Wisdom</h3>
-                        <p>Card meanings, spreads, and spiritual guidance through tarot</p>
-                    </div>
-                    <div class="topic-card">
-                        <i class="fas fa-cloud-sun"></i>
-                        <h3>Cosmic Weather</h3>
-                        <p>Planetary transits and their effects on daily life</p>
-                    </div>
-                    <div class="topic-card">
-                        <i class="fas fa-heart"></i>
-                        <h3>Love & Compatibility</h3>
-                        <p>Relationship insights and astrological compatibility analysis</p>
-                    </div>
-                    <div class="topic-card">
-                        <i class="fas fa-seedling"></i>
-                        <h3>Spiritual Growth</h3>
-                        <p>Ancient wisdom and modern practices for inner development</p>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Blog Filters -->
-            <section class="blog-filters">
-                <div class="filters-container">
-                    <div class="filter-group">
-                        <label for="topic-filter">
-                            <i class="fas fa-tags"></i>
-                            Filter by Topic:
-                        </label>
-                        <div id="topic-filter" class="filter-dropdown"></div>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label for="date-filter">
-                            <i class="fas fa-calendar"></i>
-                            Filter by Date:
-                        </label>
-                        <div id="date-filter" class="filter-dropdown"></div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Blog Posts -->
-            <section class="blog-posts">
-                <h2>Latest Cosmic Insights</h2>
-                <div id="posts-container" class="posts-grid">
-                    <!-- Dynamic content will be loaded here -->
-                </div>
-                
-                <div class="load-more" style="display: none;">
-                    <button id="load-more-btn" class="load-more-btn">
-                        <i class="fas fa-plus-circle"></i>
-                        Load More Cosmic Wisdom
-                    </button>
-                </div>
-            </section>
+        <!-- Main Content Area -->
+        <div class="blog-main-content">
+            <!-- Articles Feed -->
+            <div class="articles-feed" id="articles-feed">
+                <!-- Articles will be loaded here -->
+            </div>
         </div>
         
         <!-- Sidebar -->
         <aside class="blog-sidebar">
-            <div class="widget app-download">
-                <h3>📱 Download AstroAura</h3>
-                <p>Get personalized astrology insights in your pocket with the world's first multilingual AI-powered astrology app!</p>
-                <div class="app-features">
-                    <div class="feature">
-                        <i class="fas fa-robot"></i>
-                        <span>AI Cosmic Chat</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-chart-line"></i>
-                        <span>Birth Charts</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-cards-blank"></i>
-                        <span>Tarot Readings</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-globe"></i>
-                        <span>11 Languages</span>
+            <!-- Search Section -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Search Cosmic Insights</h3>
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="blog-search" placeholder="Search articles..." autocomplete="off">
+                        <button type="button" id="search-clear" class="search-clear" style="display: none;">
+                            <i class="fas fa-times"></i>
+                        </button>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Browse by Date -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Browse by Date</h3>
+                <div class="date-archive" id="date-archive">
+                    <!-- Date archive will be loaded here -->
+                </div>
+            </div>
+            
+            <!-- Staff Picks -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Staff Picks</h3>
+                <div class="staff-picks" id="staff-picks">
+                    <!-- Staff picks will be loaded here -->
+                </div>
+                <a href="#" class="see-more-link">See the full list</a>
+            </div>
+            
+            <!-- Recommended Topics -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Recommended topics</h3>
+                <div class="topic-tags">
+                    <span class="topic-pill" data-topic="mercury-retrograde">Mercury Retrograde</span>
+                    <span class="topic-pill" data-topic="moon-phases">Moon Phases</span>
+                    <span class="topic-pill" data-topic="zodiac-signs">Zodiac Signs</span>
+                    <span class="topic-pill" data-topic="cosmic-weather">Cosmic Weather</span>
+                    <span class="topic-pill" data-topic="tarot-guidance">Tarot Guidance</span>
+                    <span class="topic-pill" data-topic="birth-charts">Birth Charts</span>
+                    <span class="topic-pill" data-topic="spiritual-growth">Spiritual Growth</span>
+                    <span class="topic-pill" data-topic="manifestation">Manifestation</span>
+                </div>
+                <a href="#" class="see-more-link">See more topics</a>
+            </div>
+            
+            <!-- AstroAura App -->
+            <div class="sidebar-section app-promo">
+                <div class="app-icon">
+                    <img src="../assets/icons/app_icon.png" alt="AstroAura App" width="40" height="40">
+                </div>
+                <h3 class="sidebar-title">Get the AstroAura App</h3>
+                <p class="app-description">Personalized cosmic insights in your pocket</p>
                 <div class="download-buttons">
-                    <a href="https://apps.apple.com/us/app/astroaura-daily-ai-astrology/id6749437213" class="btn-download ios">
-                        <i class="fab fa-apple"></i> iOS App
+                    <a href="https://apps.apple.com/us/app/astroaura-daily-ai-astrology/id6749437213" class="btn-download">
+                        <i class="fab fa-apple"></i> iOS
                     </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.astroaura.me" class="btn-download android">
-                        <i class="fab fa-google-play"></i> Android App
+                    <a href="https://play.google.com/store/apps/details?id=com.astroaura.me" class="btn-download">
+                        <i class="fab fa-google-play"></i> Android
                     </a>
-                </div>
-            </div>
-            
-            <div class="widget newsletter">
-                <h3>🌙 Cosmic Updates</h3>
-                <p>Get the latest astrological insights and cosmic predictions delivered to your inbox.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
-            
-            <div class="widget popular-topics">
-                <h3>🔥 Popular Topics</h3>
-                <div class="topic-list">
-                    <a href="#" class="topic-link"># Mercury Retrograde</a>
-                    <a href="#" class="topic-link"># Full Moon Rituals</a>
-                    <a href="#" class="topic-link"># Zodiac Compatibility</a>
-                    <a href="#" class="topic-link"># Birth Chart Reading</a>
-                    <a href="#" class="topic-link"># Tarot Card Meanings</a>
-                    <a href="#" class="topic-link"># Cosmic Weather</a>
                 </div>
             </div>
         </aside>

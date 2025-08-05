@@ -57,7 +57,7 @@ python automation/setup_production_blog.py
 ```
 
 ### 5. Enable Automation
-The GitHub Action automatically runs daily at 9:00 AM UTC. You can also trigger manually:
+The GitHub Action automatically runs daily at midnight UTC (00:00). You can also trigger manually:
 - Go to Actions tab → "Automated Blog Publishing" → "Run workflow"
 
 ## System Components
@@ -108,7 +108,7 @@ python update_sitemap.py
 
 **File**: `.github/workflows/auto-blog-publisher.yml`
 
-**Schedule**: Daily at 9:00 AM UTC (configurable)  
+**Schedule**: Daily at midnight UTC (00:00) (configurable)  
 **Triggers**: 
 - Scheduled daily execution
 - Manual workflow dispatch
