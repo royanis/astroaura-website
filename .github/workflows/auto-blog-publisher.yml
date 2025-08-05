@@ -76,11 +76,11 @@ if config_file.exists() and not force_publish:
         # Don't publish if less than 20 hours since last post
         if hours_since < 20:
             should_publish = False
-            print(f'Last published {hours_since:.1f} hours ago. Skipping.')
+            print('Last published {:.1f} hours ago. Skipping.'.format(hours_since))
 
-print(f'SHOULD_PUBLISH={should_publish}')
+print('SHOULD_PUBLISH={}'.format(should_publish))
 with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
-    f.write(f'should_publish={should_publish}\n')
+    f.write('should_publish={}\n'.format(should_publish))
         "
     
     - name: Generate authentic astrology content
@@ -111,11 +111,11 @@ with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
         else
           git commit -m "🌟 Automated blog post: $(date '+%Y-%m-%d %H:%M UTC')
 
-          - Generated authentic astrology content
-          - Updated RSS feeds and sitemap
-          - Published via GitHub Actions
-          
-          🤖 Automated by AstroAura Blog System"
+- Generated authentic astrology content
+- Updated RSS feeds and sitemap  
+- Published via GitHub Actions
+
+🤖 Automated by AstroAura Blog System"
           git push
         fi
     
