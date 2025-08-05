@@ -1,0 +1,34 @@
+# AstroAura Production Blog Automation Requirements
+
+# Core dependencies for blog automation
+requests>=2.28.0
+schedule>=1.2.0
+
+# Content generation and AI integration  
+openai>=1.0.0          # For OpenAI GPT-4 content generation (optional)
+pytz>=2023.3           # Timezone handling for scheduling
+lxml>=4.9.0            # XML processing for sitemap and RSS feeds
+beautifulsoup4>=4.12.0 # HTML content processing and validation
+
+# Free AI API alternatives (choose one or more)
+# google-generativeai>=0.3.0    # Google Gemini (RECOMMENDED - unlimited free tier)
+# cohere>=4.0.0                 # Cohere (100 calls/month free)
+# anthropic>=0.8.0              # Claude (free trial credits)
+
+# RSS and feed generation
+feedgen>=0.9.0         # RSS/Atom/JSON feed generation
+python-dateutil>=2.8.2 # Date parsing and formatting
+
+# Optional: Enhanced features
+# APScheduler>=3.10.0   # Advanced scheduling (alternative to schedule)
+# anthropic>=0.8.0      # Alternative AI provider
+# httpx>=0.24.0         # For webhook notifications
+
+# Built-in modules used:
+# - json: Configuration and data storage
+# - datetime: Date/time handling  
+# - pathlib: File system operations
+# - subprocess: Running system commands
+# - xml.etree.ElementTree: XML processing
+# - xml.dom.minidom: XML formatting
+# - re: Regular expressions for content processing

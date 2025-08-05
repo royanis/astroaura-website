@@ -1,0 +1,149 @@
+name: Automated Blog Publishing
+
+on:
+  schedule:
+    # Run daily at 9:00 AM UTC (can be adjusted)
+    - cron: '0 9 * * *'
+  workflow_dispatch: # Allow manual trigger
+    inputs:
+      topic:
+        description: 'Blog topic (optional - will auto-select if empty)'
+        required: false
+        default: ''
+      force_publish:
+        description: 'Force publish even if recently published'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  generate-and-publish-blog:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        cd automation
+        pip install -r requirements.txt
+    
+    - name: Configure git
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+    
+    - name: Check if should publish
+      id: check_publish
+      run: |
+        cd automation
+        python -c "
+import os
+import json
+import datetime
+from pathlib import Path
+
+# Check last publish time
+config_file = Path('publisher_config.json')
+should_publish = True
+force_publish = '${{ github.event.inputs.force_publish }}' == 'true'
+
+if config_file.exists() and not force_publish:
+    with open(config_file, 'r') as f:
+        config = json.load(f)
+    
+    last_published = config.get('last_published')
+    if last_published:
+        last_time = datetime.datetime.fromisoformat(last_published)
+        now = datetime.datetime.now()
+        hours_since = (now - last_time).total_seconds() / 3600
+        
+        # Don't publish if less than 20 hours since last post
+        if hours_since < 20:
+            should_publish = False
+            print(f'Last published {hours_since:.1f} hours ago. Skipping.')
+
+print(f'SHOULD_PUBLISH={should_publish}')
+with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+    f.write(f'should_publish={should_publish}\n')
+        "
+    
+    - name: Generate authentic astrology content
+      if: steps.check_publish.outputs.should_publish == 'True'
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        TOPIC: ${{ github.event.inputs.topic }}
+      run: |
+        cd automation
+        python authentic_blog_generator.py --topic "$TOPIC"
+    
+    - name: Update sitemap and feeds
+      if: steps.check_publish.outputs.should_publish == 'True'
+      run: |
+        cd automation
+        python update_sitemap.py
+        python rss_generator.py
+    
+    - name: Commit and push changes
+      if: steps.check_publish.outputs.should_publish == 'True'
+      run: |
+        git add .
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "🌟 Automated blog post: $(date '+%Y-%m-%d %H:%M UTC')
+
+          - Generated authentic astrology content
+          - Updated RSS feeds and sitemap
+          - Published via GitHub Actions
+          
+          🤖 Automated by AstroAura Blog System"
+          git push
+        fi
+    
+    - name: Update publish statistics
+      if: steps.check_publish.outputs.should_publish == 'True'
+      run: |
+        cd automation
+        python -c "
+import json
+import datetime
+from pathlib import Path
+
+config_file = Path('publisher_config.json')
+config = {}
+if config_file.exists():
+    with open(config_file, 'r') as f:
+        config = json.load(f)
+
+config['last_published'] = datetime.datetime.now().isoformat()
+config['total_published'] = config.get('total_published', 0) + 1
+config['last_run_successful'] = True
+config['github_action_runs'] = config.get('github_action_runs', 0) + 1
+
+with open(config_file, 'w') as f:
+    json.dump(config, f, indent=2)
+        "
+    
+    - name: Deploy to GitHub Pages
+      if: steps.check_publish.outputs.should_publish == 'True'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: .
+        cname: astroaura.me
