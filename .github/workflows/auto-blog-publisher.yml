@@ -54,36 +54,22 @@ jobs:
         FORCE_PUBLISH: ${{ github.event.inputs.force_publish }}
       run: |
         cd automation
-        python -c "
-import os
-import json
-import datetime
-from pathlib import Path
-
-# Check last publish time
-config_file = Path('publisher_config.json')
-should_publish = True
-force_publish = os.environ.get('FORCE_PUBLISH', 'false').lower() == 'true'
-
-if config_file.exists() and not force_publish:
-    with open(config_file, 'r') as f:
-        config = json.load(f)
-    
-    last_published = config.get('last_published')
-    if last_published:
-        last_time = datetime.datetime.fromisoformat(last_published)
-        now = datetime.datetime.now()
-        hours_since = (now - last_time).total_seconds() / 3600
+        SHOULD_PUBLISH="true"
+        FORCE_PUBLISH_FLAG="${FORCE_PUBLISH:-false}"
         
-        # Don't publish if less than 20 hours since last post
-        if hours_since < 20:
-            should_publish = False
-            print('Last published {:.1f} hours ago. Skipping.'.format(hours_since))
-
-print('SHOULD_PUBLISH={}'.format(should_publish))
-with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
-    f.write('should_publish={}\n'.format(should_publish))
-        "
+        if [ "$FORCE_PUBLISH_FLAG" != "true" ] && [ -f "publisher_config.json" ]; then
+          LAST_PUBLISHED=$(python -c "import json; print(json.load(open('publisher_config.json')).get('last_published', ''))" 2>/dev/null || echo "")
+          if [ -n "$LAST_PUBLISHED" ]; then
+            HOURS_SINCE=$(python -c "import datetime; last=datetime.datetime.fromisoformat('$LAST_PUBLISHED'); now=datetime.datetime.now(); print((now-last).total_seconds()/3600)" 2>/dev/null || echo "25")
+            if (( $(echo "$HOURS_SINCE < 20" | bc -l) )); then
+              SHOULD_PUBLISH="false"
+              echo "Last published $HOURS_SINCE hours ago. Skipping."
+            fi
+          fi
+        fi
+        
+        echo "SHOULD_PUBLISH=$SHOULD_PUBLISH"
+        echo "should_publish=$SHOULD_PUBLISH" >> $GITHUB_OUTPUT
     
     - name: Generate authentic astrology content
       if: steps.check_publish.outputs.should_publish == 'True'
@@ -111,13 +97,12 @@ with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
         if git diff --staged --quiet; then
           echo "No changes to commit"
         else
-          git commit -m "🌟 Automated blog post: $(date '+%Y-%m-%d %H:%M UTC')
-
-- Generated authentic astrology content
-- Updated RSS feeds and sitemap  
-- Published via GitHub Actions
-
-🤖 Automated by AstroAura Blog System"
+          COMMIT_MSG="🌟 Automated blog post: $(date '+%Y-%m-%d %H:%M UTC')"
+          COMMIT_MSG="$COMMIT_MSG"$'\n\n'"Generated authentic astrology content"
+          COMMIT_MSG="$COMMIT_MSG"$'\n'"Updated RSS feeds and sitemap"
+          COMMIT_MSG="$COMMIT_MSG"$'\n'"Published via GitHub Actions"
+          COMMIT_MSG="$COMMIT_MSG"$'\n\n'"🤖 Automated by AstroAura Blog System"
+          git commit -m "$COMMIT_MSG"
           git push
         fi
     
@@ -125,25 +110,7 @@ with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
       if: steps.check_publish.outputs.should_publish == 'True'
       run: |
         cd automation
-        python -c "
-import json
-import datetime
-from pathlib import Path
-
-config_file = Path('publisher_config.json')
-config = {}
-if config_file.exists():
-    with open(config_file, 'r') as f:
-        config = json.load(f)
-
-config['last_published'] = datetime.datetime.now().isoformat()
-config['total_published'] = config.get('total_published', 0) + 1
-config['last_run_successful'] = True
-config['github_action_runs'] = config.get('github_action_runs', 0) + 1
-
-with open(config_file, 'w') as f:
-    json.dump(config, f, indent=2)
-        "
+        python -c "import json, datetime; from pathlib import Path; config_file = Path('publisher_config.json'); config = json.load(open(config_file)) if config_file.exists() else {}; config.update({'last_published': datetime.datetime.now().isoformat(), 'total_published': config.get('total_published', 0) + 1, 'last_run_successful': True, 'github_action_runs': config.get('github_action_runs', 0) + 1}); json.dump(config, open(config_file, 'w'), indent=2)"
     
     - name: Deploy to GitHub Pages
       if: steps.check_publish.outputs.should_publish == 'True'
