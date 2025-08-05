@@ -64,69 +64,9 @@ class EnhancedAstroAuraBlog {
     }
     
     loadFallbackPosts() {
-        // Fallback posts if JSON loading fails (useful for file:// protocol)
-        this.allPosts = [
-            {
-                title: "Leo Season Power: Embrace Your Inner Fire This August 2025 - August 05, 2025",
-                slug: "leo-season-power-embrace-your-inner-fire-this-augu",
-                date: "2025-08-05T19:31:32.639380",
-                meta_description: "Authentic astrological guidance for August 05, 2025. Explore today's Waxing Gibbous energy in Leo season with personalized insights from AstroAura's AI-powered astrology platform.",
-                keywords: ["leo", "waxing-gibbous"],
-                author: "AstroAura AI Cosmic Team",
-                astronomical_data: {
-                    date: "2025-08-05",
-                    moon_phase: "Waxing Gibbous",
-                    sun_sign: "Leo",
-                    season: "Summer",
-                    mercury_retrograde: true
-                }
-            },
-            {
-                title: "Mercury Retrograde Survival Guide: Navigate August 2025 with Cosmic Wisdom - August 05, 2025",
-                slug: "mercury-retrograde-survival-guide-navigate-august-",
-                date: "2025-08-05T19:31:41.256107",
-                meta_description: "Authentic astrological guidance for August 05, 2025. Explore today's Waxing Gibbous energy in Leo season with personalized insights from AstroAura's AI-powered astrology platform.",
-                keywords: ["leo", "waxing-gibbous"],
-                author: "AstroAura AI Cosmic Team",
-                astronomical_data: {
-                    date: "2025-08-05",
-                    moon_phase: "Waxing Gibbous",
-                    sun_sign: "Leo",
-                    season: "Summer",
-                    mercury_retrograde: true
-                }
-            },
-            {
-                title: "Waxing Gibbous Moon Magic: Manifest Your Dreams Under August's Powerful Lunar Energy - August 05, 2025",
-                slug: "waxing-gibbous-moon-magic-manifest-your-dreams-und",
-                date: "2025-08-05T19:31:50.427536",
-                meta_description: "Authentic astrological guidance for August 05, 2025. Explore today's Waxing Gibbous energy in Leo season with personalized insights from AstroAura's AI-powered astrology platform.",
-                keywords: ["leo", "waxing-gibbous"],
-                author: "AstroAura AI Cosmic Team",
-                astronomical_data: {
-                    date: "2025-08-05",
-                    moon_phase: "Waxing Gibbous",
-                    sun_sign: "Leo",
-                    season: "Summer",
-                    mercury_retrograde: true
-                }
-            },
-            {
-                title: "Your Complete Zodiac Guide: How Each Sign Can Thrive in Leo Season 2025 - August 05, 2025",
-                slug: "your-complete-zodiac-guide-how-each-sign-can-thriv",
-                date: "2025-08-05T19:31:59.518724",
-                meta_description: "Authentic astrological guidance for August 05, 2025. Explore today's Waxing Gibbous energy in Leo season with personalized insights from AstroAura's AI-powered astrology platform.",
-                keywords: ["leo", "waxing-gibbous"],
-                author: "AstroAura AI Cosmic Team",
-                astronomical_data: {
-                    date: "2025-08-05",
-                    moon_phase: "Waxing Gibbous",
-                    sun_sign: "Leo",
-                    season: "Summer",
-                    mercury_retrograde: true
-                }
-            }
-        ];
+        // Use only actual posts from posts_index.json - no hardcoded fallbacks
+        // This ensures we only show posts that actually exist in /blog/posts/
+        this.allPosts = [];
         this.processPostsData();
     }
     
@@ -319,11 +259,11 @@ class EnhancedAstroAuraBlog {
     createSimpleArticleCard(post) {
         const postDate = new Date(post.date);
         const formattedDate = postDate.toLocaleDateString('en-US', { 
-            month: 'short', 
+            year: 'numeric',
+            month: 'long', 
             day: 'numeric'
         });
         
-        const topicIcon = this.getTopicIcon(post.topicCategory || 'horoscope-insights');
         const readingTime = this.calculateReadingTime(post.meta_description || '');
         
         const astronomicalData = post.astronomical_data || {};
@@ -339,45 +279,33 @@ class EnhancedAstroAuraBlog {
             cosmicIndicators.push(`☿ Rx`);
         }
         
-        const collection = this.getCollectionForTopic(post.topicCategory || 'horoscope-insights');
+        // Create excerpt from first content section if available
+        let excerpt = post.meta_description || '';
+        if (post.content_sections && post.content_sections.length > 0) {
+            excerpt = post.content_sections[0].content.substring(0, 200) + '...';
+        }
         
         return `
-            <article class="simple-article-card" onclick="window.location.href='posts/${post.slug}.html'">
-                <div class="simple-article-content">
-                    <div class="simple-article-meta">
-                        <span class="collection-badge">${collection}</span>
-                        <span class="separator">·</span>
-                        <span class="author">${post.author || 'AstroAura Team'}</span>
-                        <span class="separator">·</span>
-                        <span class="date">${formattedDate}</span>
-                    </div>
-                    
-                    <h2 class="simple-article-title">
-                        <a href="posts/${post.slug}.html">${post.title}</a>
-                    </h2>
-                    
-                    <div class="simple-article-excerpt">
-                        ${this.extractExcerpt(post.meta_description)}
-                    </div>
-                    
-                    <div class="simple-article-footer">
-                        <div class="simple-article-stats">
-                            <span class="stat">
-                                <i class="fas fa-clock"></i>
-                                ${readingTime} min read
-                            </span>
-                            <div class="cosmic-indicators">
-                                ${cosmicIndicators.map(indicator => 
-                                    `<span class="cosmic-indicator-small">${indicator}</span>`
-                                ).join('')}
-                            </div>
-                        </div>
-                    </div>
+            <article class="article-card fade-in-up">
+                <div class="article-meta">
+                    <span class="author">${post.author || 'AstroAura Team'}</span>
+                    <span class="separator">·</span>
+                    <span class="date">${formattedDate}</span>
+                    <span class="separator">·</span>
+                    <span class="reading-time">${readingTime} min read</span>
+                    ${cosmicIndicators.length > 0 ? '<span class="separator">·</span>' + cosmicIndicators.join(' ') : ''}
                 </div>
                 
-                <div class="simple-article-thumbnail">
-                    <i class="${topicIcon}"></i>
+                <h2 class="article-title">
+                    <a href="posts/${post.slug}.html">${post.title}</a>
+                </h2>
+                
+                    ${excerpt}
                 </div>
+                
+                <a href="posts/${post.slug}.html" class="read-more">
+                    Read more <i class="fas fa-arrow-right"></i>
+                </a>
             </article>
         `;
     }
