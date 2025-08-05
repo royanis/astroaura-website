@@ -50,6 +50,8 @@ jobs:
     
     - name: Check if should publish
       id: check_publish
+      env:
+        FORCE_PUBLISH: ${{ github.event.inputs.force_publish }}
       run: |
         cd automation
         python -c "
@@ -61,7 +63,7 @@ from pathlib import Path
 # Check last publish time
 config_file = Path('publisher_config.json')
 should_publish = True
-force_publish = '${{ github.event.inputs.force_publish }}' == 'true'
+force_publish = os.environ.get('FORCE_PUBLISH', 'false').lower() == 'true'
 
 if config_file.exists() and not force_publish:
     with open(config_file, 'r') as f:
