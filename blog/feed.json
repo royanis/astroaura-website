@@ -1,7 +1,7 @@
 {
   "version": "https://jsonfeed.org/version/1.1",
   "title": "AstroAura Cosmic Insights Blog",
-  "description": "AI-powered astrology insights with trending topics and cosmic wisdom from the world's first multilingual astrology app.",
+  "description": "AI-powered astrology insights, cosmic weather updates, and spiritual guidance from the world's first multilingual astrology app.",
   "home_page_url": "https://astroaura.me/blog",
   "feed_url": "https://astroaura.me/blog/feed.json",
   "language": "en-US",
@@ -13,12 +13,29 @@
   ],
   "items": [
     {
+      "id": "https://astroaura.me/blog/posts/todays-full-moon-in-leo-spiritual-significance-and.html",
+      "url": "https://astroaura.me/blog/posts/todays-full-moon-in-leo-spiritual-significance-and.html",
+      "title": "Today's Full Moon in Leo: Spiritual Significance and Rituals Explained: What Today's Cosmic Energy Reveals",
+      "summary": "## Today's Cosmic Glow: Navigating the Waxing Gibbous Moon in Leo (August 6th, 2025)  The air crackles with a vibrant energy today, a potent blend of Le...",
+      "date_published": "2025-08-06T02:09:28.979001Z",
+      "date_modified": "2025-08-06T02:09:28.979001Z",
+      "authors": [
+        {
+          "name": "AstroAura AI Cosmic Team"
+        }
+      ],
+      "tags": [
+        "leo",
+        "waxing-gibbous"
+      ]
+    },
+    {
       "id": "https://astroaura.me/blog/posts/the-universes-take-on-mindfulness-and-mental-healt.html",
       "url": "https://astroaura.me/blog/posts/the-universes-take-on-mindfulness-and-mental-healt.html",
       "title": "The Universe's Take on Mindfulness and Mental Health: Astrological Insights for Modern Life",
       "summary": "Discover how Moon cycles and emotional balance influences Mindfulness and Mental Health. Get authentic astrological insights and practical cosmic guidance from AstroAura's expert team.",
-      "date_published": "2025-08-06T01:16:40.727365+00:00",
-      "date_modified": "2025-08-06T01:16:40.727365+00:00",
+      "date_published": "2025-08-06T01:16:40.727365+00:00Z",
+      "date_modified": "2025-08-06T01:16:40.727365+00:00Z",
       "authors": [
         {
           "name": "AstroAura AI Cosmic Team"
