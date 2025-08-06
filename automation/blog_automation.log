@@ -8,3 +8,7 @@
 2025-08-06 01:16:40,722 - ERROR - Error fetching Google Trends: The request failed: Google returned a response with code 404
 2025-08-06 01:16:40,727 - INFO - Generated post: The Universe's Take on Mindfulness and Mental Health: Astrological Insights for Modern Life
 2025-08-06 01:16:41,229 - ERROR - Git deployment failed: Command '['git', 'commit', '-m', "🤖 Auto-generated trending blog post: The Universe's Take on Mindfulness and Mental Health: Astrol...\n\n📊 Trending Topic: Mindfulness and Mental Health\n✨ Astro Angle: Moon cycles and emotional balance\n📈 Engagement Score: 88\n\n🤖 Generated with automated trending topic system\nCo-Authored-By: AstroAura-Bot <bot@astroaura.me>"]' returned non-zero exit status 128.
+2025-08-06 13:37:36,169 - ERROR - Error checking post timing: can't subtract offset-naive and offset-aware datetimes
+2025-08-06 13:37:36,255 - ERROR - Error fetching Google Trends: The request failed: Google returned a response with code 404
+2025-08-06 13:37:36,261 - INFO - Generated post: Mindfulness and Mental Health Through an Astrological Lens: Your Cosmic Guide
+2025-08-06 13:37:36,480 - ERROR - Git deployment failed: Command '['git', 'commit', '-m', '🤖 Auto-generated trending blog post: Mindfulness and Mental Health Through an Astrological Lens: ...\n\n📊 Trending Topic: Mindfulness and Mental Health\n✨ Astro Angle: Moon cycles and emotional balance\n📈 Engagement Score: 88\n\n🤖 Generated with automated trending topic system\nCo-Authored-By: AstroAura-Bot <bot@astroaura.me>']' returned non-zero exit status 128.
