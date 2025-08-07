@@ -22,89 +22,98 @@ from typing import List, Dict, Any
 import os
 import sys
 from pathlib import Path
+from pytrends.request import TrendReq
 
 class TrendingTopicResearcher:
-    """Automated research system for trending topics"""
-    
+    """Research real-world trends for astrology content"""
+
     def __init__(self):
-        self.trending_sources = [
-            "technology", "culture", "lifestyle", "wellness", 
-            "entertainment", "social_media", "finance", "relationships",
-            "career", "health", "spirituality", "environment"
+        try:
+            self._pytrends = TrendReq(hl="en-US", tz=360)
+        except Exception as e:
+            print(f"TrendReq init failed: {e}")
+            self._pytrends = None
+        self.planets = [
+            "Mercury", "Venus", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto"
         ]
-        
+
+    def _fetch_google_trends(self) -> List[str]:
+        """Fetch today's trending search terms from Google Trends"""
+        if not self._pytrends:
+            return []
+        try:
+            df = self._pytrends.trending_searches(pn="united_states")
+            return df[0].tolist()
+        except Exception as e:
+            print(f"Google Trends fetch failed: {e}")
+            return []
+
+    def _categorize(self, topic: str) -> str:
+        """Basic keyword categorization for topics"""
+        topic_l = topic.lower()
+        mapping = {
+            "technology": ["ai", "tech", "app", "software", "robot", "digital"],
+            "finance": ["stock", "market", "finance", "bank", "inflation", "econom"],
+            "health": ["health", "virus", "disease", "wellness", "mental"],
+            "environment": ["climate", "earth", "sustain", "environment"],
+            "entertainment": ["movie", "show", "music", "celebrity"],
+            "sports": ["game", "team", "league", "tournament"],
+        }
+        for category, keywords in mapping.items():
+            if any(k in topic_l for k in keywords):
+                return category
+        return "culture"
+
+    def _generate_astro_angle(self, topic: str, category: str) -> str:
+        """Create an astrological angle for a topic"""
+        planet = random.choice(self.planets)
+        templates = [
+            f"{planet}'s influence on {topic}",
+            f"Cosmic lessons of {planet} reflected in {topic}",
+            f"{planet} retrograde insights for {topic}",
+            f"Aligning {planet} energy with {topic}",
+        ]
+        return random.choice(templates)
+
+    def _extract_keywords(self, topic: str) -> List[str]:
+        slug = re.sub(r"[^a-z0-9]+", "-", topic.lower()).strip("-")
+        return [k for k in slug.split("-") if k]
+
     def get_trending_topics(self) -> List[Dict[str, Any]]:
-        """
-        Simulate trending topic discovery from multiple sources
-        In production, this would integrate with:
-        - Twitter API for hashtags
-        - Google Trends API
-        - Reddit API for popular posts
-        - News APIs for current events
-        """
-        
-        # Simulated trending topics with astrological potential
-        trending_topics = [
-            {
-                "topic": "Digital Detox Challenge",
-                "category": "wellness",
-                "popularity_score": 85,
-                "astro_angle": "Mercury retrograde digital cleansing",
-                "keywords": ["digital-detox", "mercury-retrograde", "mindfulness"]
-            },
-            {
-                "topic": "Work From Home Burnout",
-                "category": "career",
-                "popularity_score": 92,
-                "astro_angle": "Saturn's lessons in work-life balance",
-                "keywords": ["career-astrology", "saturn-transit", "work-life-balance"]
-            },
-            {
-                "topic": "Sustainable Living Trends",
-                "category": "environment",
-                "popularity_score": 78,
-                "astro_angle": "Earth sign energy and environmental consciousness",
-                "keywords": ["earth-signs", "sustainability", "cosmic-consciousness"]
-            },
-            {
-                "topic": "AI and Creativity",
-                "category": "technology",
-                "popularity_score": 88,
-                "astro_angle": "Uranus in innovation and creative expression",
-                "keywords": ["uranus-transit", "creativity", "technology-astrology"]
-            },
-            {
-                "topic": "Mental Health Awareness",
-                "category": "wellness",
-                "popularity_score": 95,
-                "astro_angle": "Moon cycles and emotional healing",
-                "keywords": ["moon-phases", "emotional-healing", "mental-health"]
-            },
-            {
-                "topic": "Inflation and Financial Stress",
-                "category": "finance",
-                "popularity_score": 90,
-                "astro_angle": "Pluto in Capricorn and financial transformation",
-                "keywords": ["pluto-transit", "financial-astrology", "abundance-mindset"]
-            },
-            {
-                "topic": "Gen Z Dating Culture",
-                "category": "relationships",
-                "popularity_score": 87,
-                "astro_angle": "Venus retrograde and modern love patterns",
-                "keywords": ["venus-retrograde", "relationship-astrology", "dating-trends"]
-            },
-            {
-                "topic": "Climate Change Anxiety",
-                "category": "environment",
-                "popularity_score": 82,
-                "astro_angle": "Neptune's call for collective healing",
-                "keywords": ["neptune-transit", "collective-healing", "eco-anxiety"]
-            }
-        ]
-        
-        # Return top 3 trending topics
-        return sorted(trending_topics, key=lambda x: x['popularity_score'], reverse=True)[:3]
+        """Return trending topics with astrological potential"""
+        topics = self._fetch_google_trends()
+        formatted: List[Dict[str, Any]] = []
+
+        for idx, topic in enumerate(topics):
+            # Skip likely individual names (two words, both capitalized)
+            if re.match(r"^[A-Z][a-z]+ [A-Z][a-z]+$", topic):
+                continue
+
+            category = self._categorize(topic)
+            astro_angle = self._generate_astro_angle(topic, category)
+            formatted.append({
+                "topic": topic,
+                "category": category,
+                "popularity_score": 100 - idx * 5,
+                "astro_angle": astro_angle,
+                "keywords": self._extract_keywords(topic),
+            })
+
+            if len(formatted) >= 5:
+                break
+
+        if not formatted:
+            return [
+                {
+                    "topic": "Digital Detox Challenge",
+                    "category": "wellness",
+                    "popularity_score": 85,
+                    "astro_angle": "Mercury retrograde digital cleansing",
+                    "keywords": ["digital", "detox", "mercury", "retrograde"],
+                }
+            ]
+
+        return formatted
 
 class AstrologicalStorytellingEngine:
     """Enhanced storytelling approach for astrological content"""
