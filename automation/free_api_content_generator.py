@@ -70,37 +70,40 @@ class FreeAPIContentGenerator:
         
         return available
 
-    def generate_content_with_gemini(self, topic: str, astronomical_data: Dict) -> Optional[Dict]:
+    def generate_content_with_gemini(self, topic: str, astronomical_data: Dict, extra_context: Optional[str] = None) -> Optional[Dict]:
         """Generate content using Google Gemini (Best free option)"""
-        
+
         api_key = os.getenv('GOOGLE_API_KEY')
         if not api_key:
             return None
-        
-        try:
-            prompt = f"""Write an authentic, helpful astrology blog post about "{topic}".
 
+        try:
+            context = f"\nReal world context: {extra_context}\n" if extra_context else ""
+            prompt = f"""You are an expert astrologer and digital storyteller.
+
+Write a compelling, share-worthy astrology blog post about "{topic}".
+{context}
 Current cosmic context:
 - Date: {astronomical_data['date']}
 - Moon Phase: {astronomical_data['moon_phase']}
 - Sun Sign Season: {astronomical_data['sun_sign']}
 - Mercury Retrograde: {astronomical_data['mercury_retrograde']}
 
-Requirements:
-1. Write 800-1000 words of valuable, authentic astrology content
-2. Include practical advice readers can apply today
-3. Reference current planetary positions naturally
-4. Mention AstroAura app (multilingual AI astrology app) organically
-5. Use warm, knowledgeable tone respecting astrology as spiritual practice
-6. Include specific cosmic guidance and actionable tips
-7. Structure with clear sections and helpful information
+Storytelling requirements:
+1. Open with a captivating hook tied to real-world relevance.
+2. Follow a clear narrative arc (hook → challenge → cosmic insight → resolution → viral call to action).
+3. Include practical tips formatted for easy sharing (bullet lists, quick takeaways).
+4. Reference current planetary positions and connect them to the topic.
+5. Seamlessly mention the AstroAura app as the go-to tool for personalized guidance.
+6. Close with an inspiring call to share the article and download AstroAura.
 
-Write as an expert astrologer combining ancient wisdom with modern insights."""
+Tone: warm, insightful, and respectful of astrology as a spiritual practice.
+Length: 800-1000 words."""
 
             headers = {
                 'Content-Type': 'application/json',
             }
-            
+
             data = {
                 'contents': [{
                     'parts': [{
@@ -114,15 +117,15 @@ Write as an expert astrologer combining ancient wisdom with modern insights."""
                     'maxOutputTokens': 2048,
                 }
             }
-            
+
             url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
-            
+
             response = requests.post(url, headers=headers, json=data, timeout=60)
-            
+
             if response.status_code == 200:
                 result = response.json()
                 content = result['candidates'][0]['content']['parts'][0]['text']
-                
+
                 return {
                     'content': content,
                     'api_used': 'Google Gemini',
@@ -131,7 +134,7 @@ Write as an expert astrologer combining ancient wisdom with modern insights."""
             else:
                 print(f"Gemini API error: {response.status_code} - {response.text}")
                 return None
-                
+
         except Exception as e:
             print(f"Error with Gemini API: {e}")
             return None
@@ -311,7 +314,7 @@ Write as an expert astrologer who combines traditional wisdom with modern access
             print(f"Error with Hugging Face API: {e}")
             return None
 
-    def generate_with_free_apis(self, topic: str, astronomical_data: Dict) -> Dict[str, str]:
+    def generate_with_free_apis(self, topic: str, astronomical_data: Dict, extra_context: Optional[str] = None) -> Dict[str, str]:
         """Try free APIs in order of preference"""
         
         # Order by quality and free tier generosity
@@ -322,7 +325,7 @@ Write as an expert astrologer who combines traditional wisdom with modern access
             
             result = None
             if api_name == 'gemini':
-                result = self.generate_content_with_gemini(topic, astronomical_data)
+                result = self.generate_content_with_gemini(topic, astronomical_data, extra_context=extra_context)
             elif api_name == 'anthropic':
                 result = self.generate_content_with_anthropic(topic, astronomical_data)
             elif api_name == 'cohere':
