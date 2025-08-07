@@ -1,2 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>AstroAura Cosmic Insights Blog</title><subtitle>AI-powered astrology insights, cosmic weather updates, and spiritual guidance from the world's first multilingual astrology app.</subtitle><link href="https://astroaura.me/blog" rel="alternate" type="text/html" /><link href="https://astroaura.me/blog/atom.xml" rel="self" type="application/atom+xml" /><id>https://astroaura.me/blog</id><updated>2025-08-07T02:09:44.932484Z</updated><author><name>AstroAura AI Cosmic Team</name><email>cosmic@astroaura.me</email></author><generator version="1.0">AstroAura Blog Automation System</generator><entry><title>Weekly Planetary Transits: What the Stars Hold for Each Zodiac Sign: Your Complete Guide for August 2025</title><link href="https://astroaura.me/blog/posts/weekly-planetary-transits-what-the-stars-hold-for-.html" rel="alternate" type="text/html" /><id>https://astroaura.me/blog/posts/weekly-planetary-transits-what-the-stars-hold-for-.html</id><published>2025-08-07T02:09:44.660013Z</published><updated>2025-08-07T02:09:44.660013Z</updated><summary type="text">## Weekly Planetary Transits: Navigating the Cosmic Currents (August 7th, 2025)  Hello, stargazers!  Welcome to your weekly cosmic forecast.  This week,...</summary><author><name>AstroAura AI Cosmic Team</name></author><category term="leo" label="Leo" /><category term="waxing-gibbous" label="Waxing-Gibbous" /></entry><entry><title>Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health</title><link href="https://astroaura.me/blog/posts/why-moon-cycles-and-emotional-balance-is-the-key-t.html" rel="alternate" type="text/html" /><id>https://astroaura.me/blog/posts/why-moon-cycles-and-emotional-balance-is-the-key-t.html</id><published>2025-08-07T01:17:10.196164+00:00Z</published><updated>2025-08-07T01:17:10.196164+00:00Z</updated><summary type="text">Discover how Moon cycles and emotional balance influences Mindfulness and Mental Health. Get authentic astrological insights and practical cosmic guidance from AstroAura's expert team.</summary><author><name>AstroAura AI Cosmic Team</name></author><category term="moon-phases" label="Moon-Phases" /><category term="mental-health" label="Mental-Health" /><category term="mindfulness" label="Mindfulness" /><category term="wellness" label="Wellness" /><category term="trending-topics" label="Trending-Topics" /></entry></feed>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>AstroAura Cosmic Insights Blog</title>
+<subtitle>AI-powered astrology insights with trending topics and cosmic wisdom from the world's first multilingual astrology app.</subtitle>
+<link href="https://astroaura.me/blog" rel="alternate" type="text/html" />
+<link href="https://astroaura.me/blog/atom.xml" rel="self" type="application/atom+xml" />
+<id>https://astroaura.me/blog</id>
+<updated>2025-08-07T13:36:07.334688+00:00</updated>
+<author><name>AstroAura AI Cosmic Team</name><email>cosmic@astroaura.me</email></author>
+<generator version="2.0">AstroAura Enhanced Blog System</generator>
+<entry>
+<title>Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health</title>
+<link href="https://astroaura.me/blog/posts/why-moon-cycles-and-emotional-balance-is-the-key-t.html" rel="alternate" type="text/html" />
+<id>https://astroaura.me/blog/posts/why-moon-cycles-and-emotional-balance-is-the-key-t.html</id>
+<published>2025-08-07T13:36:07.334301+00:00</published>
+<updated>2025-08-07T13:36:07.334301+00:00</updated>
+<summary type="text">Discover how Moon cycles and emotional balance influences Mindfulness and Mental Health. Get authentic astrological insights and practical cosmic guidance from AstroAura's expert team.</summary>
+<author><name>AstroAura AI Cosmic Team</name></author>
+<category term="moon-phases" label="Moon Phases" />
+<category term="mental-health" label="Mental Health" />
+<category term="mindfulness" label="Mindfulness" />
+<category term="wellness" label="Wellness" />
+<category term="trending-topics" label="Trending Topics" />
+</entry>
+</feed>
