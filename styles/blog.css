@@ -2028,7 +2028,11 @@ header {
         gap: 2rem;
         padding: 1.5rem;
     }
-    
+
+    .blog-post {
+        grid-template-columns: 1fr;
+    }
+
     .blog-sidebar {
         padding-left: 0;
         border-top: 1px solid rgba(240, 199, 94, 0.1);
