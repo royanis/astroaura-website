@@ -194,7 +194,7 @@ class EnhancedBlogGenerator:
             
             <!-- Post Content -->
             <div class="post-content">
-                <div class="blog-content trending-astrology">'''
+                <div class="post-body blog-content trending-astrology">'''
         
         # Add content sections with enhanced storytelling
         for section in post_data['content_sections']:
