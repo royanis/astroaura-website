@@ -1645,6 +1645,8 @@ header {
     box-shadow: var(--shadow);
     position: relative;
     overflow: hidden;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .post-container::before {
@@ -1726,6 +1728,12 @@ header {
     font-size: 1.1rem;
     line-height: 1.8;
     color: rgba(255, 255, 255, 0.9);
+}
+
+.post-body {
+    max-width: 65ch;
+    margin: 0 auto;
+    font-size: 1.125rem;
 }
 
 .post-content h2 {
@@ -2093,6 +2101,11 @@ header {
     
     .simple-article-title {
         font-size: 1.3rem;
+    }
+
+    .post-body {
+        font-size: 1rem;
+        padding: 0 0.5rem;
     }
     
     .simple-article-meta {
