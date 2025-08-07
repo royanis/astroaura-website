@@ -385,48 +385,88 @@ Write as an expert astrologer who combines traditional wisdom with modern access
         return description
 
     def _format_content_for_html(self, content: str) -> str:
-        """Format content for HTML with proper structure"""
-        
-        # Split into paragraphs
-        paragraphs = content.split('\n\n')
-        formatted_content = '<div class="blog-content">\n'
-        
-        section_count = 0
-        for paragraph in paragraphs:
-            paragraph = paragraph.strip()
-            if not paragraph:
+        """Format content for HTML with proper structure and strip markdown."""
+
+        def escape_html(text: str) -> str:
+            return (text.replace('&', '&amp;')
+                        .replace('<', '&lt;')
+                        .replace('>', '&gt;'))
+
+        lines = content.split('\n')
+        html_parts: List[str] = ['<div class="blog-content">']
+
+        i = 0
+        # Simple state for list parsing
+        while i < len(lines):
+            raw = lines[i].rstrip()
+            line = raw.strip()
+            i += 1
+            if not line:
                 continue
-            
-            # Check if this looks like a heading
-            if (len(paragraph) < 100 and 
-                paragraph.count('.') <= 1 and 
-                not paragraph.endswith('.') and
-                paragraph[0].isupper()):
-                
-                section_count += 1
-                heading_level = min(section_count + 1, 6)  # h2-h6
-                formatted_content += f'    <h{heading_level}>{paragraph}</h{heading_level}>\n'
-            else:
-                # Regular paragraph
-                formatted_content += f'    <p>{paragraph}</p>\n'
-        
-        # Add call-to-action section
-        formatted_content += '''
-    <section class="astroaura-cta">
-        <h3>🌟 Discover Your Personal Cosmic Story</h3>
-        <p>Ready for personalized astrological insights? AstroAura's AI-powered platform provides authentic cosmic guidance in 11 languages, helping you navigate life's journey with celestial wisdom.</p>
-        <div class="cta-buttons">
-            <a href="https://apps.apple.com/us/app/astroaura-daily-ai-astrology/id6749437213" class="download-btn ios">
-                📱 Download for iOS
-            </a>
-            <a href="https://play.google.com/store/apps/details?id=com.astroaura.me" class="download-btn android">
-                🤖 Download for Android
-            </a>
-        </div>
-    </section>
-</div>'''
-        
-        return formatted_content
+
+            # Markdown heading: #, ##, ### ...
+            import re
+            m = re.match(r"^\s{0,3}(#{1,6})\s+(.*)$", line)
+            if m:
+                level = min(len(m.group(1)), 6)
+                text = m.group(2).strip()
+                # Basic inline formatting for bold/italic and links
+                text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
+                text = re.sub(r"\*(.+?)\*", r"<em>\1</em>", text)
+                text = re.sub(r"\[(.*?)\]\((https?://[^\s)]+)\)", r"<a href=\"\2\" target=\"_blank\" rel=\"noopener noreferrer\">\1</a>", text)
+                # Normalize heading levels to h2/h3 maximum for readability
+                tag = 'h2' if level <= 2 else 'h3'
+                html_parts.append(f"  <{tag}>{text}</{tag}>")
+                continue
+
+            # List block: -, *, •
+            if re.match(r"^\s*[-*•]\s+", line):
+                items = []
+                items.append(re.sub(r"^\s*[-*•]\s+", "", line))
+                # collect subsequent list items
+                while i < len(lines):
+                    nxt = lines[i].rstrip()
+                    if re.match(r"^\s*[-*•]\s+", nxt.strip()):
+                        items.append(re.sub(r"^\s*[-*•]\s+", "", nxt.strip()))
+                        i += 1
+                    else:
+                        break
+                # format each item with inline conversions
+                li_parts = []
+                for it in items:
+                    it = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", it)
+                    it = re.sub(r"\*(.+?)\*", r"<em>\1</em>", it)
+                    it = re.sub(r"\[(.*?)\]\((https?://[^\s)]+)\)", r"<a href=\"\2\" target=\"_blank\" rel=\"noopener noreferrer\">\1</a>", it)
+                    li_parts.append(f"    <li>{it}</li>")
+                html_parts.append("  <ul>")
+                html_parts.extend(li_parts)
+                html_parts.append("  </ul>")
+                continue
+
+            # Regular paragraph (merge subsequent non-empty lines until blank)
+            para_lines = [line]
+            while i < len(lines) and lines[i].strip():
+                para_lines.append(lines[i].strip())
+                i += 1
+            paragraph = ' '.join(para_lines)
+            # Inline formatting for bold/italic and links
+            paragraph = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", paragraph)
+            paragraph = re.sub(r"\*(.+?)\*", r"<em>\1</em>", paragraph)
+            paragraph = re.sub(r"\[(.*?)\]\((https?://[^\s)]+)\)", r"<a href=\"\2\" target=\"_blank\" rel=\"noopener noreferrer\">\1</a>", paragraph)
+            html_parts.append(f"  <p>{paragraph}</p>")
+
+        # CTA section
+        html_parts.append('''
+  <section class="astroaura-cta">
+    <h3>🌟 Discover Your Personal Cosmic Story</h3>
+    <p>Ready for personalized astrological insights? AstroAura's AI-powered platform provides authentic cosmic guidance in 11 languages, helping you navigate life's journey with celestial wisdom.</p>
+    <div class="cta-buttons">
+      <a href="https://apps.apple.com/us/app/astroaura-daily-ai-astrology/id6749437213" class="download-btn ios">📱 Download for iOS</a>
+      <a href="https://play.google.com/store/apps/details?id=com.astroaura.me" class="download-btn android">🤖 Download for Android</a>
+    </div>
+  </section>''')
+        html_parts.append('</div>')
+        return '\n'.join(html_parts)
 
     def _generate_enhanced_fallback_content(self, topic: str, astronomical_data: Dict) -> Dict[str, str]:
         """Enhanced fallback content when all APIs fail"""

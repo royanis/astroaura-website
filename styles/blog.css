@@ -2312,3 +2312,70 @@ header {
         color: #333;
     }
 }
+
+/* Post Content Readability Improvements */
+.post-container {
+  line-height: 1.8;
+}
+
+.post-content p {
+  margin: 1rem 0 1.25rem 0;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.92);
+}
+
+.post-content h2, .post-content h3 {
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.post-content ul, .post-content ol {
+  margin: 0.75rem 0 1.25rem 1.25rem;
+}
+
+.post-content li {
+  margin: 0.4rem 0;
+}
+
+/* Hero visual image */
+.post-header .post-hero-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid rgba(240,199,94,0.2);
+}
+
+/* Badge and meta spacing */
+.trending-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--cosmic-gold);
+  margin-bottom: 0.75rem;
+}
+
+.post-meta {
+  gap: 1.25rem;
+}
+
+/* CTA buttons inside content */
+.astroaura-cta .cta-buttons a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Sidebar visual polish */
+.widget {
+  backdrop-filter: blur(18px);
+}
+
+/* Ensure good contrast on anchors */
+.post-content a {
+  color: var(--cosmic-gold);
+  text-decoration: none;
+}
+.post-content a:hover {
+  text-decoration: underline;
+}
