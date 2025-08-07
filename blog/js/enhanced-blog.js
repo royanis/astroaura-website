@@ -11,6 +11,7 @@ class EnhancedAstroAuraBlog {
         this.searchInput = document.getElementById('blog-search');
         this.searchClear = document.getElementById('search-clear');
         this.navTabs = document.querySelectorAll('.nav-tab');
+        this.loadMoreBtn = document.getElementById('load-more-btn');
         
         this.currentPage = 1;
         this.postsPerPage = 9;
@@ -38,6 +39,7 @@ class EnhancedAstroAuraBlog {
         this.setupNavTabs();
         this.setupSearch();
         this.setupTopicFilters();
+        this.setupLoadMore();
     }
     
     async init() {
@@ -250,11 +252,21 @@ class EnhancedAstroAuraBlog {
         }
         
         try {
-            this.articlesFeed.innerHTML = postsToRender.map(post => this.createSimpleArticleCard(post)).join('');
+            const endIndex = this.currentPage * this.postsPerPage;
+            const slice = postsToRender.slice(0, endIndex);
+            this.articlesFeed.innerHTML = slice.map(post => this.createSimpleArticleCard(post)).join('');
         } catch (error) {
             console.error('❌ Error rendering articles:', error);
             this.articlesFeed.innerHTML = '<div class="no-posts">Error loading articles. Please refresh and try again.</div>';
         }
+
+        // Toggle Load More visibility
+        if (this.loadMoreBtn) {
+            const hasMore = (this.currentPage * this.postsPerPage) < postsToRender.length;
+            this.loadMoreBtn.style.display = hasMore ? 'inline-block' : 'none';
+        }
+
+        this.secureExternalLinks();
     }
     
     createSimpleArticleCard(post) {
@@ -300,9 +312,7 @@ class EnhancedAstroAuraBlog {
                 <h2 class="article-title">
                     <a href="posts/${post.slug}.html">${post.title}</a>
                 </h2>
-                
-                    ${excerpt}
-                </div>
+                <p class="article-excerpt">${excerpt}</p>
                 
                 <a href="posts/${post.slug}.html" class="read-more">
                     Read more <i class="fas fa-arrow-right"></i>
@@ -422,6 +432,7 @@ class EnhancedAstroAuraBlog {
         this.filteredPosts = this.allPosts.filter(post => 
             post.topicCategory === topicCategory
         );
+        this.currentPage = 1;
         this.renderSimpleArticles();
     }
     
@@ -483,6 +494,7 @@ class EnhancedAstroAuraBlog {
             });
             return postMonthYear === monthYear;
         });
+        this.currentPage = 1;
         this.renderSimpleArticles();
     }
     
@@ -1116,6 +1128,20 @@ class EnhancedAstroAuraBlog {
         `).join('');
         
         recentPostsWidget.innerHTML = recentPostsHTML;
+    }
+
+    setupLoadMore() {
+        if (!this.loadMoreBtn) return;
+        this.loadMoreBtn.addEventListener('click', () => {
+            this.currentPage += 1;
+            this.renderSimpleArticles();
+        });
+    }
+
+    secureExternalLinks() {
+        document.querySelectorAll('a[target="_blank"]').forEach(a => {
+            a.setAttribute('rel', 'noopener noreferrer');
+        });
     }
 }
 

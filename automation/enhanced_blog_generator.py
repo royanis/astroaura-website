@@ -367,6 +367,15 @@ class EnhancedBlogGenerator:
         
         # Update feed.json
         self.update_json_feed(posts)
+
+        # Update RSS (for wider reader compatibility)
+        self.update_rss_feed(posts)
+
+        # Update sitemap posts if exists
+        try:
+            self.update_sitemap(posts)
+        except Exception:
+            pass
     
     def update_atom_feed(self, posts: List[Dict[str, Any]]):
         """Update Atom XML feed"""
@@ -441,6 +450,56 @@ class EnhancedBlogGenerator:
         feed_path = self.blog_dir / "feed.json"
         with open(feed_path, 'w') as f:
             json.dump(feed_data, f, indent=2)
+
+    def update_rss_feed(self, posts: List[Dict[str, Any]]):
+        """Generate RSS 2.0 feed"""
+        from xml.sax.saxutils import escape
+        rss_items = []
+        for post in posts:
+            title = escape(post['title'])
+            link = f"https://astroaura.me/blog/posts/{post['slug']}.html"
+            description = escape(post['meta_description'])
+            pub_date = post['date']
+            rss_items.append(f"""
+<item>
+  <title>{title}</title>
+  <link>{link}</link>
+  <guid isPermaLink="true">{link}</guid>
+  <description>{description}</description>
+  <pubDate>{pub_date}</pubDate>
+</item>""")
+        rss = f"""<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>AstroAura Cosmic Insights Blog</title>
+    <link>https://astroaura.me/blog</link>
+    <description>AI-powered astrology insights with trending topics and cosmic wisdom.</description>
+    {''.join(rss_items)}
+  </channel>
+</rss>"""
+        with open(self.blog_dir / 'rss.xml', 'w') as f:
+            f.write(rss)
+
+    def update_sitemap(self, posts: List[Dict[str, Any]]):
+        """Append latest blog posts into sitemap.xml if file exists"""
+        sitemap_path = Path(self.blog_dir).parent / 'sitemap.xml'
+        if not sitemap_path.exists():
+            return
+        try:
+            # naive append – in production, parse and merge properly
+            with open(sitemap_path, 'r') as f:
+                content = f.read()
+            # Insert simple urls block near end if not already present
+            for post in posts:
+                url = f"https://astroaura.me/blog/posts/{post['slug']}.html"
+                if url not in content:
+                    insert_before = '</urlset>'
+                    url_entry = f"\n  <url><loc>{url}</loc><lastmod>{post['date']}</lastmod></url>\n"
+                    content = content.replace(insert_before, url_entry + insert_before)
+            with open(sitemap_path, 'w') as f:
+                f.write(content)
+        except Exception:
+            pass
     
     def generate_trending_posts(self, num_posts: int = 2) -> List[Dict[str, Any]]:
         """Generate trending topic blog posts with enhanced storytelling"""
