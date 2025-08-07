@@ -45,6 +45,7 @@ class EnhancedAstroAuraBlog {
         this.renderSimpleArticles();
         this.renderStaffPicks();
         this.renderDateArchive();
+        this.populateSidebarWidgets();
     }
     
     async loadPostsIndex() {
