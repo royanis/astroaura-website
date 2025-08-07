@@ -1,0 +1,50 @@
+name: Generate Enriched Blog Posts
+
+on:
+  schedule:
+    - cron: '17 5 * * *' # daily at 05:17 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pytrends
+
+      - name: Generate blog posts with free API enrichment
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          COHERE_API_KEY: ${{ secrets.COHERE_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          HUGGINGFACE_API_KEY: ${{ secrets.HUGGINGFACE_API_KEY }}
+        run: |
+          cd automation
+          python enhanced_blog_generator.py --generate
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add blog/posts/*.html blog/posts_index.json blog/atom.xml blog/feed.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(blog): auto-generate enriched posts via Actions"
+          fi
+
+      - name: Push changes
+        if: success()
+        run: |
+          git push origin HEAD:main
