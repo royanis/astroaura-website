@@ -17,6 +17,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Georgia:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/blog.css">
     
     <!-- Facebook Open Graph Tags -->
     <meta property="og:title" content="🌟 Cosmic Insights Blog - AstroAura's Astrological Wisdom">
@@ -49,704 +50,6 @@
       }
     }
     </script>
-    
-    <style>
-        /* CSS Variables */
-        :root {
-            --cosmic-gold: #F0C75E;
-            --cosmic-purple: #3A2B71;
-            --deep-space: #0A0A0A;
-            --starlight: #FFFFFF;
-            --nebula-pink: #FF6B9D;
-            --cosmic-blue: #4A90E2;
-            --shadow: 0 4px 20px rgba(240, 199, 94, 0.3);
-            --transition: all 0.3s ease;
-            --border-radius: 12px;
-            --max-width: 1200px;
-        }
-        
-        /* Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--starlight);
-            line-height: 1.6;
-            overflow-x: hidden;
-            background: linear-gradient(135deg, var(--deep-space) 0%, var(--cosmic-purple) 100%);
-            min-height: 100vh;
-            position: relative;
-        }
-        
-        /* Starfield Background */
-        .starfield {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: transparent;
-            overflow: hidden;
-        }
-        
-        .star {
-            position: absolute;
-            background: var(--starlight);
-            border-radius: 50%;
-            animation: twinkle 3s infinite;
-        }
-        
-        .star:nth-child(odd) {
-            animation-delay: 1s;
-        }
-        
-        .star:nth-child(3n) {
-            animation-delay: 2s;
-        }
-        
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-        
-        /* Typography */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Georgia', serif;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-        
-        h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
-        h2 { font-size: clamp(2rem, 4vw, 3rem); }
-        h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
-        
-        p { 
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-        
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
-        
-        /* Container */
-        .container {
-            width: 100%;
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(10, 10, 10, 0.9);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(240, 199, 94, 0.2);
-            transition: var(--transition);
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            font-family: 'Georgia', serif;
-            font-weight: 800;
-            font-size: 1.8rem;
-            color: var(--cosmic-gold);
-            text-shadow: 0 0 20px rgba(240, 199, 94, 0.5);
-        }
-        
-        .logo img {
-            height: 40px;
-            margin-right: 10px;
-            filter: drop-shadow(0 0 10px rgba(240, 199, 94, 0.8));
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        .nav-links a {
-            font-weight: 600;
-            position: relative;
-            color: var(--starlight);
-            transition: var(--transition);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background: linear-gradient(90deg, var(--cosmic-gold), var(--nebula-pink));
-            transition: var(--transition);
-        }
-        
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-        
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--cosmic-gold);
-            text-shadow: 0 0 10px rgba(240, 199, 94, 0.5);
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            cursor: pointer;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--starlight);
-            transition: var(--transition);
-        }
-        
-        .mobile-menu-btn:hover {
-            color: var(--cosmic-gold);
-        }
-        
-        /* Page Header */
-        .page-header {
-            padding: 150px 0 80px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(58, 43, 113, 0.4) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(30, 58, 138, 0.3) 0%, transparent 50%);
-            z-index: -1;
-        }
-        
-        .header-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .page-title {
-            background: linear-gradient(135deg, var(--cosmic-gold) 0%, var(--starlight) 50%, var(--cosmic-gold) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1.5rem;
-            text-shadow: none;
-        }
-        
-        .page-subtitle {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.85);
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            line-height: 1.6;
-        }
-        
-        /* Blog Navigation Tabs */
-        .blog-nav-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 0;
-            padding: 2rem 0;
-            border-bottom: 1px solid rgba(240, 199, 94, 0.1);
-        }
-        
-        .nav-tab {
-            background: none;
-            border: none;
-            color: rgba(255, 255, 255, 0.6);
-            padding: 1rem 2rem;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            border-bottom: 2px solid transparent;
-            font-weight: 600;
-        }
-        
-        .nav-tab:hover,
-        .nav-tab.active {
-            color: var(--cosmic-gold);
-            border-bottom-color: var(--cosmic-gold);
-            background: rgba(240, 199, 94, 0.05);
-        }
-        
-        /* Blog Content */
-        .blog-content {
-            padding: 60px 0;
-        }
-        
-        .articles-feed {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .no-posts-message {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: rgba(240, 199, 94, 0.05);
-            border: 1px solid rgba(240, 199, 94, 0.2);
-            border-radius: var(--border-radius);
-            margin: 2rem 0;
-        }
-        
-        .no-posts-message h3 {
-            color: var(--cosmic-gold);
-            margin-bottom: 1rem;
-        }
-        
-        .no-posts-message p {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 0;
-        }
-        
-        /* Article Cards */
-        .article-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(240, 199, 94, 0.2);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-        }
-        
-        .article-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-            border-color: rgba(240, 199, 94, 0.4);
-        }
-        
-        .article-title {
-            color: var(--cosmic-gold);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-        
-        .article-title a:hover {
-            text-shadow: 0 0 10px rgba(240, 199, 94, 0.8);
-        }
-        
-        .article-meta {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        
-        .article-excerpt {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-        
-        .read-more {
-            color: var(--cosmic-gold);
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: var(--transition);
-        }
-        
-        .read-more:hover {
-            text-shadow: 0 0 10px rgba(240, 199, 94, 0.8);
-            transform: translateX(5px);
-        }
-        
-        /* Mobile Styles */
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(10, 10, 10, 0.95);
-                backdrop-filter: blur(20px);
-                border-top: 1px solid rgba(240, 199, 94, 0.2);
-                padding: 2rem;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .nav-links li {
-                width: 100%;
-                text-align: center;
-                padding: 1rem 0;
-                border-bottom: 1px solid rgba(240, 199, 94, 0.1);
-            }
-            
-            .page-header {
-                padding: 120px 0 60px;
-            }
-            
-            .page-title {
-                font-size: 2.5rem;
-            }
-            
-            .page-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .blog-nav-tabs {
-                padding: 1rem;
-                gap: 0;
-            }
-            
-            .nav-tab {
-                padding: 0.8rem 1rem;
-                font-size: 0.9rem;
-            }
-            
-            .article-card {
-                padding: 1.5rem;
-            }
-        }
-        
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .fade-in-up {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .floating {
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, var(--deep-space) 0%, var(--cosmic-purple) 100%);
-            padding: 80px 0 40px;
-            border-top: 1px solid rgba(240, 199, 94, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 80%, rgba(58, 43, 113, 0.3) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(30, 58, 138, 0.2) 0%, transparent 50%);
-            z-index: -1;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            font-family: 'Georgia', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--cosmic-gold);
-            margin-bottom: 1rem;
-            text-shadow: 0 0 10px rgba(240, 199, 94, 0.5);
-        }
-        
-        .footer-logo img {
-            margin-right: 15px;
-            filter: drop-shadow(0 0 10px rgba(240, 199, 94, 0.5));
-        }
-        
-        .footer-desc {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.7;
-            margin-bottom: 2rem;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background: rgba(240, 199, 94, 0.1);
-            border: 1px solid rgba(240, 199, 94, 0.3);
-            border-radius: 50%;
-            color: var(--cosmic-gold);
-            transition: var(--transition);
-        }
-        
-        .social-link:hover {
-            background: var(--cosmic-gold);
-            color: var(--deep-space);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(240, 199, 94, 0.4);
-        }
-        
-        .footer-title {
-            color: var(--cosmic-gold);
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            transition: var(--transition);
-            position: relative;
-        }
-        
-        .footer-links a:hover {
-            color: var(--cosmic-gold);
-            text-shadow: 0 0 10px rgba(240, 199, 94, 0.5);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid rgba(240, 199, 94, 0.2);
-            color: rgba(255, 255, 255, 0.6);
-        }
-        
-        .cosmic-heart {
-            color: var(--cosmic-gold);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        /* Blog layout with sidebar */
-        .blog-main-content {
-            display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .articles-feed {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-            max-width: none;
-            margin: 0;
-        }
-
-        .blog-sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            padding-left: 2rem;
-        }
-
-        .widget {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border-radius: var(--border-radius);
-            padding: 2.5rem;
-            border: 1px solid rgba(240, 199, 94, 0.2);
-            transition: var(--transition);
-        }
-
-        .widget h3 {
-            color: var(--cosmic-gold);
-            margin-bottom: 1.5rem;
-            font-size: 1.4rem;
-            font-family: 'Georgia', serif;
-        }
-
-        .categories-grid {
-            display: grid;
-            gap: 0.75rem;
-        }
-
-        .category-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.8rem 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            border: 1px solid rgba(240, 199, 94, 0.2);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
-        }
-
-        .category-item:hover {
-            background: rgba(240, 199, 94, 0.1);
-            border-color: var(--cosmic-gold);
-            transform: translateX(5px);
-        }
-
-        .category-name {
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .category-count {
-            background: var(--cosmic-gold);
-            color: var(--deep-space);
-            padding: 0.3rem 0.6rem;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 700;
-        }
-
-        #date-archive {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .date-archive-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.6rem 0.8rem;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(240, 199, 94, 0.1);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .date-archive-item:hover {
-            background: rgba(240, 199, 94, 0.1);
-            border-color: var(--cosmic-gold);
-            transform: translateX(5px);
-        }
-
-        .date-label {
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .post-count {
-            background: var(--cosmic-gold);
-            color: var(--deep-space);
-            padding: 0.2rem 0.6rem;
-            border-radius: 10px;
-            font-size: 0.8rem;
-            font-weight: 700;
-        }
-
-        .recent-post-item {
-            display: block;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            border: 1px solid rgba(240, 199, 94, 0.1);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .recent-post-item:hover {
-            background: rgba(240, 199, 94, 0.1);
-            border-color: rgba(240, 199, 94, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .recent-post-title {
-            color: var(--starlight);
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin: 0 0 0.5rem 0;
-            line-height: 1.3;
-        }
-
-        .recent-post-date {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        @media (max-width: 1024px) {
-            .blog-main-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                padding: 1.5rem;
-            }
-
-            .blog-sidebar {
-                padding-left: 0;
-                border-top: 1px solid rgba(240, 199, 94, 0.1);
-                padding-top: 2rem;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Starfield Background -->
@@ -781,6 +84,26 @@
         <div class="container header-content">
             <h1 class="page-title floating">🌟 Cosmic Insights</h1>
             <p class="page-subtitle">Authentic astrology and cosmic wisdom powered by AI. Discover trending spiritual topics, planetary influences, and celestial guidance for your journey.</p>
+            
+            <!-- Search -->
+            <div class="search-container" style="max-width: 700px; margin: 1rem auto 0;">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input id="blog-search" type="text" placeholder="Search cosmic topics, e.g., Mercury retrograde, Moon phases, compatibility..." aria-label="Search blog">
+                    <button id="search-clear" class="search-clear" title="Clear search" style="display:none;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Trending Topic Pills -->
+            <div class="topic-tags" style="justify-content:center; margin-top: 1rem;">
+                <button class="topic-pill" data-topic="mercury-retrograde">☿ Mercury Retrograde</button>
+                <button class="topic-pill" data-topic="moon-phases">🌙 Moon Phases</button>
+                <button class="topic-pill" data-topic="zodiac-signs">♈ Zodiac Signs</button>
+                <button class="topic-pill" data-topic="planetary-transits">🪐 Planetary Transits</button>
+                <button class="topic-pill" data-topic="spiritual-growth">✨ Spiritual Growth</button>
+            </div>
         </div>
     </section>
     
@@ -801,6 +124,8 @@
                     <p>Our AI-powered astrological insights are manifesting from the cosmic realm. Please wait while we align the stars with your spiritual journey.</p>
                 </div>
             </div>
+            
+            <!-- Sidebar -->
             <aside class="blog-sidebar">
                 <div class="widget">
                     <h3>Categories</h3>
@@ -814,7 +139,35 @@
                     <h3>Recent Posts</h3>
                     <div id="recent-posts-widget"></div>
                 </div>
+                <div class="widget">
+                    <h3>Staff Picks</h3>
+                    <div id="staff-picks"></div>
+                </div>
+                <div class="widget app-promo">
+                    <img src="../assets/icons/app_icon.png" alt="AstroAura App" width="48" height="48" class="app-icon">
+                    <p class="app-description">Get daily cosmic insights, birth chart readings, and AI-guided spiritual wisdom in the AstroAura app.</p>
+                    <div class="download-buttons">
+                        <a class="btn-download ios" href="#"><i class="fab fa-apple"></i> App Store</a>
+                        <a class="btn-download android" href="#"><i class="fab fa-google-play"></i> Google Play</a>
+                    </div>
+                </div>
+                <div class="widget">
+                    <h3>Newsletter</h3>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <input id="newsletter-email" type="email" placeholder="Your email address" required>
+                        <button type="submit">Subscribe</button>
+                        <div id="newsletter-success" class="newsletter-success" style="display:none;">
+                            <i class="fas fa-sparkles"></i>
+                            Subscribed! Check your inbox for cosmic updates.
+                        </div>
+                    </form>
+                </div>
             </aside>
+        </div>
+        
+        <!-- Load More -->
+        <div style="text-align:center; margin-top: 1rem;">
+            <button id="load-more-btn" class="btn" style="display:none;">Load more</button>
         </div>
     </section>
 

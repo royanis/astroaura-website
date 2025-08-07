@@ -16,6 +16,7 @@ import os
 import sys
 from pathlib import Path
 from trending_blog_generator import BlogContentGenerator, TrendingTopicResearcher
+from free_api_content_generator import FreeAPIContentGenerator
 
 class EnhancedBlogGenerator:
     """Enhanced blog generator with trending topics and improved storytelling"""
@@ -24,6 +25,7 @@ class EnhancedBlogGenerator:
         self.blog_dir = Path(blog_dir)
         self.posts_dir = self.blog_dir / "posts"
         self.content_generator = BlogContentGenerator()
+        self.free_api_generator = FreeAPIContentGenerator()
         
         # Ensure directories exist
         self.posts_dir.mkdir(exist_ok=True)
@@ -32,6 +34,7 @@ class EnhancedBlogGenerator:
         """Generate complete HTML content for a blog post with enhanced storytelling"""
         
         # Enhanced HTML template with better storytelling structure
+        og_image = post_data.get('image', 'https://astroaura.me/assets/images/blog/trending-cosmic-insights.jpg')
         html_content = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +55,7 @@ class EnhancedBlogGenerator:
     <!-- Open Graph Tags -->
     <meta property="og:title" content="{post_data['title']} | AstroAura">
     <meta property="og:description" content="{post_data['meta_description']}">
-    <meta property="og:image" content="https://astroaura.me/assets/images/blog/trending-cosmic-insights.jpg">
+    <meta property="og:image" content="{og_image}">
     <meta property="og:url" content="https://astroaura.me/blog/posts/{post_data['slug']}.html">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="AstroAura">
@@ -61,7 +64,7 @@ class EnhancedBlogGenerator:
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{post_data['title']}">
     <meta name="twitter:description" content="{post_data['meta_description']}">
-    <meta name="twitter:image" content="https://astroaura.me/assets/images/blog/trending-cosmic-insights.jpg">
+    <meta name="twitter:image" content="{og_image}">
     
     <!-- Schema.org Markup -->
     <script type="application/ld+json">
@@ -85,7 +88,7 @@ class EnhancedBlogGenerator:
         "datePublished": "{post_data['date']}",
         "dateModified": "{post_data['date']}",
         "url": "https://astroaura.me/blog/posts/{post_data['slug']}.html",
-        "image": "https://astroaura.me/assets/images/blog/trending-cosmic-insights.jpg",
+        "image": "{og_image}",
         "mainEntityOfPage": {{
             "@type": "WebPage",
             "@id": "https://astroaura.me/blog/posts/{post_data['slug']}.html"
@@ -136,6 +139,9 @@ class EnhancedBlogGenerator:
             
             <!-- Post Header -->
             <header class="post-header">
+                <div class="post-hero-visual" style="display:flex;justify-content:center;margin-bottom:1.5rem;">
+                    <img src="{og_image}" alt="Topic visual" style="max-width:100%;height:auto;border-radius:16px;border:1px solid rgba(240,199,94,0.2);box-shadow:0 15px 40px rgba(240,199,94,0.15)"/>
+                </div>
                 <div class="trending-badge">
                     <i class="fas fa-fire"></i> Trending Topic
                 </div>
@@ -196,13 +202,18 @@ class EnhancedBlogGenerator:
             <div class="post-content">
                 <div class="post-body blog-content trending-astrology">'''
         
-        # Add content sections with enhanced storytelling
-        for section in post_data['content_sections']:
-            html_content += f'''
-                    <section class="content-section">
-                        <h2>{section['title']}</h2>
-                        <p>{section['content']}</p>
-                    </section>'''
+        # Prefer API-enriched HTML content if available
+        api_html = post_data.get('api_article_html')
+        if api_html:
+            html_content += api_html
+        else:
+            # Add content sections with enhanced storytelling
+            for section in post_data['content_sections']:
+                html_content += f'''
+                        <section class="content-section">
+                            <h2>{section['title']}</h2>
+                            <p>{section['content']}</p>
+                        </section>'''
         
         # Add call-to-action section
         html_content += f'''
@@ -437,6 +448,21 @@ class EnhancedBlogGenerator:
         posts = self.content_generator.generate_daily_posts(num_posts)
         
         for post in posts:
+            # Attempt to enrich content using free APIs (Gemini/Cohere/Claude/HF)
+            try:
+                api_result = self.free_api_generator.generate_with_free_apis(
+                    post.get('trending_topic', post['title']),
+                    post.get('astronomical_data', {}),
+                    extra_context=(post.get('storytelling_framework') or {}).get('hook')
+                )
+                if api_result and api_result.get('content'):
+                    post['api_article_html'] = api_result['content']
+                    if api_result.get('meta_description'):
+                        post['meta_description'] = api_result['meta_description']
+                    post['api_used'] = api_result.get('api_used')
+            except Exception as e:
+                print(f"Free API enrichment failed: {e}")
+            
             # Generate HTML file
             html_content = self.generate_html_content(post)
             html_path = self.posts_dir / f"{post['slug']}.html"

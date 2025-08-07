@@ -15,7 +15,7 @@ Features:
 
 import json
 import random
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 import requests
 import re
 from typing import List, Dict, Any
@@ -36,9 +36,14 @@ class TrendingTopicResearcher:
         self.planets = [
             "Mercury", "Venus", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto"
         ]
+        self._regions = ["united_states", "india", "united_kingdom", "canada", "australia"]
+        self._seed_keywords = [
+            "astrology", "zodiac", "horoscope", "mercury retrograde", "moon phase", "tarot",
+            "manifestation", "spirituality", "numerology", "compatibility"
+        ]
 
     def _fetch_google_trends(self) -> List[str]:
-        """Fetch today's trending search terms from Google Trends"""
+        """Fetch today's trending search terms from Google Trends (US only)"""
         if not self._pytrends:
             return []
         try:
@@ -48,16 +53,62 @@ class TrendingTopicResearcher:
             print(f"Google Trends fetch failed: {e}")
             return []
 
+    def _fetch_google_trends_regions(self) -> List[str]:
+        """Fetch trending searches from multiple regions for variety"""
+        terms: List[str] = []
+        if not self._pytrends:
+            return terms
+        for region in self._regions:
+            try:
+                df = self._pytrends.trending_searches(pn=region)
+                terms.extend(df[0].tolist())
+            except Exception as e:
+                print(f"Trends fetch failed for {region}: {e}")
+                continue
+        return terms
+
+    def _fetch_related_queries(self) -> List[str]:
+        """Fetch related queries for seed astrology keywords"""
+        related: List[str] = []
+        if not self._pytrends:
+            return related
+        try:
+            self._pytrends.build_payload(self._seed_keywords, timeframe='now 7-d', geo='')
+            rq = self._pytrends.related_queries()
+            for seed, data in rq.items():
+                if data and data.get('top') is not None:
+                    related.extend(data['top']['query'].head(10).tolist())
+        except Exception as e:
+            print(f"Related queries fetch failed: {e}")
+        return related
+
+    def _fetch_wikipedia_trending(self) -> List[str]:
+        """Fetch top viewed Wikipedia pages (free API) as trend signal"""
+        try:
+            yesterday = datetime.utcnow() - timedelta(days=1)
+            url = f"https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/all-access/{yesterday.year}/{yesterday.strftime('%m')}/{yesterday.strftime('%d')}"
+            res = requests.get(url, timeout=10)
+            if res.status_code == 200:
+                data = res.json()
+                articles = data.get('items', [{}])[0].get('articles', [])
+                titles = [a['article'].replace('_', ' ') for a in articles if a.get('article')]
+                # Filter out administrative and very short titles
+                return [t for t in titles if len(t) > 3 and not t.lower().startswith(('main page', 'special:'))][:20]
+        except Exception as e:
+            print(f"Wikipedia trending fetch failed: {e}")
+        return []
+
     def _categorize(self, topic: str) -> str:
         """Basic keyword categorization for topics"""
         topic_l = topic.lower()
         mapping = {
             "technology": ["ai", "tech", "app", "software", "robot", "digital"],
             "finance": ["stock", "market", "finance", "bank", "inflation", "econom"],
-            "health": ["health", "virus", "disease", "wellness", "mental"],
-            "environment": ["climate", "earth", "sustain", "environment"],
-            "entertainment": ["movie", "show", "music", "celebrity"],
-            "sports": ["game", "team", "league", "tournament"],
+            "health": ["health", "virus", "disease", "wellness", "mental", "fitness"],
+            "environment": ["climate", "earth", "sustain", "environment", "weather"],
+            "entertainment": ["movie", "show", "music", "celebrity", "festival"],
+            "sports": ["game", "team", "league", "tournament", "olympic"],
+            "spiritual": ["astrology", "zodiac", "horoscope", "retrograde", "tarot", "manifest", "moon", "mercury", "compatibility", "numerology"],
         }
         for category, keywords in mapping.items():
             if any(k in topic_l for k in keywords):
@@ -79,28 +130,60 @@ class TrendingTopicResearcher:
         slug = re.sub(r"[^a-z0-9]+", "-", topic.lower()).strip("-")
         return [k for k in slug.split("-") if k]
 
-    def get_trending_topics(self) -> List[Dict[str, Any]]:
-        """Return trending topics with astrological potential"""
-        topics = self._fetch_google_trends()
-        formatted: List[Dict[str, Any]] = []
+    def _choose_image_for_topic(self, topic: str, category: str) -> str:
+        """Pick a representative image for the topic using site assets (absolute URL)"""
+        tl = topic.lower()
+        assets = "https://astroaura.me/assets"
+        if any(k in tl for k in ["moon", "lunar"]):
+            return f"{assets}/icons/moon_icon.png"
+        if any(k in tl for k in ["mercury", "retrograde"]):
+            return f"{assets}/icons/planets/mercury.png"
+        if any(k in tl for k in ["zodiac", "aries", "leo", "libra", "virgo", "taurus", "gemini", "cancer", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces"]):
+            return f"{assets}/icons/zodiac/leo.png"
+        if any(k in tl for k in ["tarot", "card"]):
+            return f"{assets}/images/tarot/major/the_star.png"
+        if any(k in tl for k in ["sun", "sol"]):
+            return f"{assets}/icons/sun_icon.png"
+        if category in ("technology", "finance", "environment", "sports", "entertainment"):
+            return f"{assets}/images/backgrounds/cosmic_background.png"
+        return f"{assets}/images/backgrounds/stars_background.png"
 
-        for idx, topic in enumerate(topics):
+    def get_trending_topics(self) -> List[Dict[str, Any]]:
+        """Return trending topics with astrological potential (multi-source)"""
+        collected: List[str] = []
+        collected.extend(self._fetch_google_trends())
+        collected.extend(self._fetch_google_trends_regions())
+        collected.extend(self._fetch_related_queries())
+        collected.extend(self._fetch_wikipedia_trending())
+
+        # Normalize and deduplicate while preserving order
+        seen = set()
+        unique_topics: List[str] = []
+        for t in collected:
+            tl = t.strip()
+            if not tl:
+                continue
+            key = tl.lower()
+            if key not in seen:
+                seen.add(key)
+                unique_topics.append(tl)
+
+        formatted: List[Dict[str, Any]] = []
+        for idx, topic in enumerate(unique_topics[:20]):
             # Skip likely individual names (two words, both capitalized)
             if re.match(r"^[A-Z][a-z]+ [A-Z][a-z]+$", topic):
                 continue
-
             category = self._categorize(topic)
             astro_angle = self._generate_astro_angle(topic, category)
+            image = self._choose_image_for_topic(topic, category)
             formatted.append({
                 "topic": topic,
                 "category": category,
-                "popularity_score": 100 - idx * 5,
+                "popularity_score": max(30, 100 - idx * 3),
                 "astro_angle": astro_angle,
                 "keywords": self._extract_keywords(topic),
+                "image": image,
             })
-
-            if len(formatted) >= 5:
-                break
 
         if not formatted:
             return [
@@ -110,6 +193,7 @@ class TrendingTopicResearcher:
                     "popularity_score": 85,
                     "astro_angle": "Mercury retrograde digital cleansing",
                     "keywords": ["digital", "detox", "mercury", "retrograde"],
+                    "image": "https://astroaura.me/assets/images/backgrounds/cosmic_background.png",
                 }
             ]
 
@@ -249,7 +333,11 @@ class BlogContentGenerator:
         posts = []
         
         for i in range(min(num_posts, len(trending_topics))):
-            post = self.generate_blog_post(trending_topics[i])
+            topic = trending_topics[i]
+            post = self.generate_blog_post(topic)
+            # propagate visual if available
+            if 'image' in topic:
+                post['image'] = topic['image']
             posts.append(post)
             
         return posts
