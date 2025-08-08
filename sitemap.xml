@@ -50,30 +50,4 @@
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/daily-horoscope-deep-dive-leo-season-insights-in-l.html</loc>
-    <lastmod>2025-08-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://astroaura.me/assets/images/blog/cosmic-insights-og.jpg</image:loc>
-      <image:caption>Daily Horoscope Deep Dive: Leo Season Insights in Leo Season - Cosmic Insights and Guidance</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/the-universes-take-on-digital-detox-challenge-astr.html</loc>
-    <lastmod>2025-08-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://astroaura.me/assets/images/blog/cosmic-insights-og.jpg</image:loc>
-      <image:caption>The Universe's Take on Digital Detox Challenge: Astrological Insights for Modern Life</image:caption>
-    </image:image>
-  </url>
-
-  <url><loc>https://astroaura.me/blog/posts/how-moon-cycles-and-emotional-balance-can-transfor.html</loc><lastmod>2025-08-08T13:21:34.564815+00:00</lastmod></url>
-
-  <url><loc>https://astroaura.me/blog/posts/mindfulness-and-mental-health-through-an-astrologi.html</loc><lastmod>2025-08-08T13:34:13.965381+00:00</lastmod></url>
-
-  <url><loc>https://astroaura.me/blog/posts/why-moon-cycles-and-emotional-balance-is-the-key-t.html</loc><lastmod>2025-08-08T19:08:03.334961+00:00</lastmod></url>
 </urlset>
