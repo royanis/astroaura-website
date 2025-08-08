@@ -62,7 +62,7 @@
                 <img src="../assets/icons/app_icon.png" alt="AstroAura - AI-powered multilingual astrology app logo with cosmic design elements" width="40" height="40">
                 AstroAura
             </a>
-            <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+            <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
             <nav>
@@ -255,9 +255,14 @@
             
             if (mobileMenuBtn && navLinks) {
                 mobileMenuBtn.addEventListener('click', () => {
+                    const isActive = navLinks.classList.contains('active');
                     navLinks.classList.toggle('active');
+                    
+                    // Update ARIA expanded state
+                    mobileMenuBtn.setAttribute('aria-expanded', !isActive);
+                    
                     const icon = mobileMenuBtn.querySelector('i');
-                    if (navLinks.classList.contains('active')) {
+                    if (!isActive) {
                         icon.classList.remove('fa-bars');
                         icon.classList.add('fa-times');
                     } else {
@@ -275,6 +280,30 @@
                     tab.classList.add('active');
                 });
             });
+            
+            // Newsletter form handling
+            const newsletterForm = document.getElementById('newsletter-form');
+            const newsletterSuccess = document.getElementById('newsletter-success');
+            if (newsletterForm && newsletterSuccess) {
+                newsletterForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const emailInput = document.getElementById('newsletter-email');
+                    
+                    if (emailInput && emailInput.value) {
+                        // Simple validation
+                        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (emailPattern.test(emailInput.value)) {
+                            newsletterSuccess.style.display = 'block';
+                            emailInput.value = '';
+                            setTimeout(() => {
+                                newsletterSuccess.style.display = 'none';
+                            }, 5000);
+                        } else {
+                            alert('Please enter a valid email address.');
+                        }
+                    }
+                });
+            }
         });
     </script>
     <script src="js/enhanced-blog.js"></script>
