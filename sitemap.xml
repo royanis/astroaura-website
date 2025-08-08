@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://astroaura.me/</loc>
-    <lastmod>2025-08-07</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -12,7 +12,7 @@
   </url>
   <url>
     <loc>https://astroaura.me/features.html</loc>
-    <lastmod>2025-08-07</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -22,54 +22,52 @@
   </url>
   <url>
     <loc>https://astroaura.me/about.html</loc>
-    <lastmod>2025-08-07</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://astroaura.me/contact.html</loc>
-    <lastmod>2025-08-07</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://astroaura.me/privacy.html</loc>
-    <lastmod>2025-08-07</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://astroaura.me/cosmic-insights.html</loc>
-    <lastmod>2025-08-07</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://astroaura.me/blog/</loc>
-    <lastmod>2025-08-07</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://astroaura.me/blog/posts/current-retrograde-seasons-navigating-cosmic-slowd.html</loc>
-    <lastmod>2025-08-07</lastmod>
+    <loc>https://astroaura.me/blog/posts/understanding-planetary-aspects-this-week-understa.html</loc>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
       <image:loc>https://astroaura.me/assets/images/blog/cosmic-insights-og.jpg</image:loc>
-      <image:caption>Current Retrograde Seasons: Navigating Cosmic Slowdowns in Leo Season - Cosmic Insights and Guidance</image:caption>
+      <image:caption>Understanding Planetary Aspects This Week: Understanding conjunction Energy: Current Cosmic Influenc</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://astroaura.me/blog/posts/how-moon-cycles-and-emotional-balance-can-transfor.html</loc>
-    <lastmod>2025-08-07</lastmod>
+    <loc>https://astroaura.me/blog/posts/mindfulness-and-mental-health-through-an-astrologi.html</loc>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
       <image:loc>https://astroaura.me/assets/images/blog/cosmic-insights-og.jpg</image:loc>
-      <image:caption>How Moon cycles and emotional balance Can Transform Your Wellness Journey</image:caption>
+      <image:caption>Mindfulness and Mental Health Through an Astrological Lens: Your Cosmic Guide</image:caption>
     </image:image>
   </url>
-
-  <url><loc>https://astroaura.me/blog/posts/mindfulness-and-mental-health-through-an-astrologi.html</loc><lastmod>2025-08-08T01:16:41.445276+00:00</lastmod></url>
 </urlset>
