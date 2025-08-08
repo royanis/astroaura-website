@@ -14,12 +14,14 @@ class EnhancedAstroAuraBlog {
         this.loadMoreBtn = document.getElementById('load-more-btn');
         
         this.currentPage = 1;
-        this.postsPerPage = 9;
+        this.postsPerPage = 6; // Reduced for better pagination
+        this.totalPages = 1;
         this.allPosts = [];
         this.filteredPosts = [];
         this.currentTab = 'for-you';
         this.currentSearch = '';
         this.currentDateFilter = 'all';
+        this.featuredPosts = [];
         
         // Astrology topic categories
         this.topicCategories = {
@@ -44,10 +46,71 @@ class EnhancedAstroAuraBlog {
     
     async init() {
         await this.loadPostsIndex();
+        this.renderFeaturedPosts();
         this.renderSimpleArticles();
         this.renderStaffPicks();
         this.renderDateArchive();
         this.populateSidebarWidgets();
+    }
+    
+    renderFeaturedPosts() {
+        const featuredSection = document.getElementById('featured-post-section');
+        const featuredContainer = document.getElementById('featured-posts-container');
+        
+        if (!featuredSection || !featuredContainer || this.allPosts.length === 0) return;
+        
+        // Select top 3 posts as featured (most recent with trending_topic)
+        const featuredPosts = this.allPosts
+            .filter(post => post.trending_topic || post.engagement_score > 80)
+            .slice(0, 3);
+        
+        if (featuredPosts.length === 0) return;
+        
+        const featuredHTML = featuredPosts.map(post => this.createFeaturedPostCard(post)).join('');
+        featuredContainer.innerHTML = featuredHTML;
+        featuredSection.style.display = 'block';
+    }
+    
+    createFeaturedPostCard(post) {
+        const postDate = new Date(post.date);
+        const formattedDate = postDate.toLocaleDateString('en-US', { 
+            month: 'short', 
+            day: 'numeric',
+            year: 'numeric'
+        });
+        
+        // Clean excerpt
+        let excerpt = post.meta_description || '';
+        if (post.content_sections && post.content_sections.length > 0) {
+            excerpt = post.content_sections[0].content;
+        }
+        excerpt = excerpt.replace(/##\s*/g, '').replace(/<[^>]*>/g, '').trim();
+        if (excerpt.length > 120) {
+            excerpt = excerpt.substring(0, 120) + '...';
+        }
+        
+        const topicCategory = this.determineTopicCategory(post);
+        const categoryEmoji = this.getCategoryEmoji(topicCategory);
+        
+        return `
+            <article class="featured-post-card">
+                <div class="featured-post-header">
+                    <div class="featured-badge">${categoryEmoji} Featured</div>
+                    ${post.trending_topic ? '<div class="trending-badge"><i class="fas fa-fire"></i> Trending</div>' : ''}
+                </div>
+                <h3 class="featured-post-title">
+                    <a href="posts/${post.slug}.html">${post.title}</a>
+                </h3>
+                <p class="featured-post-excerpt">${excerpt}</p>
+                <div class="featured-post-meta">
+                    <span class="featured-date">
+                        <i class="fas fa-calendar"></i> ${formattedDate}
+                    </span>
+                    <span class="separator">·</span>
+                    <span class="featured-author">${post.author || 'AstroAura Team'}</span>
+                </div>
+            </article>
+        `;
     }
     
     async loadPostsIndex() {
@@ -254,21 +317,212 @@ class EnhancedAstroAuraBlog {
         }
         
         try {
-            const endIndex = this.currentPage * this.postsPerPage;
-            const slice = postsToRender.slice(0, endIndex);
-            this.articlesFeed.innerHTML = slice.map(post => this.createSimpleArticleCard(post)).join('');
+            // Calculate pagination
+            this.totalPages = Math.ceil(postsToRender.length / this.postsPerPage);
+            const startIndex = (this.currentPage - 1) * this.postsPerPage;
+            const endIndex = startIndex + this.postsPerPage;
+            const slice = postsToRender.slice(startIndex, endIndex);
+            
+            this.articlesFeed.innerHTML = slice.map(post => this.createEnhancedArticleCard(post)).join('');
         } catch (error) {
             console.error('❌ Error rendering articles:', error);
             this.articlesFeed.innerHTML = '<div class="no-posts">Error loading articles. Please refresh and try again.</div>';
         }
 
-        // Toggle Load More visibility
-        if (this.loadMoreBtn) {
-            const hasMore = (this.currentPage * this.postsPerPage) < postsToRender.length;
-            this.loadMoreBtn.style.display = hasMore ? 'inline-block' : 'none';
-        }
-
+        this.updatePaginationControls();
         this.secureExternalLinks();
+    }
+    
+    createEnhancedArticleCard(post) {
+        const postDate = new Date(post.date);
+        const formattedDate = postDate.toLocaleDateString('en-US', { 
+            year: 'numeric',
+            month: 'long', 
+            day: 'numeric'
+        });
+        
+        const readingTime = this.calculateReadingTime(post.meta_description || '');
+        
+        const astronomicalData = post.astronomical_data || {};
+        const cosmicIndicators = [];
+        
+        if (astronomicalData.sun_sign) {
+            cosmicIndicators.push(`☀️ ${astronomicalData.sun_sign}`);
+        }
+        if (astronomicalData.moon_phase) {
+            cosmicIndicators.push(`🌙 ${astronomicalData.moon_phase}`);
+        }
+        if (astronomicalData.mercury_retrograde) {
+            cosmicIndicators.push(`☿ Rx`);
+        }
+        
+        // Clean meta description by removing HTML markdown and extra characters
+        let excerpt = post.meta_description || '';
+        if (post.content_sections && post.content_sections.length > 0) {
+            excerpt = post.content_sections[0].content.substring(0, 200) + '...';
+        }
+        
+        // Clean up excerpt - remove HTML tags, markdown headers, and trim
+        excerpt = excerpt.replace(/##\s*/g, '').replace(/<[^>]*>/g, '').trim();
+        if (excerpt.length > 200) {
+            excerpt = excerpt.substring(0, 200) + '...';
+        }
+        
+        // Get topic category for styling
+        const topicCategory = this.determineTopicCategory(post);
+        const categoryEmoji = this.getCategoryEmoji(topicCategory);
+        
+        return `
+            <article class="article-card enhanced-card fade-in-up">
+                <div class="card-header">
+                    <div class="topic-badge">${categoryEmoji} ${this.topicCategories[topicCategory] || 'Cosmic Insights'}</div>
+                    ${post.trending_topic ? '<div class="trending-indicator"><i class="fas fa-fire"></i> Trending</div>' : ''}
+                </div>
+                
+                <h2 class="article-title">
+                    <a href="posts/${post.slug}.html">${post.title}</a>
+                </h2>
+                
+                <p class="article-excerpt">${excerpt}</p>
+                
+                <div class="article-meta">
+                    <span class="author">
+                        <i class="fas fa-user"></i> ${post.author || 'AstroAura Team'}
+                    </span>
+                    <span class="separator">·</span>
+                    <span class="date">
+                        <i class="fas fa-calendar"></i> ${formattedDate}
+                    </span>
+                    <span class="separator">·</span>
+                    <span class="reading-time">
+                        <i class="fas fa-clock"></i> ${readingTime} min read
+                    </span>
+                </div>
+                
+                <div class="card-footer">
+                    <div class="cosmic-indicators">
+                        ${cosmicIndicators.join(' ')}
+                    </div>
+                    <a href="posts/${post.slug}.html" class="read-more-btn">
+                        Read Article <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        `;
+    }
+    
+    getCategoryEmoji(category) {
+        const emojis = {
+            'mercury-retrograde': '☿',
+            'moon-phases': '🌙',
+            'zodiac-signs': '♈',
+            'planetary-transits': '🪐',
+            'tarot-guidance': '🔮',
+            'cosmic-weather': '🌌',
+            'birth-charts': '📊',
+            'spiritual-growth': '✨',
+            'manifestation': '🌟',
+            'horoscope-insights': '🔯'
+        };
+        return emojis[category] || '✨';
+    }
+    
+    determineTopicCategory(post) {
+        const title = (post.title || '').toLowerCase();
+        const keywords = post.keywords || [];
+        const keywordStr = keywords.join(' ').toLowerCase();
+        
+        // Check title and keywords for category indicators
+        if (title.includes('mercury') || title.includes('retrograde') || keywordStr.includes('mercury') || keywordStr.includes('retrograde')) {
+            return 'mercury-retrograde';
+        }
+        if (title.includes('moon') || title.includes('lunar') || keywordStr.includes('moon') || keywordStr.includes('lunar')) {
+            return 'moon-phases';
+        }
+        if (title.includes('zodiac') || title.includes('sign') || keywordStr.includes('zodiac') || keywordStr.includes('signs')) {
+            return 'zodiac-signs';
+        }
+        if (title.includes('planet') || title.includes('transit') || keywordStr.includes('planet') || keywordStr.includes('transit')) {
+            return 'planetary-transits';
+        }
+        if (title.includes('tarot') || title.includes('card') || keywordStr.includes('tarot') || keywordStr.includes('card')) {
+            return 'tarot-guidance';
+        }
+        if (title.includes('spiritual') || title.includes('growth') || keywordStr.includes('spiritual') || keywordStr.includes('wellness')) {
+            return 'spiritual-growth';
+        }
+        if (title.includes('manifest') || keywordStr.includes('manifest')) {
+            return 'manifestation';
+        }
+        if (title.includes('horoscope') || keywordStr.includes('horoscope')) {
+            return 'horoscope-insights';
+        }
+        
+        return 'cosmic-weather'; // default
+    }
+    
+    updatePaginationControls() {
+        const pagination = document.getElementById('pagination');
+        const paginationNumbers = document.getElementById('pagination-numbers');
+        const prevBtn = document.getElementById('prev-page');
+        const nextBtn = document.getElementById('next-page');
+        
+        if (!pagination || this.totalPages <= 1) {
+            if (pagination) pagination.style.display = 'none';
+            return;
+        }
+        
+        pagination.style.display = 'flex';
+        
+        // Update prev/next buttons
+        if (prevBtn) {
+            prevBtn.disabled = this.currentPage === 1;
+            prevBtn.onclick = () => this.goToPage(this.currentPage - 1);
+        }
+        
+        if (nextBtn) {
+            nextBtn.disabled = this.currentPage === this.totalPages;
+            nextBtn.onclick = () => this.goToPage(this.currentPage + 1);
+        }
+        
+        // Generate page numbers
+        if (paginationNumbers) {
+            const pageNumbers = [];
+            const maxVisible = 5;
+            
+            let startPage = Math.max(1, this.currentPage - Math.floor(maxVisible / 2));
+            let endPage = Math.min(this.totalPages, startPage + maxVisible - 1);
+            
+            if (endPage - startPage < maxVisible - 1) {
+                startPage = Math.max(1, endPage - maxVisible + 1);
+            }
+            
+            for (let i = startPage; i <= endPage; i++) {
+                const isActive = i === this.currentPage;
+                pageNumbers.push(`
+                    <button class="page-number ${isActive ? 'active' : ''}" 
+                            onclick="window.blogInstance.goToPage(${i})"
+                            aria-label="Go to page ${i}">
+                        ${i}
+                    </button>
+                `);
+            }
+            
+            paginationNumbers.innerHTML = pageNumbers.join('');
+        }
+    }
+    
+    goToPage(pageNumber) {
+        if (pageNumber < 1 || pageNumber > this.totalPages) return;
+        
+        this.currentPage = pageNumber;
+        this.renderSimpleArticles();
+        
+        // Scroll to top of articles
+        const articlesSection = document.querySelector('.blog-content');
+        if (articlesSection) {
+            articlesSection.scrollIntoView({ behavior: 'smooth' });
+        }
     }
     
     createSimpleArticleCard(post) {
