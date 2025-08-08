@@ -165,17 +165,6 @@ class EnhancedBlogGenerator:
             
         html_content += f'''</div>
                 
-                <!-- Trending Topic Alert -->
-                <div class="trending-alert">
-                    <div class="alert-content">
-                        <i class="fas fa-trending-up"></i>
-                        <div>
-                            <strong>Trending Now:</strong> {post_data['trending_topic']}
-                            <br><small>Astrological Perspective: {post_data['astro_angle']}</small>
-                        </div>
-                    </div>
-                </div>
-                
                 <!-- Current Cosmic Data Display -->
                 <div class="cosmic-data-bar">
                     <div class="cosmic-item">
