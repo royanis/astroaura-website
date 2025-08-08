@@ -59,9 +59,11 @@ class EnhancedAstroAuraBlog {
                 this.allPosts = data.posts || [];
                 this.processPostsData();
             } else {
+                console.warn('Failed to load posts index, status:', response.status);
                 this.loadFallbackPosts();
             }
         } catch (error) {
+            console.error('Error loading posts index:', error);
             this.loadFallbackPosts();
         }
     }
@@ -292,10 +294,16 @@ class EnhancedAstroAuraBlog {
             cosmicIndicators.push(`☿ Rx`);
         }
         
-        // Create excerpt from first content section if available
+        // Clean meta description by removing HTML markdown and extra characters
         let excerpt = post.meta_description || '';
         if (post.content_sections && post.content_sections.length > 0) {
             excerpt = post.content_sections[0].content.substring(0, 200) + '...';
+        }
+        
+        // Clean up excerpt - remove HTML tags, markdown headers, and trim
+        excerpt = excerpt.replace(/##\s*/g, '').replace(/<[^>]*>/g, '').trim();
+        if (excerpt.length > 150) {
+            excerpt = excerpt.substring(0, 150) + '...';
         }
         
         return `
@@ -1093,26 +1101,35 @@ class EnhancedAstroAuraBlog {
     
     populateCategoriesWidget() {
         const categoriesWidget = document.getElementById('categories-widget');
-        if (!categoriesWidget) return;
+        if (!categoriesWidget) {
+            console.warn('Categories widget element not found');
+            return;
+        }
         
-        // Count posts by category
-        const categoryCounts = {};
-        this.allPosts.forEach(post => {
-            const category = post.topicCategory;
-            categoryCounts[category] = (categoryCounts[category] || 0) + 1;
-        });
-        
-        const categoriesHTML = Object.entries(this.topicCategories).map(([key, value]) => {
-            const count = categoryCounts[key] || 0;
-            return `
-                <button class="category-item" onclick="window.blogInstance.selectTopic('${key}')">
-                    <span class="category-name">${value}</span>
-                    <span class="category-count">${count}</span>
-                </button>
-            `;
-        }).join('');
-        
-        categoriesWidget.innerHTML = categoriesHTML;
+        try {
+            // Count posts by category
+            const categoryCounts = {};
+            this.allPosts.forEach(post => {
+                const category = post.topicCategory;
+                categoryCounts[category] = (categoryCounts[category] || 0) + 1;
+            });
+            
+            const categoriesHTML = Object.entries(this.topicCategories).map(([key, value]) => {
+                const count = categoryCounts[key] || 0;
+                const escapedKey = key.replace(/'/g, "\\'");
+                return `
+                    <button class="category-item" onclick="window.blogInstance.selectTopic('${escapedKey}')">
+                        <span class="category-name">${value}</span>
+                        <span class="category-count">${count}</span>
+                    </button>
+                `;
+            }).join('');
+            
+            categoriesWidget.innerHTML = categoriesHTML;
+        } catch (error) {
+            console.error('Error populating categories widget:', error);
+            categoriesWidget.innerHTML = '<p>Unable to load categories</p>';
+        }
     }
     
     populateRecentPostsWidget() {
