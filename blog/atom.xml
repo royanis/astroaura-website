@@ -1,26 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-<title>AstroAura Cosmic Insights Blog</title>
-<subtitle>AI-powered astrology insights with trending topics and cosmic wisdom from the world's first multilingual astrology app.</subtitle>
-<link href="https://astroaura.me/blog" rel="alternate" type="text/html" />
-<link href="https://astroaura.me/blog/atom.xml" rel="self" type="application/atom+xml" />
-<id>https://astroaura.me/blog</id>
-<updated>2025-08-08T05:47:47.480859+00:00</updated>
-<author><name>AstroAura AI Cosmic Team</name><email>cosmic@astroaura.me</email></author>
-<generator version="2.0">AstroAura Enhanced Blog System</generator>
-<entry>
-<title>The Universe's Take on Digital Detox Challenge: Astrological Insights for Modern Life</title>
-<link href="https://astroaura.me/blog/posts/the-universes-take-on-digital-detox-challenge-astr.html" rel="alternate" type="text/html" />
-<id>https://astroaura.me/blog/posts/the-universes-take-on-digital-detox-challenge-astr.html</id>
-<published>2025-08-08T05:46:47.440437+00:00</published>
-<updated>2025-08-08T05:46:47.440437+00:00</updated>
-<summary type="text">Explore digital detox challenge with authentic astrological guidance for August 08, 2025. Discover today's Waxing Crescent energy in Leo season with AstroAura's personalized cosmic insights and practical spiritual wisdom.</summary>
-<author><name>AstroAura AI Cosmic Team</name></author>
-<category term="digital" label="Digital" />
-<category term="detox" label="Detox" />
-<category term="mercury" label="Mercury" />
-<category term="retrograde" label="Retrograde" />
-<category term="wellness" label="Wellness" />
-<category term="trending-topics" label="Trending Topics" />
-</entry>
-</feed>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>AstroAura Cosmic Insights Blog</title><subtitle>AI-powered astrology insights, cosmic weather updates, and spiritual guidance from the world's first multilingual astrology app.</subtitle><link href="https://astroaura.me/blog" rel="alternate" type="text/html" /><link href="https://astroaura.me/blog/atom.xml" rel="self" type="application/atom+xml" /><id>https://astroaura.me/blog</id><updated>2025-08-08T13:20:09.344720Z</updated><author><name>AstroAura AI Cosmic Team</name><email>cosmic@astroaura.me</email></author><generator version="1.0">AstroAura Blog Automation System</generator><entry><title>Daily Horoscope Deep Dive: Leo Season Insights in Leo Season - Cosmic Insights and Guidance</title><link href="https://astroaura.me/blog/posts/daily-horoscope-deep-dive-leo-season-insights-in-l.html" rel="alternate" type="text/html" /><id>https://astroaura.me/blog/posts/daily-horoscope-deep-dive-leo-season-insights-in-l.html</id><published>2025-08-08T13:20:09.137899Z</published><updated>2025-08-08T13:20:09.137899Z</updated><summary type="text">##  Roar into Clarity: Navigating Leo Season's Intensity with Mercury Retrograde  Feeling a little… *off*?  Like you're trying to navigate a crowded roo...</summary><author><name>AstroAura AI Cosmic Team</name></author><category term="leo" label="Leo" /><category term="waxing-gibbous" label="Waxing-Gibbous" /></entry><entry><title>The Universe's Take on Digital Detox Challenge: Astrological Insights for Modern Life</title><link href="https://astroaura.me/blog/posts/the-universes-take-on-digital-detox-challenge-astr.html" rel="alternate" type="text/html" /><id>https://astroaura.me/blog/posts/the-universes-take-on-digital-detox-challenge-astr.html</id><published>2025-08-08T05:46:47.440437+00:00Z</published><updated>2025-08-08T05:46:47.440437+00:00Z</updated><summary type="text">Explore digital detox challenge with authentic astrological guidance for August 08, 2025. Discover today's Waxing Crescent energy in Leo season with AstroAura's personalized cosmic insights and practical spiritual wisdom.</summary><author><name>AstroAura AI Cosmic Team</name></author><category term="digital" label="Digital" /><category term="detox" label="Detox" /><category term="mercury" label="Mercury" /><category term="retrograde" label="Retrograde" /><category term="wellness" label="Wellness" /></entry></feed>
