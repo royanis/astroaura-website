@@ -35,13 +35,28 @@ jobs:
           cd automation
           python enhanced_blog_generator.py --generate
 
+      - name: Register new blog posts
+        run: |
+          cd blog
+          chmod +x generate_blog_post.py
+          python3 generate_blog_post.py sync
+          echo "✅ Blog posts registered and synchronized"
+
       - name: Commit changes
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add blog/posts/*.html blog/posts_index.json blog/atom.xml blog/feed.json || true
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add blog/posts/*.html blog/posts_index.json blog/atom.xml blog/feed.json sitemap.xml blog/rss.xml || true
           if ! git diff --cached --quiet; then
-            git commit -m "chore(blog): auto-generate enriched posts via Actions"
+            git commit -m "🌟 Automated blog post: $(date '+%Y-%m-%d %H:%M UTC')
+
+Generated enriched posts via Actions
+Updated posts index and feeds automatically
+Synchronized sitemap and RSS feed
+
+🤖 Generated with [Claude Code](https://claude.ai/code)
+
+Co-Authored-By: Claude <noreply@anthropic.com>"
           fi
 
       - name: Push changes

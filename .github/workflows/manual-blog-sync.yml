@@ -1,0 +1,163 @@
+name: Manual Blog Sync and Maintenance
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Action to perform'
+        required: true
+        default: 'sync'
+        type: choice
+        options:
+          - sync
+          - validate
+          - reset
+          - status
+      force_reset:
+        description: 'Force reset (dangerous - will clear all posts)'
+        required: false
+        default: 'false'
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  blog-maintenance:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Configure git
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+    
+    - name: Execute requested action
+      run: |
+        cd blog
+        chmod +x generate_blog_post.py
+        
+        case "${{ github.event.inputs.action }}" in
+          "sync")
+            echo "🔄 Syncing all blog posts..."
+            python3 generate_blog_post.py sync
+            ;;
+          "validate")
+            echo "🔍 Validating blog system..."
+            # Validation logic
+            if python3 -c "import json; json.load(open('posts_index.json'))" 2>/dev/null; then
+              echo "✅ posts_index.json is valid"
+            else
+              echo "❌ posts_index.json is invalid"
+              exit 1
+            fi
+            
+            POST_COUNT=$(find posts -name "*.html" -type f | wc -l | tr -d ' ')
+            INDEXED_COUNT=$(python3 -c "import json; data=json.load(open('posts_index.json')); print(len(data.get('posts', [])))" 2>/dev/null || echo "0")
+            echo "📊 Posts: $POST_COUNT files, $INDEXED_COUNT indexed"
+            
+            if [ "$POST_COUNT" -eq "$INDEXED_COUNT" ]; then
+              echo "✅ Blog system is synchronized"
+            else
+              echo "⚠️ Blog system needs synchronization"
+              exit 1
+            fi
+            ;;
+          "reset")
+            if [ "${{ github.event.inputs.force_reset }}" = "true" ]; then
+              echo "🗑️ Resetting blog system (DESTRUCTIVE)..."
+              rm -f posts/*.html
+              echo '{"posts": [], "metadata": {"last_updated": "'$(date -u +%Y-%m-%dT%H:%M:%SZ)'", "total_posts": 0, "version": "2.0"}}' > posts_index.json
+              echo "✅ Blog system reset complete"
+            else
+              echo "❌ Reset requires force_reset=true for safety"
+              exit 1
+            fi
+            ;;
+          "status")
+            echo "📊 Blog System Status Report"
+            echo "=========================="
+            
+            POST_COUNT=$(find posts -name "*.html" -type f | wc -l | tr -d ' ')
+            echo "HTML Files: $POST_COUNT"
+            
+            if [ -f posts_index.json ]; then
+              INDEXED_COUNT=$(python3 -c "import json; data=json.load(open('posts_index.json')); print(len(data.get('posts', [])))" 2>/dev/null || echo "0")
+              LAST_UPDATED=$(python3 -c "import json; data=json.load(open('posts_index.json')); print(data.get('metadata', {}).get('last_updated', 'Unknown'))" 2>/dev/null || echo "Unknown")
+              echo "Indexed Posts: $INDEXED_COUNT"
+              echo "Last Updated: $LAST_UPDATED"
+            else
+              echo "❌ posts_index.json not found"
+            fi
+            
+            if grep -q "blog/posts" ../sitemap.xml; then
+              SITEMAP_COUNT=$(grep -c "blog/posts" ../sitemap.xml)
+              echo "Sitemap Entries: $SITEMAP_COUNT"
+            else
+              echo "Sitemap Entries: 0"
+            fi
+            
+            if grep -q "<item>" rss.xml; then
+              RSS_COUNT=$(grep -c "<item>" rss.xml)
+              echo "RSS Items: $RSS_COUNT"
+            else
+              echo "RSS Items: 0"
+            fi
+            
+            echo "=========================="
+            if [ "$POST_COUNT" -eq "$INDEXED_COUNT" ]; then
+              echo "Status: ✅ Synchronized"
+            else
+              echo "Status: ⚠️ Needs Sync"
+            fi
+            ;;
+        esac
+    
+    - name: Commit changes (if any)
+      if: github.event.inputs.action != 'status' && github.event.inputs.action != 'validate'
+      run: |
+        if git diff --quiet && git diff --cached --quiet; then
+          echo "📝 No changes to commit"
+        else
+          git add blog/posts_index.json sitemap.xml blog/rss.xml blog/posts/ || true
+          
+          ACTION="${{ github.event.inputs.action }}"
+          COMMIT_MSG="blog: manual $ACTION operation completed"$'\n\n'
+          COMMIT_MSG="${COMMIT_MSG}Action: $ACTION"$'\n'
+          COMMIT_MSG="${COMMIT_MSG}Triggered: manually via GitHub Actions"$'\n'
+          COMMIT_MSG="${COMMIT_MSG}Timestamp: $(date -u +%Y-%m-%dT%H:%M:%SZ)"$'\n\n'
+          COMMIT_MSG="${COMMIT_MSG}🤖 Generated with [Claude Code](https://claude.ai/code)"$'\n\n'
+          COMMIT_MSG="${COMMIT_MSG}Co-Authored-By: Claude <noreply@anthropic.com>"
+          
+          git commit -m "$COMMIT_MSG"
+          git push origin main
+          
+          echo "✅ Changes committed and pushed"
+        fi
+    
+    - name: Final summary
+      run: |
+        echo "🎉 Manual Blog Maintenance Complete!"
+        echo ""
+        echo "Action performed: ${{ github.event.inputs.action }}"
+        
+        if [ "${{ github.event.inputs.action }}" != "reset" ]; then
+          cd blog
+          POST_COUNT=$(find posts -name "*.html" -type f | wc -l | tr -d ' ')
+          INDEXED_COUNT=$(python3 -c "import json; data=json.load(open('posts_index.json')); print(len(data.get('posts', [])))" 2>/dev/null || echo "0")
+          echo "Current status: $POST_COUNT files, $INDEXED_COUNT indexed"
+        fi
+        
+        echo ""
+        echo "✅ Blog system maintenance completed successfully!"

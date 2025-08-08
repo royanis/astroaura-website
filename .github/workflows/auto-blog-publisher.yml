@@ -83,12 +83,20 @@ jobs:
         cd automation
         python authentic_blog_generator.py --topic "$TOPIC"
     
-    - name: Update sitemap and feeds
+    - name: Register and sync blog posts
+      if: steps.check_publish.outputs.should_publish == 'True'
+      run: |
+        cd blog
+        chmod +x generate_blog_post.py
+        python3 generate_blog_post.py sync
+        echo "✅ Blog posts registered with new system"
+        
+    - name: Update sitemap and feeds (legacy)
       if: steps.check_publish.outputs.should_publish == 'True'
       run: |
         cd automation
-        python update_sitemap.py
-        python rss_generator.py
+        python update_sitemap.py || echo "Legacy sitemap update failed, using new system"
+        python rss_generator.py || echo "Legacy RSS update failed, using new system"
     
     - name: Commit and push changes
       if: steps.check_publish.outputs.should_publish == 'True'
