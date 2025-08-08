@@ -165,6 +165,7 @@ class EnhancedBlogGenerator:
             
         html_content += f'''</div>
                 
+                <!-- NOTE: trending-alert overlay was removed 2025-08-08 due to readability issues -->
                 <!-- Current Cosmic Data Display -->
                 <div class="cosmic-data-bar">
                     <div class="cosmic-item">
