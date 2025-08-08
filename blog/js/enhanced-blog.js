@@ -96,7 +96,7 @@ class EnhancedAstroAuraBlog {
             <article class="featured-post-card">
                 <div class="featured-post-header">
                     <div class="featured-badge">${categoryEmoji} Featured</div>
-                    ${post.trending_topic ? '<div class="trending-badge"><i class="fas fa-fire"></i> Trending</div>' : ''}
+
                 </div>
                 <h3 class="featured-post-title">
                     <a href="posts/${post.slug}.html">${post.title}</a>

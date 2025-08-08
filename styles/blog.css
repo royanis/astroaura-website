@@ -13,6 +13,8 @@
     --transition: all 0.3s ease;
     --border-radius: 12px;
     --max-width: 1200px;
+    /* Keep hero text visible below fixed header */
+    --header-height: 80px;
 }
 
 /* Base Styles */
@@ -30,7 +32,8 @@ body {
     background: linear-gradient(135deg, var(--deep-space) 0%, var(--cosmic-purple) 100%);
     min-height: 100vh;
     position: relative;
-    padding-top: 0; /* Ensure no extra padding conflicts with margin-top */
+    /* Offset for fixed header so first section isn't hidden */
+    padding-top: var(--header-height);
 }
 
 /* Starfield Background */
@@ -208,6 +211,14 @@ header {
     text-align: center;
     padding: 3rem 2rem 2rem 2rem;
     border-bottom: 1px solid rgba(240, 199, 94, 0.1);
+}
+
+/* Page header (first section on blog index) */
+.page-header {
+    padding: 20px 0 10px;
+}
+.page-title {
+    margin: 0 0 0.5rem 0;
 }
 
 .blog-simple-header .blog-title {
@@ -1652,17 +1663,7 @@ header {
     margin: 0 auto;
 }
 
-.post-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 20% 80%, rgba(58, 43, 113, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(30, 58, 138, 0.2) 0%, transparent 50%);
-    z-index: -1;
-}
+
 
 /* Breadcrumbs */
 .breadcrumbs {
@@ -2022,6 +2023,113 @@ header {
     font-size: 0.95rem;
 }
 
+/* ===== Footer styles to match main index.html footer ===== */
+footer {
+    background: var(--deep-space);
+    color: var(--starlight);
+    padding: 80px 0 30px;
+    border-top: 1px solid rgba(240, 199, 94, 0.2);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 60px;
+    margin-bottom: 60px;
+}
+
+.footer-logo {
+    font-family: 'Georgia', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--cosmic-gold);
+    display: flex;
+    align-items: center;
+    text-shadow: 0 0 20px rgba(240, 199, 94, 0.5);
+}
+
+.footer-logo img {
+    height: 40px;
+    margin-right: 12px;
+}
+
+.footer-desc {
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+}
+
+.footer-title {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: var(--cosmic-gold);
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: var(--cosmic-gold);
+    text-shadow: 0 0 10px rgba(240, 199, 94, 0.5);
+    padding-left: 5px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.social-link {
+    width: 50px;
+    height: 50px;
+    background: rgba(240, 199, 94, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    color: var(--starlight);
+    border: 1px solid rgba(240, 199, 94, 0.3);
+}
+
+.social-link:hover {
+    background: var(--cosmic-gold);
+    color: var(--deep-space);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(240, 199, 94, 0.4);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 40px;
+    border-top: 1px solid rgba(240, 199, 94, 0.2);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+}
+
+.cosmic-heart {
+    color: var(--cosmic-gold);
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
     .container {
@@ -2034,6 +2142,7 @@ header {
 }
 
 @media (max-width: 1024px) {
+    :root { --header-height: 72px; }
     .blog-main-content {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -2065,6 +2174,7 @@ header {
 }
 
 @media (max-width: 768px) {
+    :root { --header-height: 64px; }
     .container {
         padding: 0 16px;
     }
@@ -2144,6 +2254,7 @@ header {
 }
 
 @media (max-width: 480px) {
+    :root { --header-height: 56px; }
     .container {
         padding: 0 12px;
     }
@@ -2349,23 +2460,7 @@ header {
   margin: 0.4rem 0;
 }
 
-/* Hero visual image */
-.post-header .post-hero-visual img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 16px;
-  border: 1px solid rgba(240,199,94,0.2);
-}
 
-/* Badge and meta spacing */
-.trending-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--cosmic-gold);
-  margin-bottom: 0.75rem;
-}
 
 .post-meta {
   gap: 1.25rem;
@@ -2466,15 +2561,7 @@ header {
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.trending-badge {
-    background: rgba(255, 107, 157, 0.2);
-    color: var(--nebula-pink);
-    padding: 0.3rem 0.8rem;
-    border-radius: 15px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    border: 1px solid rgba(255, 107, 157, 0.3);
-}
+
 
 .featured-post-title {
     font-family: 'Georgia', serif;

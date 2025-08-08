@@ -28,8 +28,12 @@ class BlogPostGenerator:
     
     def save_posts_index(self, index_data: Dict):
         """Save the updated posts index"""
-        index_data["metadata"]["last_updated"] = datetime.datetime.utcnow().isoformat() + "Z"
-        index_data["metadata"]["total_posts"] = len(index_data["posts"])
+        # Ensure structure exists even if older files lack metadata
+        index_data.setdefault("posts", [])
+        metadata = index_data.setdefault("metadata", {})
+        metadata.setdefault("version", "2.0")
+        metadata["last_updated"] = datetime.datetime.utcnow().isoformat() + "Z"
+        metadata["total_posts"] = len(index_data["posts"])
         
         with open(self.posts_index_file, 'w', encoding='utf-8') as f:
             json.dump(index_data, f, indent=2, ensure_ascii=False)

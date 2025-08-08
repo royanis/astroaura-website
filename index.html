@@ -214,6 +214,8 @@
             --transition: all 0.3s ease;
             --border-radius: 12px;
             --max-width: 1200px;
+            /* New: header height to ensure hero isn’t hidden under fixed header */
+            --header-height: 80px;
         }
         
         /* Base Styles */
@@ -231,6 +233,8 @@
             background: linear-gradient(135deg, var(--deep-space) 0%, var(--cosmic-purple) 100%);
             min-height: 100vh;
             position: relative;
+            /* Offset entire page for fixed header so content never hides under it */
+            padding-top: var(--header-height);
         }
         
         /* Starfield Background */
@@ -437,7 +441,8 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            padding-top: 100px;
+            /* Additional breathing room on top of the global body offset */
+            padding-top: 20px;
         }
         
         .hero::before {
@@ -466,7 +471,8 @@
         }
         
         .hero-title {
-            margin-top: 120px;
+            /* Avoid getting hidden under header */
+            margin-top: 0;
             margin-bottom: 2rem;
             color: var(--starlight);
             text-shadow: 0 0 30px rgba(240, 199, 94, 0.6);
@@ -1225,9 +1231,8 @@
         
         /* Mobile devices */
         @media (max-width: 768px) {
-            .hero {
-                padding-top: 80px;
-            }
+            :root { --header-height: 64px; }
+            .hero { padding-top: calc(var(--header-height) + 10px); }
             
             .container {
                 padding: 0 16px;
@@ -1274,7 +1279,7 @@
             .hero-title {
                 font-size: clamp(2rem, 6vw, 2.8rem);
                 line-height: 1.1;
-                margin-top: 100px;
+                margin-top: 0;
                 margin-bottom: 1.5rem;
             }
             
@@ -1322,9 +1327,8 @@
         
         /* Small mobile devices */
         @media (max-width: 480px) {
-            .hero {
-                padding-top: 70px;
-            }
+            :root { --header-height: 56px; }
+            .hero { padding-top: calc(var(--header-height) + 8px); }
             
             .container {
                 padding: 0 12px;
@@ -1336,7 +1340,7 @@
             
             .hero-title {
                 font-size: clamp(1.8rem, 7vw, 2.5rem);
-                margin-top: 80px;
+                margin-top: 0;
                 margin-bottom: 1rem;
             }
             
