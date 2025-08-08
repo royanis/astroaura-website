@@ -1,7 +1,7 @@
 {
   "version": "https://jsonfeed.org/version/1.1",
   "title": "AstroAura Cosmic Insights Blog",
-  "description": "AI-powered astrology insights, cosmic weather updates, and spiritual guidance from the world's first multilingual astrology app.",
+  "description": "AI-powered astrology insights with trending topics and cosmic wisdom from the world's first multilingual astrology app.",
   "home_page_url": "https://astroaura.me/blog",
   "feed_url": "https://astroaura.me/blog/feed.json",
   "language": "en-US",
@@ -13,40 +13,23 @@
   ],
   "items": [
     {
-      "id": "https://astroaura.me/blog/posts/daily-horoscope-deep-dive-leo-season-insights-in-l.html",
-      "url": "https://astroaura.me/blog/posts/daily-horoscope-deep-dive-leo-season-insights-in-l.html",
-      "title": "Daily Horoscope Deep Dive: Leo Season Insights in Leo Season - Cosmic Insights and Guidance",
-      "summary": "##  Roar into Clarity: Navigating Leo Season's Intensity with Mercury Retrograde  Feeling a little… *off*?  Like you're trying to navigate a crowded roo...",
-      "date_published": "2025-08-08T13:20:09.137899Z",
-      "date_modified": "2025-08-08T13:20:09.137899Z",
+      "id": "https://astroaura.me/blog/posts/how-moon-cycles-and-emotional-balance-can-transfor.html",
+      "url": "https://astroaura.me/blog/posts/how-moon-cycles-and-emotional-balance-can-transfor.html",
+      "title": "How Moon cycles and emotional balance Can Transform Your Wellness Journey",
+      "summary": "##  Navigating the Inner Cosmos: Mindfulness, Mental Health, and the Wisdom of the Stars (August 8th, 2025)  Are you feeling overwhelmed?  Like the rele...",
+      "date_published": "2025-08-08T13:21:34.564815+00:00",
+      "date_modified": "2025-08-08T13:21:34.564815+00:00",
       "authors": [
         {
           "name": "AstroAura AI Cosmic Team"
         }
       ],
       "tags": [
-        "leo",
-        "waxing-gibbous"
-      ]
-    },
-    {
-      "id": "https://astroaura.me/blog/posts/the-universes-take-on-digital-detox-challenge-astr.html",
-      "url": "https://astroaura.me/blog/posts/the-universes-take-on-digital-detox-challenge-astr.html",
-      "title": "The Universe's Take on Digital Detox Challenge: Astrological Insights for Modern Life",
-      "summary": "Explore digital detox challenge with authentic astrological guidance for August 08, 2025. Discover today's Waxing Crescent energy in Leo season with AstroAura's personalized cosmic insights and practical spiritual wisdom.",
-      "date_published": "2025-08-08T05:46:47.440437+00:00Z",
-      "date_modified": "2025-08-08T05:46:47.440437+00:00Z",
-      "authors": [
-        {
-          "name": "AstroAura AI Cosmic Team"
-        }
-      ],
-      "tags": [
-        "digital",
-        "detox",
-        "mercury",
-        "retrograde",
-        "wellness"
+        "moon-phases",
+        "mental-health",
+        "mindfulness",
+        "wellness",
+        "trending-topics"
       ]
     }
   ]
