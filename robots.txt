@@ -1,0 +1,32 @@
+# AstroAura Website Robots.txt
+# Optimized for search engines and AI crawlers
+
+User-agent: *
+Allow: /
+
+# Allow AI crawlers and search bots
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Disallow sensitive areas
+Disallow: /automation/
+Disallow: /.github/
+Disallow: /backup/
+
+# Sitemap location
+Sitemap: https://astroaura.me/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1

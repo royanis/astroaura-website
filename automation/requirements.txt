@@ -1,0 +1,9 @@
+# Dependencies for fully automated blog system
+pytrends>=4.9.2
+schedule>=1.2.0
+requests>=2.31.0
+python-dateutil>=2.8.2
+
+# Optional: For enhanced trend analysis
+google-api-python-client>=2.100.0
+google-auth>=2.22.0

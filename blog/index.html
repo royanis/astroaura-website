@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="🌟 Explore AstroAura's cosmic insights blog with authentic astrological wisdom, trending spiritual topics, and AI-powered cosmic guidance. Daily horoscopes, planetary transits, and celestial wisdom. ⭐">
+    <title>🌟 Cosmic Insights Blog | AstroAura's Astrological Wisdom & Spiritual Guidance</title>
+    
+    <!-- Canonical Tag -->
+    <link rel="canonical" href="https://astroaura.me/blog/">
+    
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Georgia:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/blog.css">
+    
+    <!-- Facebook Open Graph Tags -->
+    <meta property="og:title" content="🌟 Cosmic Insights Blog - AstroAura's Astrological Wisdom">
+    <meta property="og:description" content="Explore authentic astrological wisdom, trending spiritual topics, and AI-powered cosmic guidance. Daily horoscopes, planetary transits, and celestial insights.">
+    <meta property="og:image" content="https://astroaura.me/assets/images/backgrounds/cosmic_background.png">
+    <meta property="og:url" content="https://astroaura.me/blog/">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="🌟 Cosmic Insights Blog - AstroAura's Astrological Wisdom">
+    <meta name="twitter:description" content="Explore authentic astrological wisdom, trending spiritual topics, and AI-powered cosmic guidance. Daily horoscopes, planetary transits, and celestial insights.">
+    <meta name="twitter:image" content="https://astroaura.me/assets/images/backgrounds/cosmic_background.png">
+    
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "AstroAura Cosmic Insights Blog",
+      "description": "Authentic astrological wisdom, cosmic insights, and spiritual guidance powered by AI",
+      "url": "https://astroaura.me/blog/",
+      "publisher": {
+        "@type": "Organization",
+        "name": "AstroAura",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://astroaura.me/assets/icons/app_icon.png"
+        }
+      }
+    }
+    </script>
+</head>
+<body>
+    <!-- Starfield Background -->
+    <div class="starfield" id="starfield"></div>
+    
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">
+                <img src="../assets/icons/app_icon.png" alt="AstroAura - AI-powered multilingual astrology app logo with cosmic design elements" width="40" height="40">
+                AstroAura
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../features.html">Features</a></li>
+                    <li><a href="index.html" class="active">Blog</a></li>
+                    <li><a href="../cosmic-insights.html">Cosmic Insights</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../privacy.html">Privacy</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container header-content">
+            <h1 class="page-title floating">🌟 Cosmic Insights</h1>
+            <p class="page-subtitle">Authentic astrology and cosmic wisdom powered by AI. Discover trending spiritual topics, planetary influences, and celestial guidance for your journey.</p>
+            
+            <!-- Search -->
+            <div class="search-container" style="max-width: 700px; margin: 1rem auto 0;">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input id="blog-search" type="text" placeholder="Search cosmic topics, e.g., Mercury retrograde, Moon phases, compatibility..." aria-label="Search blog">
+                    <button id="search-clear" class="search-clear" title="Clear search" style="display:none;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Trending Topic Pills -->
+            <div class="topic-tags" style="justify-content:center; margin-top: 1rem;">
+                <button class="topic-pill" data-topic="mercury-retrograde">☿ Mercury Retrograde</button>
+                <button class="topic-pill" data-topic="moon-phases">🌙 Moon Phases</button>
+                <button class="topic-pill" data-topic="zodiac-signs">♈ Zodiac Signs</button>
+                <button class="topic-pill" data-topic="planetary-transits">🪐 Planetary Transits</button>
+                <button class="topic-pill" data-topic="spiritual-growth">✨ Spiritual Growth</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Blog Navigation Tabs -->
+    <div class="blog-nav-tabs">
+        <button class="nav-tab active" data-tab="for-you">For you</button>
+        <button class="nav-tab" data-tab="following">Following</button>
+        <button class="nav-tab" data-tab="featured">Featured</button>
+    </div>
+    
+    <!-- Blog Content -->
+    <section class="blog-content">
+        <div class="blog-main-content">
+            <div class="articles-feed" id="articles-feed">
+                <!-- Articles will be loaded here by JavaScript -->
+                <div class="no-posts-message">
+                    <h3>🌙 Cosmic Content Loading...</h3>
+                    <p>Our AI-powered astrological insights are manifesting from the cosmic realm. Please wait while we align the stars with your spiritual journey.</p>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="blog-sidebar">
+                <div class="widget">
+                    <h3>Categories</h3>
+                    <div id="categories-widget" class="categories-grid"></div>
+                </div>
+                <div class="widget">
+                    <h3>Archives</h3>
+                    <div id="date-archive"></div>
+                </div>
+                <div class="widget">
+                    <h3>Recent Posts</h3>
+                    <div id="recent-posts-widget"></div>
+                </div>
+                <div class="widget">
+                    <h3>Staff Picks</h3>
+                    <div id="staff-picks"></div>
+                </div>
+                <div class="widget app-promo">
+                    <img src="../assets/icons/app_icon.png" alt="AstroAura App" width="48" height="48" class="app-icon">
+                    <p class="app-description">Get daily cosmic insights, birth chart readings, and AI-guided spiritual wisdom in the AstroAura app.</p>
+                    <div class="download-buttons">
+                        <a class="btn-download ios" href="#"><i class="fab fa-apple"></i> App Store</a>
+                        <a class="btn-download android" href="#"><i class="fab fa-google-play"></i> Google Play</a>
+                    </div>
+                </div>
+                <div class="widget">
+                    <h3>Newsletter</h3>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <input id="newsletter-email" type="email" placeholder="Your email address" required>
+                        <button type="submit">Subscribe</button>
+                        <div id="newsletter-success" class="newsletter-success" style="display:none;">
+                            <i class="fas fa-sparkles"></i>
+                            Subscribed! Check your inbox for cosmic updates.
+                        </div>
+                    </form>
+                </div>
+            </aside>
+        </div>
+        
+        <!-- Load More -->
+        <div style="text-align:center; margin-top: 1rem;">
+            <button id="load-more-btn" class="btn" style="display:none;">Load more</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <img src="../assets/icons/app_icon.png" alt="AstroAura - AI-powered multilingual astrology app logo with cosmic design elements" width="40" height="40">
+                        AstroAura
+                    </div>
+                    <p class="footer-desc">Your cosmic companion for astrology insights, spiritual guidance, and celestial wisdom. Discover your place in the universe with AI-powered cosmic intelligence.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Cosmic Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../features.html">Features</a></li>
+                        <li><a href="index.html">Blog</a></li>
+                        <li><a href="../cosmic-insights.html">Cosmic Insights</a></li>
+                        <li><a href="../about.html">About</a></li>
+                        <li><a href="../privacy.html">Privacy</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Cosmic Blog Topics</h3>
+                    <ul class="footer-links">
+                        <li><a href="#mercury-retrograde">Mercury Retrograde</a></li>
+                        <li><a href="#moon-phases">Moon Phases</a></li>
+                        <li><a href="#zodiac-signs">Zodiac Signs</a></li>
+                        <li><a href="#planetary-transits">Planetary Transits</a></li>
+                        <li><a href="#spiritual-growth">Spiritual Growth</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>Crafted with <span class="cosmic-heart">✨</span> for cosmic souls seeking celestial wisdom. © 2025 AstroAura. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Starfield generation
+        function createStarfield() {
+            const starfield = document.getElementById('starfield');
+            const starCount = 100;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = star.style.height = Math.random() * 3 + 1 + 'px';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starfield.appendChild(star);
+            }
+        }
+
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            createStarfield();
+            
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    const isActive = navLinks.classList.contains('active');
+                    navLinks.classList.toggle('active');
+                    
+                    // Update ARIA expanded state
+                    mobileMenuBtn.setAttribute('aria-expanded', !isActive);
+                    
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (!isActive) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+            
+            // Blog tab functionality
+            const navTabs = document.querySelectorAll('.nav-tab');
+            navTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    navTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                });
+            });
+            
+            // Newsletter form handling
+            const newsletterForm = document.getElementById('newsletter-form');
+            const newsletterSuccess = document.getElementById('newsletter-success');
+            if (newsletterForm && newsletterSuccess) {
+                newsletterForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const emailInput = document.getElementById('newsletter-email');
+                    
+                    if (emailInput && emailInput.value) {
+                        // Simple validation
+                        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (emailPattern.test(emailInput.value)) {
+                            newsletterSuccess.style.display = 'block';
+                            emailInput.value = '';
+                            setTimeout(() => {
+                                newsletterSuccess.style.display = 'none';
+                            }, 5000);
+                        } else {
+                            alert('Please enter a valid email address.');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="js/enhanced-blog.js"></script>
+</body>
+</html>
