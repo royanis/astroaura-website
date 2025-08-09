@@ -137,55 +137,7 @@ class EnhancedBlogGenerator:
                 <span>{post_data['title'][:50]}...</span>
             </nav>
             
-            <!-- Post Header -->
-            <header class="post-header">
-                <div class="post-hero-visual" style="display:flex;justify-content:center;margin-bottom:1.5rem;">
-                    <img src="{og_image}" alt="Topic visual" style="max-width:100%;height:auto;border-radius:16px;border:1px solid rgba(240,199,94,0.2);box-shadow:0 15px 40px rgba(240,199,94,0.15)"/>
-                </div>
-                <div class="trending-badge">
-                    <i class="fas fa-fire"></i> Trending Topic
-                </div>
-                <h1 class="post-title">{post_data['title']}</h1>
-                <div class="post-meta">
-                    <span class="post-author">
-                        <i class="fas fa-user"></i> {post_data['author']}
-                    </span>
-                    <time class="post-date" datetime="{post_data['date']}">
-                        <i class="fas fa-calendar"></i> {datetime.fromisoformat(post_data['date'].replace('Z', '+00:00')).strftime('%B %d, %Y')}
-                    </time>
-                    <span class="post-reading-time">
-                        <i class="fas fa-clock"></i> 6 min read
-                    </span>
-                </div>
-                <div class="post-tags">'''
-        
-        # Add tags
-        for keyword in post_data['keywords']:
-            html_content += f'<span class="tag">#{keyword.replace("-", "")}</span> '
-            
-        html_content += f'''</div>
-                
-                <!-- Current Cosmic Data Display -->
-                <div class="cosmic-data-bar">
-                    <div class="cosmic-item">
-                        <i class="fas fa-sun"></i>
-                        <span>Sun in {post_data['astronomical_data']['sun_sign']}</span>
-                    </div>
-                    <div class="cosmic-item">
-                        <i class="fas fa-moon"></i>
-                        <span>{post_data['astronomical_data']['moon_phase']}</span>
-                    </div>'''
-        
-        if post_data['astronomical_data'].get('mercury_retrograde'):
-            html_content += '''
-                    <div class="cosmic-item mercury-rx">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <span>Mercury Retrograde</span>
-                    </div>'''
-            
-        html_content += '''
-                </div>
-            </header>
+
             
             <!-- Post Content -->
             <div class="post-content">
