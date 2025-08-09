@@ -1,9 +1,35 @@
 {
   "posts": [
     {
+      "title": "Planetary Aspects This Week: Understanding square Energy: Your Complete Guide for August 2025",
+      "slug": "planetary-aspects-this-week-understanding-square-e",
+      "date": "2025-08-09T01:58:14.171919",
+      "meta_description": "## Feeling the Friction? Navigating the Square Energy of This Week's Full Moon  Feeling a little… tense? Like you’re constantly hitting roadblocks, even...",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "leo",
+        "full-moon",
+        "cosmic-insights",
+        "spiritual-guidance",
+        "astroaura",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "astronomical_data": {
+        "date": "2025-08-09",
+        "moon_phase": "Full Moon",
+        "sun_sign": "Leo",
+        "season": "Summer",
+        "mercury_retrograde": true
+      },
+      "ai_generated": true
+    },
+    {
       "title": "Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health",
       "slug": "why-moon-cycles-and-emotional-balance-is-the-key-t",
-      "date": "2025-08-08T21:25:18.538733+00:00",
+      "date": "2025-08-09T01:58:14.249678+00:00",
       "meta_description": "## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...",
       "keywords": [
         "moon-phases",
@@ -59,7 +85,7 @@
   ],
   "metadata": {
     "version": "2.0",
-    "last_updated": "2025-08-08T21:57:09.968282Z",
-    "total_posts": 1
+    "last_updated": "2025-08-09T01:58:14.249784Z",
+    "total_posts": 2
   }
 }

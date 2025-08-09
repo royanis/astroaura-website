@@ -1,25 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-<title>AstroAura Cosmic Insights Blog</title>
-<subtitle>AI-powered astrology insights with trending topics and cosmic wisdom from the world's first multilingual astrology app.</subtitle>
-<link href="https://astroaura.me/blog" rel="alternate" type="text/html" />
-<link href="https://astroaura.me/blog/atom.xml" rel="self" type="application/atom+xml" />
-<id>https://astroaura.me/blog</id>
-<updated>2025-08-08T21:25:24.972474+00:00</updated>
-<author><name>AstroAura AI Cosmic Team</name><email>cosmic@astroaura.me</email></author>
-<generator version="2.0">AstroAura Enhanced Blog System</generator>
-<entry>
-<title>Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health</title>
-<link href="https://astroaura.me/blog/posts/why-moon-cycles-and-emotional-balance-is-the-key-t.html" rel="alternate" type="text/html" />
-<id>https://astroaura.me/blog/posts/why-moon-cycles-and-emotional-balance-is-the-key-t.html</id>
-<published>2025-08-08T21:25:18.538733+00:00</published>
-<updated>2025-08-08T21:25:18.538733+00:00</updated>
-<summary type="text">## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...</summary>
-<author><name>AstroAura AI Cosmic Team</name></author>
-<category term="moon-phases" label="Moon Phases" />
-<category term="mental-health" label="Mental Health" />
-<category term="mindfulness" label="Mindfulness" />
-<category term="wellness" label="Wellness" />
-<category term="trending-topics" label="Trending Topics" />
-</entry>
-</feed>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>AstroAura Cosmic Insights Blog</title><subtitle>AI-powered astrology insights, cosmic weather updates, and spiritual guidance from the world's first multilingual astrology app.</subtitle><link href="https://astroaura.me/blog" rel="alternate" type="text/html" /><link href="https://astroaura.me/blog/atom.xml" rel="self" type="application/atom+xml" /><id>https://astroaura.me/blog</id><updated>2025-08-09T01:58:14.470783Z</updated><author><name>AstroAura AI Cosmic Team</name><email>cosmic@astroaura.me</email></author><generator version="1.0">AstroAura Blog Automation System</generator><entry><title>Planetary Aspects This Week: Understanding square Energy: Your Complete Guide for August 2025</title><link href="https://astroaura.me/blog/posts/planetary-aspects-this-week-understanding-square-e.html" rel="alternate" type="text/html" /><id>https://astroaura.me/blog/posts/planetary-aspects-this-week-understanding-square-e.html</id><published>2025-08-09T01:58:14.171919Z</published><updated>2025-08-09T01:58:14.171919Z</updated><summary type="text">## Feeling the Friction? Navigating the Square Energy of This Week's Full Moon  Feeling a little… tense? Like you’re constantly hitting roadblocks, even...</summary><author><name>AstroAura AI Cosmic Team</name></author><category term="astrology" label="Astrology" /><category term="horoscope" label="Horoscope" /><category term="leo" label="Leo" /><category term="full-moon" label="Full-Moon" /><category term="cosmic-insights" label="Cosmic-Insights" /></entry><entry><title>Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health</title><link href="https://astroaura.me/blog/posts/why-moon-cycles-and-emotional-balance-is-the-key-t.html" rel="alternate" type="text/html" /><id>https://astroaura.me/blog/posts/why-moon-cycles-and-emotional-balance-is-the-key-t.html</id><published>2025-08-09T01:58:14.249678+00:00Z</published><updated>2025-08-09T01:58:14.249678+00:00Z</updated><summary type="text">## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...</summary><author><name>AstroAura AI Cosmic Team</name></author><category term="moon-phases" label="Moon-Phases" /><category term="mental-health" label="Mental-Health" /><category term="mindfulness" label="Mindfulness" /><category term="wellness" label="Wellness" /><category term="trending-topics" label="Trending-Topics" /></entry></feed>
