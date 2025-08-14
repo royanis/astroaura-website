@@ -1,6 +1,32 @@
 {
   "posts": [
     {
+      "title": "Understanding Today's Tarot and Astrology Connection: The Sun and Saturn: Current Cosmic Influences and Practical Wisdom",
+      "slug": "understanding-todays-tarot-and-astrology-connectio",
+      "date": "2025-08-14T01:59:45.233839",
+      "meta_description": "## Today's Tarot and Astrology Connection: The Sun and Saturn's Grand Conjunction – Navigating the Shadow and Embracing the Light  Feeling a little…stuc...",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "leo",
+        "waning-gibbous",
+        "cosmic-insights",
+        "spiritual-guidance",
+        "astroaura",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "astronomical_data": {
+        "date": "2025-08-14",
+        "moon_phase": "Waning Gibbous",
+        "sun_sign": "Leo",
+        "season": "Summer",
+        "mercury_retrograde": true
+      },
+      "ai_generated": true
+    },
+    {
       "title": "Navigate Crystal Recommendations Based on Current Planetary Energy with Confidence - August 2025 Astrology Guide",
       "slug": "navigate-crystal-recommendations-based-on-current-",
       "date": "2025-08-13T01:59:29.159954",
@@ -133,7 +159,7 @@
     {
       "title": "Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health",
       "slug": "why-moon-cycles-and-emotional-balance-is-the-key-t",
-      "date": "2025-08-13T01:59:29.240022+00:00",
+      "date": "2025-08-14T01:59:45.421482+00:00",
       "meta_description": "## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...",
       "keywords": [
         "moon-phases",
@@ -189,7 +215,7 @@
   ],
   "metadata": {
     "version": "2.0",
-    "last_updated": "2025-08-13T01:59:29.242421Z",
-    "total_posts": 6
+    "last_updated": "2025-08-14T01:59:45.424698Z",
+    "total_posts": 7
   }
 }
