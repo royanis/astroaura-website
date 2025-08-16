@@ -1,6 +1,32 @@
 {
   "posts": [
     {
+      "title": "Seasonal Astrological Shifts: Navigating Summer Energy Explained: What Today's Cosmic Energy Reveals",
+      "slug": "seasonal-astrological-shifts-navigating-summer-ene",
+      "date": "2025-08-16T01:54:45.475391",
+      "meta_description": "## Riding the Summer Solstice's Wave: Navigating the Shifting Sands of August's Astrological Tides  Feeling a little… *off*?  Like the vibrant energy of...",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "leo",
+        "waning-gibbous",
+        "cosmic-insights",
+        "spiritual-guidance",
+        "astroaura",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "astronomical_data": {
+        "date": "2025-08-16",
+        "moon_phase": "Waning Gibbous",
+        "sun_sign": "Leo",
+        "season": "Summer",
+        "mercury_retrograde": true
+      },
+      "ai_generated": true
+    },
+    {
       "title": "Astrological House Focus: 2nd House (Values & Resources) House Activations This Month in Leo Season - Cosmic Insights and Guidance",
       "slug": "astrological-house-focus-2nd-house-values-resource",
       "date": "2025-08-15T02:00:34.371979",
@@ -185,7 +211,7 @@
     {
       "title": "Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health",
       "slug": "why-moon-cycles-and-emotional-balance-is-the-key-t",
-      "date": "2025-08-15T02:00:34.455545+00:00",
+      "date": "2025-08-16T01:54:45.555554+00:00",
       "meta_description": "## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...",
       "keywords": [
         "moon-phases",
@@ -241,7 +267,7 @@
   ],
   "metadata": {
     "version": "2.0",
-    "last_updated": "2025-08-15T02:00:34.458820Z",
-    "total_posts": 8
+    "last_updated": "2025-08-16T01:54:45.559713Z",
+    "total_posts": 9
   }
 }
