@@ -1,6 +1,32 @@
 {
   "posts": [
     {
+      "title": "Planetary Aspects This Week: Understanding opposition Energy in Leo Season - Cosmic Insights and Guidance",
+      "slug": "planetary-aspects-this-week-understanding-oppositi",
+      "date": "2025-08-17T02:06:22.713615",
+      "meta_description": "## Navigating the Turbulent Tides: Mastering Opposition Energy This Week (August 17th, 2025)  Feeling pulled in two different directions? Like you’re ca...",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "leo",
+        "last-quarter",
+        "cosmic-insights",
+        "spiritual-guidance",
+        "astroaura",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "astronomical_data": {
+        "date": "2025-08-17",
+        "moon_phase": "Last Quarter",
+        "sun_sign": "Leo",
+        "season": "Summer",
+        "mercury_retrograde": true
+      },
+      "ai_generated": true
+    },
+    {
       "title": "Seasonal Astrological Shifts: Navigating Summer Energy Explained: What Today's Cosmic Energy Reveals",
       "slug": "seasonal-astrological-shifts-navigating-summer-ene",
       "date": "2025-08-16T01:54:45.475391",
@@ -211,7 +237,7 @@
     {
       "title": "Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health",
       "slug": "why-moon-cycles-and-emotional-balance-is-the-key-t",
-      "date": "2025-08-16T01:54:45.555554+00:00",
+      "date": "2025-08-17T02:06:22.834899+00:00",
       "meta_description": "## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...",
       "keywords": [
         "moon-phases",
@@ -267,7 +293,7 @@
   ],
   "metadata": {
     "version": "2.0",
-    "last_updated": "2025-08-16T01:54:45.559713Z",
-    "total_posts": 9
+    "last_updated": "2025-08-17T02:06:22.840158Z",
+    "total_posts": 10
   }
 }
