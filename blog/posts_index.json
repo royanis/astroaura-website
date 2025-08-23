@@ -1,6 +1,32 @@
 {
   "posts": [
     {
+      "title": "Current Retrograde Seasons: Navigating Cosmic Slowdowns Explained: What Today's Cosmic Energy Reveals",
+      "slug": "current-retrograde-seasons-navigating-cosmic-slowd",
+      "date": "2025-08-23T01:47:27.165948",
+      "meta_description": "## Feeling Stuck? It's Not You, It's the Cosmos: Navigating Current Retrograde Seasons  Ever feel like you're swimming upstream, no matter how hard you ...",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "leo",
+        "waning-crescent",
+        "cosmic-insights",
+        "spiritual-guidance",
+        "astroaura",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "astronomical_data": {
+        "date": "2025-08-23",
+        "moon_phase": "Waning Crescent",
+        "sun_sign": "Leo",
+        "season": "Summer",
+        "mercury_retrograde": true
+      },
+      "ai_generated": true
+    },
+    {
       "title": "New Moon Manifestation: Harnessing Leo Energy for Growth in Leo Season - Cosmic Insights and Guidance",
       "slug": "new-moon-manifestation-harnessing-leo-energy-for-g",
       "date": "2025-08-22T01:51:34.471609",
@@ -367,7 +393,7 @@
     {
       "title": "Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health",
       "slug": "why-moon-cycles-and-emotional-balance-is-the-key-t",
-      "date": "2025-08-22T01:51:34.598413+00:00",
+      "date": "2025-08-23T01:47:27.293459+00:00",
       "meta_description": "## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...",
       "keywords": [
         "moon-phases",
@@ -423,7 +449,7 @@
   ],
   "metadata": {
     "version": "2.0",
-    "last_updated": "2025-08-22T01:51:34.607037Z",
-    "total_posts": 15
+    "last_updated": "2025-08-23T01:47:27.303332Z",
+    "total_posts": 16
   }
 }
