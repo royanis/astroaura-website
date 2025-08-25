@@ -1,6 +1,32 @@
 {
   "posts": [
     {
+      "title": "Navigate Monthly Astrological Forecast: Key Dates and Cosmic Events with Confidence - August 2025 Astrology Guide",
+      "slug": "navigate-monthly-astrological-forecast-key-dates-a",
+      "date": "2025-08-25T01:56:19.628765",
+      "meta_description": "## Navigating the Cosmic Crossroads: Your August 2025 Astrological Forecast  Feeling a little…off? Like your carefully laid plans are encountering unexp...",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "virgo",
+        "waxing-crescent",
+        "cosmic-insights",
+        "spiritual-guidance",
+        "astroaura",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "astronomical_data": {
+        "date": "2025-08-25",
+        "moon_phase": "Waxing Crescent",
+        "sun_sign": "Virgo",
+        "season": "Summer",
+        "mercury_retrograde": true
+      },
+      "ai_generated": true
+    },
+    {
       "title": "Navigate Moon Phase Meditation: Working with New Moon Energy with Confidence - August 2025 Astrology Guide",
       "slug": "navigate-moon-phase-meditation-working-with-new-mo",
       "date": "2025-08-24T02:01:52.675592",
@@ -419,7 +445,7 @@
     {
       "title": "Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health",
       "slug": "why-moon-cycles-and-emotional-balance-is-the-key-t",
-      "date": "2025-08-24T02:01:52.794673+00:00",
+      "date": "2025-08-25T01:56:19.838287+00:00",
       "meta_description": "## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...",
       "keywords": [
         "moon-phases",
@@ -475,7 +501,7 @@
   ],
   "metadata": {
     "version": "2.0",
-    "last_updated": "2025-08-24T02:01:52.805511Z",
-    "total_posts": 17
+    "last_updated": "2025-08-25T01:56:19.850410Z",
+    "total_posts": 18
   }
 }
