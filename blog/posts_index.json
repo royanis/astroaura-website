@@ -1,6 +1,32 @@
 {
   "posts": [
     {
+      "title": "Seasonal Astrological Shifts: Navigating Summer Energy: Your Complete Guide for August 2025",
+      "slug": "seasonal-astrological-shifts-navigating-summer-ene",
+      "date": "2025-08-26T01:52:27.633745",
+      "meta_description": "## Riding the Virgoan Wave: Navigating the Choppy Waters of Summer's End  Feeling a little…off-kilter? Like you're juggling flaming bowling pins while r...",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "virgo",
+        "waxing-crescent",
+        "cosmic-insights",
+        "spiritual-guidance",
+        "astroaura",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "astronomical_data": {
+        "date": "2025-08-26",
+        "moon_phase": "Waxing Crescent",
+        "sun_sign": "Virgo",
+        "season": "Summer",
+        "mercury_retrograde": true
+      },
+      "ai_generated": true
+    },
+    {
       "title": "Navigate Monthly Astrological Forecast: Key Dates and Cosmic Events with Confidence - August 2025 Astrology Guide",
       "slug": "navigate-monthly-astrological-forecast-key-dates-a",
       "date": "2025-08-25T01:56:19.628765",
@@ -445,7 +471,7 @@
     {
       "title": "Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health",
       "slug": "why-moon-cycles-and-emotional-balance-is-the-key-t",
-      "date": "2025-08-25T01:56:19.838287+00:00",
+      "date": "2025-08-26T01:52:27.744765+00:00",
       "meta_description": "## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...",
       "keywords": [
         "moon-phases",
@@ -501,7 +527,7 @@
   ],
   "metadata": {
     "version": "2.0",
-    "last_updated": "2025-08-25T01:56:19.850410Z",
-    "total_posts": 18
+    "last_updated": "2025-08-26T01:52:27.757463Z",
+    "total_posts": 19
   }
 }
