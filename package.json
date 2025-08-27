@@ -33,8 +33,7 @@
     "imagemin-pngquant": "^9.0.2",
     "clean-css-cli": "^5.6.2",
     "terser": "^5.19.2",
-    "lighthouse": "^10.4.0",
-    "html-proofer": "^4.4.0"
+    "lighthouse": "^10.4.0"
   },
   "dependencies": {
     "intersection-observer": "^0.12.2",

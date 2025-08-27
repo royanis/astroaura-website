@@ -41,11 +41,7 @@ jobs:
     - name: Install dependencies
       run: |
         bundle install
-        npm install
-    
-    - name: Build assets
-      run: |
-        npm run build:assets
+        npm install --production
     
     - name: Setup Pages
       id: pages
