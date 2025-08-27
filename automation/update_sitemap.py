@@ -27,7 +27,6 @@ class SitemapUpdater:
             "about.html": {"priority": "0.8", "changefreq": "monthly"},
             "contact.html": {"priority": "0.7", "changefreq": "monthly"},
             "privacy.html": {"priority": "0.6", "changefreq": "yearly"},
-            "cosmic-insights.html": {"priority": "0.8", "changefreq": "weekly"},
             "blog/": {"priority": "0.9", "changefreq": "daily"},
         }
 
@@ -101,7 +100,6 @@ class SitemapUpdater:
             # Add blog post image
             image = SubElement(url, 'image:image')
             image_loc = SubElement(image, 'image:loc')
-            image_loc.text = f"{self.site_url}/assets/images/blog/cosmic-insights-og.jpg"
             image_caption = SubElement(image, 'image:caption')
             image_caption.text = post['title'][:100]  # Truncate long titles
         

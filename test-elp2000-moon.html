@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELP2000 Moon Calculator Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+        }
+        .error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background: #f8f9fa;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .calculation-details {
+            font-family: monospace;
+            font-size: 12px;
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ELP2000 Moon Calculator Test</h1>
+        <p>Testing the high-precision ELP2000 lunar position calculator implementation.</p>
+
+        <div class="test-section">
+            <h2>Test Controls</h2>
+            <button onclick="runBasicTests()">Run Basic Tests</button>
+            <button onclick="runAccuracyTests()">Run Accuracy Tests</button>
+            <button onclick="runComparisonTests()">Compare with Simplified</button>
+            <button onclick="testSpecificDate()">Test Primary Case (Jan 4, 1985)</button>
+            <button onclick="clearResults()">Clear Results</button>
+        </div>
+
+        <div id="testResults"></div>
+    </div>
+
+    <!-- Load the ELP2000 calculator classes -->
+    <script src="assets/js/elp2000-series-data.js"></script>
+    <script src="assets/js/elp2000-moon-calculator.js"></script>
+
+    <script>
+        let moonCalculator;
+        let testResults = [];
+
+        // Initialize the calculator
+        function initializeCalculator() {
+            try {
+                moonCalculator = new ELP2000MoonCalculator();
+                addResult('success', 'ELP2000MoonCalculator initialized successfully');
+                
+                const accuracyInfo = moonCalculator.getAccuracyInfo();
+                addResult('info', `Calculator accuracy: ${accuracyInfo.accuracy} using ${accuracyInfo.terms} terms`);
+                
+                return true;
+            } catch (error) {
+                addResult('error', `Failed to initialize calculator: ${error.message}`);
+                return false;
+            }
+        }
+
+        function addResult(type, message, details = null) {
+            const result = {
+                type: type,
+                message: message,
+                details: details,
+                timestamp: new Date().toLocaleTimeString()
+            };
+            testResults.push(result);
+            displayResults();
+        }
+
+        function displayResults() {
+            const container = document.getElementById('testResults');
+            container.innerHTML = testResults.map(result => `
+                <div class="test-result ${result.type}">
+                    <strong>[${result.timestamp}]</strong> ${result.message}
+                    ${result.details ? `<div class="calculation-details">${result.details}</div>` : ''}
+                </div>
+            `).join('');
+        }
+
+        function clearResults() {
+            testResults = [];
+            displayResults();
+        }
+
+        function runBasicTests() {
+            addResult('info', 'Starting basic functionality tests...');
+            
+            if (!initializeCalculator()) return;
+
+            // Test fundamental arguments calculation
+            try {
+                const T = 0; // J2000.0
+                const fundamentals = moonCalculator.calculateFundamentalArguments(T);
+                
+                addResult('success', 'Fundamental arguments calculated successfully');
+                addResult('info', `Fundamental arguments at J2000.0:`, 
+                    `D = ${fundamentals.D.toFixed(6)}°\n` +
+                    `M = ${fundamentals.M.toFixed(6)}°\n` +
+                    `Mp = ${fundamentals.Mp.toFixed(6)}°\n` +
+                    `F = ${fundamentals.F.toFixed(6)}°`
+                );
+            } catch (error) {
+                addResult('error', `Fundamental arguments test failed: ${error.message}`);
+            }
+
+            // Test mean longitude calculation
+            try {
+                const T = 0;
+                const meanLongitude = moonCalculator.calculateMeanLongitude(T);
+                addResult('success', `Mean longitude at J2000.0: ${meanLongitude.toFixed(6)}°`);
+            } catch (error) {
+                addResult('error', `Mean longitude test failed: ${error.message}`);
+            }
+
+            // Test basic Moon position calculation
+            try {
+                const julianDay = 2451545.0; // J2000.0
+                const moonPosition = moonCalculator.calculateMoonPosition(julianDay);
+                
+                const validation = moonCalculator.validateMoonPosition(moonPosition, julianDay);
+                
+                if (validation.valid) {
+                    addResult('success', `Moon position at J2000.0: ${moonPosition.toFixed(6)}°`);
+                } else {
+                    addResult('warning', `Moon position calculated but with issues: ${moonPosition.toFixed(6)}°`);
+                    validation.errors.forEach(error => addResult('error', error));
+                    validation.warnings.forEach(warning => addResult('warning', warning));
+                }
+            } catch (error) {
+                addResult('error', `Basic Moon position test failed: ${error.message}`);
+            }
+        }
+
+        function runAccuracyTests() {
+            addResult('info', 'Starting accuracy tests...');
+            
+            if (!initializeCalculator()) return;
+
+            // Test multiple dates for consistency
+            const testDates = [
+                { name: 'J2000.0', jd: 2451545.0 },
+                { name: 'Jan 1, 2000', jd: 2451544.5 },
+                { name: 'Jan 4, 1985 (Primary test)', jd: 2446066.770833 }, // 6:30 AM UTC
+                { name: 'Dec 31, 1999', jd: 2451543.5 },
+                { name: 'Jul 1, 2024', jd: 2460493.5 }
+            ];
+
+            testDates.forEach(testDate => {
+                try {
+                    const moonPosition = moonCalculator.calculateMoonPosition(testDate.jd);
+                    const validation = moonCalculator.validateMoonPosition(moonPosition, testDate.jd);
+                    const details = moonCalculator.getCalculationDetails(testDate.jd);
+                    
+                    addResult('success', `${testDate.name}: Moon at ${moonPosition.toFixed(4)}°`);
+                    
+                    if (details.termCount > 0) {
+                        addResult('info', `Applied ${details.termCount} periodic terms, correction: ${details.periodicCorrections.toFixed(6)}°`);
+                    }
+                    
+                    validation.warnings.forEach(warning => addResult('warning', warning));
+                    
+                } catch (error) {
+                    addResult('error', `Accuracy test failed for ${testDate.name}: ${error.message}`);
+                }
+            });
+        }
+
+        function runComparisonTests() {
+            addResult('info', 'Comparing ELP2000 with simplified calculation...');
+            
+            if (!initializeCalculator()) return;
+
+            const testJD = 2446066.770833; // Jan 4, 1985, 6:30 AM UTC
+            
+            try {
+                // ELP2000 calculation
+                const elp2000Position = moonCalculator.calculateMoonPosition(testJD);
+                
+                // Simplified calculation (fallback method)
+                const simplifiedPosition = moonCalculator.calculateSimplifiedMoonPosition(testJD);
+                
+                const difference = Math.abs(elp2000Position - simplifiedPosition);
+                const normalizedDiff = difference > 180 ? 360 - difference : difference;
+                
+                addResult('success', `ELP2000 Moon position: ${elp2000Position.toFixed(6)}°`);
+                addResult('success', `Simplified Moon position: ${simplifiedPosition.toFixed(6)}°`);
+                addResult('info', `Difference: ${normalizedDiff.toFixed(6)}° (${(normalizedDiff * 60).toFixed(2)} arc minutes)`);
+                
+                if (normalizedDiff > 0.1) {
+                    addResult('success', 'Significant improvement with ELP2000 - periodic terms are working');
+                } else {
+                    addResult('warning', 'Small difference - may need more periodic terms for this date');
+                }
+                
+            } catch (error) {
+                addResult('error', `Comparison test failed: ${error.message}`);
+            }
+        }
+
+        function testSpecificDate() {
+            addResult('info', 'Testing primary test case: January 4, 1985, 6:30 AM IST (1:00 AM UTC)');
+            
+            if (!initializeCalculator()) return;
+
+            // Convert IST to UTC: 6:30 AM IST = 1:00 AM UTC
+            // Julian Day for Jan 4, 1985, 1:00 AM UTC (corrected)
+            const julianDay = 2446069.5416666665;
+            
+            try {
+                const moonPosition = moonCalculator.calculateMoonPosition(julianDay);
+                const details = moonCalculator.getCalculationDetails(julianDay);
+                const validation = moonCalculator.validateMoonPosition(moonPosition, julianDay);
+                
+                // Expected Moon position: approximately 66.7° (Gemini 6°44')
+                const expectedPosition = 66.73;
+                const difference = Math.abs(moonPosition - expectedPosition);
+                const normalizedDiff = difference > 180 ? 360 - difference : difference;
+                
+                addResult('success', `Calculated Moon position: ${moonPosition.toFixed(4)}°`);
+                addResult('info', `Expected position: ${expectedPosition}° (Gemini 6°44')`);
+                addResult('info', `Difference from expected: ${normalizedDiff.toFixed(4)}° (${(normalizedDiff * 60).toFixed(1)} arc minutes)`);
+                
+                // Convert to zodiac sign and degree
+                const signs = ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo',
+                              'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'];
+                const signIndex = Math.floor(moonPosition / 30);
+                const degree = Math.floor(moonPosition % 30);
+                const minute = Math.floor((moonPosition % 1) * 60);
+                
+                addResult('success', `Moon in ${signs[signIndex]} ${degree}°${minute}'`);
+                
+                // Show calculation details
+                addResult('info', 'Calculation details:', 
+                    `Julian Day: ${details.julianDay}\n` +
+                    `T (centuries): ${details.T.toFixed(8)}\n` +
+                    `Mean longitude: ${details.meanLongitude.toFixed(6)}°\n` +
+                    `Periodic corrections: ${details.periodicCorrections.toFixed(6)}°\n` +
+                    `Terms applied: ${details.termCount}\n` +
+                    `Final longitude: ${details.finalLongitude.toFixed(6)}°`
+                );
+                
+                if (normalizedDiff < 0.1) { // Less than 6 arc minutes
+                    addResult('success', 'EXCELLENT: Within professional accuracy requirements!');
+                } else if (normalizedDiff < 0.5) { // Less than 30 arc minutes
+                    addResult('success', 'GOOD: Within acceptable accuracy for astrological use');
+                } else {
+                    addResult('warning', 'Accuracy could be improved - may need more periodic terms');
+                }
+                
+                validation.warnings.forEach(warning => addResult('warning', warning));
+                validation.errors.forEach(error => addResult('error', error));
+                
+            } catch (error) {
+                addResult('error', `Primary test case failed: ${error.message}`);
+            }
+        }
+
+        // Initialize on page load
+        window.onload = function() {
+            addResult('info', 'ELP2000 Moon Calculator Test Page Loaded');
+            addResult('info', 'Click "Run Basic Tests" to start testing the implementation');
+        };
+    </script>
+</body>
+</html>

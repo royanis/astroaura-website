@@ -1,0 +1,297 @@
+---
+layout: default
+title: Your Cosmic Timeline - AstroAura
+description: Track your astrological journey, personal insights, and cosmic experiences over time.
+---
+
+<div class="cosmic-timeline-page">
+  <div class="cosmic-header">
+    <div class="container">
+      <h1 class="cosmic-title">Your Cosmic Timeline</h1>
+      <p class="cosmic-subtitle">Discover patterns in your astrological journey and personal growth</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="timeline-container">
+      <!-- Timeline Controls -->
+      <div class="timeline-controls">
+        <div class="view-controls">
+          <button class="view-btn active" data-view="timeline">Timeline View</button>
+          <button class="view-btn" data-view="insights">Insights</button>
+          <button class="view-btn" data-view="patterns">Patterns</button>
+          <button class="view-btn" data-view="progress">Progress</button>
+        </div>
+        
+        <div class="filter-controls">
+          <select id="timeRange" class="filter-select">
+            <option value="all">All Time</option>
+            <option value="year">Past Year</option>
+            <option value="6months">Past 6 Months</option>
+            <option value="3months">Past 3 Months</option>
+            <option value="month">Past Month</option>
+          </select>
+          
+          <select id="eventType" class="filter-select">
+            <option value="all">All Events</option>
+            <option value="personal">Personal Insights</option>
+            <option value="cosmic">Cosmic Events</option>
+            <option value="tools">Tool Usage</option>
+            <option value="mood">Mood Tracking</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Timeline View -->
+      <div class="timeline-view active" id="timelineView">
+        <div class="timeline-header">
+          <h2>Your Astrological Journey</h2>
+          <div class="journey-stats">
+            <div class="stat-item">
+              <span class="stat-number" id="totalEvents">0</span>
+              <span class="stat-label">Events</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" id="journeyDays">0</span>
+              <span class="stat-label">Days</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" id="insightsCount">0</span>
+              <span class="stat-label">Insights</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-content">
+          <div class="timeline-track">
+            <div class="timeline-line"></div>
+            <div class="timeline-events" id="timelineEvents">
+              <!-- Timeline events will be populated here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Event Section -->
+        <div class="add-event-section">
+          <button class="btn-cosmic" id="addEventBtn">Add Personal Insight</button>
+          
+          <div class="add-event-form" id="addEventForm" style="display: none;">
+            <h3>Record a Personal Insight</h3>
+            
+            <div class="form-group">
+              <label for="eventTitle">Title</label>
+              <input type="text" id="eventTitle" placeholder="What happened or what did you realize?">
+            </div>
+            
+            <div class="form-group">
+              <label for="eventDescription">Description</label>
+              <textarea id="eventDescription" rows="4" placeholder="Describe your experience or insight..."></textarea>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="eventMood">Mood</label>
+                <select id="eventMood">
+                  <option value="">Select mood</option>
+                  <option value="excited">😄 Excited</option>
+                  <option value="peaceful">😌 Peaceful</option>
+                  <option value="curious">🤔 Curious</option>
+                  <option value="inspired">✨ Inspired</option>
+                  <option value="reflective">🧘 Reflective</option>
+                  <option value="grateful">🙏 Grateful</option>
+                  <option value="confused">😕 Confused</option>
+                  <option value="anxious">😰 Anxious</option>
+                  <option value="sad">😢 Sad</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="eventCategory">Category</label>
+                <select id="eventCategory">
+                  <option value="personal">Personal Growth</option>
+                  <option value="relationship">Relationships</option>
+                  <option value="career">Career</option>
+                  <option value="spiritual">Spiritual</option>
+                  <option value="health">Health & Wellness</option>
+                  <option value="creative">Creativity</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="eventTags">Tags (optional)</label>
+              <input type="text" id="eventTags" placeholder="meditation, breakthrough, relationship, etc.">
+              <div class="field-help">Separate tags with commas</div>
+            </div>
+            
+            <div class="form-actions">
+              <button type="button" class="btn-cosmic" id="saveEvent">Save Insight</button>
+              <button type="button" class="btn-secondary" id="cancelEvent">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Insights View -->
+      <div class="timeline-view" id="insightsView">
+        <div class="insights-header">
+          <h2>Personal Insights & Patterns</h2>
+          <p>Discover meaningful connections in your journey</p>
+        </div>
+
+        <div class="insights-grid">
+          <div class="insight-card">
+            <h3>Mood Patterns</h3>
+            <div class="mood-chart" id="moodChart">
+              <canvas id="moodCanvas" width="300" height="200"></canvas>
+            </div>
+            <div class="insight-summary" id="moodInsight">
+              Analyzing your mood patterns...
+            </div>
+          </div>
+
+          <div class="insight-card">
+            <h3>Growth Areas</h3>
+            <div class="growth-areas" id="growthAreas">
+              <!-- Growth areas will be populated -->
+            </div>
+          </div>
+
+          <div class="insight-card">
+            <h3>Cosmic Correlations</h3>
+            <div class="correlations" id="cosmicCorrelations">
+              <!-- Correlations will be populated -->
+            </div>
+          </div>
+
+          <div class="insight-card">
+            <h3>Recent Breakthroughs</h3>
+            <div class="breakthroughs" id="recentBreakthroughs">
+              <!-- Breakthroughs will be populated -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Patterns View -->
+      <div class="timeline-view" id="patternsView">
+        <div class="patterns-header">
+          <h2>Discover Your Patterns</h2>
+          <p>Uncover recurring themes and cycles in your life</p>
+        </div>
+
+        <div class="patterns-content">
+          <div class="pattern-section">
+            <h3>Lunar Cycle Patterns</h3>
+            <div class="lunar-patterns" id="lunarPatterns">
+              <div class="pattern-chart">
+                <canvas id="lunarChart" width="400" height="200"></canvas>
+              </div>
+              <div class="pattern-insights" id="lunarInsights">
+                <!-- Lunar insights will be populated -->
+              </div>
+            </div>
+          </div>
+
+          <div class="pattern-section">
+            <h3>Seasonal Patterns</h3>
+            <div class="seasonal-patterns" id="seasonalPatterns">
+              <!-- Seasonal patterns will be populated -->
+            </div>
+          </div>
+
+          <div class="pattern-section">
+            <h3>Personal Cycles</h3>
+            <div class="personal-cycles" id="personalCycles">
+              <!-- Personal cycles will be populated -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress View -->
+      <div class="timeline-view" id="progressView">
+        <div class="progress-header">
+          <h2>Your Growth Progress</h2>
+          <p>Track your development across different life areas</p>
+        </div>
+
+        <div class="progress-content">
+          <div class="progress-overview">
+            <div class="progress-stat">
+              <div class="progress-circle" data-progress="75">
+                <svg viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="#333" stroke-width="8"/>
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="#ffd700" stroke-width="8" 
+                          stroke-dasharray="283" stroke-dashoffset="71" transform="rotate(-90 50 50)"/>
+                </svg>
+                <div class="progress-text">
+                  <span class="progress-number">75%</span>
+                  <span class="progress-label">Overall</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="progress-areas">
+            <div class="progress-area">
+              <h4>Self-Awareness</h4>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 80%"></div>
+                <span class="progress-percentage">80%</span>
+              </div>
+              <p class="progress-description">Strong understanding of your astrological profile and patterns</p>
+            </div>
+
+            <div class="progress-area">
+              <h4>Emotional Intelligence</h4>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 65%"></div>
+                <span class="progress-percentage">65%</span>
+              </div>
+              <p class="progress-description">Growing ability to recognize and manage emotional patterns</p>
+            </div>
+
+            <div class="progress-area">
+              <h4>Spiritual Connection</h4>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 70%"></div>
+                <span class="progress-percentage">70%</span>
+              </div>
+              <p class="progress-description">Developing deeper connection with cosmic rhythms</p>
+            </div>
+
+            <div class="progress-area">
+              <h4>Relationship Harmony</h4>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 55%"></div>
+                <span class="progress-percentage">55%</span>
+              </div>
+              <p class="progress-description">Learning to apply astrological insights to relationships</p>
+            </div>
+
+            <div class="progress-area">
+              <h4>Life Purpose Clarity</h4>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 60%"></div>
+                <span class="progress-percentage">60%</span>
+              </div>
+              <p class="progress-description">Gaining clarity on your path and purpose</p>
+            </div>
+          </div>
+
+          <div class="milestones-section">
+            <h3>Milestones Achieved</h3>
+            <div class="milestones-grid" id="milestonesGrid">
+              <!-- Milestones will be populated -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ '/assets/js/user-profile-system.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/cosmic-timeline.js' | relative_url }}"></script>

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VSOP87 Optimization and Error Handling Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .control-group {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        select, input, button {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .results {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 4px solid #4CAF50;
+            margin-top: 15px;
+        }
+        .error {
+            border-left-color: #f44336;
+            background: #ffebee;
+        }
+        .warning {
+            border-left-color: #ff9800;
+            background: #fff3e0;
+        }
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .metric-card {
+            background: white;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .metric-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .log {
+            background: #000;
+            color: #0f0;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 15px;
+        }
+        .progress-container {
+            margin: 15px 0;
+        }
+        .alert {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border-left: 4px solid;
+        }
+        .alert-error { border-left-color: #f44336; background: #ffebee; }
+        .alert-warning { border-left-color: #ff9800; background: #fff3e0; }
+        .alert-info { border-left-color: #2196F3; background: #e3f2fd; }
+        .alert-success { border-left-color: #4CAF50; background: #e8f5e9; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>VSOP87 Optimization and Error Handling Test</h1>
+        <p>This page tests the new optimization features, error handling, and performance monitoring capabilities.</p>
+    </div>
+
+    <div class="container">
+        <h2>Test Controls</h2>
+        <div class="controls">
+            <div class="control-group">
+                <label for="precisionLevel">Precision Level:</label>
+                <select id="precisionLevel">
+                    <option value="high">High (Slowest, Most Accurate)</option>
+                    <option value="medium" selected>Medium (Balanced)</option>
+                    <option value="low">Low (Faster, Less Accurate)</option>
+                    <option value="minimal">Minimal (Fastest, Least Accurate)</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="cachingEnabled">Caching:</label>
+                <select id="cachingEnabled">
+                    <option value="true" selected>Enabled</option>
+                    <option value="false">Disabled</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="errorHandling">Error Handling:</label>
+                <select id="errorHandling">
+                    <option value="true" selected>Enabled</option>
+                    <option value="false">Disabled</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="performanceMonitoring">Performance Monitoring:</label>
+                <select id="performanceMonitoring">
+                    <option value="true" selected>Enabled</option>
+                    <option value="false">Disabled</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="progressUI">Progress UI:</label>
+                <select id="progressUI">
+                    <option value="true" selected>Enabled</option>
+                    <option value="false">Disabled</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="julianDay">Julian Day:</label>
+                <input type="number" id="julianDay" value="2446431.77083" step="0.00001">
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button onclick="runSingleCalculation()">Single Calculation Test</button>
+            <button onclick="runBatchCalculation()">Batch Calculation Test</button>
+            <button onclick="runStressTest()">Stress Test (10 calculations)</button>
+            <button onclick="runErrorTest()">Error Handling Test</button>
+            <button onclick="clearResults()">Clear Results</button>
+            <button onclick="exportData()">Export Performance Data</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Performance Metrics</h2>
+        <div class="metrics" id="metricsContainer">
+            <!-- Metrics will be populated here -->
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>System Health</h2>
+        <div id="healthStatus">
+            <!-- Health status will be populated here -->
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Alerts and Notifications</h2>
+        <div id="alertsContainer">
+            <!-- Alerts will be populated here -->
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Results</h2>
+        <div id="resultsContainer">
+            <!-- Results will be populated here -->
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Performance Log</h2>
+        <div class="log" id="performanceLog">
+            <!-- Performance log will be populated here -->
+        </div>
+    </div>
+
+    <!-- Include required JavaScript files -->
+    <script src="assets/js/vsop87-series-data.js"></script>
+    <script src="assets/js/calculation-error-handler.js"></script>
+    <script src="assets/js/performance-monitor.js"></script>
+    <script src="assets/js/nutation-calculator.js"></script>
+    <script src="assets/js/coordinate-transformer.js"></script>
+    <script src="assets/js/elp2000-series-data.js"></script>
+    <script src="assets/js/elp2000-moon-calculator.js"></script>
+    <script src="assets/js/vsop87-calculator.js"></script>
+
+    <script>
+        let calculator = null;
+        let performanceLog = [];
+
+        // Initialize calculator
+        function initializeCalculator() {
+            try {
+                calculator = new VSOP87Calculator();
+                
+                // Enable progress UI
+                if (document.getElementById('progressUI').value === 'true') {
+                    calculator.enableProgressUI(document.body);
+                }
+                
+                // Setup performance monitoring callbacks
+                if (calculator.performanceMonitor) {
+                    calculator.performanceMonitor.onAlert((alert) => {
+                        addAlert(alert);
+                        logMessage(`ALERT [${alert.category}]: ${alert.message}`);
+                    });
+                    
+                    calculator.performanceMonitor.onPerformance((metrics) => {
+                        updateMetrics(metrics);
+                    });
+                }
+                
+                logMessage('Calculator initialized successfully');
+                updateSystemHealth();
+                
+            } catch (error) {
+                logMessage(`ERROR: Failed to initialize calculator - ${error.message}`);
+                addAlert({
+                    type: 'error',
+                    category: 'initialization',
+                    message: `Calculator initialization failed: ${error.message}`
+                });
+            }
+        }
+
+        // Apply settings to calculator
+        function applySettings() {
+            if (!calculator) return;
+            
+            const precision = document.getElementById('precisionLevel').value;
+            const caching = document.getElementById('cachingEnabled').value === 'true';
+            const errorHandling = document.getElementById('errorHandling').value === 'true';
+            const performanceMonitoring = document.getElementById('performanceMonitoring').value === 'true';
+            const progressUI = document.getElementById('progressUI').value === 'true';
+            
+            try {
+                calculator.setPrecisionLevel(precision);
+                calculator.setCaching(caching);
+                calculator.setErrorHandling(errorHandling);
+                calculator.setPerformanceMonitoring(performanceMonitoring);
+                
+                if (progressUI && !calculator.progressUI) {
+                    calculator.enableProgressUI(document.body);
+                } else if (!progressUI && calculator.progressUI) {
+                    calculator.disableProgressUI();
+                }
+                
+                logMessage(`Settings applied: Precision=${precision}, Caching=${caching}, ErrorHandling=${errorHandling}`);
+                
+            } catch (error) {
+                logMessage(`ERROR: Failed to apply settings - ${error.message}`);
+            }
+        }
+
+        // Run single calculation test
+        async function runSingleCalculation() {
+            if (!calculator) {
+                initializeCalculator();
+                return;
+            }
+            
+            applySettings();
+            
+            const julianDay = parseFloat(document.getElementById('julianDay').value);
+            const startTime = performance.now();
+            
+            try {
+                logMessage(`Starting single calculation for JD ${julianDay}`);
+                
+                const results = calculator.calculatePlanetaryPositions(julianDay);
+                const duration = performance.now() - startTime;
+                
+                displayResults('Single Calculation', results, duration);
+                logMessage(`Single calculation completed in ${duration.toFixed(2)}ms`);
+                
+                updateMetrics();
+                updateSystemHealth();
+                
+            } catch (error) {
+                const duration = performance.now() - startTime;
+                displayError('Single Calculation Failed', error, duration);
+                logMessage(`ERROR: Single calculation failed - ${error.message}`);
+            }
+        }
+
+        // Run batch calculation test
+        async function runBatchCalculation() {
+            if (!calculator) {
+                initializeCalculator();
+                return;
+            }
+            
+            applySettings();
+            
+            const baseJD = parseFloat(document.getElementById('julianDay').value);
+            const julianDays = [];
+            
+            // Generate 5 consecutive days
+            for (let i = 0; i < 5; i++) {
+                julianDays.push(baseJD + i);
+            }
+            
+            const startTime = performance.now();
+            
+            try {
+                logMessage(`Starting batch calculation for ${julianDays.length} days`);
+                
+                const results = calculator.calculateBatchPositions(julianDays);
+                const duration = performance.now() - startTime;
+                
+                displayBatchResults('Batch Calculation', results, julianDays, duration);
+                logMessage(`Batch calculation completed in ${duration.toFixed(2)}ms`);
+                
+                updateMetrics();
+                updateSystemHealth();
+                
+            } catch (error) {
+                const duration = performance.now() - startTime;
+                displayError('Batch Calculation Failed', error, duration);
+                logMessage(`ERROR: Batch calculation failed - ${error.message}`);
+            }
+        }
+
+        // Run stress test
+        async function runStressTest() {
+            if (!calculator) {
+                initializeCalculator();
+                return;
+            }
+            
+            applySettings();
+            
+            const baseJD = parseFloat(document.getElementById('julianDay').value);
+            const startTime = performance.now();
+            let successCount = 0;
+            let errorCount = 0;
+            
+            try {
+                logMessage('Starting stress test with 10 calculations');
+                
+                for (let i = 0; i < 10; i++) {
+                    try {
+                        const jd = baseJD + (i * 30); // 30-day intervals
+                        const results = calculator.calculatePlanetaryPositions(jd);
+                        successCount++;
+                        logMessage(`Stress test ${i + 1}/10 completed (JD ${jd})`);
+                    } catch (error) {
+                        errorCount++;
+                        logMessage(`Stress test ${i + 1}/10 failed: ${error.message}`);
+                    }
+                }
+                
+                const duration = performance.now() - startTime;
+                
+                displayStressResults(successCount, errorCount, duration);
+                logMessage(`Stress test completed: ${successCount} success, ${errorCount} errors in ${duration.toFixed(2)}ms`);
+                
+                updateMetrics();
+                updateSystemHealth();
+                
+            } catch (error) {
+                const duration = performance.now() - startTime;
+                displayError('Stress Test Failed', error, duration);
+                logMessage(`ERROR: Stress test failed - ${error.message}`);
+            }
+        }
+
+        // Run error handling test
+        async function runErrorTest() {
+            if (!calculator) {
+                initializeCalculator();
+                return;
+            }
+            
+            applySettings();
+            
+            const startTime = performance.now();
+            
+            try {
+                logMessage('Starting error handling test');
+                
+                // Test with invalid Julian Day
+                try {
+                    const results = calculator.calculatePlanetaryPositions(NaN);
+                    logMessage('ERROR TEST: Invalid JD should have failed but succeeded');
+                } catch (error) {
+                    logMessage(`ERROR TEST: Invalid JD correctly failed - ${error.message}`);
+                }
+                
+                // Test with extreme Julian Day
+                try {
+                    const results = calculator.calculatePlanetaryPositions(9999999);
+                    logMessage('ERROR TEST: Extreme JD handled gracefully');
+                } catch (error) {
+                    logMessage(`ERROR TEST: Extreme JD failed - ${error.message}`);
+                }
+                
+                const duration = performance.now() - startTime;
+                logMessage(`Error handling test completed in ${duration.toFixed(2)}ms`);
+                
+                updateMetrics();
+                updateSystemHealth();
+                
+            } catch (error) {
+                const duration = performance.now() - startTime;
+                displayError('Error Test Failed', error, duration);
+                logMessage(`ERROR: Error test failed - ${error.message}`);
+            }
+        }
+
+        // Display functions
+        function displayResults(title, results, duration) {
+            const container = document.getElementById('resultsContainer');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = 'results';
+            
+            let html = `<h3>${title} (${duration.toFixed(2)}ms)</h3>`;
+            html += '<table style="width: 100%; border-collapse: collapse;">';
+            html += '<tr style="background: #f0f0f0;"><th style="padding: 8px; border: 1px solid #ddd;">Planet</th><th style="padding: 8px; border: 1px solid #ddd;">Longitude</th><th style="padding: 8px; border: 1px solid #ddd;">Sign</th><th style="padding: 8px; border: 1px solid #ddd;">Degree</th></tr>';
+            
+            results.forEach(planet => {
+                html += `<tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">${planet.name}</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">${planet.longitude.toFixed(4)}°</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">${planet.sign}</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">${planet.degree}°${planet.minute}'${planet.second}"</td>
+                </tr>`;
+            });
+            
+            html += '</table>';
+            resultDiv.innerHTML = html;
+            container.appendChild(resultDiv);
+        }
+
+        function displayBatchResults(title, results, julianDays, duration) {
+            const container = document.getElementById('resultsContainer');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = 'results';
+            
+            const successCount = results.filter(r => r !== null).length;
+            
+            let html = `<h3>${title} (${duration.toFixed(2)}ms)</h3>`;
+            html += `<p>Processed ${julianDays.length} days, ${successCount} successful, ${julianDays.length - successCount} failed</p>`;
+            html += `<p>Average time per calculation: ${(duration / julianDays.length).toFixed(2)}ms</p>`;
+            
+            resultDiv.innerHTML = html;
+            container.appendChild(resultDiv);
+        }
+
+        function displayStressResults(successCount, errorCount, duration) {
+            const container = document.getElementById('resultsContainer');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = 'results';
+            
+            let html = `<h3>Stress Test Results (${duration.toFixed(2)}ms)</h3>`;
+            html += `<p>Successful calculations: ${successCount}</p>`;
+            html += `<p>Failed calculations: ${errorCount}</p>`;
+            html += `<p>Success rate: ${((successCount / (successCount + errorCount)) * 100).toFixed(1)}%</p>`;
+            html += `<p>Average time per calculation: ${(duration / (successCount + errorCount)).toFixed(2)}ms</p>`;
+            
+            resultDiv.innerHTML = html;
+            container.appendChild(resultDiv);
+        }
+
+        function displayError(title, error, duration) {
+            const container = document.getElementById('resultsContainer');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = 'results error';
+            
+            let html = `<h3>${title} (${duration.toFixed(2)}ms)</h3>`;
+            html += `<p><strong>Error:</strong> ${error.message}</p>`;
+            if (error.stack) {
+                html += `<pre style="font-size: 10px; overflow-x: auto;">${error.stack}</pre>`;
+            }
+            
+            resultDiv.innerHTML = html;
+            container.appendChild(resultDiv);
+        }
+
+        function updateMetrics(metrics = null) {
+            if (!calculator) return;
+            
+            const stats = calculator.getPerformanceStats();
+            const container = document.getElementById('metricsContainer');
+            
+            container.innerHTML = `
+                <div class="metric-card">
+                    <div class="metric-value">${stats.calculationCount}</div>
+                    <div class="metric-label">Total Calculations</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">${stats.averageCalculationTime.toFixed(0)}ms</div>
+                    <div class="metric-label">Avg Calculation Time</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">${stats.cacheHitRate.toFixed(1)}%</div>
+                    <div class="metric-label">Cache Hit Rate</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">${stats.errorRate.toFixed(1)}%</div>
+                    <div class="metric-label">Error Rate</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">${stats.fallbackRate.toFixed(1)}%</div>
+                    <div class="metric-label">Fallback Rate</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">${stats.cacheSize}</div>
+                    <div class="metric-label">Cache Size</div>
+                </div>
+            `;
+        }
+
+        function updateSystemHealth() {
+            if (!calculator) return;
+            
+            const health = calculator.performHealthCheck();
+            const container = document.getElementById('healthStatus');
+            
+            let html = `<div class="alert alert-${health.overall === 'healthy' ? 'success' : 'warning'}">`;
+            html += `<strong>Overall Status:</strong> ${health.overall.toUpperCase()}`;
+            html += '</div>';
+            
+            if (health.issues.length > 0) {
+                html += '<h4>Issues:</h4><ul>';
+                health.issues.forEach(issue => {
+                    html += `<li>${issue}</li>`;
+                });
+                html += '</ul>';
+            }
+            
+            if (health.recommendations.length > 0) {
+                html += '<h4>Recommendations:</h4><ul>';
+                health.recommendations.forEach(rec => {
+                    html += `<li>${rec}</li>`;
+                });
+                html += '</ul>';
+            }
+            
+            container.innerHTML = html;
+        }
+
+        function addAlert(alert) {
+            const container = document.getElementById('alertsContainer');
+            const alertDiv = document.createElement('div');
+            
+            let alertClass = 'alert-info';
+            if (alert.type === 'error' || alert.category === 'errors') alertClass = 'alert-error';
+            else if (alert.type === 'performance_warning') alertClass = 'alert-warning';
+            else if (alert.type === 'memory_warning') alertClass = 'alert-warning';
+            
+            alertDiv.className = `alert ${alertClass}`;
+            alertDiv.innerHTML = `
+                <strong>[${alert.category.toUpperCase()}]</strong> ${alert.message}
+                ${alert.recommendation ? `<br><em>Recommendation: ${alert.recommendation}</em>` : ''}
+                <small style="float: right;">${new Date().toLocaleTimeString()}</small>
+            `;
+            
+            container.insertBefore(alertDiv, container.firstChild);
+            
+            // Limit to 10 alerts
+            while (container.children.length > 10) {
+                container.removeChild(container.lastChild);
+            }
+        }
+
+        function logMessage(message) {
+            const timestamp = new Date().toLocaleTimeString();
+            performanceLog.push(`[${timestamp}] ${message}`);
+            
+            const logContainer = document.getElementById('performanceLog');
+            logContainer.textContent = performanceLog.slice(-50).join('\n');
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+
+        function clearResults() {
+            document.getElementById('resultsContainer').innerHTML = '';
+            document.getElementById('alertsContainer').innerHTML = '';
+            performanceLog = [];
+            document.getElementById('performanceLog').textContent = '';
+            
+            if (calculator) {
+                calculator.clearCache();
+                calculator.resetPerformanceStats();
+                calculator.clearErrorLog();
+            }
+            
+            logMessage('Results and caches cleared');
+        }
+
+        function exportData() {
+            if (!calculator) return;
+            
+            const data = calculator.exportPerformanceData();
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `vsop87-performance-${Date.now()}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            logMessage('Performance data exported');
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            initializeCalculator();
+            
+            // Update metrics every 5 seconds
+            setInterval(() => {
+                if (calculator) {
+                    updateMetrics();
+                }
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

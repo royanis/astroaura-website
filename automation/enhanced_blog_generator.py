@@ -34,7 +34,6 @@ class EnhancedBlogGenerator:
         """Generate complete HTML content for a blog post with enhanced storytelling"""
         
         # Enhanced HTML template with better storytelling structure
-        og_image = post_data.get('image', 'https://astroaura.me/assets/images/blog/trending-cosmic-insights.jpg')
         html_content = f'''<!DOCTYPE html>
 <html lang="en">
 <head>

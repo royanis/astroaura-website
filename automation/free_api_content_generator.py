@@ -529,7 +529,6 @@ Write as an expert astrologer who combines traditional wisdom with modern access
                 <p>In our fast-paced modern world, astrology serves as a bridge between the ancient and the contemporary, helping us remember our place in the cosmic order while navigating the complexities of 21st-century life.</p>
             </section>
             
-            <section class="personalized-cosmic-insights">
                 <h2>✨ Unlock Your Personal Cosmic Story with AstroAura</h2>
                 <p>While general astrological insights provide valuable guidance for all, your personal birth chart holds the key to truly understanding how these cosmic influences affect your unique soul journey, relationships, career path, and spiritual evolution.</p>
                 

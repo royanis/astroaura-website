@@ -1,0 +1,48 @@
+{
+  "name": "astroaura-website",
+  "version": "1.0.0",
+  "description": "AstroAura website with Jekyll and modern build tools",
+  "main": "index.js",
+  "scripts": {
+    "dev": "bundle exec jekyll serve --livereload --drafts",
+    "build": "bundle exec jekyll build",
+    "build:prod": "JEKYLL_ENV=production bundle exec jekyll build",
+    "clean": "bundle exec jekyll clean",
+    "install:deps": "bundle install && npm install",
+    "optimize:images": "imagemin assets/images/**/*.{jpg,jpeg,png} --out-dir=assets/images/optimized --plugin=imagemin-mozjpeg --plugin=imagemin-pngquant",
+    "minify:css": "cleancss -o assets/css/main.min.css assets/css/main.css",
+    "minify:js": "terser assets/js/main.js -o assets/js/main.min.js --compress --mangle",
+    "build:assets": "npm run minify:css && npm run minify:js && npm run optimize:images",
+    "serve": "bundle exec jekyll serve --host 0.0.0.0 --port 4000",
+    "test": "bundle exec htmlproofer ./_site --disable-external",
+    "lighthouse": "lighthouse http://localhost:4000 --output html --output-path ./lighthouse-report.html"
+  },
+  "keywords": [
+    "astrology",
+    "jekyll",
+    "github-pages",
+    "cosmic",
+    "horoscope"
+  ],
+  "author": "AstroAura",
+  "license": "MIT",
+  "devDependencies": {
+    "imagemin": "^8.0.1",
+    "imagemin-cli": "^7.0.0",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "clean-css-cli": "^5.6.2",
+    "terser": "^5.19.2",
+    "lighthouse": "^10.4.0",
+    "html-proofer": "^4.4.0"
+  },
+  "dependencies": {
+    "intersection-observer": "^0.12.2",
+    "lazysizes": "^5.3.2"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

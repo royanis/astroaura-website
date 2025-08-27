@@ -1,0 +1,129 @@
+---
+layout: default
+title: Test Birth Chart Geocoding Integration
+---
+
+<div class="container">
+  <h1>Birth Chart Geocoding Integration Test</h1>
+  
+  <div>
+    <label for="testLocation">Test Location:</label>
+    <input type="text" id="testLocation" value="New York" placeholder="Enter location...">
+    <button onclick="testBirthChartGeocoding()">Test Geocoding</button>
+  </div>
+  
+  <div id="results" style="margin-top: 20px;">
+    <!-- Results will appear here -->
+  </div>
+  
+  <div id="console" style="margin-top: 20px; background: #f5f5f5; padding: 10px; border-radius: 5px; font-family: monospace; font-size: 12px; white-space: pre-wrap; max-height: 400px; overflow-y: auto;">
+    <!-- Console logs will appear here -->
+  </div>
+</div>
+
+<script src="{{ '/assets/js/geocoding-service.js' | relative_url }}"></script>
+<script>
+let geocodingService;
+const consoleDiv = document.getElementById('console');
+
+// Override console methods to display in page
+const originalLog = console.log;
+const originalWarn = console.warn;
+const originalError = console.error;
+
+console.log = function(...args) {
+  originalLog.apply(console, args);
+  consoleDiv.innerHTML += '[LOG] ' + args.join(' ') + '\n';
+  consoleDiv.scrollTop = consoleDiv.scrollHeight;
+};
+
+console.warn = function(...args) {
+  originalWarn.apply(console, args);
+  consoleDiv.innerHTML += '[WARN] ' + args.join(' ') + '\n';
+  consoleDiv.scrollTop = consoleDiv.scrollHeight;
+};
+
+console.error = function(...args) {
+  originalError.apply(console, args);
+  consoleDiv.innerHTML += '[ERROR] ' + args.join(' ') + '\n';
+  consoleDiv.scrollTop = consoleDiv.scrollHeight;
+};
+
+// Initialize service
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    geocodingService = new GeocodingService();
+    console.log('GeocodingService initialized successfully');
+    console.log('API Key configured:', geocodingService.apiKeys.ipgeolocation ? 'Yes' : 'No');
+    console.log('Providers available:', geocodingService.providers.length);
+  } catch (error) {
+    console.error('Failed to initialize GeocodingService:', error);
+  }
+});
+
+async function testBirthChartGeocoding() {
+  const location = document.getElementById('testLocation').value;
+  const resultsDiv = document.getElementById('results');
+  
+  console.log('=== Testing Birth Chart Geocoding Integration ===');
+  console.log('Location query:', location);
+  resultsDiv.innerHTML = '<p>Testing geocoding integration...</p>';
+  
+  try {
+    // Test the geocoding service directly
+    const results = await geocodingService.geocodeLocation(location, {
+      limit: 5,
+      language: 'en'
+    });
+    
+    console.log('Geocoding results:', results);
+    
+    if (results && results.length > 0) {
+      let html = '<h3>✅ Geocoding Results:</h3><div class="location-options">';
+      
+      results.forEach((result, index) => {
+        html += `
+          <div class="location-option" style="border: 1px solid #ddd; padding: 10px; margin: 5px 0; border-radius: 5px;">
+            <div><strong>${result.name}</strong></div>
+            <div>Coordinates: ${result.lat.toFixed(4)}, ${result.lng.toFixed(4)}</div>
+            <div>Timezone: ${result.timezone || 'N/A'}</div>
+            <div>Country: ${result.country || 'N/A'}</div>
+            <div>Source: ${result.source}</div>
+            <div>Confidence: ${(result.confidence * 100).toFixed(0)}%</div>
+            ${result.source === 'ipgeolocation-astronomy' ? '<div style="color: green;">✅ Using IPGeolocation.io API</div>' : ''}
+          </div>
+        `;
+      });
+      
+      html += '</div>';
+      resultsDiv.innerHTML = html;
+      
+      // Test that we got results from IPGeolocation
+      const ipgeoResults = results.filter(r => r.source === 'ipgeolocation-astronomy');
+      if (ipgeoResults.length > 0) {
+        console.log('✅ IPGeolocation.io API integration working correctly');
+      } else {
+        console.log('ℹ️ Results from fallback providers (IPGeolocation may be rate limited)');
+      }
+      
+    } else {
+      resultsDiv.innerHTML = '<p>❌ No geocoding results found</p>';
+      console.log('No results returned from geocoding service');
+    }
+    
+  } catch (error) {
+    console.error('Geocoding integration test failed:', error);
+    resultsDiv.innerHTML = `<p>❌ Error: ${error.message}</p>`;
+  }
+  
+  console.log('=== Test completed ===');
+}
+
+// Auto-test on page load
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    console.log('Running auto-test with default location...');
+    testBirthChartGeocoding();
+  }, 1000);
+});
+</script>

@@ -1,0 +1,70 @@
+---
+layout: default
+---
+
+<article class="blog-post">
+    <div class="container">
+        <header class="post-header">
+            <div class="post-meta">
+                <time datetime="{{ page.date | date_to_xmlschema }}" class="post-date">
+                    {{ page.date | date: "%B %d, %Y" }}
+                </time>
+                {% if page.author %}
+                <span class="post-author">by {{ page.author }}</span>
+                {% endif %}
+                {% if page.categories %}
+                <div class="post-categories">
+                    {% for category in page.categories %}
+                    <span class="category">{{ category }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <h1 class="post-title">{{ page.title }}</h1>
+            {% if page.subtitle %}
+            <p class="post-subtitle">{{ page.subtitle }}</p>
+            {% endif %}
+        </header>
+        
+        {% if page.featured_image %}
+        <div class="post-featured-image">
+            <img src="{{ page.featured_image | relative_url }}" alt="{{ page.title }}" loading="lazy">
+        </div>
+        {% endif %}
+        
+        <div class="post-content">
+            {{ content }}
+        </div>
+        
+        {% if page.tags %}
+        <footer class="post-footer">
+            <div class="post-tags">
+                <span class="tags-label">Tags:</span>
+                {% for tag in page.tags %}
+                <span class="tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+        </footer>
+        {% endif %}
+        
+        <div class="post-navigation">
+            {% if page.previous %}
+            <div class="nav-previous">
+                <a href="{{ page.previous.url | relative_url }}" rel="prev">
+                    <span class="nav-label">Previous Post</span>
+                    <span class="nav-title">{{ page.previous.title }}</span>
+                </a>
+            </div>
+            {% endif %}
+            
+            {% if page.next %}
+            <div class="nav-next">
+                <a href="{{ page.next.url | relative_url }}" rel="next">
+                    <span class="nav-label">Next Post</span>
+                    <span class="nav-title">{{ page.next.title }}</span>
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</article>

@@ -1,0 +1,223 @@
+---
+layout: default
+title: Daily Cosmic Dashboard - AstroAura
+description: Your personalized daily astrological insights, planetary transits, and cosmic weather.
+---
+
+<div class="cosmic-dashboard-page">
+  <div class="cosmic-header">
+    <div class="container">
+      <h1 class="cosmic-title">Daily Cosmic Dashboard</h1>
+      <p class="cosmic-subtitle">Your personalized window into today's cosmic energies</p>
+      <div class="current-date" id="currentDate"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="dashboard-container">
+      <!-- Setup Section (for first-time users) -->
+      <div class="setup-section" id="setupSection">
+        <div class="setup-card">
+          <h2>Personalize Your Cosmic Dashboard</h2>
+          <p>Enter your birth details to receive personalized daily insights</p>
+          
+          <div class="setup-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="setupDate">Birth Date</label>
+                <input type="date" id="setupDate" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="setupTime">Birth Time (Optional)</label>
+                <input type="time" id="setupTime">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="setupLocation">Birth Location</label>
+              <input type="text" id="setupLocation" placeholder="City, Country" required>
+              <div class="location-suggestions" id="setupLocationSuggestions"></div>
+            </div>
+            
+            <div class="setup-actions">
+              <button type="button" class="btn-cosmic" id="setupDashboard">Create My Dashboard</button>
+              <button type="button" class="btn-secondary" id="skipSetup">Skip for Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Dashboard -->
+      <div class="dashboard-main" id="dashboardMain" style="display: none;">
+        <!-- Today's Overview -->
+        <div class="today-overview">
+          <div class="overview-card main-card">
+            <h2>Today's Cosmic Weather</h2>
+            <div class="cosmic-weather" id="cosmicWeather">
+              <div class="weather-item">
+                <span class="weather-icon">☀️</span>
+                <div class="weather-info">
+                  <h4>Sun in <span id="currentSunSign">Calculating...</span></h4>
+                  <p id="sunDescription">Loading solar energy...</p>
+                </div>
+              </div>
+              
+              <div class="weather-item">
+                <span class="weather-icon">🌙</span>
+                <div class="weather-info">
+                  <h4>Moon in <span id="currentMoonSign">Calculating...</span></h4>
+                  <p id="moonDescription">Loading lunar energy...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Insights -->
+          <div class="quick-insights">
+            <div class="insight-card">
+              <h3>Daily Focus</h3>
+              <p id="dailyFocus">Loading your cosmic guidance...</p>
+            </div>
+            
+            <div class="insight-card">
+              <h3>Lucky Element</h3>
+              <p id="luckyElement">Discovering your fortune...</p>
+            </div>
+            
+            <div class="insight-card">
+              <h3>Cosmic Advice</h3>
+              <p id="cosmicAdvice">Preparing your wisdom...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Personalized Horoscope -->
+        <div class="horoscope-section" id="horoscopeSection">
+          <div class="section-header">
+            <h2>Your Personal Horoscope</h2>
+            <div class="user-info" id="userInfo">
+              <span id="userSign">Your Sign</span> • <span id="userLocation">Your Location</span>
+            </div>
+          </div>
+          
+          <div class="horoscope-content">
+            <div class="horoscope-card">
+              <h3>Today's Message for You</h3>
+              <div class="horoscope-text" id="personalHoroscope">
+                <p>Loading your personalized cosmic insights...</p>
+              </div>
+            </div>
+            
+            <div class="horoscope-aspects">
+              <div class="aspect-item">
+                <h4>💝 Love & Relationships</h4>
+                <p id="loveHoroscope">Analyzing your romantic energies...</p>
+              </div>
+              
+              <div class="aspect-item">
+                <h4>💼 Career & Money</h4>
+                <p id="careerHoroscope">Examining your professional path...</p>
+              </div>
+              
+              <div class="aspect-item">
+                <h4>🌟 Personal Growth</h4>
+                <p id="growthHoroscope">Discovering your development opportunities...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Planetary Transit Tracker -->
+        <div class="transit-section">
+          <div class="section-header">
+            <h2>Planetary Transit Tracker</h2>
+            <div class="transit-controls">
+              <button class="time-btn active" data-period="today">Today</button>
+              <button class="time-btn" data-period="week">This Week</button>
+              <button class="time-btn" data-period="month">This Month</button>
+            </div>
+          </div>
+          
+          <div class="transit-timeline" id="transitTimeline">
+            <div class="timeline-container">
+              <div class="timeline-track"></div>
+              <div class="transit-events" id="transitEvents">
+                <!-- Transit events will be populated here -->
+              </div>
+            </div>
+          </div>
+          
+          <div class="active-transits">
+            <h3>Active Transits Affecting You</h3>
+            <div class="transit-list" id="activeTransits">
+              <!-- Active transits will be populated here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Moon Phase Calendar -->
+        <div class="moon-phase-section">
+          <div class="section-header">
+            <h2>Lunar Calendar</h2>
+            <div class="moon-nav">
+              <button class="moon-nav-btn" id="prevMonth">‹</button>
+              <span class="current-month" id="currentMonth">Loading...</span>
+              <button class="moon-nav-btn" id="nextMonth">›</button>
+            </div>
+          </div>
+          
+          <div class="moon-calendar">
+            <div class="current-moon-phase">
+              <div class="moon-visual" id="currentMoonPhase">
+                <div class="moon-circle">
+                  <div class="moon-shadow" id="moonShadow"></div>
+                </div>
+              </div>
+              <div class="moon-info">
+                <h3 id="moonPhaseName">Loading...</h3>
+                <p id="moonPhaseDescription">Calculating lunar energy...</p>
+                <div class="moon-details">
+                  <span>Illumination: <strong id="moonIllumination">0%</strong></span>
+                  <span>Sign: <strong id="moonPhaseSign">Loading...</strong></span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="moon-calendar-grid" id="moonCalendarGrid">
+              <!-- Calendar grid will be populated here -->
+            </div>
+          </div>
+          
+          <div class="moon-insights">
+            <h3>Lunar Guidance for You</h3>
+            <div class="lunar-advice" id="lunarAdvice">
+              <p>Preparing your personalized lunar wisdom...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cosmic Events -->
+        <div class="cosmic-events-section">
+          <div class="section-header">
+            <h2>Upcoming Cosmic Events</h2>
+          </div>
+          
+          <div class="events-list" id="cosmicEvents">
+            <!-- Cosmic events will be populated here -->
+          </div>
+        </div>
+
+        <!-- Dashboard Actions -->
+        <div class="dashboard-actions">
+          <button type="button" class="btn-cosmic" id="refreshDashboard">Refresh Insights</button>
+          <button type="button" class="btn-secondary" id="customizeSettings">Customize Dashboard</button>
+          <button type="button" class="btn-secondary" id="shareDashboard">Share Today's Insights</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ '/assets/js/chart-interpretation.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/cosmic-dashboard.js' | relative_url }}"></script>

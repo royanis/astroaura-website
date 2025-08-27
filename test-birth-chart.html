@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birth Chart Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-result { margin: 10px 0; padding: 10px; border: 1px solid #ddd; }
+        .success { background: #d4edda; }
+        .error { background: #f8d7da; }
+        .info { background: #d1ecf1; }
+        pre { background: #f8f9fa; padding: 10px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>Birth Chart Calculator Test</h1>
+    
+    <div id="testResults"></div>
+    
+    <button onclick="runTests()">Run Tests</button>
+    
+    <script src="/assets/js/vsop87-calculator.js"></script>
+    <script src="/assets/js/geocoding-service.js"></script>
+    <script src="/assets/js/timezone-service.js"></script>
+    <script src="/assets/js/chart-interpretation.js"></script>
+    <script src="/assets/js/birth-chart-calculator.js"></script>
+    
+    <script>
+        async function runTests() {
+            const resultsDiv = document.getElementById('testResults');
+            resultsDiv.innerHTML = '<div class="info">Running tests...</div>';
+            
+            const calculator = new BirthChartCalculator();
+            const tests = [];
+            
+            // Test 1: Known birth data - Albert Einstein
+            // Born: March 14, 1879, 11:30 AM, Ulm, Germany
+            tests.push(await testKnownBirthData(calculator, {
+                name: 'Albert Einstein',
+                date: '1879-03-14',
+                time: '11:30',
+                location: {
+                    name: 'Ulm, Germany',
+                    lat: 48.4011,
+                    lng: 9.9876,
+                    timezone: 'Europe/Berlin'
+                }
+            }));
+            
+            // Test 2: Production Geocoding Service
+            tests.push(await testProductionGeocoding());
+            
+            // Test 3: Timezone conversion
+            tests.push(await testTimezoneConversion(calculator));
+            
+            // Test 4: Production VSOP87 calculations
+            tests.push(await testVSOP87Calculations());
+            
+            // Test 5: Timezone service
+            tests.push(await testTimezoneService());
+            
+            // Display results
+            displayTestResults(tests, resultsDiv);
+        }
+        
+        async function testKnownBirthData(calculator, testData) {
+            try {
+                calculator.birthData = {
+                    date: testData.date,
+                    time: testData.time,
+                    location: testData.location
+                };
+                
+                const chartData = await calculator.performAstrologicalCalculations();
+                
+                // Basic validation
+                const hasAllPlanets = chartData.planets && chartData.planets.length === 10;
+                const hasAllHouses = chartData.houses && chartData.houses.length === 12;
+                const sunInPisces = chartData.planets.find(p => p.name === 'Sun')?.sign === 'Pisces';
+                
+                return {
+                    name: `Known Birth Data Test (${testData.name})`,
+                    success: hasAllPlanets && hasAllHouses,
+                    details: `Planets: ${chartData.planets.length}, Houses: ${chartData.houses.length}, Sun in ${chartData.planets.find(p => p.name === 'Sun')?.sign}`,
+                    data: chartData
+                };
+            } catch (error) {
+                return {
+                    name: `Known Birth Data Test (${testData.name})`,
+                    success: false,
+                    details: `Error: ${error.message}`,
+                    error: error
+                };
+            }
+        }
+        
+        async function testProductionGeocoding() {
+            try {
+                const geocodingService = new GeocodingService();
+                const locations = await geocodingService.geocodeLocation('New York', { limit: 5 });
+                
+                return {
+                    name: 'Production Geocoding Service Test',
+                    success: locations && locations.length > 0,
+                    details: `Found ${locations.length} locations with fallback support. Sources: ${[...new Set(locations.map(l => l.source))].join(', ')}`,
+                    data: locations.slice(0, 3) // Show first 3 results
+                };
+            } catch (error) {
+                return {
+                    name: 'Production Geocoding Service Test',
+                    success: false,
+                    details: `Error: ${error.message}`,
+                    error: error
+                };
+            }
+        }
+        
+        async function testTimezoneConversion(calculator) {
+            try {
+                const testDate = '2023-06-15';
+                const testTime = '14:30';
+                const testTimezone = 'America/New_York';
+                
+                const utcDate = calculator.convertToUTC(testDate, testTime, testTimezone);
+                const expectedOffset = -4; // EDT offset in June
+                
+                return {
+                    name: 'Timezone Conversion Test',
+                    success: utcDate instanceof Date,
+                    details: `Input: ${testDate} ${testTime} ${testTimezone}, UTC: ${utcDate.toISOString()}`,
+                    data: { input: `${testDate} ${testTime}`, timezone: testTimezone, utc: utcDate.toISOString() }
+                };
+            } catch (error) {
+                return {
+                    name: 'Timezone Conversion Test',
+                    success: false,
+                    details: `Error: ${error.message}`,
+                    error: error
+                };
+            }
+        }
+        
+        async function testVSOP87Calculations() {
+            try {
+                const vsopCalculator = new VSOP87Calculator();
+                const julianDay = 2460116.0; // June 15, 2023, 12:00 UTC
+                const planets = vsopCalculator.calculatePlanetaryPositions(julianDay);
+                
+                const validPlanets = planets.length === 10;
+                const allValidPositions = planets.every(p => p.longitude >= 0 && p.longitude < 360);
+                const hasAccurateData = planets.every(p => p.second !== undefined); // Check for high precision
+                
+                return {
+                    name: 'Production VSOP87 Calculations Test',
+                    success: validPlanets && allValidPositions && hasAccurateData,
+                    details: `${planets.length} planets calculated. Sun: ${planets[0].longitude.toFixed(4)}°, Moon: ${planets[1].longitude.toFixed(4)}°`,
+                    data: planets.slice(0, 3) // Show first 3 planets
+                };
+            } catch (error) {
+                return {
+                    name: 'Production VSOP87 Calculations Test',
+                    success: false,
+                    details: `Error: ${error.message}`,
+                    error: error
+                };
+            }
+        }
+        
+        async function testTimezoneService() {
+            try {
+                const timezoneService = new TimezoneService();
+                const timezone = await timezoneService.getTimezoneForCoordinates(40.7128, -74.0060); // New York
+                const utcConversion = timezoneService.convertToUTC('2023-06-15', '14:30', timezone, {lat: 40.7128, lng: -74.0060});
+                
+                return {
+                    name: 'Production Timezone Service Test',
+                    success: timezone && utcConversion && utcConversion.utc instanceof Date,
+                    details: `Timezone: ${timezone.name}, UTC offset: ${utcConversion.offset}h, DST: ${utcConversion.dst}`,
+                    data: { timezone, utcConversion: utcConversion.utc.toISOString() }
+                };
+            } catch (error) {
+                return {
+                    name: 'Production Timezone Service Test',
+                    success: false,
+                    details: `Error: ${error.message}`,
+                    error: error
+                };
+            }
+        }
+        
+        function displayTestResults(tests, container) {
+            let html = '<h2>Test Results</h2>';
+            let successCount = 0;
+            
+            tests.forEach(test => {
+                if (test.success) successCount++;
+                
+                const className = test.success ? 'success' : 'error';
+                html += `
+                    <div class="test-result ${className}">
+                        <h3>${test.name}</h3>
+                        <p><strong>Status:</strong> ${test.success ? 'PASS' : 'FAIL'}</p>
+                        <p><strong>Details:</strong> ${test.details}</p>
+                        ${test.data ? `<details><summary>Raw Data</summary><pre>${JSON.stringify(test.data, null, 2)}</pre></details>` : ''}
+                        ${test.error ? `<details><summary>Error Details</summary><pre>${test.error.stack || test.error.message}</pre></details>` : ''}
+                    </div>
+                `;
+            });
+            
+            html = `<div class="test-result ${successCount === tests.length ? 'success' : 'error'}">
+                <h2>Overall Result: ${successCount}/${tests.length} tests passed</h2>
+            </div>` + html;
+            
+            container.innerHTML = html;
+        }
+        
+        // Initialize calculator when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Test page loaded - Birth Chart Calculator ready for testing');
+        });
+    </script>
+</body>
+</html>

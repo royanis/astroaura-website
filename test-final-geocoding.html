@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Final Geocoding Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; }
+        .result { margin: 10px 0; padding: 10px; background: #f5f5f5; }
+        .success { background: #e8f5e8; color: #2e7d32; }
+        .error { background: #ffebee; color: #c62828; }
+        .warning { background: #fff3e0; color: #f57c00; }
+        input { padding: 8px; margin: 5px; width: 300px; }
+        button { padding: 8px 15px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <h1>🌍 Final Geocoding Test</h1>
+    
+    <div class="test-section">
+        <h3>Service Status</h3>
+        <div id="status"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>City Search Test</h3>
+        <input type="text" id="cityInput" placeholder="Enter city name" value="kolkata">
+        <button onclick="testSearch()">🔍 Search</button>
+        <div id="results"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>Quick Tests</h3>
+        <button onclick="quickTest('mumbai')">Mumbai</button>
+        <button onclick="quickTest('london')">London</button>
+        <button onclick="quickTest('new york')">New York</button>
+        <button onclick="quickTest('tokyo')">Tokyo</button>
+        <button onclick="quickTest('sydney')">Sydney</button>
+    </div>
+
+    <!-- Load scripts in correct order -->
+    <script src="assets/js/api-keys.js"></script>
+    <script src="assets/js/geocoding-config.js"></script>
+    <script src="assets/js/geocoding-service-simple.js"></script>
+    
+    <script>
+        let geocodingService;
+        
+        function updateStatus(message, type = 'info') {
+            const statusDiv = document.getElementById('status');
+            const className = type === 'success' ? 'success' : type === 'error' ? 'error' : type === 'warning' ? 'warning' : '';
+            statusDiv.innerHTML += `<div class="result ${className}">${message}</div>`;
+            console.log(message);
+        }
+        
+        function initializeService() {
+            updateStatus('🔄 Checking GeocodingService availability...');
+            
+            if (typeof GeocodingService !== 'undefined') {
+                try {
+                    geocodingService = new GeocodingService();
+                    updateStatus('✅ GeocodingService initialized successfully', 'success');
+                    return true;
+                } catch (error) {
+                    updateStatus(`❌ Error initializing GeocodingService: ${error.message}`, 'error');
+                    return false;
+                }
+            } else {
+                updateStatus('❌ GeocodingService class not found', 'error');
+                return false;
+            }
+        }
+        
+        async function testSearch() {
+            const query = document.getElementById('cityInput').value.trim();
+            if (!query) {
+                updateResults('⚠️ Please enter a city name', 'warning');
+                return;
+            }
+            
+            await performSearch(query);
+        }
+        
+        async function quickTest(city) {
+            document.getElementById('cityInput').value = city;
+            await performSearch(city);
+        }
+        
+        async function performSearch(query) {
+            const resultsDiv = document.getElementById('results');
+            
+            if (!geocodingService) {
+                updateResults('❌ Geocoding service not available', 'error');
+                return;
+            }
+            
+            try {
+                updateResults('🔍 Searching for: ' + query);
+                const startTime = Date.now();
+                
+                const locations = await geocodingService.geocodeLocation(query);
+                const searchTime = Date.now() - startTime;
+                
+                if (locations.length === 0) {
+                    updateResults('❌ No results found', 'warning');
+                } else {
+                    let html = `<div class="result success">✅ Found ${locations.length} results in ${searchTime}ms</div>`;
+                    
+                    locations.forEach((loc, index) => {
+                        const confidenceColor = loc.confidence > 0.8 ? '#4caf50' : loc.confidence > 0.6 ? '#ff9800' : '#f44336';
+                        html += `<div class="result" style="border-left: 4px solid ${confidenceColor};">
+                            <strong>${index + 1}. ${loc.name}</strong><br>
+                            📍 <strong>Coordinates:</strong> ${loc.lat.toFixed(4)}, ${loc.lng.toFixed(4)}<br>
+                            🌍 <strong>Source:</strong> ${loc.source}<br>
+                            ⭐ <strong>Confidence:</strong> ${(loc.confidence * 100).toFixed(0)}%<br>
+                            🕐 <strong>Timezone:</strong> ${loc.timezone}<br>
+                            🏙️ <strong>City:</strong> ${loc.city || 'N/A'}<br>
+                            🏛️ <strong>State:</strong> ${loc.state || 'N/A'}<br>
+                            🏳️ <strong>Country:</strong> ${loc.country || 'N/A'}
+                        </div>`;
+                    });
+                    
+                    resultsDiv.innerHTML = html;
+                }
+            } catch (error) {
+                updateResults(`❌ Search error: ${error.message}`, 'error');
+                console.error('Search error:', error);
+            }
+        }
+        
+        function updateResults(message, type = 'info') {
+            const resultsDiv = document.getElementById('results');
+            const className = type === 'success' ? 'success' : type === 'error' ? 'error' : type === 'warning' ? 'warning' : '';
+            resultsDiv.innerHTML = `<div class="result ${className}">${message}</div>`;
+        }
+        
+        // Initialize when page loads
+        window.addEventListener('load', () => {
+            updateStatus('📄 Page loaded, initializing...');
+            
+            setTimeout(() => {
+                const success = initializeService();
+                if (success) {
+                    updateStatus('🚀 Ready for testing!', 'success');
+                    // Auto-test with Kolkata
+                    setTimeout(() => performSearch('kolkata'), 500);
+                } else {
+                    updateStatus('⚠️ Service initialization failed - check console for details', 'warning');
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>

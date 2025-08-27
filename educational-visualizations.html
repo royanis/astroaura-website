@@ -1,0 +1,460 @@
+---
+layout: default
+title: "Interactive Astrological Learning | AstroAura Educational Visualizations"
+description: "Learn astrology through interactive visualizations, animated explanations, and progressive learning modules. Explore planetary movements, aspects, zodiac signs, and house systems."
+---
+
+<section class="educational-section">
+    <div class="container">
+        <div class="educational-header">
+            <h2>Interactive Astrological Learning</h2>
+            <p>Discover the mysteries of astrology through interactive visualizations, animated explanations, and hands-on learning experiences designed to make cosmic wisdom accessible to everyone.</p>
+        </div>
+
+        <div class="visualization-grid">
+            <!-- Planetary Movement Chart -->
+            <div class="visualization-card">
+                <h3>🪐 Planetary Movements</h3>
+                <p>Watch the planets dance around the Sun in real-time. Click on any planet to learn about its astrological significance and orbital characteristics.</p>
+                <div class="visualization-container">
+                    <div id="planetary-movement-chart"></div>
+                </div>
+            </div>
+
+            <!-- Aspect Explanation Animation -->
+            <div class="visualization-card">
+                <h3>✨ Astrological Aspects</h3>
+                <p>Understand the geometric relationships between planets and how they influence your cosmic energy through interactive aspect demonstrations.</p>
+                <div class="visualization-container">
+                    <div id="aspect-explanation"></div>
+                </div>
+            </div>
+
+            <!-- Zodiac Learning Wheel -->
+            <div class="visualization-card">
+                <h3>♈ Zodiac Wheel Explorer</h3>
+                <p>Explore the twelve zodiac signs, their elements, qualities, and characteristics through an interactive wheel that reveals the cosmic personality types.</p>
+                <div class="visualization-container">
+                    <div id="zodiac-learning-wheel"></div>
+                </div>
+            </div>
+
+            <!-- House System Visualization -->
+            <div class="visualization-card">
+                <h3>🏠 Astrological Houses</h3>
+                <p>Discover the twelve houses of astrology and their life themes. Hover over each house to understand its influence on different areas of your life.</p>
+                <div class="visualization-container">
+                    <div id="house-system-chart"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Learning Progress Section -->
+        <div class="learning-progress-section">
+            <div class="progress-header">
+                <h3>Your Learning Journey</h3>
+                <p>Track your progress as you explore the cosmic arts</p>
+            </div>
+            
+            <div class="progress-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="modules-completed">0</span>
+                    <span class="stat-label">Modules Completed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="current-level">Beginner</span>
+                    <span class="stat-label">Current Level</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="achievements-earned">0</span>
+                    <span class="stat-label">Achievements</span>
+                </div>
+            </div>
+
+            <div class="achievement-showcase" id="achievement-showcase">
+                <!-- Achievements will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Progressive Learning Paths -->
+        <div class="learning-paths-section">
+            <div class="section-header">
+                <h3>Progressive Learning Paths</h3>
+                <p>Follow structured learning paths from beginner to advanced levels</p>
+            </div>
+            
+            <div class="learning-paths-container" id="learning-paths-container">
+                <!-- Learning paths will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Interactive Learning Modules -->
+        <div class="learning-modules">
+            <h3>Interactive Learning Modules</h3>
+            <div class="module-grid">
+                <div class="learning-module" data-module="planetary-basics">
+                    <div class="module-icon">🪐</div>
+                    <h4>Planetary Basics</h4>
+                    <p>Learn about the celestial bodies and their astrological meanings</p>
+                    <div class="module-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0% Complete</span>
+                    </div>
+                    <button class="module-btn">Start Learning</button>
+                </div>
+
+                <div class="learning-module" data-module="zodiac-signs">
+                    <div class="module-icon">♈</div>
+                    <h4>Zodiac Signs</h4>
+                    <p>Explore the twelve signs and their unique characteristics</p>
+                    <div class="module-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0% Complete</span>
+                    </div>
+                    <button class="module-btn">Start Learning</button>
+                </div>
+
+                <div class="learning-module" data-module="aspects-relationships">
+                    <div class="module-icon">✨</div>
+                    <h4>Aspects & Relationships</h4>
+                    <p>Understand planetary relationships and their influences</p>
+                    <div class="module-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0% Complete</span>
+                    </div>
+                    <button class="module-btn">Start Learning</button>
+                </div>
+
+                <div class="learning-module" data-module="houses-life-areas">
+                    <div class="module-icon">🏠</div>
+                    <h4>Houses & Life Areas</h4>
+                    <p>Discover how the twelve houses influence different life themes</p>
+                    <div class="module-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0% Complete</span>
+                    </div>
+                    <button class="module-btn">Start Learning</button>
+                </div>
+
+                <div class="learning-module" data-module="chart-interpretation">
+                    <div class="module-icon">📊</div>
+                    <h4>Chart Interpretation</h4>
+                    <p>Learn to read and interpret birth charts like a pro</p>
+                    <div class="module-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0% Complete</span>
+                    </div>
+                    <button class="module-btn">Start Learning</button>
+                </div>
+
+                <div class="learning-module" data-module="advanced-techniques">
+                    <div class="module-icon">🔮</div>
+                    <h4>Advanced Techniques</h4>
+                    <p>Master advanced astrological concepts and techniques</p>
+                    <div class="module-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0% Complete</span>
+                    </div>
+                    <button class="module-btn">Start Learning</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Glossary -->
+        <div class="glossary-section">
+            <div class="section-header">
+                <h3>Interactive Astrological Glossary</h3>
+                <p>Explore comprehensive definitions with visual aids and contextual help</p>
+            </div>
+            
+            <div class="glossary-container" id="glossary-container">
+                <!-- Glossary will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="educational-cta">
+            <h3>Ready to Dive Deeper?</h3>
+            <p>Take your astrological knowledge to the next level with personalized insights and advanced features in the AstroAura mobile app.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Download AstroAura App</a>
+                <a href="/birth-chart.html" class="btn btn-secondary">Calculate Your Birth Chart</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Additional styles specific to this page */
+.learning-progress-section {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(240, 199, 94, 0.2);
+    padding: 40px;
+    margin: 60px 0;
+    text-align: center;
+}
+
+.progress-header h3 {
+    color: var(--cosmic-gold);
+    font-family: 'Georgia', serif;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.progress-header p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+}
+
+.progress-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--cosmic-gold);
+    text-shadow: 0 2px 20px rgba(240, 199, 94, 0.5);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.learning-modules {
+    margin: 80px 0;
+}
+
+.learning-modules h3 {
+    text-align: center;
+    color: var(--cosmic-gold);
+    font-family: 'Georgia', serif;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.learning-module {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(240, 199, 94, 0.2);
+    padding: 30px;
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.learning-module::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(240, 199, 94, 0.1), transparent);
+    transition: left 0.8s ease;
+}
+
+.learning-module:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(240, 199, 94, 0.2);
+    border-color: var(--cosmic-gold);
+}
+
+.learning-module:hover::before {
+    left: 100%;
+}
+
+.module-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.learning-module h4 {
+    color: var(--starlight);
+    font-family: 'Georgia', serif;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.learning-module p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.module-progress {
+    margin-bottom: 1.5rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--cosmic-gradient);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.module-btn {
+    background: var(--cosmic-gradient);
+    color: var(--starlight);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+    font-size: 1rem;
+}
+
+.module-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(240, 199, 94, 0.4);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-header h3 {
+    color: var(--cosmic-gold);
+    font-family: 'Georgia', serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 30px rgba(240, 199, 94, 0.4);
+}
+
+.section-header p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.glossary-section {
+    margin: 80px 0;
+}
+
+.learning-paths-section {
+    margin: 80px 0;
+}
+
+.educational-cta {
+    text-align: center;
+    background: var(--cosmic-gradient);
+    border-radius: var(--border-radius);
+    padding: 60px 40px;
+    margin-top: 80px;
+}
+
+.educational-cta h3 {
+    color: var(--starlight);
+    font-family: 'Georgia', serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.educational-cta p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-buttons .btn {
+    min-width: 200px;
+}
+
+.cta-buttons .btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid var(--starlight);
+}
+
+.cta-buttons .btn-secondary:hover {
+    background: var(--starlight);
+    color: var(--cosmic-purple);
+}
+
+@media (max-width: 768px) {
+    .progress-stats {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .module-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .educational-cta {
+        padding: 40px 20px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+</style>
+
+<script src="assets/js/educational-visualizations.js"></script>
+<script src="assets/js/progressive-learning.js"></script>
+<script src="assets/js/concept-explanation-system.js"></script>

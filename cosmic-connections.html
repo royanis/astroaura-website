@@ -1,0 +1,282 @@
+---
+layout: default
+title: Cosmic Connections - AstroAura
+description: Find compatible cosmic companions based on astrological harmony
+---
+
+<div class="cosmic-connections-container">
+    <header class="connections-header">
+        <div class="header-content">
+            <h1 class="connections-title">
+                <span class="cosmic-icon">🌌</span>
+                Cosmic Connections
+            </h1>
+            <p class="connections-subtitle">Discover compatible souls through astrological harmony</p>
+        </div>
+        <div class="connections-actions">
+            <button class="btn btn-primary" id="findConnectionsBtn">
+                <span class="icon">🔍</span>
+                Find Connections
+            </button>
+            <button class="btn btn-secondary" id="privacySettingsBtn">
+                <span class="icon">🔒</span>
+                Privacy Settings
+            </button>
+        </div>
+    </header>
+
+    <div class="connections-content">
+        <!-- Privacy First Notice -->
+        <div class="privacy-first-notice">
+            <div class="notice-icon">🛡️</div>
+            <div class="notice-content">
+                <h3>Privacy-First Connections</h3>
+                <p>Your birth chart data stays private. We only share compatibility insights, never personal information.</p>
+                <p>All connections are optional and you control what you share.</p>
+            </div>
+        </div>
+
+        <!-- Connection Setup Form -->
+        <div class="connection-setup-container" id="connectionSetup" style="display: none;">
+            <div class="setup-card">
+                <div class="setup-header">
+                    <h3>Set Up Your Cosmic Profile</h3>
+                    <button class="close-btn" id="closeSetupBtn">&times;</button>
+                </div>
+                <form id="connectionSetupForm">
+                    <div class="form-section">
+                        <h4>Birth Chart Information</h4>
+                        <p class="section-description">This information is used only for compatibility calculations and remains private.</p>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="birthDate">Birth Date</label>
+                                <input type="date" id="birthDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="birthTime">Birth Time (Optional)</label>
+                                <input type="time" id="birthTime">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="birthLocation">Birth Location</label>
+                            <input type="text" id="birthLocation" placeholder="City, Country" required>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4>Connection Preferences</h4>
+                        <p class="section-description">What type of connections are you looking for?</p>
+                        
+                        <div class="connection-types">
+                            <label class="connection-type">
+                                <input type="checkbox" name="connectionType" value="friendship">
+                                <span class="type-label">
+                                    <strong>Cosmic Friendships</strong>
+                                    <small>Connect with like-minded spiritual friends</small>
+                                </span>
+                            </label>
+                            <label class="connection-type">
+                                <input type="checkbox" name="connectionType" value="learning">
+                                <span class="type-label">
+                                    <strong>Learning Partners</strong>
+                                    <small>Study astrology and spirituality together</small>
+                                </span>
+                            </label>
+                            <label class="connection-type">
+                                <input type="checkbox" name="connectionType" value="mentorship">
+                                <span class="type-label">
+                                    <strong>Mentorship</strong>
+                                    <small>Share knowledge or learn from others</small>
+                                </span>
+                            </label>
+                            <label class="connection-type">
+                                <input type="checkbox" name="connectionType" value="support">
+                                <span class="type-label">
+                                    <strong>Spiritual Support</strong>
+                                    <small>Mutual support on spiritual journeys</small>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4>Interests & Topics</h4>
+                        <p class="section-description">Select your areas of interest to find compatible connections.</p>
+                        
+                        <div class="interests-grid">
+                            <label class="interest-item">
+                                <input type="checkbox" name="interests" value="astrology">
+                                <span>Astrology</span>
+                            </label>
+                            <label class="interest-item">
+                                <input type="checkbox" name="interests" value="tarot">
+                                <span>Tarot</span>
+                            </label>
+                            <label class="interest-item">
+                                <input type="checkbox" name="interests" value="meditation">
+                                <span>Meditation</span>
+                            </label>
+                            <label class="interest-item">
+                                <input type="checkbox" name="interests" value="crystals">
+                                <span>Crystals</span>
+                            </label>
+                            <label class="interest-item">
+                                <input type="checkbox" name="interests" value="numerology">
+                                <span>Numerology</span>
+                            </label>
+                            <label class="interest-item">
+                                <input type="checkbox" name="interests" value="moon-phases">
+                                <span>Moon Phases</span>
+                            </label>
+                            <label class="interest-item">
+                                <input type="checkbox" name="interests" value="chakras">
+                                <span>Chakras</span>
+                            </label>
+                            <label class="interest-item">
+                                <input type="checkbox" name="interests" value="manifestation">
+                                <span>Manifestation</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4>Privacy & Visibility</h4>
+                        
+                        <div class="privacy-options">
+                            <label class="privacy-option">
+                                <input type="radio" name="visibility" value="anonymous" checked>
+                                <span class="privacy-label">
+                                    <strong>Anonymous</strong>
+                                    <small>Show only compatibility insights, no personal info</small>
+                                </span>
+                            </label>
+                            <label class="privacy-option">
+                                <input type="radio" name="visibility" value="cosmic-name">
+                                <span class="privacy-label">
+                                    <strong>Cosmic Name Only</strong>
+                                    <small>Share a chosen cosmic name with compatible connections</small>
+                                </span>
+                            </label>
+                        </div>
+                        
+                        <div class="cosmic-name-input" id="cosmicNameInput" style="display: none;">
+                            <input type="text" id="cosmicName" placeholder="Choose your cosmic name...">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelSetupBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Create Cosmic Profile</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Privacy Settings Modal -->
+        <div class="privacy-settings-container" id="privacySettings" style="display: none;">
+            <div class="privacy-card">
+                <div class="privacy-header">
+                    <h3>Privacy & Connection Settings</h3>
+                    <button class="close-btn" id="closePrivacyBtn">&times;</button>
+                </div>
+                <div class="privacy-content">
+                    <div class="privacy-section">
+                        <h4>Data Privacy</h4>
+                        <ul>
+                            <li>Your birth chart data is stored locally on your device</li>
+                            <li>Only compatibility scores are calculated, never shared</li>
+                            <li>You can delete your profile at any time</li>
+                            <li>No personal information is ever shared without consent</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h4>Connection Controls</h4>
+                        <div class="control-options">
+                            <label class="control-option">
+                                <input type="checkbox" id="allowConnections" checked>
+                                <span>Allow new connection suggestions</span>
+                            </label>
+                            <label class="control-option">
+                                <input type="checkbox" id="showCompatibility" checked>
+                                <span>Show compatibility percentages</span>
+                            </label>
+                            <label class="control-option">
+                                <input type="checkbox" id="allowMessages">
+                                <span>Allow messages from compatible connections</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h4>Data Management</h4>
+                        <div class="data-actions">
+                            <button class="btn btn-secondary" id="exportDataBtn">Export My Data</button>
+                            <button class="btn btn-danger" id="deleteProfileBtn">Delete Profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Connections Display -->
+        <div class="connections-display">
+            <div class="connections-tabs">
+                <button class="tab-btn active" data-tab="suggestions">Suggested Connections</button>
+                <button class="tab-btn" data-tab="groups">Interest Groups</button>
+                <button class="tab-btn" data-tab="my-connections">My Connections</button>
+            </div>
+
+            <!-- Suggested Connections Tab -->
+            <div class="tab-content active" id="suggestionsTab">
+                <div class="suggestions-header">
+                    <h3>Compatible Cosmic Souls</h3>
+                    <div class="compatibility-filters">
+                        <select id="compatibilityFilter">
+                            <option value="">All Compatibility Levels</option>
+                            <option value="high">High Compatibility (80%+)</option>
+                            <option value="medium">Medium Compatibility (60-79%)</option>
+                            <option value="low">Lower Compatibility (40-59%)</option>
+                        </select>
+                        <select id="connectionTypeFilter">
+                            <option value="">All Connection Types</option>
+                            <option value="friendship">Friendship</option>
+                            <option value="learning">Learning Partners</option>
+                            <option value="mentorship">Mentorship</option>
+                            <option value="support">Spiritual Support</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="suggestionsList" class="connections-list">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Interest Groups Tab -->
+            <div class="tab-content" id="groupsTab">
+                <div class="groups-header">
+                    <h3>Interest-Based Groups</h3>
+                    <p>Join groups based on your spiritual interests and astrological compatibility</p>
+                </div>
+                <div id="groupsList" class="groups-grid">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- My Connections Tab -->
+            <div class="tab-content" id="myConnectionsTab">
+                <div class="my-connections-header">
+                    <h3>Your Cosmic Network</h3>
+                    <p>Connections you've made through astrological compatibility</p>
+                </div>
+                <div id="myConnectionsList" class="connections-list">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ '/assets/js/cosmic-connections.js' | relative_url }}"></script>

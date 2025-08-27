@@ -1,0 +1,331 @@
+---
+layout: default
+title: Debug Birth Chart - AstroAura
+---
+
+<div class="birth-chart-page">
+  <div class="container">
+    <h1>Debug Birth Chart</h1>
+    
+    <div id="debugLog" style="background: #333; color: #fff; padding: 10px; margin-bottom: 20px; border-radius: 5px; font-family: monospace; font-size: 12px; height: 200px; overflow-y: auto;"></div>
+    
+    <div class="birth-chart-container">
+      <div class="birth-chart-form-section" id="birthChartForm">
+        <div class="form-progress">
+          <div class="progress-step active" data-step="1">
+            <span class="step-number">1</span>
+            <span class="step-label">Birth Date</span>
+          </div>
+          <div class="progress-step" data-step="2">
+            <span class="step-number">2</span>
+            <span class="step-label">Birth Time</span>
+          </div>
+        </div>
+
+        <!-- Step 1: Birth Date -->
+        <div class="form-step active" id="step1">
+          <h3>When were you born?</h3>
+          <div class="form-group">
+            <label for="birthDate">Birth Date</label>
+            <input type="date" id="birthDate" name="birthDate" required>
+            <div class="field-error" id="birthDateError"></div>
+          </div>
+          <button type="button" class="btn-cosmic next-step" data-next="2" id="continueBtn1">Continue</button>
+        </div>
+
+        <!-- Step 2: Birth Time -->
+        <div class="form-step" id="step2">
+          <h3>What time were you born?</h3>
+          <div class="form-group">
+            <label for="birthTime">Birth Time</label>
+            <input type="time" id="birthTime" name="birthTime" required>
+            <div class="field-help">If you don't know your exact birth time, 12:00 PM will be used</div>
+            <div class="field-error" id="birthTimeError"></div>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-secondary prev-step" data-prev="1">Back</button>
+            <button type="button" class="btn-cosmic next-step" data-next="3">Continue</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const debugLog = document.getElementById('debugLog');
+
+function log(message) {
+  const timestamp = new Date().toLocaleTimeString();
+  debugLog.innerHTML += `[${timestamp}] ${message}\n`;
+  debugLog.scrollTop = debugLog.scrollHeight;
+  console.log(message);
+}
+
+log('=== Debug Birth Chart Loading ===');
+
+// Override console to show in debug log
+const originalConsole = {
+  log: console.log,
+  error: console.error,
+  warn: console.warn
+};
+
+console.log = function(...args) {
+  originalConsole.log.apply(console, args);
+  log('LOG: ' + args.join(' '));
+};
+
+console.error = function(...args) {
+  originalConsole.error.apply(console, args);
+  log('ERROR: ' + args.join(' '));
+};
+
+console.warn = function(...args) {
+  originalConsole.warn.apply(console, args);
+  log('WARN: ' + args.join(' '));
+};
+
+// Check if scripts are loading
+log('Checking if scripts are available...');
+log('GeocodingService available: ' + (typeof GeocodingService !== 'undefined'));
+log('BirthChartCalculator available: ' + (typeof BirthChartCalculator !== 'undefined'));
+
+// Simple form navigation test
+document.addEventListener('DOMContentLoaded', () => {
+  log('DOM loaded');
+  
+  // Test button click directly
+  const continueBtn = document.getElementById('continueBtn1');
+  const birthDateInput = document.getElementById('birthDate');
+  
+  if (continueBtn) {
+    log('Continue button found');
+    continueBtn.addEventListener('click', function() {
+      log('Continue button clicked!');
+      
+      const birthDate = birthDateInput.value;
+      log('Birth date value: ' + birthDate);
+      
+      if (!birthDate) {
+        log('No birth date entered');
+        return;
+      }
+      
+      // Simple navigation test
+      log('Attempting to go to step 2...');
+      document.getElementById('step1').classList.remove('active');
+      document.getElementById('step2').classList.add('active');
+      
+      document.querySelector('.progress-step[data-step="1"]').classList.remove('active');
+      document.querySelector('.progress-step[data-step="2"]').classList.add('active');
+      
+      log('Navigation to step 2 completed');
+    });
+  } else {
+    log('ERROR: Continue button not found!');
+  }
+  
+  // Try to initialize calculator
+  try {
+    log('Attempting to initialize BirthChartCalculator...');
+    if (typeof BirthChartCalculator !== 'undefined') {
+      const calc = new BirthChartCalculator();
+      log('BirthChartCalculator initialized successfully');
+      window.debugCalc = calc;
+    } else {
+      log('BirthChartCalculator class not available');
+    }
+  } catch (error) {
+    log('ERROR initializing calculator: ' + error.message);
+  }
+});
+
+// Test if scripts loaded
+window.addEventListener('load', () => {
+  log('Window loaded');
+  log('All scripts should be loaded now');
+  
+  // List all loaded scripts
+  const scripts = document.querySelectorAll('script[src]');
+  log('Loaded scripts count: ' + scripts.length);
+  scripts.forEach((script, index) => {
+    if (script.src.includes('birth-chart') || script.src.includes('geocoding')) {
+      log(`Script ${index}: ${script.src}`);
+    }
+  });
+});
+
+log('Debug script setup complete');
+</script>
+
+<!-- Load the scripts -->
+<script src="{{ '/assets/js/geocoding-service.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/birth-chart-calculator.js' | relative_url }}"></script>
+
+<style>
+.birth-chart-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: #fff;
+  padding: 2rem 0;
+}
+
+.birth-chart-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.form-progress {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  gap: 2rem;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  .step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .step-label {
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
+  
+  &.active {
+    .step-number {
+      background: linear-gradient(45deg, #ffd700, #ff6b6b);
+      color: #fff;
+    }
+    
+    .step-label {
+      opacity: 1;
+      color: #ffd700;
+    }
+  }
+}
+
+.birth-chart-form-section {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 3rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-step {
+  display: none;
+  text-align: center;
+  
+  &.active {
+    display: block;
+  }
+  
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #ffd700;
+  }
+}
+
+.form-group {
+  margin-bottom: 2rem;
+  text-align: left;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #ffd700;
+  }
+  
+  input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    
+    &:focus {
+      outline: none;
+      border-color: #ffd700;
+      background: rgba(255, 255, 255, 0.15);
+    }
+  }
+}
+
+.field-help {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0.5rem;
+}
+
+.field-error {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  display: none;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.btn-cosmic {
+  background: linear-gradient(45deg, #ffd700, #ff6b6b);
+  color: #fff;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+  }
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+}
+</style>

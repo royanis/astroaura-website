@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Timezone Test</title>
+</head>
+<body>
+    <h1>Simple Timezone Test</h1>
+    <div id="results"></div>
+    
+    <script src="assets/js/timezone-service.js"></script>
+    
+    <script>
+        async function testTimezone() {
+            const results = document.getElementById('results');
+            
+            try {
+                console.log('=== TIMEZONE SERVICE TEST ===');
+                
+                const timezoneService = new TimezoneService();
+                
+                // Test coordinates for Prayagraj, India
+                const lat = 25.4358;
+                const lng = 81.8463;
+                const date = '1985-01-04';
+                
+                console.log('Testing coordinates:', lat, lng);
+                console.log('Date:', date);
+                
+                const timezone = await timezoneService.getTimezoneForCoordinates(lat, lng, date);
+                
+                console.log('Timezone result:', timezone);
+                
+                results.innerHTML = `
+                    <h2>Timezone Service Test Results</h2>
+                    <p><strong>Coordinates:</strong> ${lat}, ${lng}</p>
+                    <p><strong>Date:</strong> ${date}</p>
+                    <hr>
+                    <p><strong>Timezone Name:</strong> ${timezone.name}</p>
+                    <p><strong>Offset:</strong> ${timezone.offset} hours</p>
+                    <p><strong>DST:</strong> ${timezone.dst}</p>
+                    <p><strong>Source:</strong> ${timezone.source}</p>
+                    <hr>
+                    <p><strong>Expected:</strong> Asia/Kolkata, +5.5 hours, no DST</p>
+                    <p><strong>Status:</strong> ${
+                        timezone.name === 'Asia/Kolkata' && 
+                        timezone.offset === 5.5 && 
+                        timezone.dst === false ? 'CORRECT' : 'INCORRECT'
+                    }</p>
+                `;
+                
+            } catch (error) {
+                console.error('Timezone test failed:', error);
+                results.innerHTML = `<p style="color: red;">Test failed: ${error.message}</p>`;
+            }
+        }
+        
+        // Run test when page loads
+        window.addEventListener('load', testTimezone);
+    </script>
+</body>
+</html>

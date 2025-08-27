@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Sun Calculation - Jan 4, 1985</title>
+</head>
+<body>
+    <h1>Debug Sun Position Calculation</h1>
+    <div id="output"></div>
+    <button onclick="testCalculation()">Test Sun Calculation for Jan 4, 1985</button>
+
+    <script src="assets/js/vsop87-series-data.js"></script>
+    <script src="assets/js/vsop87-calculator.js"></script>
+    
+    <script>
+        function debugOutput(message) {
+            document.getElementById('output').innerHTML += message + '<br>';
+            console.log(message);
+        }
+        
+        function testCalculation() {
+            debugOutput('=== Testing Sun Calculation for Jan 4, 1985 06:30 UTC ===');
+            
+            try {
+                // Calculate Julian Day for Jan 4, 1985 06:30 UTC
+                const testDate = new Date('1985-01-04T06:30:00Z');
+                const year = testDate.getUTCFullYear();
+                const month = testDate.getUTCMonth() + 1;
+                const day = testDate.getUTCDate();
+                const hour = testDate.getUTCHours();
+                const minute = testDate.getUTCMinutes();
+                
+                let y, m;
+                if (month <= 2) {
+                    y = year - 1;
+                    m = month + 12;
+                } else {
+                    y = year;
+                    m = month;
+                }
+                
+                const a = Math.floor(y / 100);
+                const b = 2 - a + Math.floor(a / 4);
+                const jd = Math.floor(365.25 * (y + 4716)) + Math.floor(30.6001 * (m + 1)) + day + b - 1524.5;
+                const timeFraction = (hour + minute / 60) / 24;
+                const julianDay = jd + timeFraction;
+                
+                debugOutput('Julian Day: ' + julianDay);
+                debugOutput('Expected: ~2446069.77');
+                
+                // Calculate T parameter for VSOP87
+                const T = (julianDay - 2451545.0) / 36525.0;
+                debugOutput('T parameter: ' + T);
+                debugOutput('Expected T: ~-0.18 (negative because before J2000)');
+                
+                // Test VSOP87 calculator
+                const calculator = new VSOP87Calculator();
+                
+                // Try to calculate Sun position
+                debugOutput('\\nTesting Sun longitude calculation...');
+                
+                try {
+                    const sunLongitude = calculator.calculatePlanetLongitudeOptimized('sun', T);
+                    debugOutput('Sun longitude (raw): ' + sunLongitude + '°');
+                    debugOutput('Expected: ~284° (Capricorn region)');
+                    
+                    // Test zodiac sign conversion
+                    const zodiacSign = calculator.getZodiacSign(sunLongitude);
+                    debugOutput('Zodiac sign: ' + zodiacSign);
+                    debugOutput('Expected: Capricorn');
+                    
+                    // Test the full planetary positions calculation
+                    debugOutput('\\nTesting full planetary calculation...');
+                    const planets = calculator.calculatePlanetaryPositions(julianDay);
+                    const sun = planets.find(p => p.name === 'Sun');
+                    if (sun) {
+                        debugOutput('Sun from full calculation:');
+                        debugOutput('  Longitude: ' + sun.longitude + '°');
+                        debugOutput('  Sign: ' + sun.sign);
+                        debugOutput('  Degree: ' + sun.degree + '°');
+                    } else {
+                        debugOutput('ERROR: Sun not found in results');
+                    }
+                    
+                } catch (calcError) {
+                    debugOutput('ERROR in Sun calculation: ' + calcError.message);
+                    debugOutput('Stack: ' + calcError.stack);
+                }
+                
+            } catch (error) {
+                debugOutput('ERROR: ' + error.message);
+                debugOutput('Stack: ' + error.stack);
+            }
+        }
+    </script>
+</body>
+</html>

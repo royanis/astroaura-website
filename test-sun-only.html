@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sun Position Only Test</title>
+</head>
+<body>
+    <h1>Sun Position Calculation Test</h1>
+    <div id="results"></div>
+    
+    <script src="assets/js/vsop87-series-data.js"></script>
+    <script src="assets/js/performance-monitor.js"></script>
+    <script src="assets/js/calculation-error-handler.js"></script>
+    <script src="assets/js/vsop87-calculator.js"></script>
+    
+    <script>
+        function testSunOnly() {
+            const results = document.getElementById('results');
+            
+            try {
+                console.log('=== SUN POSITION ONLY TEST ===');
+                
+                // Test Julian Day for Jan 4, 1985, 1:00 AM UTC
+                const testJD = 2446069.5416666665;
+                const T = (testJD - 2451545.0) / 36525.0;
+                
+                console.log('Test Julian Day:', testJD);
+                console.log('T (Julian centuries):', T);
+                
+                // Expected Sun position: ~283.61° (Capricorn 13°36')
+                const expectedSun = 283.61;
+                
+                // Test VSOP87 calculator
+                const vsopCalculator = new VSOP87Calculator();
+                
+                // Test Earth's heliocentric longitude (raw VSOP87 result)
+                const earthHelio = vsopCalculator.calculateSunLongitudeVSOP87(T);
+                console.log('Earth heliocentric longitude (raw VSOP87):', earthHelio);
+                
+                // Test Sun's geocentric longitude (Earth + 180°)
+                const sunGeo = vsopCalculator.calculatePlanetLongitude('sun', T);
+                console.log('Sun geocentric longitude (Earth + 180°):', sunGeo);
+                
+                // Calculate differences
+                const earthDiff = Math.abs(earthHelio - expectedSun);
+                const sunDiff = Math.abs(sunGeo - expectedSun);
+                
+                // Also test if Earth + 180° gives us the expected result
+                const earthPlus180 = (earthHelio + 180) % 360;
+                const earthPlus180Diff = Math.abs(earthPlus180 - expectedSun);
+                
+                console.log('Earth helio vs expected:', earthDiff, '°');
+                console.log('Sun geo vs expected:', sunDiff, '°');
+                console.log('Earth + 180° vs expected:', earthPlus180Diff, '°');
+                
+                // Determine which is closest
+                let bestResult, bestDiff, bestMethod;
+                if (earthDiff < sunDiff && earthDiff < earthPlus180Diff) {
+                    bestResult = earthHelio;
+                    bestDiff = earthDiff;
+                    bestMethod = 'Earth Heliocentric (raw)';
+                } else if (sunDiff < earthPlus180Diff) {
+                    bestResult = sunGeo;
+                    bestDiff = sunDiff;
+                    bestMethod = 'Sun Geocentric (method)';
+                } else {
+                    bestResult = earthPlus180;
+                    bestDiff = earthPlus180Diff;
+                    bestMethod = 'Earth + 180° (manual)';
+                }
+                
+                console.log('Best result:', bestMethod, bestResult, '°, diff:', bestDiff, '°');
+                
+                results.innerHTML = `
+                    <h2>Sun Position Test Results</h2>
+                    <p><strong>Test Julian Day:</strong> ${testJD}</p>
+                    <p><strong>T (Julian centuries):</strong> ${T.toFixed(8)}</p>
+                    <p><strong>Expected Sun Position:</strong> ${expectedSun}° (Capricorn 13°36')</p>
+                    <hr>
+                    
+                    <h3>Raw VSOP87 Result (Earth Heliocentric)</h3>
+                    <p><strong>Value:</strong> ${earthHelio.toFixed(4)}°</p>
+                    <p><strong>Difference:</strong> ${earthDiff.toFixed(4)}°</p>
+                    <p><strong>Status:</strong> ${earthDiff < 5 ? 'GOOD' : 'POOR'}</p>
+                    
+                    <h3>Method Result (Sun Geocentric)</h3>
+                    <p><strong>Value:</strong> ${sunGeo.toFixed(4)}°</p>
+                    <p><strong>Difference:</strong> ${sunDiff.toFixed(4)}°</p>
+                    <p><strong>Status:</strong> ${sunDiff < 5 ? 'GOOD' : 'POOR'}</p>
+                    
+                    <h3>Manual Calculation (Earth + 180°)</h3>
+                    <p><strong>Value:</strong> ${earthPlus180.toFixed(4)}°</p>
+                    <p><strong>Difference:</strong> ${earthPlus180Diff.toFixed(4)}°</p>
+                    <p><strong>Status:</strong> ${earthPlus180Diff < 5 ? 'GOOD' : 'POOR'}</p>
+                    
+                    <hr>
+                    <h3>Best Result</h3>
+                    <p><strong>Method:</strong> ${bestMethod}</p>
+                    <p><strong>Value:</strong> ${bestResult.toFixed(4)}°</p>
+                    <p><strong>Difference:</strong> ${bestDiff.toFixed(4)}°</p>
+                    <p><strong>Overall Status:</strong> <span style="color: ${bestDiff < 5 ? 'green' : 'red'}; font-weight: bold;">${bestDiff < 5 ? 'ACCEPTABLE' : 'NEEDS WORK'}</span></p>
+                `;
+                
+            } catch (error) {
+                console.error('Sun test failed:', error);
+                results.innerHTML = `<p style="color: red;">Test failed: ${error.message}</p><pre>${error.stack}</pre>`;
+            }
+        }
+        
+        // Run test when page loads
+        window.addEventListener('load', testSunOnly);
+    </script>
+</body>
+</html>

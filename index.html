@@ -434,6 +434,75 @@
             color: var(--starlight);
         }
         
+        /* Navigation Dropdowns */
+        .nav-dropdown {
+            position: relative;
+        }
+        
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .dropdown-toggle i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-dropdown:hover .dropdown-toggle i {
+            transform: rotate(180deg);
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 15px);
+            left: 0;
+            min-width: 220px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(240, 199, 94, 0.3);
+            border-radius: var(--border-radius);
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            list-style: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .nav-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu li {
+            margin: 0;
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 20px;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: none;
+            font-weight: 500;
+        }
+        
+        .dropdown-menu a:hover {
+            background: rgba(240, 199, 94, 0.1);
+            color: var(--cosmic-gold);
+            padding-left: 30px;
+        }
+        
+        .dropdown-menu a::after {
+            display: none;
+        }
+        
         /* Hero Section with Parallax */
         .hero {
             min-height: 100vh;
@@ -470,6 +539,49 @@
             margin-bottom: 60px;
         }
         
+        /* Cosmic Greeting Styles */
+        .cosmic-greeting {
+            font-size: 1.2rem;
+            color: var(--cosmic-gold);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding: 15px 25px;
+            background: rgba(240, 199, 94, 0.1);
+            border: 1px solid rgba(240, 199, 94, 0.3);
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(240, 199, 94, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        .cosmic-greeting::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(240, 199, 94, 0.1), transparent);
+            transition: left 2s ease;
+            animation: cosmicShimmer 4s infinite;
+        }
+        
+        @keyframes cosmicShimmer {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+        
+        .cosmic-greeting:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(240, 199, 94, 0.3);
+            border-color: var(--cosmic-gold);
+        }
+
         .hero-title {
             /* Avoid getting hidden under header */
             margin-top: 0;
@@ -741,6 +853,344 @@
             text-shadow: 0 0 10px rgba(240, 199, 94, 0.5);
         }
         
+        /* Zodiac Wheel Section */
+        .zodiac-wheel-section {
+            padding: 120px 0;
+            background: radial-gradient(circle at center, rgba(58, 43, 113, 0.15) 0%, transparent 70%);
+            position: relative;
+        }
+        
+        .zodiac-wheel-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-top: 60px;
+        }
+        
+        .zodiac-wheel-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+            position: relative;
+        }
+        
+        .wheel-info {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(240, 199, 94, 0.2);
+        }
+        
+        .wheel-info h3 {
+            color: var(--cosmic-gold);
+            margin-bottom: 1rem;
+            font-family: 'Georgia', serif;
+        }
+        
+        .wheel-info p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .cosmic-influences {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .cosmic-influences li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+        
+        .planet-symbol {
+            font-size: 1.2rem;
+            margin-right: 10px;
+            color: var(--cosmic-gold);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .cosmic-influences strong {
+            color: var(--starlight);
+            margin-right: 8px;
+        }
+        
+        /* Feature Preview Cards */
+        .feature-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .feature-preview-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+        
+        .preview-content {
+            text-align: center;
+            color: var(--starlight);
+        }
+        
+        .preview-icon {
+            font-size: 3rem;
+            color: var(--cosmic-gold);
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+        
+        .preview-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .preview-hint {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Feature Modal */
+        .feature-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            position: relative;
+            max-width: 900px;
+            max-height: 90vh;
+            margin: 5vh auto;
+            background: linear-gradient(135deg, rgba(58, 43, 113, 0.95) 0%, rgba(10, 10, 10, 0.95) 100%);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(240, 199, 94, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            transform: scale(0.9) translateY(50px);
+            transition: all 0.3s ease;
+        }
+        
+        .modal-content.animate-in {
+            transform: scale(1) translateY(0);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--starlight);
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 10;
+        }
+        
+        .modal-close:hover {
+            background: rgba(240, 199, 94, 0.2);
+            color: var(--cosmic-gold);
+        }
+        
+        .modal-header {
+            padding: 40px 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(240, 199, 94, 0.2);
+        }
+        
+        .modal-icon {
+            font-size: 3rem;
+            color: var(--cosmic-gold);
+            margin-bottom: 1rem;
+        }
+        
+        .modal-title {
+            font-size: 2rem;
+            color: var(--starlight);
+            margin-bottom: 0.5rem;
+            font-family: 'Georgia', serif;
+        }
+        
+        .modal-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0;
+        }
+        
+        .modal-body {
+            padding: 30px 40px 40px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+        
+        .modal-screenshots {
+            margin-bottom: 30px;
+        }
+        
+        .screenshot-carousel {
+            position: relative;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .screenshot-container {
+            position: relative;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .screenshot-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .screenshot-container img.active {
+            opacity: 1;
+        }
+        
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            transform: translateY(-50%);
+        }
+        
+        .carousel-btn {
+            background: rgba(240, 199, 94, 0.8);
+            border: none;
+            color: var(--deep-space);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .carousel-btn:hover {
+            background: var(--cosmic-gold);
+            transform: scale(1.1);
+        }
+        
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+        }
+        
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .indicator.active {
+            background: var(--cosmic-gold);
+        }
+        
+        .modal-features h3 {
+            color: var(--cosmic-gold);
+            margin-bottom: 1rem;
+            font-family: 'Georgia', serif;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .feature-list i {
+            color: var(--cosmic-gold);
+            margin-right: 10px;
+            font-size: 0.8rem;
+        }
+        
+        .modal-cta {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(240, 199, 94, 0.2);
+        }
+        
+        .cta-text {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+        }
+        
+        .modal-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
         /* Features Section */
         .features-section {
             padding: 120px 0;
@@ -1268,12 +1718,40 @@
                 border-bottom: 1px solid rgba(240, 199, 94, 0.1);
             }
             
+            /* Mobile Dropdown Adjustments */
+            .nav-dropdown .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                background: rgba(58, 43, 113, 0.3);
+                border: none;
+                box-shadow: none;
+                margin-top: 10px;
+                display: none;
+            }
+            
+            .nav-dropdown.active .dropdown-menu {
+                display: block;
+            }
+            
+            .dropdown-toggle {
+                justify-content: center;
+                cursor: pointer;
+            }
+            
             .mobile-menu-btn {
                 display: block;
             }
             
             .hero-content {
                 padding: 100px 0 60px;
+            }
+            
+            .cosmic-greeting {
+                font-size: 1rem;
+                padding: 12px 20px;
+                margin-bottom: 1rem;
             }
             
             .hero-title {
@@ -1304,6 +1782,38 @@
             .hero-buttons {
                 justify-content: center;
                 margin-bottom: 2rem;
+            }
+            
+            .zodiac-wheel-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            
+            .zodiac-wheel-container {
+                min-height: 350px;
+            }
+            
+            .modal-content {
+                margin: 2vh 10px;
+                max-height: 96vh;
+            }
+            
+            .modal-header {
+                padding: 30px 20px 15px;
+            }
+            
+            .modal-body {
+                padding: 20px;
+                max-height: 70vh;
+            }
+            
+            .screenshot-container {
+                height: 300px;
+            }
+            
+            .modal-title {
+                font-size: 1.5rem;
             }
             
             .features-grid {
@@ -1338,6 +1848,12 @@
                 padding: 90px 0 50px;
             }
             
+            .cosmic-greeting {
+                font-size: 0.9rem;
+                padding: 10px 16px;
+                margin-bottom: 0.8rem;
+            }
+            
             .hero-title {
                 font-size: clamp(1.8rem, 7vw, 2.5rem);
                 margin-top: 0;
@@ -1347,6 +1863,23 @@
             .hero-subtitle {
                 font-size: 1rem;
                 margin-bottom: 1.5rem;
+            }
+            
+            .modal-content {
+                margin: 1vh 5px;
+                max-height: 98vh;
+            }
+            
+            .modal-header {
+                padding: 20px 15px 10px;
+            }
+            
+            .modal-body {
+                padding: 15px;
+            }
+            
+            .screenshot-container {
+                height: 250px;
             }
             
             .hero-features li {
@@ -1440,11 +1973,32 @@
             <nav role="navigation" aria-label="Main navigation">
                 <ul class="nav-links">
                     <li><a href="index.html" aria-current="page">Home</a></li>
-                    <li><a href="features.html">Features</a></li>
+                    <li class="nav-dropdown">
+                        <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                            Tools <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="birth-chart.html">Birth Chart Calculator</a></li>
+                            <li><a href="compatibility.html">Compatibility Matcher</a></li>
+                            <li><a href="cosmic-dashboard.html">Cosmic Dashboard</a></li>
+                            <li><a href="cosmic-journal.html">Cosmic Journal</a></li>
+                            <li><a href="educational-visualizations.html">Learn Astrology</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                            Community <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="cosmic-community.html">Cosmic Community</a></li>
+                            <li><a href="cosmic-connections.html">Cosmic Connections</a></li>
+                            <li><a href="profile.html">My Profile</a></li>
+                            <li><a href="bookmarks.html">Bookmarks</a></li>
+                            <li><a href="cosmic-timeline.html">Cosmic Timeline</a></li>
+                        </ul>
+                    </li>
                     <li><a href="blog/index.html">Blog</a></li>
-                    <li><a href="cosmic-insights.html">Cosmic Insights</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="privacy.html">Privacy</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -1457,6 +2011,10 @@
             <div class="hero-content">
                 <div class="container">
                 <div class="hero-text">
+                    <!-- Cosmic Greeting System -->
+                    <div id="cosmic-greeting" class="cosmic-greeting" aria-live="polite">
+                        ✨ Welcome, cosmic soul! The universe aligns perfectly for your journey today.
+                    </div>
                     <h1 id="hero-title" class="hero-title floating">The World's First Multilingual Astrology Super App</h1>
                 </div>
                 
@@ -1509,7 +2067,7 @@
                             <a href="features.html#ai-chat" style="color: var(--cosmic-gold); text-decoration: none; margin-right: 1rem;">AI Cosmic Chat</a> |
                             <a href="features.html#natal-charts" style="color: var(--cosmic-gold); text-decoration: none; margin: 0 1rem;">Birth Charts</a> |
                             <a href="features.html#tarot" style="color: var(--cosmic-gold); text-decoration: none; margin: 0 1rem;">Tarot Readings</a> |
-                            <a href="cosmic-insights.html" style="color: var(--cosmic-gold); text-decoration: none; margin: 0 1rem;">Cosmic Weather</a> |
+                            <a href="cosmic-dashboard.html" style="color: var(--cosmic-gold); text-decoration: none; margin: 0 1rem;">Cosmic Dashboard</a> |
                             <a href="about.html" style="color: var(--cosmic-gold); text-decoration: none; margin-left: 1rem;">Our Mission</a>
                         </nav>
                 </div>
@@ -1567,6 +2125,33 @@
                 <div class="trust-item">
                     <div class="trust-number">AI</div>
                     <div class="trust-label">Powered Insights</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Interactive Zodiac Wheel Section -->
+    <section class="zodiac-wheel-section" id="zodiac-wheel">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Live Cosmic Wheel</h2>
+                <p class="section-subtitle">Explore the current planetary positions and discover how the cosmos influences your journey today. Hover over signs and planets for detailed insights.</p>
+            </div>
+            
+            <div class="zodiac-wheel-wrapper">
+                <div id="zodiac-wheel-container" class="zodiac-wheel-container">
+                    <!-- Zodiac wheel will be generated here by JavaScript -->
+                </div>
+                <div class="wheel-info">
+                    <h3>Current Cosmic Influences</h3>
+                    <p>The zodiac wheel shows real-time planetary positions based on current astronomical data. Each planet's position influences different aspects of life and consciousness.</p>
+                    <ul class="cosmic-influences">
+                        <li><span class="planet-symbol">☉</span> <strong>Sun:</strong> Core identity and life purpose</li>
+                        <li><span class="planet-symbol">☽</span> <strong>Moon:</strong> Emotions and intuitive wisdom</li>
+                        <li><span class="planet-symbol">☿</span> <strong>Mercury:</strong> Communication and mental clarity</li>
+                        <li><span class="planet-symbol">♀</span> <strong>Venus:</strong> Love, beauty, and relationships</li>
+                        <li><span class="planet-symbol">♂</span> <strong>Mars:</strong> Action, energy, and motivation</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -1764,20 +2349,40 @@
                     <ul class="footer-links">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="features.html">Features</a></li>
-                        <li><a href="cosmic-insights.html">Cosmic Insights</a></li>
+                        <li><a href="blog/index.html">Blog</a></li>
                         <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h3 class="footer-title">Celestial Features</h3>
+                    <h3 class="footer-title">Astrology Tools</h3>
                     <ul class="footer-links">
-                        <li><a href="#features">Cosmic Chat</a></li>
-                        <li><a href="#features">Birth Charts</a></li>
-                        <li><a href="#features">Day Planner</a></li>
-                        <li><a href="#features">Tarot Guidance</a></li>
-                        <li><a href="#features">Astro Match</a></li>
+                        <li><a href="birth-chart.html">Birth Chart Calculator</a></li>
+                        <li><a href="compatibility.html">Compatibility Matcher</a></li>
+                        <li><a href="cosmic-dashboard.html">Cosmic Dashboard</a></li>
+                        <li><a href="cosmic-journal.html">Cosmic Journal</a></li>
+                        <li><a href="educational-visualizations.html">Learn Astrology</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Community & Personal</h3>
+                    <ul class="footer-links">
+                        <li><a href="cosmic-community.html">Cosmic Community</a></li>
+                        <li><a href="cosmic-connections.html">Cosmic Connections</a></li>
+                        <li><a href="profile.html">My Profile</a></li>
+                        <li><a href="bookmarks.html">Bookmarks</a></li>
+                        <li><a href="cosmic-timeline.html">Cosmic Timeline</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Support & Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#support">Support</a></li>
                     </ul>
                 </div>
                 
@@ -1941,6 +2546,26 @@
             }
         });
         
+        // Mobile Dropdown Toggle
+        document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const dropdown = toggle.parentElement;
+                
+                // On mobile, toggle dropdown
+                if (window.innerWidth <= 768) {
+                    dropdown.classList.toggle('active');
+                    
+                    // Close other dropdowns
+                    document.querySelectorAll('.nav-dropdown').forEach(other => {
+                        if (other !== dropdown) {
+                            other.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        });
+        
         // Header Scroll Effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
@@ -2004,5 +2629,17 @@
             observer.observe(el);
         });
     </script>
+    
+    <!-- Cosmic Greeting System -->
+    <script src="assets/js/cosmic-greeting.js"></script>
+    
+    <!-- Interactive Zodiac Wheel -->
+    <script src="assets/js/zodiac-wheel.js"></script>
+    
+    <!-- Hero Section Enhanced Animations -->
+    <script src="assets/js/hero-animations.js"></script>
+    
+    <!-- Interactive Feature Preview Cards -->
+    <script src="assets/js/feature-preview.js"></script>
 </body>
 </html>

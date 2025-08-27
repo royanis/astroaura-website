@@ -1,0 +1,231 @@
+---
+layout: default
+title: Compatibility Matcher - AstroAura
+description: Discover your astrological compatibility with detailed relationship analysis and insights.
+---
+
+<div class="compatibility-page">
+  <div class="cosmic-header">
+    <div class="container">
+      <h1 class="cosmic-title">Compatibility Matcher</h1>
+      <p class="cosmic-subtitle">Discover the cosmic connection between you and your partner</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="compatibility-container">
+      <!-- Dual Input Form -->
+      <div class="compatibility-form-section" id="compatibilityForm">
+        <div class="form-progress">
+          <div class="progress-step active" data-step="1">
+            <span class="step-number">1</span>
+            <span class="step-label">Your Details</span>
+          </div>
+          <div class="progress-step" data-step="2">
+            <span class="step-number">2</span>
+            <span class="step-label">Partner's Details</span>
+          </div>
+          <div class="progress-step" data-step="3">
+            <span class="step-number">3</span>
+            <span class="step-label">Compatibility</span>
+          </div>
+        </div>
+
+        <!-- Step 1: Your Details -->
+        <div class="form-step active" id="step1">
+          <h3>Your Birth Information</h3>
+          <div class="person-form" id="person1Form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="person1Name">Your Name (Optional)</label>
+                <input type="text" id="person1Name" name="person1Name" placeholder="Your name">
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="person1Date">Birth Date</label>
+                <input type="date" id="person1Date" name="person1Date" required>
+                <div class="field-error" id="person1DateError"></div>
+              </div>
+              
+              <div class="form-group">
+                <label for="person1Time">Birth Time</label>
+                <input type="time" id="person1Time" name="person1Time">
+                <div class="field-help">If unknown, 12:00 PM will be used</div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="person1Location">Birth Location</label>
+              <input type="text" id="person1Location" name="person1Location" placeholder="City, Country" required>
+              <div class="location-suggestions" id="person1LocationSuggestions"></div>
+              <div class="field-error" id="person1LocationError"></div>
+            </div>
+            
+            <div class="coordinates-display" id="person1CoordinatesDisplay" style="display: none;">
+              <p>Coordinates: <span id="person1SelectedCoordinates"></span></p>
+            </div>
+          </div>
+          
+          <button type="button" class="btn-cosmic next-step" data-next="2">Continue to Partner's Details</button>
+        </div>
+
+        <!-- Step 2: Partner's Details -->
+        <div class="form-step" id="step2">
+          <h3>Partner's Birth Information</h3>
+          <div class="person-form" id="person2Form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="person2Name">Partner's Name (Optional)</label>
+                <input type="text" id="person2Name" name="person2Name" placeholder="Partner's name">
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="person2Date">Birth Date</label>
+                <input type="date" id="person2Date" name="person2Date" required>
+                <div class="field-error" id="person2DateError"></div>
+              </div>
+              
+              <div class="form-group">
+                <label for="person2Time">Birth Time</label>
+                <input type="time" id="person2Time" name="person2Time">
+                <div class="field-help">If unknown, 12:00 PM will be used</div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="person2Location">Birth Location</label>
+              <input type="text" id="person2Location" name="person2Location" placeholder="City, Country" required>
+              <div class="location-suggestions" id="person2LocationSuggestions"></div>
+              <div class="field-error" id="person2LocationError"></div>
+            </div>
+            
+            <div class="coordinates-display" id="person2CoordinatesDisplay" style="display: none;">
+              <p>Coordinates: <span id="person2SelectedCoordinates"></span></p>
+            </div>
+          </div>
+          
+          <div class="form-actions">
+            <button type="button" class="btn-secondary prev-step" data-prev="1">Back</button>
+            <button type="button" class="btn-cosmic" id="calculateCompatibility">Calculate Compatibility</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Loading and Results -->
+        <div class="form-step" id="step3">
+          <div class="calculation-loading" id="compatibilityLoading">
+            <div class="cosmic-spinner"></div>
+            <h3>Analyzing your cosmic connection...</h3>
+            <p>Calculating planetary synastry and compatibility scores</p>
+          </div>
+          
+          <div class="calculation-complete" id="compatibilityComplete" style="display: none;">
+            <h3>Your Compatibility Analysis is Ready!</h3>
+            <p>Discover your cosmic connection and relationship insights</p>
+            <button type="button" class="btn-cosmic" id="viewCompatibility">View Compatibility Report</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compatibility Results -->
+      <div class="compatibility-results" id="compatibilityResults" style="display: none;">
+        <div class="results-header">
+          <h2>Compatibility Report</h2>
+          <div class="couple-info">
+            <span id="person1Info"></span> & <span id="person2Info"></span>
+          </div>
+        </div>
+
+        <!-- Overall Compatibility Score -->
+        <div class="compatibility-score-section">
+          <div class="overall-score">
+            <div class="score-circle" id="overallScoreCircle">
+              <span class="score-number" id="overallScoreNumber">0</span>
+              <span class="score-label">Overall</span>
+            </div>
+            <div class="score-description">
+              <h3 id="compatibilityTitle">Compatibility Analysis</h3>
+              <p id="compatibilityDescription">Your cosmic connection analysis</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detailed Compatibility Scores -->
+        <div class="detailed-scores">
+          <div class="score-category">
+            <h4>Emotional Connection</h4>
+            <div class="score-bar">
+              <div class="score-fill" id="emotionalScore" data-score="0"></div>
+              <span class="score-text" id="emotionalScoreText">0%</span>
+            </div>
+            <p class="score-explanation" id="emotionalExplanation"></p>
+          </div>
+
+          <div class="score-category">
+            <h4>Communication</h4>
+            <div class="score-bar">
+              <div class="score-fill" id="communicationScore" data-score="0"></div>
+              <span class="score-text" id="communicationScoreText">0%</span>
+            </div>
+            <p class="score-explanation" id="communicationExplanation"></p>
+          </div>
+
+          <div class="score-category">
+            <h4>Physical Attraction</h4>
+            <div class="score-bar">
+              <div class="score-fill" id="attractionScore" data-score="0"></div>
+              <span class="score-text" id="attractionScoreText">0%</span>
+            </div>
+            <p class="score-explanation" id="attractionExplanation"></p>
+          </div>
+
+          <div class="score-category">
+            <h4>Long-term Potential</h4>
+            <div class="score-bar">
+              <div class="score-fill" id="longtermScore" data-score="0"></div>
+              <span class="score-text" id="longtermScoreText">0%</span>
+            </div>
+            <p class="score-explanation" id="longtermExplanation"></p>
+          </div>
+        </div>
+
+        <!-- Relationship Insights -->
+        <div class="relationship-insights">
+          <div class="insight-section">
+            <h3>Your Strengths as a Couple</h3>
+            <div class="strengths-list" id="relationshipStrengths"></div>
+          </div>
+
+          <div class="insight-section">
+            <h3>Areas for Growth</h3>
+            <div class="challenges-list" id="relationshipChallenges"></div>
+          </div>
+
+          <div class="insight-section">
+            <h3>Relationship Advice</h3>
+            <div class="advice-content" id="relationshipAdvice"></div>
+          </div>
+        </div>
+
+        <!-- Synastry Aspects -->
+        <div class="synastry-section">
+          <h3>Key Planetary Connections</h3>
+          <div class="synastry-aspects" id="synastryAspects"></div>
+        </div>
+
+        <!-- Actions -->
+        <div class="compatibility-actions">
+          <button type="button" class="btn-cosmic" id="downloadCompatibility">Download Report</button>
+          <button type="button" class="btn-secondary" id="shareCompatibility">Share Report</button>
+          <button type="button" class="btn-secondary" id="newCompatibility">New Analysis</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ '/assets/js/chart-interpretation.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/compatibility-matcher.js' | relative_url }}"></script>

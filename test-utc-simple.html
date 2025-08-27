@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple UTC Test</title>
+</head>
+<body>
+    <h1>Simple UTC Conversion Test</h1>
+    <div id="results"></div>
+    
+    <script src="assets/js/timezone-service.js"></script>
+    <script src="assets/js/timezone-aware-converter.js"></script>
+    
+    <script>
+        async function testUTCConversion() {
+            const results = document.getElementById('results');
+            
+            try {
+                console.log('=== SIMPLE UTC CONVERSION TEST ===');
+                
+                // Test data
+                const date = '1985-01-04';
+                const time = '06:30';
+                const location = {
+                    name: 'Prayagraj, India',
+                    lat: 25.4358,
+                    lng: 81.8463,
+                    timezone: 'Asia/Kolkata'
+                };
+                
+                console.log('Input:', date, time, location.timezone);
+                
+                // Expected result: 6:30 AM IST = 1:00 AM UTC
+                const expectedUTC = new Date('1985-01-04T01:00:00.000Z');
+                console.log('Expected UTC:', expectedUTC.toISOString());
+                
+                // Test our converter
+                const timezoneService = new TimezoneService();
+                const converter = new TimezoneAwareConverter(timezoneService);
+                converter.enableDebugMode();
+                
+                const result = await converter.convertBirthTimeToUTC(date, time, location);
+                
+                console.log('Our result UTC:', result.utc.toISOString());
+                console.log('Expected UTC:', expectedUTC.toISOString());
+                
+                const timeDiff = Math.abs(result.utc.getTime() - expectedUTC.getTime()) / (1000 * 60);
+                console.log('Time difference:', timeDiff, 'minutes');
+                
+                // Calculate Julian Days
+                const expectedJD = calculateJulianDay(expectedUTC);
+                const actualJD = calculateJulianDay(result.utc);
+                
+                console.log('Expected JD:', expectedJD);
+                console.log('Actual JD:', actualJD);
+                console.log('JD difference:', Math.abs(actualJD - expectedJD), 'days');
+                
+                results.innerHTML = `
+                    <h2>Results:</h2>
+                    <p><strong>Input:</strong> ${date} ${time} (${location.timezone})</p>
+                    <p><strong>Expected UTC:</strong> ${expectedUTC.toISOString()}</p>
+                    <p><strong>Actual UTC:</strong> ${result.utc.toISOString()}</p>
+                    <p><strong>Time Difference:</strong> ${timeDiff} minutes</p>
+                    <p><strong>Expected JD:</strong> ${expectedJD}</p>
+                    <p><strong>Actual JD:</strong> ${actualJD}</p>
+                    <p><strong>JD Difference:</strong> ${Math.abs(actualJD - expectedJD)} days</p>
+                    <p><strong>Status:</strong> ${timeDiff < 1 ? 'PASS' : 'FAIL'}</p>
+                `;
+                
+            } catch (error) {
+                console.error('Test failed:', error);
+                results.innerHTML = `<p style="color: red;">Test failed: ${error.message}</p>`;
+            }
+        }
+        
+        function calculateJulianDay(date) {
+            const year = date.getUTCFullYear();
+            const month = date.getUTCMonth() + 1;
+            const day = date.getUTCDate();
+            const hour = date.getUTCHours();
+            const minute = date.getUTCMinutes();
+            const second = date.getUTCSeconds();
+            
+            let a, b, y, m;
+            
+            if (month <= 2) {
+                y = year - 1;
+                m = month + 12;
+            } else {
+                y = year;
+                m = month;
+            }
+            
+            // Gregorian calendar correction
+            if (year > 1582 || (year === 1582 && month > 10) || (year === 1582 && month === 10 && day >= 15)) {
+                a = Math.floor(y / 100);
+                b = 2 - a + Math.floor(a / 4);
+            } else {
+                b = 0;
+            }
+            
+            const jd = Math.floor(365.25 * (y + 4716)) + Math.floor(30.6001 * (m + 1)) + day + b - 1524.5;
+            
+            // Add time fraction
+            const timeFraction = (hour + minute / 60 + second / 3600) / 24;
+            
+            return jd + timeFraction;
+        }
+        
+        // Run test when page loads
+        window.addEventListener('load', testUTCConversion);
+    </script>
+</body>
+</html>
