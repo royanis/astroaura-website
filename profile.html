@@ -1,0 +1,453 @@
+---
+layout: default
+title: Your Profile - AstroAura
+description: Manage your personal astrological profile, preferences, and privacy settings.
+---
+
+<div class="profile-page">
+  <div class="cosmic-header">
+    <div class="container">
+      <h1 class="cosmic-title">Your Cosmic Profile</h1>
+      <p class="cosmic-subtitle">Manage your personal astrological journey and preferences</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="profile-container">
+      <!-- Profile Navigation -->
+      <div class="profile-nav">
+        <button class="nav-tab active" data-tab="overview">Overview</button>
+        <button class="nav-tab" data-tab="birth-chart">Birth Chart</button>
+        <button class="nav-tab" data-tab="preferences">Preferences</button>
+        <button class="nav-tab" data-tab="privacy">Privacy</button>
+        <button class="nav-tab" data-tab="data">Data Management</button>
+      </div>
+
+      <!-- Overview Tab -->
+      <div class="profile-tab active" id="overviewTab">
+        <div class="profile-overview">
+          <div class="profile-header">
+            <div class="profile-avatar">
+              <div class="avatar-circle" id="profileAvatar">
+                <span id="profileInitials">?</span>
+              </div>
+              <button class="change-avatar-btn" id="changeAvatar">Change</button>
+            </div>
+            
+            <div class="profile-info">
+              <h2 id="profileName">Welcome, Cosmic Explorer!</h2>
+              <p id="profileDescription">Complete your profile to unlock personalized insights</p>
+              
+              <div class="profile-stats">
+                <div class="stat-item">
+                  <span class="stat-number" id="totalVisits">0</span>
+                  <span class="stat-label">Visits</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number" id="toolsUsed">0</span>
+                  <span class="stat-label">Tools Used</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number" id="timeSpent">0</span>
+                  <span class="stat-label">Hours</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile Completion -->
+          <div class="profile-completion">
+            <h3>Profile Completion</h3>
+            <div class="completion-bar">
+              <div class="completion-fill" id="completionFill"></div>
+              <span class="completion-text" id="completionText">0% Complete</span>
+            </div>
+            
+            <div class="completion-tasks" id="completionTasks">
+              <!-- Tasks will be populated by JavaScript -->
+            </div>
+          </div>
+
+          <!-- Astrological Summary -->
+          <div class="astrological-summary" id="astrologicalSummary" style="display: none;">
+            <h3>Your Astrological Profile</h3>
+            <div class="astro-cards">
+              <div class="astro-card">
+                <h4>Sun Sign</h4>
+                <div class="sign-display" id="sunSignDisplay">
+                  <span class="sign-symbol" id="sunSignSymbol">☉</span>
+                  <span class="sign-name" id="sunSignName">-</span>
+                </div>
+              </div>
+              
+              <div class="astro-card">
+                <h4>Moon Sign</h4>
+                <div class="sign-display" id="moonSignDisplay">
+                  <span class="sign-symbol" id="moonSignSymbol">☽</span>
+                  <span class="sign-name" id="moonSignName">-</span>
+                </div>
+              </div>
+              
+              <div class="astro-card">
+                <h4>Rising Sign</h4>
+                <div class="sign-display" id="risingSignDisplay">
+                  <span class="sign-symbol" id="risingSignSymbol">↗</span>
+                  <span class="sign-name" id="risingSignName">-</span>
+                </div>
+              </div>
+              
+              <div class="astro-card">
+                <h4>Dominant Element</h4>
+                <div class="element-display" id="dominantElementDisplay">
+                  <span class="element-symbol" id="elementSymbol">🔥</span>
+                  <span class="element-name" id="elementName">-</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="recent-activity">
+            <h3>Recent Activity</h3>
+            <div class="activity-list" id="activityList">
+              <p class="no-activity">No recent activity</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Birth Chart Tab -->
+      <div class="profile-tab" id="birthChartTab">
+        <div class="birth-chart-section">
+          <h2>Birth Chart Information</h2>
+          
+          <div class="chart-form" id="chartForm">
+            <div class="form-group">
+              <label for="profileBirthDate">Birth Date</label>
+              <input type="date" id="profileBirthDate" name="birthDate">
+            </div>
+            
+            <div class="form-group">
+              <label for="profileBirthTime">Birth Time</label>
+              <input type="time" id="profileBirthTime" name="birthTime">
+              <div class="field-help">If unknown, leave blank for solar chart</div>
+            </div>
+            
+            <div class="form-group">
+              <label for="profileBirthLocation">Birth Location</label>
+              <input type="text" id="profileBirthLocation" name="birthLocation" placeholder="City, Country">
+              <div class="location-suggestions" id="profileLocationSuggestions"></div>
+            </div>
+            
+            <div class="form-actions">
+              <button type="button" class="btn-cosmic" id="updateBirthChart">Update Birth Chart</button>
+              <button type="button" class="btn-secondary" id="clearBirthChart">Clear Data</button>
+            </div>
+          </div>
+
+          <div class="chart-display" id="chartDisplay" style="display: none;">
+            <h3>Your Birth Chart</h3>
+            <div class="chart-summary" id="chartSummary">
+              <!-- Chart summary will be populated -->
+            </div>
+            <div class="chart-actions">
+              <a href="/birth-chart/" class="btn-cosmic">View Full Chart</a>
+              <button type="button" class="btn-secondary" id="downloadChart">Download Chart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Preferences Tab -->
+      <div class="profile-tab" id="preferencesTab">
+        <div class="preferences-section">
+          <h2>Your Preferences</h2>
+          
+          <!-- Display Preferences -->
+          <div class="preference-group">
+            <h3>Display & Accessibility</h3>
+            
+            <div class="preference-item">
+              <label for="themeSelect">Theme</label>
+              <select id="themeSelect" name="theme">
+                <option value="cosmic">Cosmic (Default)</option>
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+              </select>
+            </div>
+            
+            <div class="preference-item">
+              <label for="fontSizeSelect">Font Size</label>
+              <select id="fontSizeSelect" name="fontSize">
+                <option value="small">Small</option>
+                <option value="medium">Medium (Default)</option>
+                <option value="large">Large</option>
+              </select>
+            </div>
+            
+            <div class="preference-item checkbox-item">
+              <input type="checkbox" id="reducedMotion" name="reducedMotion">
+              <label for="reducedMotion">Reduce animations and motion</label>
+            </div>
+            
+            <div class="preference-item checkbox-item">
+              <input type="checkbox" id="highContrast" name="highContrast">
+              <label for="highContrast">High contrast mode</label>
+            </div>
+          </div>
+
+          <!-- Content Preferences -->
+          <div class="preference-group">
+            <h3>Content & Topics</h3>
+            
+            <div class="preference-subgroup">
+              <h4>Experience Level</h4>
+              <div class="checkbox-group">
+                <div class="preference-item checkbox-item">
+                  <input type="checkbox" id="beginnerContent" name="beginnerContent">
+                  <label for="beginnerContent">Beginner content</label>
+                </div>
+                <div class="preference-item checkbox-item">
+                  <input type="checkbox" id="intermediateContent" name="intermediateContent">
+                  <label for="intermediateContent">Intermediate content</label>
+                </div>
+                <div class="preference-item checkbox-item">
+                  <input type="checkbox" id="advancedContent" name="advancedContent">
+                  <label for="advancedContent">Advanced content</label>
+                </div>
+              </div>
+            </div>
+            
+            <div class="preference-subgroup">
+              <h4>Favorite Topics</h4>
+              <div class="checkbox-group">
+                <div class="preference-item checkbox-item">
+                  <input type="checkbox" id="dailyHoroscopes" name="dailyHoroscopes">
+                  <label for="dailyHoroscopes">Daily horoscopes</label>
+                </div>
+                <div class="preference-item checkbox-item">
+                  <input type="checkbox" id="birthCharts" name="birthCharts">
+                  <label for="birthCharts">Birth charts</label>
+                </div>
+                <div class="preference-item checkbox-item">
+                  <input type="checkbox" id="compatibility" name="compatibility">
+                  <label for="compatibility">Compatibility</label>
+                </div>
+                <div class="preference-item checkbox-item">
+                  <input type="checkbox" id="transits" name="transits">
+                  <label for="transits">Planetary transits</label>
+                </div>
+                <div class="preference-item checkbox-item">
+                  <input type="checkbox" id="moonPhases" name="moonPhases">
+                  <label for="moonPhases">Moon phases</label>
+                </div>
+                <div class="preference-item checkbox-item">
+                  <input type="checkbox" id="spirituality" name="spirituality">
+                  <label for="spirituality">Spirituality</label>
+                </div>
+                <div class="preference-item checkbox-item">
+                  <input type="checkbox" id="relationships" name="relationships">
+                  <label for="relationships">Relationships</label>
+                </div>
+                <div class="preference-item checkbox-item">
+                  <input type="checkbox" id="career" name="career">
+                  <label for="career">Career guidance</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- App Preferences -->
+          <div class="preference-group">
+            <h3>App Behavior</h3>
+            
+            <div class="preference-item">
+              <label for="defaultView">Default view when opening dashboard</label>
+              <select id="defaultView" name="defaultView">
+                <option value="dashboard">Dashboard</option>
+                <option value="horoscope">Daily Horoscope</option>
+                <option value="chart">Birth Chart</option>
+              </select>
+            </div>
+            
+            <div class="preference-item checkbox-item">
+              <input type="checkbox" id="autoSave" name="autoSave">
+              <label for="autoSave">Auto-save form data</label>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn-cosmic" id="savePreferences">Save Preferences</button>
+            <button type="button" class="btn-secondary" id="resetPreferences">Reset to Defaults</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Privacy Tab -->
+      <div class="profile-tab" id="privacyTab">
+        <div class="privacy-section">
+          <h2>Privacy & Data Control</h2>
+          
+          <!-- Consent Management -->
+          <div class="privacy-group">
+            <h3>Data Consent</h3>
+            <div class="consent-status" id="consentStatus">
+              <div class="consent-indicator" id="consentIndicator">
+                <span class="status-icon" id="consentIcon">❌</span>
+                <span class="status-text" id="consentText">Consent not given</span>
+              </div>
+              <button class="btn-cosmic" id="giveConsent">Give Consent</button>
+              <button class="btn-secondary" id="revokeConsent" style="display: none;">Revoke Consent</button>
+            </div>
+          </div>
+
+          <!-- Data Collection Settings -->
+          <div class="privacy-group">
+            <h3>Data Collection</h3>
+            
+            <div class="privacy-item">
+              <div class="privacy-control">
+                <input type="checkbox" id="allowAnalytics" name="allowAnalytics">
+                <label for="allowAnalytics">Allow usage analytics</label>
+              </div>
+              <p class="privacy-description">Help us improve the site by collecting anonymous usage data</p>
+            </div>
+            
+            <div class="privacy-item">
+              <div class="privacy-control">
+                <input type="checkbox" id="allowPersonalization" name="allowPersonalization">
+                <label for="allowPersonalization">Allow personalization</label>
+              </div>
+              <p class="privacy-description">Enable personalized content recommendations based on your interests</p>
+            </div>
+            
+            <div class="privacy-item">
+              <div class="privacy-control">
+                <input type="checkbox" id="allowRecommendations" name="allowRecommendations">
+                <label for="allowRecommendations">Allow content recommendations</label>
+              </div>
+              <p class="privacy-description">Show recommended articles and features based on your activity</p>
+            </div>
+          </div>
+
+          <!-- Profile Visibility -->
+          <div class="privacy-group">
+            <h3>Profile Visibility</h3>
+            
+            <div class="privacy-item">
+              <label for="profileVisibility">Profile visibility</label>
+              <select id="profileVisibility" name="profileVisibility">
+                <option value="private">Private (only you)</option>
+                <option value="friends">Friends only</option>
+                <option value="public">Public</option>
+              </select>
+            </div>
+            
+            <div class="privacy-item">
+              <div class="privacy-control">
+                <input type="checkbox" id="showBirthChart" name="showBirthChart">
+                <label for="showBirthChart">Show birth chart information</label>
+              </div>
+            </div>
+            
+            <div class="privacy-item">
+              <div class="privacy-control">
+                <input type="checkbox" id="showLocation" name="showLocation">
+                <label for="showLocation">Show birth location</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Retention -->
+          <div class="privacy-group">
+            <h3>Data Retention</h3>
+            
+            <div class="privacy-item">
+              <label for="autoDeleteAfter">Automatically delete data after</label>
+              <select id="autoDeleteAfter" name="autoDeleteAfter">
+                <option value="never">Never</option>
+                <option value="1year">1 year</option>
+                <option value="2years">2 years</option>
+                <option value="5years">5 years</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn-cosmic" id="savePrivacySettings">Save Privacy Settings</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Management Tab -->
+      <div class="profile-tab" id="dataTab">
+        <div class="data-section">
+          <h2>Data Management</h2>
+          
+          <!-- Data Overview -->
+          <div class="data-overview">
+            <h3>Your Data Summary</h3>
+            <div class="data-stats">
+              <div class="data-stat">
+                <span class="stat-number" id="profileDataSize">0 KB</span>
+                <span class="stat-label">Profile Data</span>
+              </div>
+              <div class="data-stat">
+                <span class="stat-number" id="bookmarksCount">0</span>
+                <span class="stat-label">Bookmarks</span>
+              </div>
+              <div class="data-stat">
+                <span class="stat-number" id="journalEntriesCount">0</span>
+                <span class="stat-label">Journal Entries</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Export Data -->
+          <div class="data-group">
+            <h3>Export Your Data</h3>
+            <p>Download a copy of all your data stored in AstroAura</p>
+            
+            <div class="export-options">
+              <div class="export-option">
+                <input type="radio" id="exportJSON" name="exportFormat" value="json" checked>
+                <label for="exportJSON">JSON format (complete data)</label>
+              </div>
+              <div class="export-option">
+                <input type="radio" id="exportCSV" name="exportFormat" value="csv">
+                <label for="exportCSV">CSV format (profile summary)</label>
+              </div>
+            </div>
+            
+            <button type="button" class="btn-cosmic" id="exportData">Export My Data</button>
+          </div>
+
+          <!-- Import Data -->
+          <div class="data-group">
+            <h3>Import Data</h3>
+            <p>Restore your data from a previous export</p>
+            
+            <div class="import-area">
+              <input type="file" id="importFile" accept=".json" style="display: none;">
+              <button type="button" class="btn-secondary" id="selectImportFile">Select File</button>
+              <span id="importFileName">No file selected</span>
+            </div>
+            
+            <button type="button" class="btn-cosmic" id="importData" disabled>Import Data</button>
+          </div>
+
+          <!-- Clear Data -->
+          <div class="data-group danger-zone">
+            <h3>Danger Zone</h3>
+            <p>Permanently delete all your data. This action cannot be undone.</p>
+            
+            <button type="button" class="btn-danger" id="clearAllData">Delete All Data</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ '/assets/js/user-profile-system.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/profile-manager.js' | relative_url }}"></script>

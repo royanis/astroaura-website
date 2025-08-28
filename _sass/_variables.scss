@@ -1,0 +1,86 @@
+// CSS Variables - Cosmic Theme
+:root {
+  // Colors
+  --cosmic-gold: #F0C75E;
+  --cosmic-purple: #3A2B71;
+  --deep-space: #0A0A0A;
+  --starlight: #FFFFFF;
+  --nebula-pink: #FF6B9D;
+  --cosmic-blue: #4A90E2;
+  --cosmic-gradient: linear-gradient(135deg, #3A2B71 0%, #1E3A8A 50%, #F0C75E 100%);
+  
+  // Effects
+  --shadow: 0 4px 20px rgba(240, 199, 94, 0.3);
+  --shadow-hover: 0 10px 30px rgba(240, 199, 94, 0.5);
+  --transition: all 0.3s ease;
+  --border-radius: 12px;
+  
+  // Layout
+  --max-width: 1200px;
+  --header-height: 80px;
+  --section-padding: 120px;
+  
+  // Typography
+  --font-primary: 'Inter', sans-serif;
+  --font-heading: 'Georgia', serif;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 4rem;
+  
+  // Spacing
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  
+  // Breakpoints (for use in media queries)
+  --bp-sm: 640px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+  --bp-2xl: 1536px;
+}
+
+// SCSS Variables for calculations and mixins
+$cosmic-gold: #F0C75E;
+$cosmic-purple: #3A2B71;
+$deep-space: #0A0A0A;
+$starlight: #FFFFFF;
+$nebula-pink: #FF6B9D;
+$cosmic-blue: #4A90E2;
+
+$max-width: 1200px;
+$header-height: 80px;
+$section-padding: 120px;
+
+$font-primary: 'Inter', sans-serif;
+$font-heading: 'Georgia', serif;
+
+// Breakpoints
+$breakpoints: (
+  'sm': 640px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1280px,
+  '2xl': 1536px
+);
+
+// Z-index scale
+$z-index: (
+  'dropdown': 1000,
+  'sticky': 1020,
+  'fixed': 1030,
+  'modal-backdrop': 1040,
+  'modal': 1050,
+  'popover': 1060,
+  'tooltip': 1070
+);

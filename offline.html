@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - AstroAura</title>
+    <style>
+        :root {
+            --cosmic-gold: #F0C75E;
+            --cosmic-purple: #3A2B71;
+            --deep-space: #0A0A0A;
+            --starlight: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--deep-space) 0%, var(--cosmic-purple) 100%);
+            color: var(--starlight);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .offline-container {
+            max-width: 500px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(240, 199, 94, 0.2);
+        }
+        
+        .offline-icon {
+            font-size: 4rem;
+            color: var(--cosmic-gold);
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(240, 199, 94, 0.5);
+        }
+        
+        .offline-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--cosmic-gold);
+        }
+        
+        .offline-message {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .retry-button {
+            background: linear-gradient(135deg, #3A2B71 0%, #1E3A8A 50%, #F0C75E 100%);
+            color: var(--starlight);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .retry-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(240, 199, 94, 0.3);
+        }
+        
+        .offline-tips {
+            margin-top: 30px;
+            text-align: left;
+        }
+        
+        .offline-tips h3 {
+            color: var(--cosmic-gold);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .offline-tips ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .offline-tips li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .offline-tips li::before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+            color: var(--cosmic-gold);
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="offline-icon">🌙</div>
+        <h1 class="offline-title">You're Offline</h1>
+        <p class="offline-message">
+            It looks like you've lost your connection to the cosmic network. 
+            Don't worry, the stars are still aligned for you!
+        </p>
+        
+        <button class="retry-button" onclick="window.location.reload()">
+            Try Again
+        </button>
+        
+        <div class="offline-tips">
+            <h3>While you wait:</h3>
+            <ul>
+                <li>Check your internet connection</li>
+                <li>Make sure you're connected to WiFi or mobile data</li>
+                <li>Try refreshing the page in a moment</li>
+                <li>Consider this a cosmic pause for reflection</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // Auto-retry when connection is restored
+        window.addEventListener('online', function() {
+            window.location.reload();
+        });
+        
+        // Check connection status
+        if (navigator.onLine) {
+            window.location.reload();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+---
+layout: default
+title: Birth Chart Calculator - AstroAura
+description: Generate your personalized birth chart with accurate astrological calculations and interactive visualization.
+---
+
+<div class="birth-chart-page">
+  <!-- Floating Cosmic Elements -->
+  <div class="cosmic-floating-elements">
+    <div class="floating-element star-1"></div>
+    <div class="floating-element star-2"></div>
+    <div class="floating-element star-3"></div>
+    <div class="floating-element planet"></div>
+    <div class="floating-element constellation"></div>
+  </div>
+  
+  <div class="cosmic-header">
+    <div class="container">
+      <h1 class="cosmic-title">Birth Chart Calculator</h1>
+      <p class="cosmic-subtitle">Discover your cosmic blueprint with accurate astrological calculations</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="birth-chart-container">
+      <!-- Progressive Form -->
+      <div class="birth-chart-form-section" id="birthChartForm">
+        <div class="form-progress">
+          <div class="progress-step active" data-step="1">
+            <span class="step-number">1</span>
+            <span class="step-label">Birth Date</span>
+          </div>
+          <div class="progress-step" data-step="2">
+            <span class="step-number">2</span>
+            <span class="step-label">Birth Time</span>
+          </div>
+          <div class="progress-step" data-step="3">
+            <span class="step-number">3</span>
+            <span class="step-label">Birth Location</span>
+          </div>
+          <div class="progress-step" data-step="4">
+            <span class="step-number">4</span>
+            <span class="step-label">Your Chart</span>
+          </div>
+        </div>
+
+        <!-- Step 1: Birth Date -->
+        <div class="form-step active" id="step1">
+          <h3>When were you born?</h3>
+          <div class="form-group">
+            <label for="birthDate">Birth Date</label>
+            <input type="date" id="birthDate" name="birthDate" required>
+            <div class="field-error" id="birthDateError"></div>
+          </div>
+          <button type="button" class="btn-cosmic next-step" data-next="2">Continue</button>
+        </div>
+
+        <!-- Step 2: Birth Time -->
+        <div class="form-step" id="step2">
+          <h3>What time were you born?</h3>
+          <div class="form-group">
+            <label for="birthTime">Birth Time</label>
+            <input type="time" id="birthTime" name="birthTime" required>
+            <div class="field-help">If you don't know your exact birth time, 12:00 PM will be used</div>
+            <div class="field-error" id="birthTimeError"></div>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-secondary prev-step" data-prev="1"><i class="fas fa-arrow-left"></i>Back</button>
+            <button type="button" class="btn-cosmic next-step" data-next="3">Continue</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Birth Location -->
+        <div class="form-step" id="step3">
+          <h3>Where were you born?</h3>
+          <div class="form-group">
+            <label for="birthLocation">Birth Location</label>
+            <input type="text" id="birthLocation" name="birthLocation" placeholder="City, Country" required>
+            <div class="location-suggestions" id="locationSuggestions"></div>
+            <div class="field-error" id="birthLocationError"></div>
+          </div>
+          <div class="coordinates-display" id="coordinatesDisplay" style="display: none;">
+            <p>Coordinates: <span id="selectedCoordinates"></span></p>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-secondary prev-step" data-prev="2"><i class="fas fa-arrow-left"></i>Back</button>
+            <button type="button" class="btn-cosmic" id="calculateChart">Calculate My Chart</button>
+          </div>
+        </div>
+
+        <!-- Step 4: Loading and Results -->
+        <div class="form-step" id="step4">
+          <div class="calculation-loading" id="calculationLoading">
+            <div class="cosmic-spinner"></div>
+            <h3>Calculating your cosmic blueprint...</h3>
+            <p>Analyzing planetary positions and aspects</p>
+          </div>
+          
+          <div class="calculation-complete" id="calculationComplete" style="display: none;">
+            <h3>Your Birth Chart is Ready!</h3>
+            <p>Explore your personalized astrological insights below</p>
+            <button type="button" class="btn-cosmic" id="viewChart">View My Chart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart Visualization -->
+      <div class="birth-chart-visualization" id="chartVisualization" style="display: none;">
+        <div class="chart-header">
+          <h2>Your Birth Chart</h2>
+          <div class="chart-info">
+            <span id="chartDate"></span> • <span id="chartLocation"></span>
+          </div>
+        </div>
+        
+        <div class="chart-container">
+          <svg id="birthChartSVG" width="500" height="500" viewBox="0 0 500 500">
+            <!-- Chart will be rendered here -->
+          </svg>
+        </div>
+
+        <div class="chart-legend">
+          <div class="legend-section">
+            <h4>Planets</h4>
+            <div class="legend-items" id="planetLegend"></div>
+          </div>
+          <div class="legend-section">
+            <h4>Signs</h4>
+            <div class="legend-items" id="signLegend"></div>
+          </div>
+          <div class="legend-section">
+            <h4>Houses</h4>
+            <div class="legend-items" id="houseLegend"></div>
+          </div>
+        </div>
+
+        <div class="chart-actions">
+          <button type="button" class="btn-cosmic" id="downloadChart">Download Chart</button>
+          <button type="button" class="btn-secondary" id="shareChart">Share Chart</button>
+          <button type="button" class="btn-secondary" id="newChart">Calculate New Chart</button>
+        </div>
+      </div>
+
+      <!-- Chart Data Display -->
+      <div class="chart-data-section" id="chartDataSection" style="display: none;">
+        <div class="data-tabs">
+          <button class="tab-button active" data-tab="interpretation">Your Interpretation</button>
+          <button class="tab-button" data-tab="planets">Planetary Positions</button>
+          <button class="tab-button" data-tab="houses">House Cusps</button>
+          <button class="tab-button" data-tab="aspects">Major Aspects</button>
+        </div>
+
+        <div class="tab-content active" id="interpretationTab">
+          <div class="interpretation-content" id="interpretationContent">
+            <div class="interpretation-loading">
+              <div class="cosmic-spinner"></div>
+              <p>Generating your personalized interpretation...</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="planetsTab">
+          <div class="planets-table" id="planetsTable"></div>
+        </div>
+
+        <div class="tab-content" id="housesTab">
+          <div class="houses-table" id="housesTable"></div>
+        </div>
+
+        <div class="tab-content" id="aspectsTab">
+          <div class="aspects-table" id="aspectsTable"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ '/assets/js/nutation-calculator.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/coordinate-transformer.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/vsop87-series-data.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/vsop87-calculator.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/elp2000-series-data.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/elp2000-moon-calculator.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/calculation-validator.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/api-keys.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/geocoding-config.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/geocoding-service.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/timezone-service.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/timezone-aware-converter.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/chart-interpretation.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/birth-chart-calculator.js' | relative_url }}"></script>
+
+<script>
+// Ensure geocoding service is available before initializing birth chart calculator
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM loaded, checking services...');
+  console.log('GeocodingService available:', typeof GeocodingService !== 'undefined');
+  
+  // Give a small delay to ensure all scripts are loaded
+  setTimeout(() => {
+    if (window.birthChartCalculator && typeof window.birthChartCalculator.initializeGeocodingService === 'function') {
+      console.log('Reinitializing geocoding service...');
+      window.birthChartCalculator.initializeGeocodingService();
+    }
+  }, 100);
+  
+  // Enhanced UI feedback for validation
+  setupEnhancedValidationFeedback();
+  
+  // Debug: Check if birth chart calculator is available
+  setTimeout(() => {
+    console.log('Debug: window.birthChartCalculator available:', !!window.birthChartCalculator);
+    console.log('Debug: window.calc available:', !!window.calc);
+    if (window.birthChartCalculator) {
+      console.log('Debug: geocodingService available:', !!window.birthChartCalculator.geocodingService);
+    }
+  }, 500);
+});
+
+function setupEnhancedValidationFeedback() {
+  // Override the validateAndProceed method to add visual feedback
+  if (window.birthChartCalculator) {
+    const originalValidateAndProceed = window.birthChartCalculator.validateAndProceed;
+    window.birthChartCalculator.validateAndProceed = function(nextStep) {
+      const continueBtn = document.querySelector('.next-step[data-next="' + nextStep + '"]');
+      const result = originalValidateAndProceed.call(this, nextStep);
+      
+      // Add visual feedback for validation failure
+      if (!result && continueBtn) {
+        continueBtn.classList.add('validation-failed');
+        setTimeout(() => {
+          continueBtn.classList.remove('validation-failed');
+        }, 500);
+      }
+      
+      return result;
+    };
+  }
+  
+  // Add enhanced tooltip for the Continue button
+  const continueBtn = document.querySelector('.btn-cosmic');
+  if (continueBtn) {
+    continueBtn.title = "Enter your birth date to continue";
+    
+    // Update tooltip based on validation state
+    const birthDateInput = document.getElementById('birthDate');
+    if (birthDateInput) {
+      birthDateInput.addEventListener('change', function() {
+        if (this.value) {
+          continueBtn.title = "Continue to next step";
+          continueBtn.classList.add('ready-to-continue');
+        } else {
+          continueBtn.title = "Enter your birth date to continue";
+          continueBtn.classList.remove('ready-to-continue');
+        }
+      });
+    }
+  }
+}
+</script>

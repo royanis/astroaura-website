@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Geocoding Test</title>
+</head>
+<body>
+    <h1>Simple Geocoding Test</h1>
+    <p>Check the console for loading messages</p>
+    
+    <input type="text" id="searchInput" placeholder="Enter city name" value="kolkata">
+    <button onclick="testSearch()">Search</button>
+    <div id="results"></div>
+
+    <script>
+        console.log('=== Starting script loading ===');
+    </script>
+    
+    <script src="assets/js/api-keys.js"></script>
+    <script>
+        console.log('api-keys.js loaded');
+    </script>
+    
+    <script src="assets/js/geocoding-config.js"></script>
+    <script>
+        console.log('geocoding-config.js loaded, GeocodingConfig available:', typeof GeocodingConfig !== 'undefined');
+    </script>
+    
+    <script src="assets/js/geocoding-service-simple.js"></script>
+    <script>
+        console.log('geocoding-service-simple.js loaded, GeocodingService available:', typeof GeocodingService !== 'undefined');
+        
+        let geocodingService;
+        if (typeof GeocodingService !== 'undefined') {
+            try {
+                geocodingService = new GeocodingService();
+                console.log('✅ GeocodingService initialized successfully');
+            } catch (error) {
+                console.error('❌ Error initializing GeocodingService:', error);
+            }
+        } else {
+            console.error('❌ GeocodingService class not available');
+        }
+        
+        async function testSearch() {
+            const query = document.getElementById('searchInput').value;
+            const results = document.getElementById('results');
+            
+            if (!geocodingService) {
+                results.innerHTML = '<p style="color: red;">❌ Geocoding service not available</p>';
+                return;
+            }
+            
+            try {
+                results.innerHTML = '<p>🔍 Searching...</p>';
+                console.log('Starting search for:', query);
+                
+                const locations = await geocodingService.geocodeLocation(query);
+                console.log('Search completed, results:', locations);
+                
+                if (locations.length === 0) {
+                    results.innerHTML = '<p>❌ No results found</p>';
+                } else {
+                    results.innerHTML = '<h3>✅ Results:</h3>' + 
+                        locations.map((loc, index) => 
+                            `<div style="margin: 10px 0; padding: 10px; border: 1px solid #ccc;">
+                                <strong>${index + 1}. ${loc.name}</strong><br>
+                                📍 Lat: ${loc.lat.toFixed(4)}, Lng: ${loc.lng.toFixed(4)}<br>
+                                🌍 Source: ${loc.source}<br>
+                                ⭐ Confidence: ${(loc.confidence * 100).toFixed(0)}%<br>
+                                🕐 Timezone: ${loc.timezone}
+                            </div>`
+                        ).join('');
+                }
+            } catch (error) {
+                console.error('❌ Search error:', error);
+                results.innerHTML = `<p style="color: red;">❌ Error: ${error.message}</p>`;
+            }
+        }
+        
+        // Auto-test on load
+        window.addEventListener('load', () => {
+            console.log('Page loaded, running auto-test...');
+            setTimeout(testSearch, 1000);
+        });
+    </script>
+</body>
+</html>

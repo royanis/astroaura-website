@@ -1,0 +1,251 @@
+---
+layout: default
+title: Birth Chart Integration Test
+---
+
+<div class="container">
+  <h1>Birth Chart Integration Test</h1>
+  
+  <div style="margin-bottom: 20px;">
+    <h3>Test 1: IPGeolocation.io API Direct Test</h3>
+    <button onclick="testDirectAPI()" class="btn-cosmic">Test Direct API</button>
+    <div id="directApiResults" style="margin-top: 10px; padding: 10px; background: #f5f5f5; border-radius: 5px;"></div>
+  </div>
+  
+  <div style="margin-bottom: 20px;">
+    <h3>Test 2: Geocoding Service Integration</h3>
+    <input type="text" id="testLocation" value="New York" placeholder="Enter location...">
+    <button onclick="testGeocodingService()" class="btn-cosmic">Test Geocoding Service</button>
+    <div id="geocodingResults" style="margin-top: 10px; padding: 10px; background: #f5f5f5; border-radius: 5px;"></div>
+  </div>
+  
+  <div style="margin-bottom: 20px;">
+    <h3>Test 3: Birth Chart Calculator Integration</h3>
+    <button onclick="testBirthChartCalculator()" class="btn-cosmic">Test Birth Chart Calculator</button>
+    <div id="calculatorResults" style="margin-top: 10px; padding: 10px; background: #f5f5f5; border-radius: 5px;"></div>
+  </div>
+  
+  <div id="console" style="margin-top: 20px; background: #333; color: #fff; padding: 10px; border-radius: 5px; font-family: monospace; font-size: 12px; white-space: pre-wrap; max-height: 400px; overflow-y: auto;">
+    <!-- Console logs will appear here -->
+  </div>
+</div>
+
+<script src="{{ '/assets/js/geocoding-service.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/birth-chart-calculator.js' | relative_url }}"></script>
+<script>
+const consoleDiv = document.getElementById('console');
+
+// Override console methods to display in page
+const originalLog = console.log;
+const originalWarn = console.warn;
+const originalError = console.error;
+
+console.log = function(...args) {
+  originalLog.apply(console, args);
+  consoleDiv.innerHTML += '[LOG] ' + args.join(' ') + '\n';
+  consoleDiv.scrollTop = consoleDiv.scrollHeight;
+};
+
+console.warn = function(...args) {
+  originalWarn.apply(console, args);
+  consoleDiv.innerHTML += '[WARN] ' + args.join(' ') + '\n';
+  consoleDiv.scrollTop = consoleDiv.scrollHeight;
+};
+
+console.error = function(...args) {
+  originalError.apply(console, args);
+  consoleDiv.innerHTML += '[ERROR] ' + args.join(' ') + '\n';
+  consoleDiv.scrollTop = consoleDiv.scrollHeight;
+};
+
+// Test 1: Direct API Test
+async function testDirectAPI() {
+  const resultsDiv = document.getElementById('directApiResults');
+  console.log('=== Testing Direct IPGeolocation.io API ===');
+  
+  try {
+    const apiKey = '1c355e807b2d45d09aa5d149e5e35b53';
+    const query = 'New York';
+    const url = `https://api.ipgeolocation.io/v2/astronomy?apiKey=${apiKey}&location=${encodeURIComponent(query)}`;
+    
+    console.log('Making direct API request to:', url);
+    const response = await fetch(url);
+    const data = await response.json();
+    
+    if (data.location) {
+      resultsDiv.innerHTML = `
+        <h4>✅ Direct API Test Successful</h4>
+        <p><strong>Location:</strong> ${data.location.city}, ${data.location.state_prov}, ${data.location.country_name}</p>
+        <p><strong>Coordinates:</strong> ${data.location.latitude}, ${data.location.longitude}</p>
+      `;
+      console.log('✅ Direct API test successful');
+    } else {
+      resultsDiv.innerHTML = `<h4>❌ Direct API Test Failed</h4><p>No location data received</p>`;
+      console.log('❌ Direct API test failed - no location data');
+    }
+  } catch (error) {
+    resultsDiv.innerHTML = `<h4>❌ Direct API Test Error</h4><p>${error.message}</p>`;
+    console.error('❌ Direct API test error:', error);
+  }
+}
+
+// Test 2: Geocoding Service Integration
+let geocodingService;
+async function testGeocodingService() {
+  const resultsDiv = document.getElementById('geocodingResults');
+  const location = document.getElementById('testLocation').value;
+  
+  console.log('=== Testing Geocoding Service Integration ===');
+  
+  try {
+    if (!geocodingService) {
+      geocodingService = new GeocodingService();
+      console.log('Geocoding service initialized');
+    }
+    
+    console.log('Testing geocoding for:', location);
+    const results = await geocodingService.geocodeLocation(location, { limit: 5 });
+    
+    if (results && results.length > 0) {
+      const ipgeoResults = results.filter(r => r.source === 'ipgeolocation-astronomy');
+      let html = `<h4>✅ Geocoding Service Test Successful</h4>`;
+      html += `<p>Found ${results.length} results`;
+      if (ipgeoResults.length > 0) {
+        html += ` (${ipgeoResults.length} from IPGeolocation.io)`;
+      }
+      html += `</p>`;
+      
+      results.slice(0, 2).forEach(result => {
+        html += `
+          <div style="border: 1px solid #ddd; padding: 5px; margin: 5px 0; border-radius: 3px;">
+            <strong>${result.name}</strong><br>
+            Coords: ${result.lat.toFixed(4)}, ${result.lng.toFixed(4)}<br>
+            Source: ${result.source}${result.source === 'ipgeolocation-astronomy' ? ' ✅' : ''}
+          </div>
+        `;
+      });
+      
+      resultsDiv.innerHTML = html;
+      console.log('✅ Geocoding service test successful');
+    } else {
+      resultsDiv.innerHTML = `<h4>❌ Geocoding Service Test Failed</h4><p>No results found</p>`;
+      console.log('❌ Geocoding service test failed - no results');
+    }
+  } catch (error) {
+    resultsDiv.innerHTML = `<h4>❌ Geocoding Service Test Error</h4><p>${error.message}</p>`;
+    console.error('❌ Geocoding service test error:', error);
+  }
+}
+
+// Test 3: Birth Chart Calculator Integration
+let calculator;
+async function testBirthChartCalculator() {
+  const resultsDiv = document.getElementById('calculatorResults');
+  
+  console.log('=== Testing Birth Chart Calculator Integration ===');
+  
+  try {
+    if (!calculator) {
+      calculator = new BirthChartCalculator(true); // Skip DOM setup
+      console.log('Birth chart calculator initialized');
+    }
+    
+    // Test that all required services are available
+    const services = {
+      geocodingService: !!calculator.geocodingService,
+      vsopCalculator: !!calculator.vsopCalculator,
+      moonCalculator: !!calculator.moonCalculator,
+      timezoneService: !!calculator.timezoneService,
+      coordinateTransformer: !!calculator.coordinateTransformer,
+      nutationCalculator: !!calculator.nutationCalculator
+    };
+    
+    console.log('Birth chart calculator services:', services);
+    
+    const allServicesAvailable = Object.values(services).every(available => available);
+    
+    if (allServicesAvailable) {
+      resultsDiv.innerHTML = `
+        <h4>✅ Birth Chart Calculator Test Successful</h4>
+        <p>All required services are properly initialized:</p>
+        <ul>
+          <li>✅ Geocoding Service (IPGeolocation.io integration)</li>
+          <li>✅ VSOP87 Calculator</li>
+          <li>✅ ELP2000 Moon Calculator</li>
+          <li>✅ Timezone Service</li>
+          <li>✅ Coordinate Transformer</li>
+          <li>✅ Nutation Calculator</li>
+        </ul>
+      `;
+      console.log('✅ Birth chart calculator test successful');
+    } else {
+      resultsDiv.innerHTML = `
+        <h4>⚠️ Birth Chart Calculator Test Partial</h4>
+        <p>Some services not available:</p>
+        <ul>
+          ${Object.entries(services).map(([service, available]) => 
+            `<li>${available ? '✅' : '❌'} ${service}</li>`
+          ).join('')}
+        </ul>
+      `;
+      console.log('⚠️ Birth chart calculator test partial - some services missing');
+    }
+  } catch (error) {
+    resultsDiv.innerHTML = `<h4>❌ Birth Chart Calculator Test Error</h4><p>${error.message}</p>`;
+    console.error('❌ Birth chart calculator test error:', error);
+  }
+}
+
+// Auto-run tests on page load
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('=== Birth Chart Integration Test Suite ===');
+  console.log('Page loaded. Click test buttons to run individual tests.');
+  
+  // Auto-run Test 1 after a short delay
+  setTimeout(() => {
+    console.log('Auto-running Direct API test...');
+    testDirectAPI();
+  }, 1000);
+  
+  // Auto-run Test 2 after Test 1
+  setTimeout(() => {
+    console.log('Auto-running Geocoding Service test...');
+    testGeocodingService();
+  }, 2000);
+  
+  // Auto-run Test 3 after Test 2
+  setTimeout(() => {
+    console.log('Auto-running Birth Chart Calculator test...');
+    testBirthChartCalculator();
+  }, 3000);
+});
+</script>
+
+<style>
+.btn-cosmic {
+  background: linear-gradient(45deg, #ffd700, #ff6b6b);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+.btn-cosmic:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1, h3 {
+  color: #333;
+}
+</style>

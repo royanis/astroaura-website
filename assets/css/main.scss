@@ -1,0 +1,45 @@
+---
+# Main stylesheet for AstroAura website
+---
+
+// Import order is important for proper cascade
+@import "variables";
+@import "mixins";
+@import "base";
+@import "components";
+@import "touch";
+
+// Page-specific styles
+@import "pages/home";
+@import "pages/blog";
+@import "pages/features";
+@import "pages/birth-chart";
+@import "pages/compatibility";
+@import "pages/cosmic-dashboard";
+@import "pages/profile";
+@import "pages/cosmic-timeline";
+@import "pages/bookmarks";
+@import "pages/cosmic-journal";
+@import "pages/cosmic-community";
+@import "pages/cosmic-connections";
+@import "pages/educational-visualizations";
+
+// Print styles
+@media print {
+  .site-header,
+  .site-footer,
+  .starfield {
+    display: none;
+  }
+  
+  body {
+    background: white;
+    color: black;
+    padding-top: 0;
+  }
+  
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+}

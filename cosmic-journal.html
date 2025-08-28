@@ -1,0 +1,173 @@
+---
+layout: default
+title: Cosmic Journal - AstroAura
+description: Your private cosmic journal to track moods, experiences, and astrological insights
+---
+
+<div class="cosmic-journal-container">
+    <header class="journal-header">
+        <div class="header-content">
+            <h1 class="journal-title">
+                <span class="cosmic-icon">✨</span>
+                Your Cosmic Journal
+            </h1>
+            <p class="journal-subtitle">Track your moods, experiences, and cosmic insights in your private space</p>
+        </div>
+        <div class="journal-actions">
+            <button class="btn btn-primary" id="newEntryBtn">
+                <span class="icon">📝</span>
+                New Entry
+            </button>
+            <button class="btn btn-secondary" id="moodTrackerBtn">
+                <span class="icon">🌙</span>
+                Mood Tracker
+            </button>
+        </div>
+    </header>
+
+    <div class="journal-content">
+        <!-- Journal Entry Form -->
+        <div class="journal-form-container" id="journalForm" style="display: none;">
+            <div class="form-card">
+                <div class="form-header">
+                    <h3>New Journal Entry</h3>
+                    <button class="close-btn" id="closeFormBtn">&times;</button>
+                </div>
+                <form id="entryForm">
+                    <div class="form-group">
+                        <label for="entryTitle">Title (Optional)</label>
+                        <input type="text" id="entryTitle" placeholder="Give your entry a title...">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="entryMood">Current Mood</label>
+                        <div class="mood-selector">
+                            <button type="button" class="mood-btn" data-mood="joyful">😊 Joyful</button>
+                            <button type="button" class="mood-btn" data-mood="peaceful">😌 Peaceful</button>
+                            <button type="button" class="mood-btn" data-mood="reflective">🤔 Reflective</button>
+                            <button type="button" class="mood-btn" data-mood="anxious">😰 Anxious</button>
+                            <button type="button" class="mood-btn" data-mood="energetic">⚡ Energetic</button>
+                            <button type="button" class="mood-btn" data-mood="melancholy">😔 Melancholy</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="entryTemplate">Use Template</label>
+                        <select id="entryTemplate">
+                            <option value="">Free writing</option>
+                            <option value="daily-reflection">Daily Reflection</option>
+                            <option value="moon-phase">Moon Phase Experience</option>
+                            <option value="planetary-transit">Planetary Transit</option>
+                            <option value="dream-journal">Dream Journal</option>
+                            <option value="gratitude">Gratitude Practice</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="entryContent">Your Thoughts</label>
+                        <textarea id="entryContent" rows="8" placeholder="What's on your mind today?"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="privateEntry" checked>
+                            Keep this entry private
+                        </label>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelEntryBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Entry</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Mood Tracker -->
+        <div class="mood-tracker-container" id="moodTracker" style="display: none;">
+            <div class="tracker-card">
+                <div class="tracker-header">
+                    <h3>Mood & Cosmic Correlation Tracker</h3>
+                    <button class="close-btn" id="closeMoodTrackerBtn">&times;</button>
+                </div>
+                <div class="mood-chart-container">
+                    <canvas id="moodChart" width="400" height="200"></canvas>
+                </div>
+                <div class="cosmic-events-today">
+                    <h4>Today's Cosmic Influences</h4>
+                    <div id="cosmicEvents" class="cosmic-events-list">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Journal Entries List -->
+        <div class="journal-entries">
+            <div class="entries-header">
+                <h3>Your Entries</h3>
+                <div class="entries-filters">
+                    <select id="moodFilter">
+                        <option value="">All Moods</option>
+                        <option value="joyful">Joyful</option>
+                        <option value="peaceful">Peaceful</option>
+                        <option value="reflective">Reflective</option>
+                        <option value="anxious">Anxious</option>
+                        <option value="energetic">Energetic</option>
+                        <option value="melancholy">Melancholy</option>
+                    </select>
+                    <input type="date" id="dateFilter" placeholder="Filter by date">
+                </div>
+            </div>
+            <div id="entriesList" class="entries-list">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ '/assets/js/cosmic-journal.js' | relative_url }}"></script>
+
+<!-- Entry Templates (Hidden) -->
+<div id="entryTemplates" style="display: none;">
+    <div data-template="daily-reflection">
+        <h4>Daily Reflection</h4>
+        <p><strong>How did I feel today?</strong></p>
+        <p><strong>What challenged me?</strong></p>
+        <p><strong>What am I grateful for?</strong></p>
+        <p><strong>What did I learn about myself?</strong></p>
+    </div>
+    
+    <div data-template="moon-phase">
+        <h4>Moon Phase Experience</h4>
+        <p><strong>Current Moon Phase:</strong> [Will be filled automatically]</p>
+        <p><strong>How does this moon phase make me feel?</strong></p>
+        <p><strong>What intentions am I setting?</strong></p>
+        <p><strong>What am I releasing?</strong></p>
+    </div>
+    
+    <div data-template="planetary-transit">
+        <h4>Planetary Transit Reflection</h4>
+        <p><strong>Current Transit:</strong> [Will be filled automatically]</p>
+        <p><strong>How am I experiencing this energy?</strong></p>
+        <p><strong>What opportunities is this bringing?</strong></p>
+        <p><strong>How can I work with this energy?</strong></p>
+    </div>
+    
+    <div data-template="dream-journal">
+        <h4>Dream Journal</h4>
+        <p><strong>Dream Summary:</strong></p>
+        <p><strong>Emotions in the dream:</strong></p>
+        <p><strong>Symbols and meanings:</strong></p>
+        <p><strong>Personal insights:</strong></p>
+    </div>
+    
+    <div data-template="gratitude">
+        <h4>Gratitude Practice</h4>
+        <p><strong>Three things I'm grateful for today:</strong></p>
+        <p>1. </p>
+        <p>2. </p>
+        <p>3. </p>
+        <p><strong>How did these blessings make me feel?</strong></p>
+    </div>
+</div>

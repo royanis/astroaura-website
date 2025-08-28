@@ -287,6 +287,75 @@
             color: var(--starlight);
         }
         
+        /* Navigation Dropdowns */
+        .nav-dropdown {
+            position: relative;
+        }
+        
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .dropdown-toggle i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-dropdown:hover .dropdown-toggle i {
+            transform: rotate(180deg);
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 15px);
+            left: 0;
+            min-width: 220px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(240, 199, 94, 0.3);
+            border-radius: var(--border-radius);
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            list-style: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .nav-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu li {
+            margin: 0;
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 20px;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: none;
+            font-weight: 500;
+        }
+        
+        .dropdown-menu a:hover {
+            background: rgba(240, 199, 94, 0.1);
+            color: var(--cosmic-gold);
+            padding-left: 30px;
+        }
+        
+        .dropdown-menu a::after {
+            display: none;
+        }
+        
         /* Page Header */
         .page-header {
             padding: 140px 0 60px;
@@ -929,6 +998,28 @@
                 border-bottom: 1px solid rgba(240, 199, 94, 0.1);
             }
             
+            /* Mobile Dropdown Adjustments */
+            .nav-dropdown .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                background: rgba(58, 43, 113, 0.3);
+                border: none;
+                box-shadow: none;
+                margin-top: 10px;
+                display: none;
+            }
+            
+            .nav-dropdown.active .dropdown-menu {
+                display: block;
+            }
+            
+            .dropdown-toggle {
+                justify-content: center;
+                cursor: pointer;
+            }
+            
             .mobile-menu-btn {
                 display: block;
             }
@@ -1123,11 +1214,33 @@
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="features.html" class="active">Features</a></li>
+                    <li class="nav-dropdown">
+                        <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                            Tools <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="birth-chart.html">Birth Chart Calculator</a></li>
+                            <li><a href="compatibility.html">Compatibility Matcher</a></li>
+                            <li><a href="cosmic-dashboard.html">Cosmic Dashboard</a></li>
+                            <li><a href="cosmic-journal.html">Cosmic Journal</a></li>
+                            <li><a href="educational-visualizations.html">Learn Astrology</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                            Community <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="cosmic-community.html">Cosmic Community</a></li>
+                            <li><a href="cosmic-connections.html">Cosmic Connections</a></li>
+                            <li><a href="profile.html">My Profile</a></li>
+                            <li><a href="bookmarks.html">Bookmarks</a></li>
+                            <li><a href="cosmic-timeline.html">Cosmic Timeline</a></li>
+                        </ul>
+                    </li>
                     <li><a href="blog/index.html">Blog</a></li>
-                    <li><a href="cosmic-insights.html">Cosmic Insights</a></li>
+                    <li><a href="features.html" class="active">Features</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="privacy.html">Privacy</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -1543,7 +1656,6 @@
                     <ul class="footer-links">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="features.html">Features</a></li>
-                        <li><a href="cosmic-insights.html">Cosmic Insights</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
@@ -1604,6 +1716,26 @@
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
             }
+        });
+        
+        // Mobile Dropdown Toggle
+        document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const dropdown = toggle.parentElement;
+                
+                // On mobile, toggle dropdown
+                if (window.innerWidth <= 768) {
+                    dropdown.classList.toggle('active');
+                    
+                    // Close other dropdowns
+                    document.querySelectorAll('.nav-dropdown').forEach(other => {
+                        if (other !== dropdown) {
+                            other.classList.remove('active');
+                        }
+                    });
+                }
+            });
         });
         
         // Header Scroll Effect

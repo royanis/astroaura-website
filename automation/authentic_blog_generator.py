@@ -462,7 +462,6 @@ Write as an expert astrologer who combines ancient wisdom with modern technology
         keywords = [
             "astrology", "horoscope", astronomical_data['sun_sign'].lower(),
             astronomical_data['moon_phase'].lower().replace(' ', '-'),
-            "cosmic-insights", "spiritual-guidance", "astroaura"
         ]
         
         html_content = f"""<!DOCTYPE html>
@@ -485,7 +484,6 @@ Write as an expert astrologer who combines ancient wisdom with modern technology
     <!-- Open Graph Tags -->
     <meta property="og:title" content="{post_data['title']} | AstroAura">
     <meta property="og:description" content="{post_data['meta_description']}">
-    <meta property="og:image" content="{self.config['site_url']}/assets/images/blog/cosmic-insights-og.jpg">
     <meta property="og:url" content="{self.config['site_url']}/blog/posts/{slug}.html">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="AstroAura">
@@ -494,7 +492,6 @@ Write as an expert astrologer who combines ancient wisdom with modern technology
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{post_data['title']}">
     <meta name="twitter:description" content="{post_data['meta_description']}">
-    <meta name="twitter:image" content="{self.config['site_url']}/assets/images/blog/cosmic-insights-twitter.jpg">
     
     <!-- Schema.org Markup -->
     <script type="application/ld+json">
@@ -518,7 +515,6 @@ Write as an expert astrologer who combines ancient wisdom with modern technology
         "datePublished": "{iso_date}",
         "dateModified": "{iso_date}",
         "url": "{self.config['site_url']}/blog/posts/{slug}.html",
-        "image": "{self.config['site_url']}/assets/images/blog/cosmic-insights-og.jpg",
         "mainEntityOfPage": {{
             "@type": "WebPage",
             "@id": "{self.config['site_url']}/blog/posts/{slug}.html"

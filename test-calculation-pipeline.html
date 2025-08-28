@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculation Pipeline Test</title>
+</head>
+<body>
+    <h1>Complete Calculation Pipeline Test</h1>
+    <div id="results"></div>
+    
+    <script src="assets/js/vsop87-series-data.js"></script>
+    <script src="assets/js/elp2000-series-data.js"></script>
+    <script src="assets/js/nutation-calculator.js"></script>
+    <script src="assets/js/coordinate-transformer.js"></script>
+    <script src="assets/js/elp2000-moon-calculator.js"></script>
+    <script src="assets/js/performance-monitor.js"></script>
+    <script src="assets/js/calculation-error-handler.js"></script>
+    <script src="assets/js/vsop87-calculator.js"></script>
+    <script src="assets/js/timezone-service.js"></script>
+    <script src="assets/js/timezone-aware-converter.js"></script>
+    <script src="assets/js/chart-interpretation.js"></script>
+    <script src="assets/js/calculation-validator.js"></script>
+    <script src="assets/js/birth-chart-calculator.js"></script>
+    
+    <script>
+        async function testCalculationPipeline() {
+            const results = document.getElementById('results');
+            
+            try {
+                console.log('=== CALCULATION PIPELINE TEST ===');
+                
+                // Test data: Jan 4, 1985, 6:30 AM IST
+                const testData = {
+                    date: '1985-01-04',
+                    time: '06:30',
+                    location: {
+                        name: 'Prayagraj, India',
+                        lat: 25.4358,
+                        lng: 81.8463,
+                        timezone: {
+                            name: 'Asia/Kolkata',
+                            offset: 5.5,
+                            dst: false,
+                            source: 'test'
+                        }
+                    }
+                };
+                
+                // Expected results
+                const expected = {
+                    utc: '1985-01-04T01:00:00.000Z',
+                    julianDay: 2446069.5416666665,
+                    sun: 283.61  // Capricorn 13°36'
+                };
+                
+                console.log('Test data:', testData);
+                console.log('Expected results:', expected);
+                
+                // Step 1: Test UTC conversion
+                console.log('\n=== STEP 1: UTC CONVERSION ===');
+                const timezoneService = new TimezoneService();
+                const converter = new TimezoneAwareConverter(timezoneService);
+                
+                const utcResult = await converter.convertBirthTimeToUTC(
+                    testData.date, 
+                    testData.time, 
+                    testData.location
+                );
+                
+                console.log('UTC conversion result:', utcResult.utc.toISOString());
+                const utcCorrect = utcResult.utc.toISOString() === expected.utc;
+                console.log('UTC conversion correct:', utcCorrect);
+                
+                // Step 2: Test Julian Day calculation
+                console.log('\n=== STEP 2: JULIAN DAY CALCULATION ===');
+                const calculator = new BirthChartCalculator(true);
+                const julianDay = calculator.calculateJulianDay(utcResult.utc);
+                
+                console.log('Calculated Julian Day:', julianDay);
+                console.log('Expected Julian Day:', expected.julianDay);
+                const jdDiff = Math.abs(julianDay - expected.julianDay);
+                console.log('JD difference:', jdDiff, 'days');
+                const jdCorrect = jdDiff < 0.001; // Within ~1.4 minutes
+                console.log('Julian Day correct:', jdCorrect);
+                
+                // Step 3: Test Sun position calculation
+                console.log('\n=== STEP 3: SUN POSITION CALCULATION ===');
+                const vsopCalculator = new VSOP87Calculator();
+                const T = (julianDay - 2451545.0) / 36525.0;
+                
+                // Test Earth's heliocentric longitude (before +180°)
+                const earthHelio = vsopCalculator.calculateSunLongitudeVSOP87(T);
+                console.log('Earth heliocentric longitude:', earthHelio);
+                
+                // Test Sun's geocentric longitude (after +180°)
+                const sunGeo = vsopCalculator.calculatePlanetLongitude('sun', T);
+                console.log('Sun geocentric longitude:', sunGeo);
+                console.log('Expected Sun longitude:', expected.sun);
+                
+                const sunDiff = Math.abs(sunGeo - expected.sun);
+                console.log('Sun difference:', sunDiff, '°');
+                const sunCorrect = sunDiff < 5; // Within 5 degrees
+                console.log('Sun position correct:', sunCorrect);
+                
+                // Step 4: Test full calculation
+                console.log('\n=== STEP 4: FULL CALCULATION ===');
+                calculator.birthData = testData;
+                const chartData = await calculator.performAstrologicalCalculations();
+                
+                const sunPlanet = chartData.planets.find(p => p.name === 'Sun');
+                console.log('Full calculation Sun result:', sunPlanet);
+                
+                const fullSunDiff = Math.abs(sunPlanet.longitude - expected.sun);
+                console.log('Full calculation Sun difference:', fullSunDiff, '°');
+                const fullSunCorrect = fullSunDiff < 5;
+                console.log('Full calculation Sun correct:', fullSunCorrect);
+                
+                // Summary
+                const allCorrect = utcCorrect && jdCorrect && sunCorrect && fullSunCorrect;
+                
+                results.innerHTML = `
+                    <h2>Calculation Pipeline Test Results</h2>
+                    <p><strong>Test Case:</strong> ${testData.date} ${testData.time} (${testData.location.timezone.name})</p>
+                    <hr>
+                    
+                    <h3>Step 1: UTC Conversion</h3>
+                    <p><strong>Expected:</strong> ${expected.utc}</p>
+                    <p><strong>Actual:</strong> ${utcResult.utc.toISOString()}</p>
+                    <p><strong>Status:</strong> <span style="color: ${utcCorrect ? 'green' : 'red'}">${utcCorrect ? 'PASS' : 'FAIL'}</span></p>
+                    
+                    <h3>Step 2: Julian Day</h3>
+                    <p><strong>Expected:</strong> ${expected.julianDay}</p>
+                    <p><strong>Actual:</strong> ${julianDay}</p>
+                    <p><strong>Difference:</strong> ${jdDiff.toFixed(6)} days</p>
+                    <p><strong>Status:</strong> <span style="color: ${jdCorrect ? 'green' : 'red'}">${jdCorrect ? 'PASS' : 'FAIL'}</span></p>
+                    
+                    <h3>Step 3: Sun Position (Direct)</h3>
+                    <p><strong>Expected:</strong> ${expected.sun}°</p>
+                    <p><strong>Earth Heliocentric:</strong> ${earthHelio.toFixed(4)}°</p>
+                    <p><strong>Sun Geocentric:</strong> ${sunGeo.toFixed(4)}°</p>
+                    <p><strong>Difference:</strong> ${sunDiff.toFixed(4)}°</p>
+                    <p><strong>Status:</strong> <span style="color: ${sunCorrect ? 'green' : 'red'}">${sunCorrect ? 'PASS' : 'FAIL'}</span></p>
+                    
+                    <h3>Step 4: Full Calculation</h3>
+                    <p><strong>Expected:</strong> ${expected.sun}°</p>
+                    <p><strong>Actual:</strong> ${sunPlanet.longitude.toFixed(4)}° (${sunPlanet.sign} ${sunPlanet.degree}°)</p>
+                    <p><strong>Difference:</strong> ${fullSunDiff.toFixed(4)}°</p>
+                    <p><strong>Status:</strong> <span style="color: ${fullSunCorrect ? 'green' : 'red'}">${fullSunCorrect ? 'PASS' : 'FAIL'}</span></p>
+                    
+                    <hr>
+                    <h3>Overall Result</h3>
+                    <p><strong>Status:</strong> <span style="color: ${allCorrect ? 'green' : 'red'}; font-size: 18px; font-weight: bold;">${allCorrect ? 'ALL TESTS PASS' : 'SOME TESTS FAILED'}</span></p>
+                `;
+                
+            } catch (error) {
+                console.error('Pipeline test failed:', error);
+                results.innerHTML = `<p style="color: red;">Pipeline test failed: ${error.message}</p><pre>${error.stack}</pre>`;
+            }
+        }
+        
+        // Run test when page loads
+        window.addEventListener('load', testCalculationPipeline);
+    </script>
+</body>
+</html>

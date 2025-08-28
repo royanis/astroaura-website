@@ -1,0 +1,120 @@
+# Jekyll Configuration for AstroAura Website
+# Optimized for GitHub Pages deployment
+
+# Site settings
+title: "AstroAura: Free AI Astrology App"
+description: "🌟 AI-powered astrology app in 11 languages! Get personalized horoscopes, natal charts, tarot readings & cosmic insights. FREE download for iOS & Android."
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://astroaura.me" # the base hostname & protocol for your site
+author: "AstroAura"
+email: "contact@astroaura.me"
+twitter_username: "AstroAuraApp"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-minifier
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - automation/
+  - .next/
+  - .vscode/
+  - .claude/
+  - .DS_Store
+  - README.md
+  - package*.json
+
+# Include files
+include:
+  - _pages
+  - assets
+
+# Collections
+collections:
+  pages:
+    output: true
+    permalink: /:name/
+
+# Sass configuration
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Compression settings
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  startings: []
+  blanklines: false
+  profile: false
+
+# SEO settings
+lang: en
+locale: en_US
+
+# Social media
+social:
+  name: AstroAura
+  links:
+    - https://twitter.com/AstroAuraApp
+    - https://github.com/astroaura
+
+# Google Analytics (replace with your tracking ID)
+google_analytics: # Add your GA tracking ID here
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "AstroAura"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+# Pagination
+paginate: 10
+paginate_path: "/blog/page:num/"
+
+# Timezone
+timezone: UTC
+
+# Liquid options
+liquid:
+  error_mode: warn
+  strict_filters: false
+  strict_variables: false
+
+# Markdown settings
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+
+# Performance optimizations
+incremental: true
+profile: false
+safe: true

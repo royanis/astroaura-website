@@ -1,0 +1,141 @@
+---
+layout: default
+title: My Bookmarks - AstroAura
+description: View and manage your saved astrological insights, articles, and cosmic discoveries.
+---
+
+<div class="bookmarks-page">
+  <div class="cosmic-header">
+    <div class="container">
+      <h1 class="cosmic-title">My Bookmarks</h1>
+      <p class="cosmic-subtitle">Your saved cosmic discoveries and insights</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="bookmarks-container">
+      <!-- Bookmarks Header -->
+      <div class="bookmarks-header">
+        <div class="bookmarks-stats">
+          <div class="stat-item">
+            <span class="stat-number" id="totalBookmarks">0</span>
+            <span class="stat-label">Total Bookmarks</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="recentBookmarks">0</span>
+            <span class="stat-label">This Week</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="categoriesCount">0</span>
+            <span class="stat-label">Categories</span>
+          </div>
+        </div>
+
+        <div class="bookmarks-actions">
+          <button class="btn-secondary" id="exportBookmarks">Export</button>
+          <button class="btn-secondary" id="importBookmarks">Import</button>
+          <input type="file" id="importFile" accept=".json" style="display: none;">
+        </div>
+      </div>
+
+      <!-- Search and Filters -->
+      <div class="bookmarks-controls">
+        <div class="search-section">
+          <div class="search-box">
+            <input type="text" id="bookmarkSearch" placeholder="Search bookmarks...">
+            <button class="search-btn" id="searchBtn">🔍</button>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <select id="typeFilter" class="filter-select">
+            <option value="">All Types</option>
+            <option value="article">Articles</option>
+            <option value="insight">Insights</option>
+            <option value="chart">Charts</option>
+            <option value="compatibility">Compatibility</option>
+            <option value="page">Pages</option>
+          </select>
+
+          <select id="categoryFilter" class="filter-select">
+            <option value="">All Categories</option>
+            <option value="blog">Blog</option>
+            <option value="horoscope">Horoscope</option>
+            <option value="astrology">Astrology</option>
+            <option value="relationships">Relationships</option>
+            <option value="general">General</option>
+          </select>
+
+          <select id="sortBy" class="filter-select">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="title">Title A-Z</option>
+            <option value="type">By Type</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Bookmarks Grid -->
+      <div class="bookmarks-content">
+        <div class="bookmarks-grid" id="bookmarksGrid">
+          <!-- Bookmarks will be populated here -->
+        </div>
+
+        <div class="empty-state" id="emptyState" style="display: none;">
+          <div class="empty-icon">🔖</div>
+          <h3>No Bookmarks Yet</h3>
+          <p>Start exploring and bookmark your favorite cosmic insights!</p>
+          <div class="empty-actions">
+            <a href="/blog/" class="btn-cosmic">Explore Blog</a>
+            <a href="/cosmic-dashboard/" class="btn-secondary">Visit Dashboard</a>
+          </div>
+        </div>
+
+        <div class="no-results" id="noResults" style="display: none;">
+          <div class="no-results-icon">🔍</div>
+          <h3>No Results Found</h3>
+          <p>Try adjusting your search or filters</p>
+          <button class="btn-secondary" id="clearFilters">Clear Filters</button>
+        </div>
+      </div>
+
+      <!-- Bookmark Details Modal -->
+      <div class="bookmark-modal" id="bookmarkModal" style="display: none;">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 id="modalTitle">Bookmark Details</h3>
+            <button class="modal-close" id="modalClose">×</button>
+          </div>
+          
+          <div class="modal-body">
+            <div class="bookmark-details" id="bookmarkDetails">
+              <!-- Bookmark details will be populated here -->
+            </div>
+          </div>
+          
+          <div class="modal-footer">
+            <button class="btn-secondary" id="visitBookmark">Visit</button>
+            <button class="btn-danger" id="deleteBookmark">Delete</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bulk Actions -->
+      <div class="bulk-actions" id="bulkActions" style="display: none;">
+        <div class="bulk-info">
+          <span id="selectedCount">0</span> items selected
+        </div>
+        <div class="bulk-buttons">
+          <button class="btn-secondary" id="selectAll">Select All</button>
+          <button class="btn-secondary" id="deselectAll">Deselect All</button>
+          <button class="btn-danger" id="deleteSelected">Delete Selected</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ '/assets/js/user-profile-system.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/bookmarks-manager.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/bookmarks-page.js' | relative_url }}"></script>

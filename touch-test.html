@@ -1,0 +1,179 @@
+---
+layout: default
+title: Touch Interactions Test
+description: Test page for touch interactions and gestures
+---
+
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content text-center">
+            <h1>Touch Interactions Test</h1>
+            <p>Test the touch-optimized interactions and gestures</p>
+        </div>
+    </div>
+</section>
+
+<section class="test-section" style="padding: 60px 0;">
+    <div class="container">
+        <div class="section-header">
+            <h2>Touch-Friendly Elements</h2>
+            <p>All elements below are optimized for touch interactions</p>
+        </div>
+        
+        <!-- Touch-friendly buttons -->
+        <div class="test-group" style="margin-bottom: 40px;">
+            <h3>Buttons</h3>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px;">
+                <button class="btn btn-primary">Primary Button</button>
+                <button class="btn btn-secondary">Secondary Button</button>
+                <button class="btn btn-small">Small Button</button>
+                <button class="btn btn-large">Large Button</button>
+            </div>
+        </div>
+        
+        <!-- Feature cards with touch feedback -->
+        <div class="test-group" style="margin-bottom: 40px;">
+            <h3>Feature Cards (Tap to Preview)</h3>
+            <div class="grid-3">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h4 class="feature-title">Cosmic Chat</h4>
+                    <p class="feature-desc">AI-powered astrological guidance and insights</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h4 class="feature-title">Birth Chart</h4>
+                    <p class="feature-desc">Interactive natal chart generation and analysis</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h4 class="feature-title">Compatibility</h4>
+                    <p class="feature-desc">Cosmic relationship analysis and insights</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Swipe test area -->
+        <div class="test-group" style="margin-bottom: 40px;">
+            <h3>Swipe Gestures</h3>
+            <div class="swipe-container" data-swipe="test" style="
+                background: rgba(240, 199, 94, 0.1);
+                border: 2px dashed rgba(240, 199, 94, 0.3);
+                border-radius: 12px;
+                padding: 40px;
+                text-align: center;
+                position: relative;
+                min-height: 200px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            ">
+                <div>
+                    <i class="fas fa-hand-paper" style="font-size: 3rem; color: var(--cosmic-gold); margin-bottom: 16px;"></i>
+                    <h4>Swipe Test Area</h4>
+                    <p>Try swiping left, right, up, or down in this area</p>
+                    <div id="swipe-feedback" style="margin-top: 16px; font-weight: bold; color: var(--cosmic-gold);"></div>
+                </div>
+                <div class="swipe-indicator">
+                    <i class="fas fa-hand-paper"></i> Swipe detected!
+                </div>
+            </div>
+        </div>
+        
+        <!-- Touch targets -->
+        <div class="test-group" style="margin-bottom: 40px;">
+            <h3>Touch Targets</h3>
+            <p>All interactive elements meet the minimum 44px touch target size</p>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+                <a href="#" class="btn" style="padding: 8px 16px;">Link Button</a>
+                <button style="padding: 8px 12px; background: var(--cosmic-gold); color: var(--deep-space); border: none; border-radius: 4px;">Small Button</button>
+                <div class="trust-item" style="display: inline-block; padding: 12px 16px; margin: 0;">
+                    <span class="trust-number" style="font-size: 1.5rem; margin: 0;">4.9</span>
+                    <span class="trust-label" style="font-size: 0.9rem;">Rating</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Zodiac wheel test -->
+        <div class="test-group" style="margin-bottom: 40px;">
+            <h3>Interactive Zodiac Wheel</h3>
+            <p>Tap on zodiac signs and planets for information</p>
+            <div id="zodiac-wheel-container" style="display: flex; justify-content: center;"></div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Add test swipe handler
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.touchInteractions) {
+        window.touchInteractions.registerSwipeHandler('test', function(direction, element) {
+            const feedback = document.getElementById('swipe-feedback');
+            if (feedback) {
+                feedback.textContent = `Swiped ${direction}!`;
+                feedback.style.color = 'var(--cosmic-gold)';
+                
+                setTimeout(() => {
+                    feedback.textContent = '';
+                }, 2000);
+            }
+        });
+    }
+    
+    // Add touch feedback to test elements
+    document.querySelectorAll('.test-group button, .test-group a, .test-group .trust-item').forEach(element => {
+        element.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.95)';
+            this.style.opacity = '0.8';
+        });
+        
+        element.addEventListener('touchend', function() {
+            setTimeout(() => {
+                this.style.transform = '';
+                this.style.opacity = '';
+            }, 150);
+        });
+    });
+});
+</script>
+
+<style>
+.test-section {
+    background: rgba(58, 43, 113, 0.1);
+}
+
+.test-group {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(240, 199, 94, 0.2);
+}
+
+.test-group h3 {
+    color: var(--cosmic-gold);
+    margin-bottom: 16px;
+    font-size: 1.5rem;
+}
+
+.test-group p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20px;
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .test-group {
+        padding: 24px;
+    }
+    
+    .grid-3 {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+</style>

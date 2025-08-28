@@ -42,7 +42,6 @@ This is the official website for AstroAura (astroaura.me), serving as the primar
 ## Website Structure
 - **Homepage** (`/`): Main landing page with app overview and download links
 - **Features** (`/features.html`): Detailed feature explanations with screenshots
-- **Cosmic Insights** (`/cosmic-insights.html`): Educational content about astrology
 - **About** (`/about.html`): Company information and mission
 - **Contact** (`/contact.html`): Contact information and support
 - **Privacy** (`/privacy.html`): Privacy policy and data protection information

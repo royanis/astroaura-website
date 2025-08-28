@@ -72,11 +72,6 @@
       "platform": "play",
       "url": "https://play.google.com/store/apps/details?id=com.astroaura.app",
       "id": "com.astroaura.app"
-    },
-    {
-      "platform": "itunes",
-      "url": "https://apps.apple.com/us/app/astroaura/id123456789",
-      "id": "123456789"
     }
   ],
   "prefer_related_applications": true

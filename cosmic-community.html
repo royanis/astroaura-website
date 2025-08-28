@@ -1,0 +1,242 @@
+---
+layout: default
+title: Cosmic Community - AstroAura
+description: Share your cosmic experiences and connect with fellow spiritual seekers
+---
+
+<div class="cosmic-community-container">
+    <header class="community-header">
+        <div class="header-content">
+            <h1 class="community-title">
+                <span class="cosmic-icon">🌟</span>
+                Cosmic Community
+            </h1>
+            <p class="community-subtitle">Share your experiences and connect with fellow cosmic travelers</p>
+        </div>
+        <div class="community-actions">
+            <button class="btn btn-primary" id="shareExperienceBtn">
+                <span class="icon">✨</span>
+                Share Experience
+            </button>
+            <button class="btn btn-secondary" id="communityGuidelinesBtn">
+                <span class="icon">📋</span>
+                Guidelines
+            </button>
+        </div>
+    </header>
+
+    <div class="community-content">
+        <!-- Privacy Notice -->
+        <div class="privacy-notice">
+            <div class="notice-icon">🔒</div>
+            <div class="notice-content">
+                <h3>Your Privacy Matters</h3>
+                <p>All sharing is optional and anonymous by default. You control what you share and how you share it.</p>
+            </div>
+        </div>
+
+        <!-- Share Experience Form -->
+        <div class="share-form-container" id="shareForm" style="display: none;">
+            <div class="form-card">
+                <div class="form-header">
+                    <h3>Share Your Cosmic Experience</h3>
+                    <button class="close-btn" id="closeShareFormBtn">&times;</button>
+                </div>
+                <form id="experienceForm">
+                    <div class="form-group">
+                        <label for="experienceTitle">Experience Title</label>
+                        <input type="text" id="experienceTitle" placeholder="Give your experience a meaningful title..." required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experienceCategory">Category</label>
+                        <select id="experienceCategory" required>
+                            <option value="">Select a category</option>
+                            <option value="moon-phases">Moon Phases</option>
+                            <option value="planetary-transits">Planetary Transits</option>
+                            <option value="dreams">Dreams & Visions</option>
+                            <option value="synchronicities">Synchronicities</option>
+                            <option value="meditation">Meditation & Spiritual Practice</option>
+                            <option value="relationships">Relationships & Compatibility</option>
+                            <option value="personal-growth">Personal Growth</option>
+                            <option value="manifestation">Manifestation & Intentions</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experienceContent">Your Experience</label>
+                        <textarea id="experienceContent" rows="8" placeholder="Share your cosmic experience in detail..." required></textarea>
+                        <div class="character-count">
+                            <span id="charCount">0</span>/2000 characters
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experienceInsight">Key Insight or Learning</label>
+                        <textarea id="experienceInsight" rows="3" placeholder="What did you learn from this experience?"></textarea>
+                    </div>
+
+                    <div class="privacy-controls">
+                        <h4>Privacy Settings</h4>
+                        <div class="privacy-options">
+                            <label class="privacy-option">
+                                <input type="radio" name="privacy" value="anonymous" checked>
+                                <span class="privacy-label">
+                                    <strong>Anonymous</strong>
+                                    <small>Share without any identifying information</small>
+                                </span>
+                            </label>
+                            <label class="privacy-option">
+                                <input type="radio" name="privacy" value="pseudonym">
+                                <span class="privacy-label">
+                                    <strong>With Pseudonym</strong>
+                                    <small>Share with a chosen cosmic name</small>
+                                </span>
+                            </label>
+                            <label class="privacy-option">
+                                <input type="radio" name="privacy" value="private">
+                                <span class="privacy-label">
+                                    <strong>Keep Private</strong>
+                                    <small>Save to your personal collection only</small>
+                                </span>
+                            </label>
+                        </div>
+                        
+                        <div class="pseudonym-input" id="pseudonymInput" style="display: none;">
+                            <input type="text" id="pseudonymName" placeholder="Choose your cosmic name...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="allowComments">
+                            Allow others to respond to this experience
+                        </label>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelShareBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Share Experience</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Community Guidelines Modal -->
+        <div class="guidelines-container" id="guidelinesModal" style="display: none;">
+            <div class="guidelines-card">
+                <div class="guidelines-header">
+                    <h3>Community Guidelines</h3>
+                    <button class="close-btn" id="closeGuidelinesBtn">&times;</button>
+                </div>
+                <div class="guidelines-content">
+                    <div class="guideline-section">
+                        <h4>🌟 Our Sacred Space</h4>
+                        <p>This community is a sacred space for sharing authentic cosmic experiences. We honor all paths and perspectives while maintaining respect and kindness.</p>
+                    </div>
+                    
+                    <div class="guideline-section">
+                        <h4>✨ What to Share</h4>
+                        <ul>
+                            <li>Personal astrological experiences and insights</li>
+                            <li>Dreams, visions, and synchronicities</li>
+                            <li>Spiritual practices and their effects</li>
+                            <li>Relationship and compatibility experiences</li>
+                            <li>Personal growth through cosmic awareness</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="guideline-section">
+                        <h4>🔒 Privacy & Safety</h4>
+                        <ul>
+                            <li>All sharing is anonymous by default</li>
+                            <li>Never share personal identifying information</li>
+                            <li>Respect others' privacy and boundaries</li>
+                            <li>Report any inappropriate content</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="guideline-section">
+                        <h4>🚫 Not Allowed</h4>
+                        <ul>
+                            <li>Medical or psychological advice</li>
+                            <li>Harmful or discriminatory content</li>
+                            <li>Commercial promotion or spam</li>
+                            <li>Personal attacks or harassment</li>
+                            <li>Sharing others' private information</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="guideline-section">
+                        <h4>🛡️ Moderation</h4>
+                        <p>Our community is moderated to ensure a safe and supportive environment. Content that violates these guidelines will be removed, and repeat offenders may be restricted from sharing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience Feed -->
+        <div class="experience-feed">
+            <div class="feed-header">
+                <h3>Community Experiences</h3>
+                <div class="feed-filters">
+                    <select id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="moon-phases">Moon Phases</option>
+                        <option value="planetary-transits">Planetary Transits</option>
+                        <option value="dreams">Dreams & Visions</option>
+                        <option value="synchronicities">Synchronicities</option>
+                        <option value="meditation">Meditation & Spiritual Practice</option>
+                        <option value="relationships">Relationships & Compatibility</option>
+                        <option value="personal-growth">Personal Growth</option>
+                        <option value="manifestation">Manifestation & Intentions</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <select id="sortFilter">
+                        <option value="recent">Most Recent</option>
+                        <option value="popular">Most Popular</option>
+                        <option value="discussed">Most Discussed</option>
+                    </select>
+                </div>
+            </div>
+            <div id="experiencesList" class="experiences-list">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Modal -->
+    <div class="report-modal-container" id="reportModal" style="display: none;">
+        <div class="report-card">
+            <div class="report-header">
+                <h3>Report Content</h3>
+                <button class="close-btn" id="closeReportBtn">&times;</button>
+            </div>
+            <form id="reportForm">
+                <div class="form-group">
+                    <label for="reportReason">Reason for reporting</label>
+                    <select id="reportReason" required>
+                        <option value="">Select a reason</option>
+                        <option value="inappropriate">Inappropriate content</option>
+                        <option value="spam">Spam or commercial content</option>
+                        <option value="harassment">Harassment or bullying</option>
+                        <option value="privacy">Privacy violation</option>
+                        <option value="misinformation">Harmful misinformation</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reportDetails">Additional details (optional)</label>
+                    <textarea id="reportDetails" rows="3" placeholder="Provide more context if needed..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelReportBtn">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Submit Report</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="{{ '/assets/js/cosmic-community.js' | relative_url }}"></script>

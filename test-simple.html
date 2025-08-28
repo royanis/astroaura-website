@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Geocoding Test</title>
+</head>
+<body>
+    <h1>Simple Geocoding Test</h1>
+    <div id="status"></div>
+    
+    <script>
+        console.log('Before loading geocoding service');
+        console.log('GeocodingService available?', typeof GeocodingService !== 'undefined');
+    </script>
+    
+    <script src="assets/js/geocoding-service-simple.js"></script>
+    
+    <script>
+        console.log('After loading geocoding service');
+        console.log('GeocodingService available?', typeof GeocodingService !== 'undefined');
+        
+        const statusDiv = document.getElementById('status');
+        
+        if (typeof GeocodingService !== 'undefined') {
+            try {
+                const service = new GeocodingService();
+                statusDiv.innerHTML = '<p style="color: green;">✅ GeocodingService loaded successfully!</p>';
+                console.log('Service created successfully:', service);
+            } catch (error) {
+                statusDiv.innerHTML = '<p style="color: red;">❌ Error creating service: ' + error.message + '</p>';
+                console.error('Error creating service:', error);
+            }
+        } else {
+            statusDiv.innerHTML = '<p style="color: red;">❌ GeocodingService not available</p>';
+        }
+    </script>
+</body>
+</html>

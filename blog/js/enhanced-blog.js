@@ -23,6 +23,12 @@ class EnhancedAstroAuraBlog {
         this.currentDateFilter = 'all';
         this.featuredPosts = [];
         
+        // Initialize personalization engine
+        this.personalizationEngine = new PersonalizationEngine();
+        
+        // Initialize intelligent search
+        this.intelligentSearch = new IntelligentSearch();
+        
         // Astrology topic categories
         this.topicCategories = {
             'mercury-retrograde': '☿ Mercury Retrograde',
@@ -308,8 +314,13 @@ class EnhancedAstroAuraBlog {
             return;
         }
         
-        // Use allPosts as backup if filteredPosts is empty
-        const postsToRender = this.filteredPosts.length > 0 ? this.filteredPosts : this.allPosts;
+        // Use personalized content for "for-you" tab
+        let postsToRender;
+        if (this.currentTab === 'for-you' && this.filteredPosts.length === 0 && this.currentSearch === '') {
+            postsToRender = this.personalizationEngine.generatePersonalizedFeed(this.allPosts, 20);
+        } else {
+            postsToRender = this.filteredPosts.length > 0 ? this.filteredPosts : this.allPosts;
+        }
         
         if (postsToRender.length === 0) {
             this.articlesFeed.innerHTML = '<div class="no-posts">No cosmic insights found. Try adjusting your search or browse by date.</div>';
@@ -372,18 +383,30 @@ class EnhancedAstroAuraBlog {
         const topicCategory = this.determineTopicCategory(post);
         const categoryEmoji = this.getCategoryEmoji(topicCategory);
         
+        // Highlight search terms if there's an active search
+        const highlightedTitle = this.currentSearch ? 
+            this.intelligentSearch.highlightSearchResults(post.title, this.currentSearch) : 
+            post.title;
+        const highlightedExcerpt = this.currentSearch ? 
+            this.intelligentSearch.highlightSearchResults(excerpt, this.currentSearch) : 
+            excerpt;
+        
+        // Check if this is a personalized recommendation
+        const isPersonalized = post.personalizedScore && post.personalizedScore > 0.7;
+        
         return `
-            <article class="article-card enhanced-card fade-in-up">
+            <article class="article-card enhanced-card fade-in-up ${isPersonalized ? 'personalized' : ''}">
                 <div class="card-header">
                     <div class="topic-badge">${categoryEmoji} ${this.topicCategories[topicCategory] || 'Cosmic Insights'}</div>
                     ${post.trending_topic ? '<div class="trending-indicator"><i class="fas fa-fire"></i> Trending</div>' : ''}
+                    ${post.searchScore ? `<div class="search-score" title="Search relevance: ${Math.round(post.searchScore * 100)}%"><i class="fas fa-star"></i></div>` : ''}
                 </div>
                 
                 <h2 class="article-title">
-                    <a href="posts/${post.slug}.html">${post.title}</a>
+                    <a href="posts/${post.slug}.html">${highlightedTitle}</a>
                 </h2>
                 
-                <p class="article-excerpt">${excerpt}</p>
+                <p class="article-excerpt">${highlightedExcerpt}</p>
                 
                 <div class="article-meta">
                     <span class="author">
@@ -647,27 +670,75 @@ class EnhancedAstroAuraBlog {
     }
     
     setupSearch() {
-        if (this.searchInput) {
-            let searchTimeout;
-            this.searchInput.addEventListener('input', (e) => {
-                clearTimeout(searchTimeout);
-                searchTimeout = setTimeout(() => {
-                    this.currentSearch = e.target.value.trim();
-                    this.updateSearchClearButton();
-                    this.filterPosts();
-                    this.renderSimpleArticles();
-                }, 300);
-            });
+        // The intelligent search system handles the search input
+        // We just need to provide the callback method
+    }
+    
+    // Method called by intelligent search system
+    performIntelligentSearch(query) {
+        this.currentSearch = query;
+        
+        if (query.trim() === '') {
+            this.filteredPosts = [...this.allPosts];
+        } else {
+            // Use semantic search from intelligent search system
+            this.filteredPosts = this.intelligentSearch.performSemanticSearch(this.allPosts, query);
         }
         
-        if (this.searchClear) {
-            this.searchClear.addEventListener('click', () => {
-                this.currentSearch = '';
-                this.searchInput.value = '';
-                this.updateSearchClearButton();
-                this.filterPosts();
-                this.renderSimpleArticles();
-            });
+        this.currentPage = 1;
+        this.renderSimpleArticles();
+        
+        // Show search results indicator
+        this.showSearchResultsIndicator(query, this.filteredPosts.length);
+    }
+    
+    showSearchResultsIndicator(query, resultCount) {
+        // Remove existing indicator
+        const existingIndicator = document.querySelector('.search-results-indicator');
+        if (existingIndicator) {
+            existingIndicator.remove();
+        }
+        
+        if (query.trim() === '') return;
+        
+        // Create new indicator
+        const indicator = document.createElement('div');
+        indicator.className = 'search-results-indicator';
+        indicator.innerHTML = `
+            <div class="search-results-content">
+                <span class="search-query">
+                    <i class="fas fa-search"></i>
+                    "${this.intelligentSearch.highlightSearchResults(query, query)}"
+                </span>
+                <span class="search-count">${resultCount} result${resultCount !== 1 ? 's' : ''}</span>
+                <button class="clear-search-btn" onclick="window.blogInstance.clearSearch()">
+                    <i class="fas fa-times"></i> Clear
+                </button>
+            </div>
+        `;
+        
+        // Insert before articles feed
+        const articlesSection = document.querySelector('.blog-content');
+        if (articlesSection) {
+            articlesSection.insertBefore(indicator, articlesSection.firstChild);
+        }
+    }
+    
+    clearSearch() {
+        this.currentSearch = '';
+        if (this.searchInput) {
+            this.searchInput.value = '';
+        }
+        this.intelligentSearch.updateSearchClearButton('');
+        this.intelligentSearch.hideAutocomplete();
+        this.filteredPosts = [...this.allPosts];
+        this.currentPage = 1;
+        this.renderSimpleArticles();
+        
+        // Remove search indicator
+        const indicator = document.querySelector('.search-results-indicator');
+        if (indicator) {
+            indicator.remove();
         }
     }
     
@@ -1351,6 +1422,58 @@ class EnhancedAstroAuraBlog {
     populateSidebarWidgets() {
         this.populateCategoriesWidget();
         this.populateRecentPostsWidget();
+        this.addPersonalizedInsightsWidget();
+    }
+    
+    addPersonalizedInsightsWidget() {
+        const sidebar = document.querySelector('.blog-sidebar');
+        if (!sidebar) return;
+        
+        const insights = this.personalizationEngine.getUserInsights();
+        
+        // Only show if user has some reading history
+        if (insights.totalArticlesRead === 0) return;
+        
+        const insightsWidget = document.createElement('div');
+        insightsWidget.className = 'widget personalized-insights';
+        insightsWidget.innerHTML = `
+            <h3>Your Cosmic Journey</h3>
+            <div class="insights-content">
+                <div class="insight-item">
+                    <span class="insight-icon">📚</span>
+                    <span class="insight-text">${insights.totalArticlesRead} articles read</span>
+                </div>
+                <div class="insight-item">
+                    <span class="insight-icon">⏱️</span>
+                    <span class="insight-text">${insights.averageSessionDuration}s avg. reading time</span>
+                </div>
+                <div class="insight-item">
+                    <span class="insight-icon">🌟</span>
+                    <span class="insight-text">${insights.experienceLevel} level</span>
+                </div>
+                ${insights.topTopics.length > 0 ? `
+                    <div class="top-topics">
+                        <h4>Your Favorite Topics</h4>
+                        ${insights.topTopics.slice(0, 3).map(topic => `
+                            <div class="topic-preference">
+                                <span>${topic.label}</span>
+                                <div class="preference-bar">
+                                    <div class="preference-fill" style="width: ${topic.score * 100}%"></div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+            </div>
+        `;
+        
+        // Insert before the app promo widget
+        const appPromo = sidebar.querySelector('.app-promo');
+        if (appPromo) {
+            sidebar.insertBefore(insightsWidget, appPromo);
+        } else {
+            sidebar.appendChild(insightsWidget);
+        }
     }
     
     populateCategoriesWidget() {
@@ -1368,13 +1491,30 @@ class EnhancedAstroAuraBlog {
                 categoryCounts[category] = (categoryCounts[category] || 0) + 1;
             });
             
-            const categoriesHTML = Object.entries(this.topicCategories).map(([key, value]) => {
+            // Get personalized topic recommendations
+            const topicRecommendations = this.personalizationEngine.getTopicRecommendations();
+            
+            const categoriesWithScores = Object.entries(this.topicCategories).map(([key, value]) => {
                 const count = categoryCounts[key] || 0;
-                const escapedKey = key.replace(/'/g, "\\'");
+                const recommendation = topicRecommendations.find(rec => rec.topic === key);
+                return {
+                    key,
+                    value,
+                    count,
+                    score: recommendation ? recommendation.score : 0,
+                    isRecommended: recommendation && recommendation.score > 0.3
+                };
+            }).sort((a, b) => b.score - a.score); // Sort by personalization score
+            
+            const categoriesHTML = categoriesWithScores.map(cat => {
+                const escapedKey = cat.key.replace(/'/g, "\\'");
                 return `
-                    <button class="category-item" onclick="window.blogInstance.selectTopic('${escapedKey}')">
-                        <span class="category-name">${value}</span>
-                        <span class="category-count">${count}</span>
+                    <button class="category-item ${cat.isRecommended ? 'recommended' : ''}" onclick="window.blogInstance.selectTopic('${escapedKey}')">
+                        <span class="category-name">
+                            ${cat.value}
+                            ${cat.isRecommended ? '<span class="rec-badge">✨</span>' : ''}
+                        </span>
+                        <span class="category-count">${cat.count}</span>
                     </button>
                 `;
             }).join('');

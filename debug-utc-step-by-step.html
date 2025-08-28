@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UTC Conversion Debug</title>
+</head>
+<body>
+    <h1>UTC Conversion Step-by-Step Debug</h1>
+    <div id="results"></div>
+    
+    <script src="assets/js/timezone-service.js"></script>
+    <script src="assets/js/timezone-aware-converter.js"></script>
+    
+    <script>
+        async function debugUTCConversion() {
+            const results = document.getElementById('results');
+            
+            try {
+                console.log('=== UTC CONVERSION DEBUG ===');
+                
+                // Test data: Jan 4, 1985, 6:30 AM IST should = Jan 4, 1985, 1:00 AM UTC
+                const date = '1985-01-04';
+                const time = '06:30';
+                const location = {
+                    name: 'Prayagraj, India',
+                    lat: 25.4358,
+                    lng: 81.8463,
+                    timezone: 'Asia/Kolkata'
+                };
+                
+                console.log('Input:', date, time, location.timezone);
+                
+                // Expected result
+                const expectedUTC = new Date('1985-01-04T01:00:00.000Z');
+                console.log('Expected UTC:', expectedUTC.toISOString());
+                console.log('Expected JD:', calculateJulianDay(expectedUTC));
+                
+                // Step 1: Manual calculation
+                console.log('\n=== MANUAL CALCULATION ===');
+                const manualUTC = new Date(date + 'T' + time + ':00.000Z');
+                console.log('Manual interpretation (wrong):', manualUTC.toISOString());
+                
+                // Correct manual calculation: 6:30 AM IST - 5:30 = 1:00 AM UTC
+                const correctManualUTC = new Date('1985-01-04T06:30:00.000Z');
+                correctManualUTC.setUTCHours(correctManualUTC.getUTCHours() - 5);
+                correctManualUTC.setUTCMinutes(correctManualUTC.getUTCMinutes() - 30);
+                console.log('Correct manual calculation:', correctManualUTC.toISOString());
+                
+                // Step 2: Our converter
+                console.log('\n=== OUR CONVERTER ===');
+                const timezoneService = new TimezoneService();
+                const converter = new TimezoneAwareConverter(timezoneService);
+                converter.enableDebugMode();
+                
+                const result = await converter.convertBirthTimeToUTC(date, time, location);
+                
+                console.log('Our result:', result.utc.toISOString());
+                console.log('Our JD:', calculateJulianDay(result.utc));
+                
+                // Step 3: Compare
+                console.log('\n=== COMPARISON ===');
+                const timeDiff = Math.abs(result.utc.getTime() - expectedUTC.getTime()) / (1000 * 60);
+                console.log('Time difference:', timeDiff, 'minutes');
+                
+                const jdDiff = Math.abs(calculateJulianDay(result.utc) - calculateJulianDay(expectedUTC));
+                console.log('JD difference:', jdDiff, 'days');
+                
+                // Step 4: Debug the internal process
+                console.log('\n=== INTERNAL DEBUG ===');
+                
+                // Recreate the internal process
+                const [year, month, day] = date.split('-').map(Number);
+                const [hours, minutes] = time.split(':').map(Number);
+                
+                console.log('Parsed values:', { year, month, day, hours, minutes });
+                
+                // Create "neutral" datetime like the converter does
+                const neutralDateTime = new Date();
+                neutralDateTime.setUTCFullYear(year);
+                neutralDateTime.setUTCMonth(month - 1);
+                neutralDateTime.setUTCDate(day);
+                neutralDateTime.setUTCHours(hours);
+                neutralDateTime.setUTCMinutes(minutes);
+                neutralDateTime.setUTCSeconds(0);
+                neutralDateTime.setUTCMilliseconds(0);
+                
+                console.log('Neutral datetime:', neutralDateTime.toISOString());
+                
+                // Apply offset (IST = UTC+5:30, so offset = 5.5)
+                const offset = 5.5;
+                const offsetMs = offset * 60 * 60 * 1000;
+                const finalUTC = new Date(neutralDateTime.getTime() - offsetMs);
+                
+                console.log('Final UTC after offset:', finalUTC.toISOString());
+                console.log('Final JD:', calculateJulianDay(finalUTC));
+                
+                results.innerHTML = `
+                    <h2>UTC Conversion Debug Results</h2>
+                    <p><strong>Input:</strong> ${date} ${time} (${location.timezone})</p>
+                    <p><strong>Expected UTC:</strong> ${expectedUTC.toISOString()}</p>
+                    <p><strong>Expected JD:</strong> ${calculateJulianDay(expectedUTC)}</p>
+                    <hr>
+                    <p><strong>Our Result UTC:</strong> ${result.utc.toISOString()}</p>
+                    <p><strong>Our Result JD:</strong> ${calculateJulianDay(result.utc)}</p>
+                    <hr>
+                    <p><strong>Manual Calculation UTC:</strong> ${finalUTC.toISOString()}</p>
+                    <p><strong>Manual Calculation JD:</strong> ${calculateJulianDay(finalUTC)}</p>
+                    <hr>
+                    <p><strong>Time Difference:</strong> ${timeDiff} minutes</p>
+                    <p><strong>JD Difference:</strong> ${jdDiff} days</p>
+                    <p><strong>Status:</strong> ${timeDiff < 1 ? 'PASS' : 'FAIL'}</p>
+                `;
+                
+            } catch (error) {
+                console.error('Debug failed:', error);
+                results.innerHTML = `<p style="color: red;">Debug failed: ${error.message}</p>`;
+            }
+        }
+        
+        function calculateJulianDay(date) {
+            const year = date.getUTCFullYear();
+            const month = date.getUTCMonth() + 1;
+            const day = date.getUTCDate();
+            const hour = date.getUTCHours();
+            const minute = date.getUTCMinutes();
+            const second = date.getUTCSeconds();
+            
+            let a, b, y, m;
+            
+            if (month <= 2) {
+                y = year - 1;
+                m = month + 12;
+            } else {
+                y = year;
+                m = month;
+            }
+            
+            // Gregorian calendar correction
+            if (year > 1582 || (year === 1582 && month > 10) || (year === 1582 && month === 10 && day >= 15)) {
+                a = Math.floor(y / 100);
+                b = 2 - a + Math.floor(a / 4);
+            } else {
+                b = 0;
+            }
+            
+            const jd = Math.floor(365.25 * (y + 4716)) + Math.floor(30.6001 * (m + 1)) + day + b - 1524.5;
+            
+            // Add time fraction
+            const timeFraction = (hour + minute / 60 + second / 3600) / 24;
+            
+            return jd + timeFraction;
+        }
+        
+        // Run debug when page loads
+        window.addEventListener('load', debugUTCConversion);
+    </script>
+</body>
+</html>

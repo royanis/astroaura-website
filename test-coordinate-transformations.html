@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Coordinate Transformations</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-result { margin: 10px 0; padding: 10px; border: 1px solid #ccc; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        .info { background-color: #d1ecf1; border-color: #bee5eb; }
+    </style>
+</head>
+<body>
+    <h1>Coordinate Transformation Tests</h1>
+    <div id="testResults"></div>
+
+    <script src="assets/js/nutation-calculator.js"></script>
+    <script src="assets/js/coordinate-transformer.js"></script>
+    <script src="assets/js/vsop87-calculator.js"></script>
+
+    <script>
+        function runTests() {
+            const results = document.getElementById('testResults');
+            
+            try {
+                // Test 1: NutationCalculator
+                const nutationCalc = new NutationCalculator();
+                const T = (2451545.0 - 2451545.0) / 36525.0; // J2000.0
+                const nutation = nutationCalc.calculateNutation(T);
+                
+                results.innerHTML += `
+                    <div class="test-result success">
+                        <h3>✓ NutationCalculator Test</h3>
+                        <p>Nutation in longitude: ${nutation.deltaLongitude.toFixed(6)}°</p>
+                        <p>Nutation in obliquity: ${nutation.deltaObliquity.toFixed(6)}°</p>
+                    </div>
+                `;
+
+                // Test 2: CoordinateTransformer
+                const coordTransformer = new CoordinateTransformer();
+                const testLongitude = 283.6; // Test case Sun position
+                const julianDay = 2446066.0208333; // Jan 4, 1985, 6:30 AM IST -> UTC
+                
+                const aberration = coordTransformer.calculateAberration(testLongitude, T);
+                
+                results.innerHTML += `
+                    <div class="test-result success">
+                        <h3>✓ CoordinateTransformer Test</h3>
+                        <p>Aberration correction: ${aberration.toFixed(6)}°</p>
+                    </div>
+                `;
+
+                // Test 3: Full transformation pipeline
+                const transformed = coordTransformer.transformToApparentGeocentric(
+                    testLongitude, 0, 1, julianDay
+                );
+                
+                results.innerHTML += `
+                    <div class="test-result success">
+                        <h3>✓ Full Transformation Pipeline Test</h3>
+                        <p>Input longitude: ${testLongitude}°</p>
+                        <p>Apparent longitude: ${transformed.longitude.toFixed(6)}°</p>
+                        <p>Corrections applied:</p>
+                        <ul>
+                            <li>Precession: ${transformed.corrections.precession.longitude.toFixed(6)}°</li>
+                            <li>Nutation: ${transformed.corrections.nutation.longitude.toFixed(6)}°</li>
+                            <li>Aberration: ${transformed.corrections.aberration.toFixed(6)}°</li>
+                            <li>Light-time: ${transformed.corrections.lightTime.toFixed(6)}°</li>
+                        </ul>
+                    </div>
+                `;
+
+                // Test 4: VSOP87Calculator with corrections
+                const vsopCalc = new VSOP87Calculator();
+                const testJulianDay = 2446066.0208333; // Jan 4, 1985
+                const planets = vsopCalc.calculatePlanetaryPositions(testJulianDay);
+                
+                const sun = planets.find(p => p.name === 'Sun');
+                const moon = planets.find(p => p.name === 'Moon');
+                
+                results.innerHTML += `
+                    <div class="test-result info">
+                        <h3>✓ VSOP87Calculator with Corrections Test</h3>
+                        <p><strong>Sun:</strong> ${sun.longitude.toFixed(2)}° (${sun.sign} ${sun.degree}°${sun.minute}')</p>
+                        <p><strong>Moon:</strong> ${moon.longitude.toFixed(2)}° (${moon.sign} ${moon.degree}°${moon.minute}')</p>
+                        <p><strong>Expected Sun:</strong> ~283.6° (Capricorn 13°36')</p>
+                        <p><strong>Expected Moon:</strong> ~66.7° (Gemini 6°44')</p>
+                        <p><strong>Sun accuracy:</strong> ${Math.abs(sun.longitude - 283.6).toFixed(2)}° difference</p>
+                        <p><strong>Moon accuracy:</strong> ${Math.abs(moon.longitude - 66.7).toFixed(2)}° difference</p>
+                    </div>
+                `;
+
+            } catch (error) {
+                results.innerHTML += `
+                    <div class="test-result error">
+                        <h3>✗ Test Failed</h3>
+                        <p>Error: ${error.message}</p>
+                        <pre>${error.stack}</pre>
+                    </div>
+                `;
+            }
+        }
+
+        // Run tests when page loads
+        window.addEventListener('load', runTests);
+    </script>
+</body>
+</html>

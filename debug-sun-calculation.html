@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Sun Calculation</title>
+</head>
+<body>
+    <h1>Debug Sun Position Calculation</h1>
+    <div id="output"></div>
+
+    <script>
+        // Test the zodiac sign conversion function
+        function getZodiacSign(longitude) {
+            const normalizedLon = ((longitude % 360) + 360) % 360;
+            const signIndex = Math.floor(normalizedLon / 30);
+            const signs = [
+                'Aries', 'Taurus', 'Gemini', 'Cancer', 
+                'Leo', 'Virgo', 'Libra', 'Scorpio', 
+                'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'
+            ];
+            return signs[signIndex] || 'Aries';
+        }
+
+        function debugOutput(message) {
+            document.getElementById('output').innerHTML += message + '<br>';
+            console.log(message);
+        }
+
+        // Test the zodiac conversion
+        debugOutput('=== Testing Zodiac Sign Conversion ===');
+        debugOutput('0° = ' + getZodiacSign(0) + ' (should be Aries)');
+        debugOutput('30° = ' + getZodiacSign(30) + ' (should be Taurus)');
+        debugOutput('120° = ' + getZodiacSign(120) + ' (should be Leo)');
+        debugOutput('270° = ' + getZodiacSign(270) + ' (should be Capricorn)');
+        debugOutput('284° = ' + getZodiacSign(284) + ' (should be Capricorn for Jan 4)');
+        
+        // Test the julian day calculation
+        debugOutput('');
+        debugOutput('=== Testing Julian Day for Jan 4, 1985 06:30 UTC ===');
+        const testDate = new Date('1985-01-04T06:30:00Z');
+        debugOutput('Test date: ' + testDate.toISOString());
+        
+        // Manual calculation
+        const year = testDate.getUTCFullYear();
+        const month = testDate.getUTCMonth() + 1;
+        const day = testDate.getUTCDate();
+        const hour = testDate.getUTCHours();
+        const minute = testDate.getUTCMinutes();
+        
+        let y, m;
+        if (month <= 2) {
+            y = year - 1;
+            m = month + 12;
+        } else {
+            y = year;
+            m = month;
+        }
+        
+        const a = Math.floor(y / 100);
+        const b = 2 - a + Math.floor(a / 4);
+        const jd = Math.floor(365.25 * (y + 4716)) + Math.floor(30.6001 * (m + 1)) + day + b - 1524.5;
+        const timeFraction = (hour + minute / 60) / 24;
+        const julianDay = jd + timeFraction;
+        
+        debugOutput('Julian Day: ' + julianDay);
+        debugOutput('Expected JD: ~2446069.77');
+        
+        // Test what longitude values would give Leo
+        debugOutput('');
+        debugOutput('=== Testing what gives Leo ===');
+        for (let lon = 120; lon <= 150; lon += 5) {
+            debugOutput(lon + '° = ' + getZodiacSign(lon));
+        }
+    </script>
+</body>
+</html>

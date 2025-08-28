@@ -1,0 +1,416 @@
+// Features page specific styles
+
+.features-hero {
+  @include section-padding;
+  text-align: center;
+  background: radial-gradient(
+    circle at center,
+    rgba(58, 43, 113, 0.2) 0%,
+    transparent 70%
+  );
+  
+  .features-hero-title {
+    @include gradient-text;
+    margin-bottom: 1.5rem;
+  }
+  
+  .features-hero-subtitle {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 1.6;
+  }
+  
+  .features-hero-cta {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+.features-overview {
+  @include section-padding;
+  
+  .features-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+    
+    .stat-item {
+      text-align: center;
+      @include card-base;
+      padding: 30px 20px;
+      
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--cosmic-gold);
+        @include cosmic-glow;
+        display: block;
+        margin-bottom: 10px;
+      }
+      
+      .stat-label {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+.features-detailed {
+  @include section-padding;
+  background: rgba(58, 43, 113, 0.05);
+  
+  .features-detailed-grid {
+    display: grid;
+    gap: 80px;
+  }
+  
+  .feature-detailed {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    
+    @include respond-to('lg') {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      text-align: center;
+    }
+    
+    &:nth-child(even) {
+      .feature-content {
+        order: 2;
+      }
+      
+      .feature-visual {
+        order: 1;
+      }
+      
+      @include respond-to('lg') {
+        .feature-content {
+          order: 1;
+        }
+        
+        .feature-visual {
+          order: 2;
+        }
+      }
+    }
+    
+    .feature-content {
+      .feature-category {
+        color: var(--cosmic-gold);
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+      }
+      
+      .feature-title {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: var(--starlight);
+        
+        @include respond-to('md') {
+          font-size: 2rem;
+        }
+      }
+      
+      .feature-description {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 30px;
+      }
+      
+      .feature-highlights {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 30px;
+        
+        li {
+          display: flex;
+          align-items: center;
+          margin-bottom: 15px;
+          font-size: 1rem;
+          color: rgba(255, 255, 255, 0.9);
+          
+          i {
+            color: var(--cosmic-gold);
+            margin-right: 15px;
+            font-size: 1.1rem;
+            @include cosmic-glow;
+          }
+        }
+      }
+      
+      .feature-cta {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        
+        @include respond-to('lg') {
+          justify-content: center;
+        }
+      }
+    }
+    
+    .feature-visual {
+      position: relative;
+      
+      .feature-image {
+        width: 100%;
+        border-radius: var(--border-radius);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        transition: var(--transition);
+        
+        &:hover {
+          transform: scale(1.02);
+        }
+      }
+      
+      .feature-overlay {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        @include glass-morphism(0.2);
+        padding: 15px;
+        border-radius: var(--border-radius);
+        text-align: center;
+        
+        .overlay-icon {
+          font-size: 2rem;
+          color: var(--cosmic-gold);
+          @include cosmic-glow;
+          margin-bottom: 10px;
+        }
+        
+        .overlay-text {
+          font-size: 0.9rem;
+          color: var(--starlight);
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+.features-comparison {
+  @include section-padding;
+  
+  .comparison-table {
+    @include card-base;
+    padding: 0;
+    overflow: hidden;
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      
+      thead {
+        background: rgba(58, 43, 113, 0.3);
+        
+        th {
+          padding: 20px;
+          text-align: left;
+          font-weight: 600;
+          color: var(--cosmic-gold);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          
+          &:first-child {
+            width: 40%;
+          }
+        }
+      }
+      
+      tbody {
+        tr {
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          
+          &:hover {
+            background: rgba(255, 255, 255, 0.02);
+          }
+          
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+        
+        td {
+          padding: 20px;
+          color: rgba(255, 255, 255, 0.9);
+          
+          &.feature-name {
+            font-weight: 600;
+            color: var(--starlight);
+          }
+          
+          &.feature-check {
+            text-align: center;
+            
+            i {
+              color: var(--cosmic-gold);
+              font-size: 1.2rem;
+              @include cosmic-glow;
+            }
+          }
+          
+          &.feature-cross {
+            text-align: center;
+            
+            i {
+              color: rgba(255, 255, 255, 0.3);
+              font-size: 1.2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.features-testimonials {
+  @include section-padding;
+  background: rgba(58, 43, 113, 0.05);
+  
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+  }
+  
+  .testimonial-card {
+    @include card-base;
+    @include card-hover;
+    padding: 30px;
+    text-align: center;
+    
+    .testimonial-quote {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 25px;
+      font-style: italic;
+      
+      &::before,
+      &::after {
+        content: '"';
+        color: var(--cosmic-gold);
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+    }
+    
+    .testimonial-author {
+      .author-name {
+        font-weight: 600;
+        color: var(--cosmic-gold);
+        margin-bottom: 5px;
+      }
+      
+      .author-title {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      
+      .author-rating {
+        margin-top: 10px;
+        
+        .stars {
+          color: var(--cosmic-gold);
+          @include cosmic-glow;
+        }
+      }
+    }
+  }
+}
+
+.features-cta {
+  @include section-padding;
+  text-align: center;
+  background: radial-gradient(
+    circle at center,
+    rgba(240, 199, 94, 0.1) 0%,
+    transparent 70%
+  );
+  
+  .cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+    
+    .cta-title {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      @include gradient-text;
+      
+      @include respond-to('md') {
+        font-size: 2rem;
+      }
+    }
+    
+    .cta-description {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .cta-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+      
+      .stat {
+        text-align: center;
+        
+        .stat-number {
+          font-size: 1.8rem;
+          font-weight: 700;
+          color: var(--cosmic-gold);
+          @include cosmic-glow;
+          display: block;
+        }
+        
+        .stat-label {
+          font-size: 0.9rem;
+          color: rgba(255, 255, 255, 0.6);
+        }
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@include respond-to('md') {
+  .features-detailed .feature-detailed {
+    .feature-content .feature-highlights {
+      li {
+        justify-content: center;
+      }
+    }
+  }
+  
+  .comparison-table {
+    overflow-x: auto;
+    
+    table {
+      min-width: 600px;
+    }
+  }
+}

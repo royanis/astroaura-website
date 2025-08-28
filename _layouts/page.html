@@ -1,0 +1,39 @@
+---
+layout: default
+---
+
+<article class="page-content">
+    <div class="container">
+        {% if page.hero %}
+        <section class="page-hero">
+            <div class="hero-content">
+                <h1 class="page-title">{{ page.title }}</h1>
+                {% if page.subtitle %}
+                <p class="page-subtitle">{{ page.subtitle }}</p>
+                {% endif %}
+            </div>
+        </section>
+        {% else %}
+        <header class="page-header">
+            <h1 class="page-title">{{ page.title }}</h1>
+            {% if page.subtitle %}
+            <p class="page-subtitle">{{ page.subtitle }}</p>
+            {% endif %}
+        </header>
+        {% endif %}
+        
+        <div class="page-body">
+            {{ content }}
+        </div>
+        
+        {% if page.cta %}
+        <section class="page-cta">
+            <div class="cta-content">
+                <h2>{{ page.cta.title }}</h2>
+                <p>{{ page.cta.description }}</p>
+                <a href="{{ page.cta.url }}" class="btn btn-primary">{{ page.cta.text }}</a>
+            </div>
+        </section>
+        {% endif %}
+    </div>
+</article>

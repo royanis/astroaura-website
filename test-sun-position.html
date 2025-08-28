@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sun Position Test</title>
+</head>
+<body>
+    <h1>Sun Position Calculation Test</h1>
+    <div id="results"></div>
+    
+    <script src="assets/js/vsop87-series-data.js"></script>
+    <script src="assets/js/elp2000-series-data.js"></script>
+    <script src="assets/js/nutation-calculator.js"></script>
+    <script src="assets/js/coordinate-transformer.js"></script>
+    <script src="assets/js/elp2000-moon-calculator.js"></script>
+    <script src="assets/js/performance-monitor.js"></script>
+    <script src="assets/js/calculation-error-handler.js"></script>
+    <script src="assets/js/vsop87-calculator.js"></script>
+    
+    <script>
+        function testSunPosition() {
+            const results = document.getElementById('results');
+            
+            try {
+                console.log('=== SUN POSITION TEST ===');
+                
+                // Test Julian Day for Jan 4, 1985, 1:00 AM UTC
+                const testJD = 2446069.5416666665;
+                console.log('Test Julian Day:', testJD);
+                
+                // Expected Sun position: ~283.61° (Capricorn 13°36')
+                const expectedSun = 283.61;
+                
+                // Test VSOP87 calculator
+                const vsopCalculator = new VSOP87Calculator();
+                
+                // Test direct Sun calculation
+                const T = (testJD - 2451545.0) / 36525.0;
+                console.log('T (Julian centuries):', T);
+                
+                // Test Earth's heliocentric longitude (before +180°)
+                const earthHelioLongitude = vsopCalculator.calculateSunLongitudeVSOP87(T);
+                console.log('Earth heliocentric longitude:', earthHelioLongitude);
+                
+                // Test Sun's geocentric longitude (after +180°)
+                const sunGeoLongitude = vsopCalculator.calculatePlanetLongitude('sun', T);
+                console.log('Sun geocentric longitude:', sunGeoLongitude);
+                
+                // Test full planetary calculation
+                const planets = vsopCalculator.calculatePlanetaryPositions(testJD);
+                const sunPlanet = planets.find(p => p.name === 'Sun');
+                console.log('Sun from full calculation:', sunPlanet);
+                
+                // Calculate differences
+                const earthDiff = Math.abs(earthHelioLongitude - expectedSun);
+                const sunDiff = Math.abs(sunGeoLongitude - expectedSun);
+                const fullDiff = Math.abs(sunPlanet.longitude - expectedSun);
+                
+                console.log('Earth helio vs expected:', earthDiff, '°');
+                console.log('Sun geo vs expected:', sunDiff, '°');
+                console.log('Full calc vs expected:', fullDiff, '°');
+                
+                results.innerHTML = `
+                    <h2>Sun Position Test Results</h2>
+                    <p><strong>Test Julian Day:</strong> ${testJD}</p>
+                    <p><strong>T (Julian centuries):</strong> ${T.toFixed(8)}</p>
+                    <p><strong>Expected Sun Position:</strong> ${expectedSun}° (Capricorn 13°36')</p>
+                    <hr>
+                    <p><strong>Earth Heliocentric Longitude:</strong> ${earthHelioLongitude.toFixed(4)}°</p>
+                    <p><strong>Difference from expected:</strong> ${earthDiff.toFixed(4)}°</p>
+                    <hr>
+                    <p><strong>Sun Geocentric Longitude (Earth + 180°):</strong> ${sunGeoLongitude.toFixed(4)}°</p>
+                    <p><strong>Difference from expected:</strong> ${sunDiff.toFixed(4)}°</p>
+                    <hr>
+                    <p><strong>Full Calculation Result:</strong> ${sunPlanet.longitude.toFixed(4)}° (${sunPlanet.sign} ${sunPlanet.degree}°)</p>
+                    <p><strong>Difference from expected:</strong> ${fullDiff.toFixed(4)}°</p>
+                    <hr>
+                    <p><strong>Best Result:</strong> ${Math.min(earthDiff, sunDiff, fullDiff) < 5 ? 'GOOD' : 'NEEDS WORK'}</p>
+                `;
+                
+            } catch (error) {
+                console.error('Test failed:', error);
+                results.innerHTML = `<p style="color: red;">Test failed: ${error.message}</p>`;
+            }
+        }
+        
+        // Run test when page loads
+        window.addEventListener('load', testSunPosition);
+    </script>
+</body>
+</html>

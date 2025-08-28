@@ -124,7 +124,6 @@ class AstroAuraBlogGenerator:
                 <h2>The Cosmic Significance of {topic}</h2>
                 <p>{topic} plays a crucial role in astrological interpretation and spiritual guidance. Understanding its influence can help you navigate life's challenges and opportunities with greater wisdom and clarity.</p>
                 
-                <ul class="cosmic-insights">
                     <li><strong>Spiritual Impact:</strong> How {topic.lower()} affects your inner growth and spiritual development</li>
                     <li><strong>Daily Influence:</strong> Practical ways {topic.lower()} impacts your daily decisions and energy</li>
                     <li><strong>Long-term Effects:</strong> The lasting influence of {topic.lower()} on your life path and destiny</li>
@@ -309,7 +308,6 @@ class AstroAuraBlogGenerator:
                 <h3>Explore More with AstroAura</h3>
                 <div class="related-links">
                     <a href="../../features.html">Discover App Features</a>
-                    <a href="../../cosmic-insights.html">Cosmic Weather Dashboard</a>
                     <a href="../../about.html">Our AI Technology</a>
                 </div>
             </section>

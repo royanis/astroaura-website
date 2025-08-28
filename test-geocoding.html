@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Geocoding Service Test</title>
+</head>
+<body>
+    <h1>Geocoding Service Test</h1>
+    <input type="text" id="searchInput" placeholder="Enter city name">
+    <button onclick="testSearch()">Search</button>
+    <div id="results"></div>
+
+    <script src="assets/js/api-keys.js"></script>
+    <script src="assets/js/geocoding-config.js"></script>
+    <script src="assets/js/geocoding-service-simple.js"></script>
+    
+    <script>
+        console.log('GeocodingService available?', typeof GeocodingService !== 'undefined');
+        
+        let geocodingService;
+        try {
+            geocodingService = new GeocodingService();
+            console.log('GeocodingService initialized successfully');
+        } catch (error) {
+            console.error('Error initializing GeocodingService:', error);
+        }
+        
+        async function testSearch() {
+            const query = document.getElementById('searchInput').value;
+            const results = document.getElementById('results');
+            
+            if (!geocodingService) {
+                results.innerHTML = '<p style="color: red;">Geocoding service not available</p>';
+                return;
+            }
+            
+            try {
+                results.innerHTML = '<p>Searching...</p>';
+                const locations = await geocodingService.geocodeLocation(query);
+                
+                if (locations.length === 0) {
+                    results.innerHTML = '<p>No results found</p>';
+                } else {
+                    results.innerHTML = '<h3>Results:</h3>' + 
+                        locations.map(loc => 
+                            `<p><strong>${loc.name}</strong><br>
+                             Lat: ${loc.lat}, Lng: ${loc.lng}<br>
+                             Source: ${loc.source}<br>
+                             Confidence: ${(loc.confidence * 100).toFixed(0)}%</p>`
+                        ).join('');
+                }
+            } catch (error) {
+                console.error('Search error:', error);
+                results.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
