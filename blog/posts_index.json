@@ -1,6 +1,29 @@
 {
   "posts": [
     {
+      "title": "Planetary Aspects This Week: Understanding sextile Energy in Virgo Season - Cosmic Insights and Guidance",
+      "slug": "planetary-aspects-this-week-understanding-sextile-",
+      "date": "2025-09-14T01:50:34.052718",
+      "meta_description": "## Feeling Stuck? Harness the Harmonious Flow of This Week's Sextile Energy! (September 14th, 2025)  Feeling like you're navigating a dense fog of indec...",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "virgo",
+        "waning-gibbous",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "astronomical_data": {
+        "date": "2025-09-14",
+        "moon_phase": "Waning Gibbous",
+        "sun_sign": "Virgo",
+        "season": "Fall",
+        "mercury_retrograde": false
+      },
+      "ai_generated": true
+    },
+    {
       "title": "Understanding Today's Full Moon in Virgo: Spiritual Significance and Rituals: Current Cosmic Influences and Practical Wisdom",
       "slug": "understanding-todays-full-moon-in-virgo-spiritual-",
       "date": "2025-09-13T01:38:03.442241",
@@ -847,7 +870,7 @@
     {
       "title": "Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health",
       "slug": "why-moon-cycles-and-emotional-balance-is-the-key-t",
-      "date": "2025-09-13T01:38:03.744567+00:00",
+      "date": "2025-09-14T01:50:34.191712+00:00",
       "meta_description": "## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...",
       "keywords": [
         "moon-phases",
@@ -903,7 +926,7 @@
   ],
   "metadata": {
     "version": "2.0",
-    "last_updated": "2025-09-13T01:38:03.773917Z",
-    "total_posts": 37
+    "last_updated": "2025-09-14T01:50:34.219001Z",
+    "total_posts": 38
   }
 }
