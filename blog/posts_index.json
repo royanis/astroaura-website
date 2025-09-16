@@ -1,6 +1,29 @@
 {
   "posts": [
     {
+      "title": "Current Cosmic Weather: How Today's Planetary Alignments Affect You in Virgo Season - Cosmic Insights and Guidance",
+      "slug": "current-cosmic-weather-how-todays-planetary-alignm",
+      "date": "2025-09-16T01:43:31.247726",
+      "meta_description": "## Current Cosmic Weather: How Today's Planetary Alignments Affect YOU (September 16th, 2025)  Feeling a little…off?  Like the gears of your life are gr...",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "virgo",
+        "waning-crescent",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "astronomical_data": {
+        "date": "2025-09-16",
+        "moon_phase": "Waning Crescent",
+        "sun_sign": "Virgo",
+        "season": "Fall",
+        "mercury_retrograde": false
+      },
+      "ai_generated": true
+    },
+    {
       "title": "Crystal Recommendations Based on Current Planetary Energy in Virgo Season - Cosmic Insights and Guidance",
       "slug": "crystal-recommendations-based-on-current-planetary",
       "date": "2025-09-15T01:52:14.200546",
@@ -893,7 +916,7 @@
     {
       "title": "Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health",
       "slug": "why-moon-cycles-and-emotional-balance-is-the-key-t",
-      "date": "2025-09-15T01:52:14.327540+00:00",
+      "date": "2025-09-16T01:43:31.376475+00:00",
       "meta_description": "## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...",
       "keywords": [
         "moon-phases",
@@ -949,7 +972,7 @@
   ],
   "metadata": {
     "version": "2.0",
-    "last_updated": "2025-09-15T01:52:14.359843Z",
-    "total_posts": 39
+    "last_updated": "2025-09-16T01:43:31.407557Z",
+    "total_posts": 40
   }
 }
