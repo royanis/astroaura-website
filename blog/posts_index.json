@@ -1,6 +1,29 @@
 {
   "posts": [
     {
+      "title": "Planetary Aspects This Week: Understanding square Energy Explained: What Today's Cosmic Energy Reveals",
+      "slug": "planetary-aspects-this-week-understanding-square-e",
+      "date": "2025-09-21T01:53:36.412626",
+      "meta_description": "## Feeling the Friction? Navigating Square Energy This Week (September 21st, 2025)  Have you noticed a persistent tension in the air lately?  A feeling ...",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "virgo",
+        "waning-crescent",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "astronomical_data": {
+        "date": "2025-09-21",
+        "moon_phase": "Waning Crescent",
+        "sun_sign": "Virgo",
+        "season": "Fall",
+        "mercury_retrograde": false
+      },
+      "ai_generated": true
+    },
+    {
       "title": "Daily Horoscope Deep Dive: Virgo Season Insights in Virgo Season - Cosmic Insights and Guidance",
       "slug": "daily-horoscope-deep-dive-virgo-season-insights-in",
       "date": "2025-09-20T01:41:44.982570",
@@ -1008,7 +1031,7 @@
     {
       "title": "Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health",
       "slug": "why-moon-cycles-and-emotional-balance-is-the-key-t",
-      "date": "2025-09-20T01:41:45.110055+00:00",
+      "date": "2025-09-21T01:53:36.586293+00:00",
       "meta_description": "## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...",
       "keywords": [
         "moon-phases",
@@ -1064,7 +1087,7 @@
   ],
   "metadata": {
     "version": "2.0",
-    "last_updated": "2025-09-20T01:41:45.144618Z",
-    "total_posts": 44
+    "last_updated": "2025-09-21T01:53:36.624517Z",
+    "total_posts": 45
   }
 }
