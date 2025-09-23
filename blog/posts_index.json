@@ -1,6 +1,29 @@
 {
   "posts": [
     {
+      "title": "Understanding Current Retrograde Seasons: Navigating Cosmic Slowdowns: Current Cosmic Influences and Practical Wisdom",
+      "slug": "understanding-current-retrograde-seasons-navigatin",
+      "date": "2025-09-23T01:44:03.511370",
+      "meta_description": "## Navigating the Cosmic Slowdowns:  Making Peace with Retrograde Seasons (Even When Mercury's Not!)  Feeling stuck? Like you're spinning your wheels, d...",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "virgo",
+        "new-moon",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "astronomical_data": {
+        "date": "2025-09-23",
+        "moon_phase": "New Moon",
+        "sun_sign": "Virgo",
+        "season": "Fall",
+        "mercury_retrograde": false
+      },
+      "ai_generated": true
+    },
+    {
       "title": "Daily Horoscope Deep Dive: Virgo Season Insights: Your Complete Guide for September 2025",
       "slug": "daily-horoscope-deep-dive-virgo-season-insights-yo",
       "date": "2025-09-22T01:53:41.492902",
@@ -1054,7 +1077,7 @@
     {
       "title": "Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health",
       "slug": "why-moon-cycles-and-emotional-balance-is-the-key-t",
-      "date": "2025-09-22T01:53:41.628632+00:00",
+      "date": "2025-09-23T01:44:03.707943+00:00",
       "meta_description": "## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...",
       "keywords": [
         "moon-phases",
@@ -1110,7 +1133,7 @@
   ],
   "metadata": {
     "version": "2.0",
-    "last_updated": "2025-09-22T01:53:41.668047Z",
-    "total_posts": 46
+    "last_updated": "2025-09-23T01:44:03.748848Z",
+    "total_posts": 47
   }
 }
