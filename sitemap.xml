@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://astroaura.me/</loc>
-    <lastmod>2025-10-01</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -12,7 +12,7 @@
   </url>
   <url>
     <loc>https://astroaura.me/features.html</loc>
-    <lastmod>2025-10-01</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -22,27 +22,57 @@
   </url>
   <url>
     <loc>https://astroaura.me/about.html</loc>
-    <lastmod>2025-10-01</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://astroaura.me/contact.html</loc>
-    <lastmod>2025-10-01</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://astroaura.me/privacy.html</loc>
-    <lastmod>2025-10-01</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://astroaura.me/blog/</loc>
-    <lastmod>2025-10-01</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/navigate-planetary-aspects-this-week-understanding.html</loc>
+    <lastmod>2025-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Navigate Planetary Aspects This Week: Understanding sextile Energy with Confidence - August 2025 Ast</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/astrological-house-focus-5th-house-creativity-roma.html</loc>
+    <lastmod>2025-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Astrological House Focus: 5th House (Creativity &amp; Romance) House Activations This Month: Your Comple</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/todays-full-moon-in-libra-spiritual-significance-a.html</loc>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Today's Full Moon in Libra: Spiritual Significance and Rituals - October 02, 2025</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://astroaura.me/blog/posts/astrological-house-focus-2nd-house-values-resource.html</loc>
@@ -146,7 +176,7 @@
   </url>
   <url>
     <loc>https://astroaura.me/blog/posts/why-moon-cycles-and-emotional-balance-is-the-key-t.html</loc>
-    <lastmod>2025-10-01</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -532,36 +562,6 @@
     <image:image>
       <image:loc/>
       <image:caption>New Moon Manifestation: Harnessing Leo Energy for Growth in Leo Season - Cosmic Insights and Guidanc</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/navigate-planetary-aspects-this-week-understanding.html</loc>
-    <lastmod>2025-08-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Navigate Planetary Aspects This Week: Understanding sextile Energy with Confidence - August 2025 Ast</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/astrological-house-focus-5th-house-creativity-roma.html</loc>
-    <lastmod>2025-08-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Astrological House Focus: 5th House (Creativity &amp; Romance) House Activations This Month: Your Comple</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/weekly-planetary-transits-what-the-stars-hold-for-.html</loc>
-    <lastmod>2025-08-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Weekly Planetary Transits: What the Stars Hold for Each Zodiac Sign: Your Complete Guide for August </image:caption>
     </image:image>
   </url>
 </urlset>
