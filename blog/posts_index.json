@@ -1,6 +1,29 @@
 {
   "posts": [
     {
+      "title": "Weekly Planetary Transits: What the Stars Hold for Each Zodiac Sign - October 06, 2025",
+      "slug": "weekly-planetary-transits-what-the-stars-hold-for-",
+      "date": "2025-10-06T01:46:56.092969",
+      "meta_description": "Authentic astrological guidance for October 06, 2025. Explore today's Waxing Gibbous energy in Libra season with personalized insights from AstroAura's AI-powered astrology platform.",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "libra",
+        "waxing-gibbous",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "astronomical_data": {
+        "date": "2025-10-06",
+        "moon_phase": "Waxing Gibbous",
+        "sun_sign": "Libra",
+        "season": "Fall",
+        "mercury_retrograde": false
+      },
+      "ai_generated": true
+    },
+    {
       "title": "Moon Phase Meditation: Working with Waxing Crescent Energy: Your Complete Guide for August 2025",
       "slug": "moon-phase-meditation-working-with-waxing-crescent",
       "date": "2025-08-28T01:48:20.449742",
@@ -420,7 +443,7 @@
     {
       "title": "Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health",
       "slug": "why-moon-cycles-and-emotional-balance-is-the-key-t",
-      "date": "2025-10-05T01:54:02.971294+00:00",
+      "date": "2025-10-06T01:46:56.276355+00:00",
       "meta_description": "## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...",
       "keywords": [
         "moon-phases",
@@ -1029,103 +1052,11 @@
         "mercury_retrograde": false
       },
       "ai_generated": true
-    },
-    {
-      "title": "Navigate Current Cosmic Weather: How Today's Planetary Alignments Affect You with Confidence - September 2025 Astrology Guide",
-      "slug": "navigate-current-cosmic-weather-how-todays-planeta",
-      "date": "2025-09-01T02:03:31.951274",
-      "meta_description": "## Navigating the Cosmic Currents: How September 1st's Planetary Dance Impacts Your Day  Feeling a little off-kilter?  A sense of restless energy hummin...",
-      "keywords": [
-        "astrology",
-        "horoscope",
-        "virgo",
-        "waxing-gibbous",
-        "AI astrology",
-        "multilingual horoscope"
-      ],
-      "author": "AstroAura AI Cosmic Team",
-      "astronomical_data": {
-        "date": "2025-09-01",
-        "moon_phase": "Waxing Gibbous",
-        "sun_sign": "Virgo",
-        "season": "Fall",
-        "mercury_retrograde": false
-      },
-      "ai_generated": true
-    },
-    {
-      "title": "Current Cosmic Weather: How Today's Planetary Alignments Affect You: Your Complete Guide for August 2025",
-      "slug": "current-cosmic-weather-how-todays-planetary-alignm",
-      "date": "2025-08-31T01:53:26.709663",
-      "meta_description": "## Feeling Stuck? The Cosmic Weather Report for August 31st, 2025: Navigate the First Quarter Moon in Virgo  Ever feel like you're caught in a current, ...",
-      "keywords": [
-        "astrology",
-        "horoscope",
-        "virgo",
-        "first-quarter",
-        "AI astrology",
-        "multilingual horoscope"
-      ],
-      "author": "AstroAura AI Cosmic Team",
-      "astronomical_data": {
-        "date": "2025-08-31",
-        "moon_phase": "First Quarter",
-        "sun_sign": "Virgo",
-        "season": "Summer",
-        "mercury_retrograde": false
-      },
-      "ai_generated": true
-    },
-    {
-      "title": "Understanding Monthly Astrological Forecast: Key Dates and Cosmic Events: Current Cosmic Influences and Practical Wisdom",
-      "slug": "understanding-monthly-astrological-forecast-key-da",
-      "date": "2025-08-30T01:42:50.457059",
-      "meta_description": "## Navigate August's Cosmic Currents: Your Monthly Astrological Forecast  Feeling a little adrift? Like the currents of life are pulling you in unexpect...",
-      "keywords": [
-        "astrology",
-        "horoscope",
-        "virgo",
-        "waxing-crescent",
-        "AI astrology",
-        "multilingual horoscope"
-      ],
-      "author": "AstroAura AI Cosmic Team",
-      "astronomical_data": {
-        "date": "2025-08-30",
-        "moon_phase": "Waxing Crescent",
-        "sun_sign": "Virgo",
-        "season": "Summer",
-        "mercury_retrograde": false
-      },
-      "ai_generated": true
-    },
-    {
-      "title": "Weekly Planetary Transits: What the Stars Hold for Each Zodiac Sign in Virgo Season - Cosmic Insights and Guidance",
-      "slug": "weekly-planetary-transits-what-the-stars-hold-for-",
-      "date": "2025-08-29T01:48:13.404438",
-      "meta_description": "## Weekly Planetary Transits: Navigating the Cosmic Currents (August 29th, 2025)  Feeling a little off-kilter?  Like the universe is whispering secrets ...",
-      "keywords": [
-        "astrology",
-        "horoscope",
-        "virgo",
-        "waxing-crescent",
-        "AI astrology",
-        "multilingual horoscope"
-      ],
-      "author": "AstroAura AI Cosmic Team",
-      "astronomical_data": {
-        "date": "2025-08-29",
-        "moon_phase": "Waxing Crescent",
-        "sun_sign": "Virgo",
-        "season": "Summer",
-        "mercury_retrograde": false
-      },
-      "ai_generated": true
     }
   ],
   "metadata": {
     "version": "2.0",
-    "last_updated": "2025-10-05T01:54:02.976118Z",
-    "total_posts": 53
+    "last_updated": "2025-10-06T01:46:56.281699Z",
+    "total_posts": 50
   }
 }
