@@ -1,6 +1,45 @@
 {
   "posts": [
     {
+      "title": "Understanding Crystal Recommendations Based on Current Planetary Energy: Current Cosmic Influences and Practical Wisdom",
+      "slug": "understanding-crystal-recommendations-based-on-cur",
+      "date": "2025-09-02T01:49:53.708907",
+      "meta_description": "## Harness the Cosmic Tide: Crystal Recommendations for Navigating September's Energetic Flow  Feeling a little…off?  Like the universe is whispering se...",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "virgo",
+        "waxing-gibbous",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "ai_generated": true
+    },
+    {
+      "title": "New Moon Manifestation: Harnessing Libra Energy for Growth - October 07, 2025",
+      "slug": "new-moon-manifestation-harnessing-libra-energy-for",
+      "date": "2025-10-07T01:44:17.913058",
+      "meta_description": "Authentic astrological guidance for October 07, 2025. Explore today's Full Moon energy in Libra season with personalized insights from AstroAura's AI-powered astrology platform.",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "libra",
+        "full-moon",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "astronomical_data": {
+        "date": "2025-10-07",
+        "moon_phase": "Full Moon",
+        "sun_sign": "Libra",
+        "season": "Fall",
+        "mercury_retrograde": false
+      },
+      "ai_generated": true
+    },
+    {
       "title": "Weekly Planetary Transits: What the Stars Hold for Each Zodiac Sign - October 06, 2025",
       "slug": "weekly-planetary-transits-what-the-stars-hold-for-",
       "date": "2025-10-06T01:46:56.092969",
@@ -443,7 +482,7 @@
     {
       "title": "Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health",
       "slug": "why-moon-cycles-and-emotional-balance-is-the-key-t",
-      "date": "2025-10-06T01:46:56.276355+00:00",
+      "date": "2025-10-07T01:44:18.050005+00:00",
       "meta_description": "## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...",
       "keywords": [
         "moon-phases",
@@ -1029,34 +1068,11 @@
         "mercury_retrograde": false
       },
       "ai_generated": true
-    },
-    {
-      "title": "Understanding Crystal Recommendations Based on Current Planetary Energy: Current Cosmic Influences and Practical Wisdom",
-      "slug": "understanding-crystal-recommendations-based-on-cur",
-      "date": "2025-09-02T01:49:53.708907",
-      "meta_description": "## Harness the Cosmic Tide: Crystal Recommendations for Navigating September's Energetic Flow  Feeling a little…off?  Like the universe is whispering se...",
-      "keywords": [
-        "astrology",
-        "horoscope",
-        "virgo",
-        "waxing-gibbous",
-        "AI astrology",
-        "multilingual horoscope"
-      ],
-      "author": "AstroAura AI Cosmic Team",
-      "astronomical_data": {
-        "date": "2025-09-02",
-        "moon_phase": "Waxing Gibbous",
-        "sun_sign": "Virgo",
-        "season": "Fall",
-        "mercury_retrograde": false
-      },
-      "ai_generated": true
     }
   ],
   "metadata": {
     "version": "2.0",
-    "last_updated": "2025-10-06T01:46:56.281699Z",
-    "total_posts": 50
+    "last_updated": "2025-10-07T01:44:18.053168Z",
+    "total_posts": 51
   }
 }
