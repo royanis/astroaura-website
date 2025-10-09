@@ -1,6 +1,45 @@
 {
   "posts": [
     {
+      "title": "Understanding Moon Phase Meditation: Working with Waxing Gibbous Energy: Current Cosmic Influences and Practical Wisdom",
+      "slug": "understanding-moon-phase-meditation-working-with-w",
+      "date": "2025-09-06T01:42:19.148941",
+      "meta_description": "## Harnessing the Power of Almost Full: A Waxing Gibbous Moon Meditation for September 6th, 2025  Feeling overwhelmed by the to-do list Virgo season has...",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "virgo",
+        "waxing-gibbous",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "ai_generated": true
+    },
+    {
+      "title": "Moon Phase Meditation: Working with Waning Gibbous Energy - October 09, 2025",
+      "slug": "moon-phase-meditation-working-with-waning-gibbous-",
+      "date": "2025-10-09T01:45:38.913297",
+      "meta_description": "Authentic astrological guidance for October 09, 2025. Explore today's Waning Gibbous energy in Libra season with personalized insights from AstroAura's AI-powered astrology platform.",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "libra",
+        "waning-gibbous",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "astronomical_data": {
+        "date": "2025-10-09",
+        "moon_phase": "Waning Gibbous",
+        "sun_sign": "Libra",
+        "season": "Fall",
+        "mercury_retrograde": false
+      },
+      "ai_generated": true
+    },
+    {
       "title": "Navigate Today's Tarot and Astrology Connection: The Star and Mars with Confidence - September 2025 Astrology Guide",
       "slug": "navigate-todays-tarot-and-astrology-connection-the",
       "date": "2025-09-03T01:42:32.398671",
@@ -521,7 +560,7 @@
     {
       "title": "Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health",
       "slug": "why-moon-cycles-and-emotional-balance-is-the-key-t",
-      "date": "2025-10-08T01:44:46.034675+00:00",
+      "date": "2025-10-09T01:45:39.098025+00:00",
       "meta_description": "## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...",
       "keywords": [
         "moon-phases",
@@ -1015,57 +1054,11 @@
         "mercury_retrograde": false
       },
       "ai_generated": true
-    },
-    {
-      "title": "Understanding Moon Phase Meditation: Working with Waxing Gibbous Energy: Current Cosmic Influences and Practical Wisdom",
-      "slug": "understanding-moon-phase-meditation-working-with-w",
-      "date": "2025-09-06T01:42:19.148941",
-      "meta_description": "## Harnessing the Power of Almost Full: A Waxing Gibbous Moon Meditation for September 6th, 2025  Feeling overwhelmed by the to-do list Virgo season has...",
-      "keywords": [
-        "astrology",
-        "horoscope",
-        "virgo",
-        "waxing-gibbous",
-        "AI astrology",
-        "multilingual horoscope"
-      ],
-      "author": "AstroAura AI Cosmic Team",
-      "astronomical_data": {
-        "date": "2025-09-06",
-        "moon_phase": "Waxing Gibbous",
-        "sun_sign": "Virgo",
-        "season": "Fall",
-        "mercury_retrograde": false
-      },
-      "ai_generated": true
-    },
-    {
-      "title": "Understanding Today's Full Moon in Virgo: Spiritual Significance and Rituals: Current Cosmic Influences and Practical Wisdom",
-      "slug": "understanding-todays-full-moon-in-virgo-spiritual-",
-      "date": "2025-09-05T01:45:38.546015",
-      "meta_description": "## Today's Full Moon in Virgo: A Harvest of Self-Mastery (September 5th, 2025)  Feeling overwhelmed by the demands of daily life?  Are you craving a sen...",
-      "keywords": [
-        "astrology",
-        "horoscope",
-        "virgo",
-        "waxing-gibbous",
-        "AI astrology",
-        "multilingual horoscope"
-      ],
-      "author": "AstroAura AI Cosmic Team",
-      "astronomical_data": {
-        "date": "2025-09-05",
-        "moon_phase": "Waxing Gibbous",
-        "sun_sign": "Virgo",
-        "season": "Fall",
-        "mercury_retrograde": false
-      },
-      "ai_generated": true
     }
   ],
   "metadata": {
     "version": "2.0",
-    "last_updated": "2025-10-08T01:44:46.040186Z",
+    "last_updated": "2025-10-09T01:45:39.101297Z",
     "total_posts": 51
   }
 }
