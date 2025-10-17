@@ -1,6 +1,45 @@
 {
   "posts": [
     {
+      "title": "Monthly Astrological Forecast: Key Dates and Cosmic Events - September 27, 2025",
+      "slug": "monthly-astrological-forecast-key-dates-and-cosmic",
+      "date": "2025-09-27T01:41:21.118884",
+      "meta_description": "Authentic astrological guidance for September 27, 2025. Explore today's Waxing Crescent energy in Libra season with personalized insights from AstroAura's AI-powered astrology platform.",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "libra",
+        "waxing-crescent",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "ai_generated": true
+    },
+    {
+      "title": "Daily Horoscope Deep Dive: Libra Season Insights - October 17, 2025",
+      "slug": "daily-horoscope-deep-dive-libra-season-insights-oc",
+      "date": "2025-10-17T01:46:57.613536",
+      "meta_description": "Authentic astrological guidance for October 17, 2025. Explore today's Waning Crescent energy in Libra season with personalized insights from AstroAura's AI-powered astrology platform.",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "libra",
+        "waning-crescent",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "astronomical_data": {
+        "date": "2025-10-17",
+        "moon_phase": "Waning Crescent",
+        "sun_sign": "Libra",
+        "season": "Fall",
+        "mercury_retrograde": false
+      },
+      "ai_generated": true
+    },
+    {
       "title": "Daily Horoscope Deep Dive: Virgo Season Insights: Your Complete Guide for September 2025",
       "slug": "daily-horoscope-deep-dive-virgo-season-insights-yo",
       "date": "2025-09-22T01:53:41.492902",
@@ -913,7 +952,7 @@
     {
       "title": "Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health",
       "slug": "why-moon-cycles-and-emotional-balance-is-the-key-t",
-      "date": "2025-10-16T01:47:56.841230+00:00",
+      "date": "2025-10-17T01:46:57.780286+00:00",
       "meta_description": "## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...",
       "keywords": [
         "moon-phases",
@@ -924,80 +963,11 @@
       ],
       "author": "AstroAura AI Cosmic Team",
       "ai_generated": true
-    },
-    {
-      "title": "Monthly Astrological Forecast: Key Dates and Cosmic Events - September 27, 2025",
-      "slug": "monthly-astrological-forecast-key-dates-and-cosmic",
-      "date": "2025-09-27T01:41:21.118884",
-      "meta_description": "Authentic astrological guidance for September 27, 2025. Explore today's Waxing Crescent energy in Libra season with personalized insights from AstroAura's AI-powered astrology platform.",
-      "keywords": [
-        "astrology",
-        "horoscope",
-        "libra",
-        "waxing-crescent",
-        "AI astrology",
-        "multilingual horoscope"
-      ],
-      "author": "AstroAura AI Cosmic Team",
-      "astronomical_data": {
-        "date": "2025-09-27",
-        "moon_phase": "Waxing Crescent",
-        "sun_sign": "Libra",
-        "season": "Fall",
-        "mercury_retrograde": false
-      },
-      "ai_generated": true
-    },
-    {
-      "title": "Weekly Planetary Transits: What the Stars Hold for Each Zodiac Sign - September 26, 2025",
-      "slug": "weekly-planetary-transits-what-the-stars-hold-for-",
-      "date": "2025-09-26T01:45:55.096461",
-      "meta_description": "Authentic astrological guidance for September 26, 2025. Explore today's Waxing Crescent energy in Libra season with personalized insights from AstroAura's AI-powered astrology platform.",
-      "keywords": [
-        "astrology",
-        "horoscope",
-        "libra",
-        "waxing-crescent",
-        "AI astrology",
-        "multilingual horoscope"
-      ],
-      "author": "AstroAura AI Cosmic Team",
-      "astronomical_data": {
-        "date": "2025-09-26",
-        "moon_phase": "Waxing Crescent",
-        "sun_sign": "Libra",
-        "season": "Fall",
-        "mercury_retrograde": false
-      },
-      "ai_generated": true
-    },
-    {
-      "title": "Today's Full Moon in Libra: Spiritual Significance and Rituals in Libra Season - Cosmic Insights and Guidance",
-      "slug": "todays-full-moon-in-libra-spiritual-significance-a",
-      "date": "2025-09-25T01:46:13.550571",
-      "meta_description": "## Today's Full Moon in Libra: A Harmonious Reset for Your Soul (Not!)  Feeling a little off-kilter?  Like the scales of justice are wildly unbalanced i...",
-      "keywords": [
-        "astrology",
-        "horoscope",
-        "libra",
-        "waxing-crescent",
-        "AI astrology",
-        "multilingual horoscope"
-      ],
-      "author": "AstroAura AI Cosmic Team",
-      "astronomical_data": {
-        "date": "2025-09-25",
-        "moon_phase": "Waxing Crescent",
-        "sun_sign": "Libra",
-        "season": "Fall",
-        "mercury_retrograde": false
-      },
-      "ai_generated": true
     }
   ],
   "metadata": {
     "version": "2.0",
-    "last_updated": "2025-10-16T01:47:56.846300Z",
-    "total_posts": 52
+    "last_updated": "2025-10-17T01:46:57.850134Z",
+    "total_posts": 51
   }
 }
