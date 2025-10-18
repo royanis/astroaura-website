@@ -1,6 +1,44 @@
 {
   "posts": [
     {
+      "title": "Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health",
+      "slug": "why-moon-cycles-and-emotional-balance-is-the-key-t",
+      "date": "2025-10-18T01:41:59.239434+00:00",
+      "meta_description": "## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...",
+      "keywords": [
+        "moon-phases",
+        "mental-health",
+        "mindfulness",
+        "wellness",
+        "trending-topics"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "ai_generated": true
+    },
+    {
+      "title": "Current Retrograde Seasons: Navigating Cosmic Slowdowns - October 18, 2025",
+      "slug": "current-retrograde-seasons-navigating-cosmic-slowd",
+      "date": "2025-10-18T01:41:59.109695",
+      "meta_description": "Authentic astrological guidance for October 18, 2025. Explore today's Waning Crescent energy in Libra season with personalized insights from AstroAura's AI-powered astrology platform.",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "libra",
+        "waning-crescent",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "astronomical_data": {
+        "date": "2025-10-18",
+        "moon_phase": "Waning Crescent",
+        "sun_sign": "Libra",
+        "season": "Fall",
+        "mercury_retrograde": false
+      },
+      "ai_generated": true
+    },
+    {
       "title": "Monthly Astrological Forecast: Key Dates and Cosmic Events - September 27, 2025",
       "slug": "monthly-astrological-forecast-key-dates-and-cosmic",
       "date": "2025-09-27T01:41:21.118884",
@@ -925,49 +963,11 @@
       "keywords": [],
       "author": "AstroAura AI Cosmic Team",
       "ai_generated": true
-    },
-    {
-      "title": "Current Cosmic Weather: How Today's Planetary Alignments Affect You - September 28, 2025",
-      "slug": "current-cosmic-weather-how-todays-planetary-alignm",
-      "date": "2025-09-28T01:54:41.260438",
-      "meta_description": "Authentic astrological guidance for September 28, 2025. Explore today's Waxing Crescent energy in Libra season with personalized insights from AstroAura's AI-powered astrology platform.",
-      "keywords": [
-        "astrology",
-        "horoscope",
-        "libra",
-        "waxing-crescent",
-        "AI astrology",
-        "multilingual horoscope"
-      ],
-      "author": "AstroAura AI Cosmic Team",
-      "astronomical_data": {
-        "date": "2025-09-28",
-        "moon_phase": "Waxing Crescent",
-        "sun_sign": "Libra",
-        "season": "Fall",
-        "mercury_retrograde": false
-      },
-      "ai_generated": true
-    },
-    {
-      "title": "Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health",
-      "slug": "why-moon-cycles-and-emotional-balance-is-the-key-t",
-      "date": "2025-10-17T01:46:57.780286+00:00",
-      "meta_description": "## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...",
-      "keywords": [
-        "moon-phases",
-        "mental-health",
-        "mindfulness",
-        "wellness",
-        "trending-topics"
-      ],
-      "author": "AstroAura AI Cosmic Team",
-      "ai_generated": true
     }
   ],
   "metadata": {
     "version": "2.0",
-    "last_updated": "2025-10-17T01:46:57.850134Z",
+    "last_updated": "2025-10-18T01:41:59.304178Z",
     "total_posts": 51
   }
 }
