@@ -1,9 +1,57 @@
 {
   "posts": [
     {
+      "title": "Seasonal Astrological Shifts: Navigating Fall Energy - September 29, 2025",
+      "slug": "seasonal-astrological-shifts-navigating-fall-energ",
+      "date": "2025-09-29T01:48:38.533452",
+      "meta_description": "Authentic astrological guidance for September 29, 2025. Explore today's Waxing Crescent energy in Libra season with personalized insights from AstroAura's AI-powered astrology platform.",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "libra",
+        "waxing-crescent",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "ai_generated": true
+    },
+    {
+      "title": "Understanding Today's Full Moon in Leo: Spiritual Significance and Rituals: Current Cosmic Influences and Practical Wisdom",
+      "slug": "understanding-todays-full-moon-in-leo-spiritual-si",
+      "date": "2025-08-10T02:19:20.841530",
+      "meta_description": "## Unleash Your Inner Lion: Navigating the August 10th Full Moon in Leo & Mercury Retrograde  Feeling a little…off?  Like you're caught in a cosmic curr...",
+      "keywords": [],
+      "author": "AstroAura AI Cosmic Team",
+      "ai_generated": true
+    },
+    {
+      "title": "Chakra Alignment with Today's Cosmic Influences - October 19, 2025",
+      "slug": "chakra-alignment-with-todays-cosmic-influences-oct",
+      "date": "2025-10-19T01:58:52.080827",
+      "meta_description": "Authentic astrological guidance for October 19, 2025. Explore today's Waning Crescent energy in Libra season with personalized insights from AstroAura's AI-powered astrology platform.",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "libra",
+        "waning-crescent",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "astronomical_data": {
+        "date": "2025-10-19",
+        "moon_phase": "Waning Crescent",
+        "sun_sign": "Libra",
+        "season": "Fall",
+        "mercury_retrograde": false
+      },
+      "ai_generated": true
+    },
+    {
       "title": "Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health",
       "slug": "why-moon-cycles-and-emotional-balance-is-the-key-t",
-      "date": "2025-10-18T01:41:59.239434+00:00",
+      "date": "2025-10-19T01:58:52.220002+00:00",
       "meta_description": "## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...",
       "keywords": [
         "moon-phases",
@@ -931,43 +979,11 @@
       "keywords": [],
       "author": "AstroAura AI Cosmic Team",
       "ai_generated": true
-    },
-    {
-      "title": "Seasonal Astrological Shifts: Navigating Fall Energy - September 29, 2025",
-      "slug": "seasonal-astrological-shifts-navigating-fall-energ",
-      "date": "2025-09-29T01:48:38.533452",
-      "meta_description": "Authentic astrological guidance for September 29, 2025. Explore today's Waxing Crescent energy in Libra season with personalized insights from AstroAura's AI-powered astrology platform.",
-      "keywords": [
-        "astrology",
-        "horoscope",
-        "libra",
-        "waxing-crescent",
-        "AI astrology",
-        "multilingual horoscope"
-      ],
-      "author": "AstroAura AI Cosmic Team",
-      "astronomical_data": {
-        "date": "2025-09-29",
-        "moon_phase": "Waxing Crescent",
-        "sun_sign": "Libra",
-        "season": "Fall",
-        "mercury_retrograde": false
-      },
-      "ai_generated": true
-    },
-    {
-      "title": "Understanding Today's Full Moon in Leo: Spiritual Significance and Rituals: Current Cosmic Influences and Practical Wisdom",
-      "slug": "understanding-todays-full-moon-in-leo-spiritual-si",
-      "date": "2025-08-10T02:19:20.841530",
-      "meta_description": "## Unleash Your Inner Lion: Navigating the August 10th Full Moon in Leo & Mercury Retrograde  Feeling a little…off?  Like you're caught in a cosmic curr...",
-      "keywords": [],
-      "author": "AstroAura AI Cosmic Team",
-      "ai_generated": true
     }
   ],
   "metadata": {
     "version": "2.0",
-    "last_updated": "2025-10-18T01:41:59.304178Z",
-    "total_posts": 51
+    "last_updated": "2025-10-19T01:58:52.296312Z",
+    "total_posts": 52
   }
 }
