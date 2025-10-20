@@ -1,6 +1,57 @@
 {
   "posts": [
     {
+      "title": "Understanding Today's Tarot and Astrology Connection: The Sun and Saturn: Current Cosmic Influences and Practical Wisdom",
+      "slug": "understanding-todays-tarot-and-astrology-connectio",
+      "date": "2025-08-14T01:59:45.233839",
+      "meta_description": "## Today's Tarot and Astrology Connection: The Sun and Saturn's Grand Conjunction – Navigating the Shadow and Embracing the Light  Feeling a little…stuc...",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "leo",
+        "waning-gibbous",
+        "cosmic-insights",
+        "spiritual-guidance",
+        "astroaura",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "ai_generated": true
+    },
+    {
+      "title": "Today's Full Moon in Leo: Spiritual Significance and Rituals in Leo Season - Cosmic Insights and Guidance",
+      "slug": "todays-full-moon-in-leo-spiritual-significance-and",
+      "date": "2025-08-12T01:57:12.506281",
+      "meta_description": "## Unleash Your Inner Lion: Navigating the Waning Gibbous Moon in Leo (August 12th, 2025)  Feeling a little…unbalanced?  Like the rug's been pulled out ...",
+      "keywords": [],
+      "author": "AstroAura AI Cosmic Team",
+      "ai_generated": true
+    },
+    {
+      "title": "Current Mercury Retrograde Effects and Survival Guide - October 20, 2025",
+      "slug": "current-mercury-retrograde-effects-and-survival-gu",
+      "date": "2025-10-20T01:56:22.106424",
+      "meta_description": "Authentic astrological guidance for October 20, 2025. Explore today's Waning Crescent energy in Libra season with personalized insights from AstroAura's AI-powered astrology platform.",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "libra",
+        "waning-crescent",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "astronomical_data": {
+        "date": "2025-10-20",
+        "moon_phase": "Waning Crescent",
+        "sun_sign": "Libra",
+        "season": "Fall",
+        "mercury_retrograde": false
+      },
+      "ai_generated": true
+    },
+    {
       "title": "Seasonal Astrological Shifts: Navigating Fall Energy - September 29, 2025",
       "slug": "seasonal-astrological-shifts-navigating-fall-energ",
       "date": "2025-09-29T01:48:38.533452",
@@ -51,7 +102,7 @@
     {
       "title": "Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health",
       "slug": "why-moon-cycles-and-emotional-balance-is-the-key-t",
-      "date": "2025-10-19T01:58:52.220002+00:00",
+      "date": "2025-10-20T01:56:22.219734+00:00",
       "meta_description": "## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...",
       "keywords": [
         "moon-phases",
@@ -928,62 +979,11 @@
       "keywords": [],
       "author": "AstroAura AI Cosmic Team",
       "ai_generated": true
-    },
-    {
-      "title": "Understanding Today's Tarot and Astrology Connection: The Sun and Saturn: Current Cosmic Influences and Practical Wisdom",
-      "slug": "understanding-todays-tarot-and-astrology-connectio",
-      "date": "2025-08-14T01:59:45.233839",
-      "meta_description": "## Today's Tarot and Astrology Connection: The Sun and Saturn's Grand Conjunction – Navigating the Shadow and Embracing the Light  Feeling a little…stuc...",
-      "keywords": [
-        "astrology",
-        "horoscope",
-        "leo",
-        "waning-gibbous",
-        "cosmic-insights",
-        "spiritual-guidance",
-        "astroaura",
-        "AI astrology",
-        "multilingual horoscope"
-      ],
-      "author": "AstroAura AI Cosmic Team",
-      "ai_generated": true
-    },
-    {
-      "title": "Current Cosmic Weather: How Today's Planetary Alignments Affect You - September 30, 2025",
-      "slug": "current-cosmic-weather-how-todays-planetary-alignm",
-      "date": "2025-09-30T01:43:11.869239",
-      "meta_description": "Authentic astrological guidance for September 30, 2025. Explore today's First Quarter energy in Libra season with personalized insights from AstroAura's AI-powered astrology platform.",
-      "keywords": [
-        "astrology",
-        "horoscope",
-        "libra",
-        "first-quarter",
-        "AI astrology",
-        "multilingual horoscope"
-      ],
-      "author": "AstroAura AI Cosmic Team",
-      "astronomical_data": {
-        "date": "2025-09-30",
-        "moon_phase": "First Quarter",
-        "sun_sign": "Libra",
-        "season": "Fall",
-        "mercury_retrograde": false
-      },
-      "ai_generated": true
-    },
-    {
-      "title": "Today's Full Moon in Leo: Spiritual Significance and Rituals in Leo Season - Cosmic Insights and Guidance",
-      "slug": "todays-full-moon-in-leo-spiritual-significance-and",
-      "date": "2025-08-12T01:57:12.506281",
-      "meta_description": "## Unleash Your Inner Lion: Navigating the Waning Gibbous Moon in Leo (August 12th, 2025)  Feeling a little…unbalanced?  Like the rug's been pulled out ...",
-      "keywords": [],
-      "author": "AstroAura AI Cosmic Team",
-      "ai_generated": true
     }
   ],
   "metadata": {
     "version": "2.0",
-    "last_updated": "2025-10-19T01:58:52.296312Z",
+    "last_updated": "2025-10-20T01:56:22.284440Z",
     "total_posts": 52
   }
 }
