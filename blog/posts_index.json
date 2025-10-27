@@ -1,6 +1,61 @@
 {
   "posts": [
     {
+      "title": "Understanding Crystal Recommendations Based on Current Planetary Energy: Current Cosmic Influences and Practical Wisdom",
+      "slug": "understanding-crystal-recommendations-based-on-cur",
+      "date": "2025-09-02T01:49:53.708907",
+      "meta_description": "## Harness the Cosmic Tide: Crystal Recommendations for Navigating September's Energetic Flow  Feeling a little…off?  Like the universe is whispering se...",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "virgo",
+        "waxing-gibbous",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "ai_generated": true
+    },
+    {
+      "title": "Planetary Aspects This Week: Understanding square Energy - October 08, 2025",
+      "slug": "planetary-aspects-this-week-understanding-square-e",
+      "date": "2025-10-08T01:44:45.854851",
+      "meta_description": "Authentic astrological guidance for October 08, 2025. Explore today's Full Moon energy in Libra season with personalized insights from AstroAura's AI-powered astrology platform.",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "libra",
+        "full-moon",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "ai_generated": true
+    },
+    {
+      "title": "Crystal Recommendations Based on Current Planetary Energy - October 27, 2025",
+      "slug": "crystal-recommendations-based-on-current-planetary",
+      "date": "2025-10-27T01:59:30.102051",
+      "meta_description": "Authentic astrological guidance for October 27, 2025. Explore today's Waxing Crescent energy in Scorpio season with personalized insights from AstroAura's AI-powered astrology platform.",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "scorpio",
+        "waxing-crescent",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "astronomical_data": {
+        "date": "2025-10-27",
+        "moon_phase": "Waxing Crescent",
+        "sun_sign": "Scorpio",
+        "season": "Fall",
+        "mercury_retrograde": false
+      },
+      "ai_generated": true
+    },
+    {
       "title": "Seasonal Astrological Shifts: Navigating Summer Energy: Your Complete Guide for August 2025",
       "slug": "seasonal-astrological-shifts-navigating-summer-ene",
       "date": "2025-08-26T01:52:27.633745",
@@ -433,7 +488,7 @@
     {
       "title": "Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health",
       "slug": "why-moon-cycles-and-emotional-balance-is-the-key-t",
-      "date": "2025-10-26T01:55:10.195404+00:00",
+      "date": "2025-10-27T01:59:30.283064+00:00",
       "meta_description": "## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...",
       "keywords": [
         "moon-phases",
@@ -914,73 +969,11 @@
       ],
       "author": "AstroAura AI Cosmic Team",
       "ai_generated": true
-    },
-    {
-      "title": "Planetary Aspects This Week: Understanding square Energy - October 08, 2025",
-      "slug": "planetary-aspects-this-week-understanding-square-e",
-      "date": "2025-10-08T01:44:45.854851",
-      "meta_description": "Authentic astrological guidance for October 08, 2025. Explore today's Full Moon energy in Libra season with personalized insights from AstroAura's AI-powered astrology platform.",
-      "keywords": [
-        "astrology",
-        "horoscope",
-        "libra",
-        "full-moon",
-        "AI astrology",
-        "multilingual horoscope"
-      ],
-      "author": "AstroAura AI Cosmic Team",
-      "astronomical_data": {
-        "date": "2025-10-08",
-        "moon_phase": "Full Moon",
-        "sun_sign": "Libra",
-        "season": "Fall",
-        "mercury_retrograde": false
-      },
-      "ai_generated": true
-    },
-    {
-      "title": "Understanding Crystal Recommendations Based on Current Planetary Energy: Current Cosmic Influences and Practical Wisdom",
-      "slug": "understanding-crystal-recommendations-based-on-cur",
-      "date": "2025-09-02T01:49:53.708907",
-      "meta_description": "## Harness the Cosmic Tide: Crystal Recommendations for Navigating September's Energetic Flow  Feeling a little…off?  Like the universe is whispering se...",
-      "keywords": [
-        "astrology",
-        "horoscope",
-        "virgo",
-        "waxing-gibbous",
-        "AI astrology",
-        "multilingual horoscope"
-      ],
-      "author": "AstroAura AI Cosmic Team",
-      "ai_generated": true
-    },
-    {
-      "title": "New Moon Manifestation: Harnessing Libra Energy for Growth - October 07, 2025",
-      "slug": "new-moon-manifestation-harnessing-libra-energy-for",
-      "date": "2025-10-07T01:44:17.913058",
-      "meta_description": "Authentic astrological guidance for October 07, 2025. Explore today's Full Moon energy in Libra season with personalized insights from AstroAura's AI-powered astrology platform.",
-      "keywords": [
-        "astrology",
-        "horoscope",
-        "libra",
-        "full-moon",
-        "AI astrology",
-        "multilingual horoscope"
-      ],
-      "author": "AstroAura AI Cosmic Team",
-      "astronomical_data": {
-        "date": "2025-10-07",
-        "moon_phase": "Full Moon",
-        "sun_sign": "Libra",
-        "season": "Fall",
-        "mercury_retrograde": false
-      },
-      "ai_generated": true
     }
   ],
   "metadata": {
     "version": "2.0",
-    "last_updated": "2025-10-26T01:55:10.198428Z",
+    "last_updated": "2025-10-27T01:59:30.286271Z",
     "total_posts": 52
   }
 }
