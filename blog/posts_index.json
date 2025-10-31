@@ -1,6 +1,61 @@
 {
   "posts": [
     {
+      "title": "Current Cosmic Weather: How Today's Planetary Alignments Affect You - October 14, 2025",
+      "slug": "current-cosmic-weather-how-todays-planetary-alignm",
+      "date": "2025-10-14T01:46:11.791907",
+      "meta_description": "Authentic astrological guidance for October 14, 2025. Explore today's Waning Gibbous energy in Libra season with personalized insights from AstroAura's AI-powered astrology platform.",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "libra",
+        "waning-gibbous",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "ai_generated": true
+    },
+    {
+      "title": "Planetary Aspects This Week: Understanding sextile Energy in Virgo Season - Cosmic Insights and Guidance",
+      "slug": "planetary-aspects-this-week-understanding-sextile-",
+      "date": "2025-09-14T01:50:34.052718",
+      "meta_description": "## Feeling Stuck? Harness the Harmonious Flow of This Week's Sextile Energy! (September 14th, 2025)  Feeling like you're navigating a dense fog of indec...",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "virgo",
+        "waning-gibbous",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "ai_generated": true
+    },
+    {
+      "title": "Current Retrograde Seasons: Navigating Cosmic Slowdowns - October 31, 2025",
+      "slug": "current-retrograde-seasons-navigating-cosmic-slowd",
+      "date": "2025-10-31T01:51:50.252496",
+      "meta_description": "Authentic astrological guidance for October 31, 2025. Explore today's Waxing Gibbous energy in Scorpio season with personalized insights from AstroAura's AI-powered astrology platform.",
+      "keywords": [
+        "astrology",
+        "horoscope",
+        "scorpio",
+        "waxing-gibbous",
+        "AI astrology",
+        "multilingual horoscope"
+      ],
+      "author": "AstroAura AI Cosmic Team",
+      "astronomical_data": {
+        "date": "2025-10-31",
+        "moon_phase": "Waxing Gibbous",
+        "sun_sign": "Scorpio",
+        "season": "Fall",
+        "mercury_retrograde": false
+      },
+      "ai_generated": true
+    },
+    {
       "title": "Weekly Planetary Transits: What the Stars Hold for Each Zodiac Sign - October 13, 2025",
       "slug": "weekly-planetary-transits-what-the-stars-hold-for-",
       "date": "2025-10-13T01:53:13.235036",
@@ -685,7 +740,7 @@
     {
       "title": "Why Moon cycles and emotional balance is the Key to Mastering Mindfulness and Mental Health",
       "slug": "why-moon-cycles-and-emotional-balance-is-the-key-t",
-      "date": "2025-10-30T01:55:27.352566+00:00",
+      "date": "2025-10-31T01:51:50.392908+00:00",
       "meta_description": "## The Leo Roar Within: Unlocking Inner Peace Through Mindfulness in a Turbulent World  Feeling overwhelmed?  Like the relentless pace of modern life is...",
       "keywords": [
         "moon-phases",
@@ -900,66 +955,11 @@
       ],
       "author": "AstroAura AI Cosmic Team",
       "ai_generated": true
-    },
-    {
-      "title": "Crystal Recommendations Based on Current Planetary Energy in Virgo Season - Cosmic Insights and Guidance",
-      "slug": "crystal-recommendations-based-on-current-planetary",
-      "date": "2025-09-15T01:52:14.200546",
-      "meta_description": "## Harnessing the Cosmic Currents: Crystal Power for a Harmonious Virgo Season  Feeling a little scattered?  Like the universe is whispering secrets you...",
-      "keywords": [
-        "astrology",
-        "horoscope",
-        "virgo",
-        "last-quarter",
-        "AI astrology",
-        "multilingual horoscope"
-      ],
-      "author": "AstroAura AI Cosmic Team",
-      "ai_generated": true
-    },
-    {
-      "title": "Current Cosmic Weather: How Today's Planetary Alignments Affect You - October 14, 2025",
-      "slug": "current-cosmic-weather-how-todays-planetary-alignm",
-      "date": "2025-10-14T01:46:11.791907",
-      "meta_description": "Authentic astrological guidance for October 14, 2025. Explore today's Waning Gibbous energy in Libra season with personalized insights from AstroAura's AI-powered astrology platform.",
-      "keywords": [
-        "astrology",
-        "horoscope",
-        "libra",
-        "waning-gibbous",
-        "AI astrology",
-        "multilingual horoscope"
-      ],
-      "author": "AstroAura AI Cosmic Team",
-      "astronomical_data": {
-        "date": "2025-10-14",
-        "moon_phase": "Waning Gibbous",
-        "sun_sign": "Libra",
-        "season": "Fall",
-        "mercury_retrograde": false
-      },
-      "ai_generated": true
-    },
-    {
-      "title": "Planetary Aspects This Week: Understanding sextile Energy in Virgo Season - Cosmic Insights and Guidance",
-      "slug": "planetary-aspects-this-week-understanding-sextile-",
-      "date": "2025-09-14T01:50:34.052718",
-      "meta_description": "## Feeling Stuck? Harness the Harmonious Flow of This Week's Sextile Energy! (September 14th, 2025)  Feeling like you're navigating a dense fog of indec...",
-      "keywords": [
-        "astrology",
-        "horoscope",
-        "virgo",
-        "waning-gibbous",
-        "AI astrology",
-        "multilingual horoscope"
-      ],
-      "author": "AstroAura AI Cosmic Team",
-      "ai_generated": true
     }
   ],
   "metadata": {
     "version": "2.0",
-    "last_updated": "2025-10-30T01:55:27.355616Z",
+    "last_updated": "2025-10-31T01:51:50.398172Z",
     "total_posts": 52
   }
 }
