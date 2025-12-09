@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://astroaura.me/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -12,7 +12,7 @@
   </url>
   <url>
     <loc>https://astroaura.me/features.html</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -22,27 +22,127 @@
   </url>
   <url>
     <loc>https://astroaura.me/about.html</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://astroaura.me/contact.html</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://astroaura.me/privacy.html</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://astroaura.me/blog/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/navigate-crystal-recommendations-based-on-current-.html</loc>
+    <lastmod>2025-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Navigate Crystal Recommendations Based on Current Planetary Energy with Confidence - August 2025 Ast</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/planetary-aspects-this-week-understanding-trine-en.html</loc>
+    <lastmod>2025-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Planetary Aspects This Week: Understanding trine Energy - December 04, 2025</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/navigate-monthly-astrological-forecast-key-dates-a.html</loc>
+    <lastmod>2025-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Navigate Monthly Astrological Forecast: Key Dates and Cosmic Events with Confidence - August 2025 As</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/navigate-planetary-aspects-this-week-understanding.html</loc>
+    <lastmod>2025-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Navigate Planetary Aspects This Week: Understanding sextile Energy with Confidence - August 2025 Ast</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/chakra-alignment-with-todays-cosmic-influences-nov.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Chakra Alignment with Today's Cosmic Influences - November 27, 2025</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/weekly-planetary-transits-what-the-stars-hold-for-.html</loc>
+    <lastmod>2025-12-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Weekly Planetary Transits: What the Stars Hold for Each Zodiac Sign - December 03, 2025</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/navigate-daily-horoscope-deep-dive-virgo-season-in.html</loc>
+    <lastmod>2025-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Navigate Daily Horoscope Deep Dive: Virgo Season Insights with Confidence - August 2025 Astrology Gu</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/navigate-current-cosmic-weather-how-todays-planeta.html</loc>
+    <lastmod>2025-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Navigate Current Cosmic Weather: How Today's Planetary Alignments Affect You with Confidence - Septe</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/understanding-todays-full-moon-in-virgo-spiritual-.html</loc>
+    <lastmod>2025-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Understanding Today's Full Moon in Virgo: Spiritual Significance and Rituals: Current Cosmic Influen</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/moon-phase-meditation-working-with-waning-gibbous-.html</loc>
+    <lastmod>2025-12-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Moon Phase Meditation: Working with Waning Gibbous Energy - December 09, 2025</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://astroaura.me/blog/posts/todays-tarot-and-astrology-connection-the-star-and.html</loc>
@@ -56,7 +156,7 @@
   </url>
   <url>
     <loc>https://astroaura.me/blog/posts/why-moon-cycles-and-emotional-balance-is-the-key-t.html</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -532,116 +632,6 @@
     <image:image>
       <image:loc/>
       <image:caption>Understanding Chakra Alignment with Today's Cosmic Influences: Current Cosmic Influences and Practic</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/planetary-aspects-this-week-understanding-trine-en.html</loc>
-    <lastmod>2025-12-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Planetary Aspects This Week: Understanding trine Energy - December 04, 2025</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/todays-tarot-and-astrology-connection-the-sun-and-.html</loc>
-    <lastmod>2025-10-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Today's Tarot and Astrology Connection: The Sun and Saturn - October 24, 2025</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/planetary-aspects-this-week-understanding-trine-en.html</loc>
-    <lastmod>2025-11-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Planetary Aspects This Week: Understanding trine Energy - November 18, 2025</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/navigate-monthly-astrological-forecast-key-dates-a.html</loc>
-    <lastmod>2025-08-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Navigate Monthly Astrological Forecast: Key Dates and Cosmic Events with Confidence - August 2025 As</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/navigate-planetary-aspects-this-week-understanding.html</loc>
-    <lastmod>2025-08-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Navigate Planetary Aspects This Week: Understanding sextile Energy with Confidence - August 2025 Ast</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/chakra-alignment-with-todays-cosmic-influences-nov.html</loc>
-    <lastmod>2025-11-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Chakra Alignment with Today's Cosmic Influences - November 27, 2025</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/navigate-daily-horoscope-deep-dive-virgo-season-in.html</loc>
-    <lastmod>2025-08-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Navigate Daily Horoscope Deep Dive: Virgo Season Insights with Confidence - August 2025 Astrology Gu</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/navigate-current-cosmic-weather-how-todays-planeta.html</loc>
-    <lastmod>2025-09-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Navigate Current Cosmic Weather: How Today's Planetary Alignments Affect You with Confidence - Septe</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/understanding-todays-full-moon-in-virgo-spiritual-.html</loc>
-    <lastmod>2025-09-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Understanding Today's Full Moon in Virgo: Spiritual Significance and Rituals: Current Cosmic Influen</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/weekly-planetary-transits-what-the-stars-hold-for-.html</loc>
-    <lastmod>2025-12-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Weekly Planetary Transits: What the Stars Hold for Each Zodiac Sign - December 03, 2025</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/navigate-crystal-recommendations-based-on-current-.html</loc>
-    <lastmod>2025-08-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Navigate Crystal Recommendations Based on Current Planetary Energy with Confidence - August 2025 Ast</image:caption>
     </image:image>
   </url>
 </urlset>
