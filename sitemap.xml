@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://astroaura.me/</loc>
-    <lastmod>2025-12-15</lastmod>
+    <lastmod>2025-12-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -12,7 +12,7 @@
   </url>
   <url>
     <loc>https://astroaura.me/features.html</loc>
-    <lastmod>2025-12-15</lastmod>
+    <lastmod>2025-12-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -22,27 +22,157 @@
   </url>
   <url>
     <loc>https://astroaura.me/about.html</loc>
-    <lastmod>2025-12-15</lastmod>
+    <lastmod>2025-12-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://astroaura.me/contact.html</loc>
-    <lastmod>2025-12-15</lastmod>
+    <lastmod>2025-12-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://astroaura.me/privacy.html</loc>
-    <lastmod>2025-12-15</lastmod>
+    <lastmod>2025-12-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://astroaura.me/blog/</loc>
-    <lastmod>2025-12-15</lastmod>
+    <lastmod>2025-12-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/todays-tarot-and-astrology-connection-the-sun-and-.html</loc>
+    <lastmod>2025-12-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Today's Tarot and Astrology Connection: The Sun and Jupiter - December 05, 2025</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/current-cosmic-weather-how-todays-planetary-alignm.html</loc>
+    <lastmod>2025-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Current Cosmic Weather: How Today's Planetary Alignments Affect You - November 10, 2025</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/daily-horoscope-deep-dive-scorpio-season-insights-.html</loc>
+    <lastmod>2025-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Daily Horoscope Deep Dive: Scorpio Season Insights - November 20, 2025</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/navigate-todays-tarot-and-astrology-connection-the.html</loc>
+    <lastmod>2025-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Navigate Today's Tarot and Astrology Connection: The Star and Mars with Confidence - September 2025 </image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/astrological-house-focus-11th-house-community-drea.html</loc>
+    <lastmod>2025-11-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Astrological House Focus: 11th House (Community &amp; Dreams) House Activations This Month - November 29</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/understanding-crystal-recommendations-based-on-cur.html</loc>
+    <lastmod>2025-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Understanding Crystal Recommendations Based on Current Planetary Energy: Current Cosmic Influences a</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/understanding-monthly-astrological-forecast-key-da.html</loc>
+    <lastmod>2025-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Understanding Monthly Astrological Forecast: Key Dates and Cosmic Events: Current Cosmic Influences </image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/planetary-aspects-this-week-understanding-oppositi.html</loc>
+    <lastmod>2025-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Planetary Aspects This Week: Understanding opposition Energy - October 28, 2025</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/understanding-current-retrograde-seasons-navigatin.html</loc>
+    <lastmod>2025-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Understanding Current Retrograde Seasons: Navigating Cosmic Slowdowns: Current Cosmic Influences and</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/astrological-house-focus-5th-house-creativity-roma.html</loc>
+    <lastmod>2025-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Astrological House Focus: 5th House (Creativity &amp; Romance) House Activations This Month - November 0</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/understanding-todays-tarot-and-astrology-connectio.html</loc>
+    <lastmod>2025-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Understanding Today's Tarot and Astrology Connection: The Sun and Saturn: Current Cosmic Influences </image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/current-retrograde-seasons-navigating-cosmic-slowd.html</loc>
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Current Retrograde Seasons: Navigating Cosmic Slowdowns - December 11, 2025</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/chakra-alignment-with-todays-cosmic-influences-dec.html</loc>
+    <lastmod>2025-12-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Chakra Alignment with Today's Cosmic Influences - December 16, 2025</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://astroaura.me/blog/posts/navigate-crystal-recommendations-based-on-current-.html</loc>
@@ -176,7 +306,7 @@
   </url>
   <url>
     <loc>https://astroaura.me/blog/posts/why-moon-cycles-and-emotional-balance-is-the-key-t.html</loc>
-    <lastmod>2025-12-15</lastmod>
+    <lastmod>2025-12-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -532,126 +662,6 @@
     <image:image>
       <image:loc/>
       <image:caption>Understanding Moon Phase Meditation: Working with Waxing Gibbous Energy: Current Cosmic Influences a</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/navigate-todays-tarot-and-astrology-connection-the.html</loc>
-    <lastmod>2025-09-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Navigate Today's Tarot and Astrology Connection: The Star and Mars with Confidence - September 2025 </image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/astrological-house-focus-11th-house-community-drea.html</loc>
-    <lastmod>2025-11-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Astrological House Focus: 11th House (Community &amp; Dreams) House Activations This Month - November 29</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/understanding-monthly-astrological-forecast-key-da.html</loc>
-    <lastmod>2025-09-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Understanding Monthly Astrological Forecast: Key Dates and Cosmic Events: Current Cosmic Influences </image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/planetary-aspects-this-week-understanding-oppositi.html</loc>
-    <lastmod>2025-10-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Planetary Aspects This Week: Understanding opposition Energy - October 28, 2025</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/understanding-current-retrograde-seasons-navigatin.html</loc>
-    <lastmod>2025-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Understanding Current Retrograde Seasons: Navigating Cosmic Slowdowns: Current Cosmic Influences and</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/astrological-house-focus-5th-house-creativity-roma.html</loc>
-    <lastmod>2025-11-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Astrological House Focus: 5th House (Creativity &amp; Romance) House Activations This Month - November 0</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/understanding-todays-tarot-and-astrology-connectio.html</loc>
-    <lastmod>2025-08-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Understanding Today's Tarot and Astrology Connection: The Sun and Saturn: Current Cosmic Influences </image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/current-retrograde-seasons-navigating-cosmic-slowd.html</loc>
-    <lastmod>2025-12-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Current Retrograde Seasons: Navigating Cosmic Slowdowns - December 11, 2025</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/todays-tarot-and-astrology-connection-the-sun-and-.html</loc>
-    <lastmod>2025-12-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Today's Tarot and Astrology Connection: The Sun and Jupiter - December 05, 2025</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/current-cosmic-weather-how-todays-planetary-alignm.html</loc>
-    <lastmod>2025-11-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Current Cosmic Weather: How Today's Planetary Alignments Affect You - November 10, 2025</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/daily-horoscope-deep-dive-scorpio-season-insights-.html</loc>
-    <lastmod>2025-11-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Daily Horoscope Deep Dive: Scorpio Season Insights - November 20, 2025</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/understanding-crystal-recommendations-based-on-cur.html</loc>
-    <lastmod>2025-09-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Understanding Crystal Recommendations Based on Current Planetary Energy: Current Cosmic Influences a</image:caption>
     </image:image>
   </url>
 </urlset>
