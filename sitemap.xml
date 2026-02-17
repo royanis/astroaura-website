@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://astroaura.me/</loc>
-    <lastmod>2026-02-16</lastmod>
+    <lastmod>2026-02-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -12,7 +12,7 @@
   </url>
   <url>
     <loc>https://astroaura.me/features.html</loc>
-    <lastmod>2026-02-16</lastmod>
+    <lastmod>2026-02-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -22,27 +22,267 @@
   </url>
   <url>
     <loc>https://astroaura.me/about.html</loc>
-    <lastmod>2026-02-16</lastmod>
+    <lastmod>2026-02-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://astroaura.me/contact.html</loc>
-    <lastmod>2026-02-16</lastmod>
+    <lastmod>2026-02-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://astroaura.me/privacy.html</loc>
-    <lastmod>2026-02-16</lastmod>
+    <lastmod>2026-02-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://astroaura.me/blog/</loc>
-    <lastmod>2026-02-16</lastmod>
+    <lastmod>2026-02-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/moon-phase-meditation-working-with-waning-crescent.html</loc>
+    <lastmod>2025-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Moon Phase Meditation: Working with Waning Crescent Energy - October 21, 2025</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/seasonal-astrological-shifts-navigating-winter-ene.html</loc>
+    <lastmod>2026-02-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Seasonal Astrological Shifts: Navigating Winter Energy - February 10, 2026</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/navigate-monthly-astrological-forecast-key-dates-a.html</loc>
+    <lastmod>2025-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Navigate Monthly Astrological Forecast: Key Dates and Cosmic Events with Confidence - August 2025 As</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/understanding-todays-tarot-and-astrology-connectio.html</loc>
+    <lastmod>2025-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Understanding Today's Tarot and Astrology Connection: The Sun and Saturn: Current Cosmic Influences </image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/todays-full-moon-in-scorpio-spiritual-significance.html</loc>
+    <lastmod>2025-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Today's Full Moon in Scorpio: Spiritual Significance and Rituals - November 08, 2025</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/current-mercury-retrograde-effects-and-survival-gu.html</loc>
+    <lastmod>2026-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Current Mercury Retrograde Effects and Survival Guide - January 17, 2026</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/navigate-planetary-aspects-this-week-understanding.html</loc>
+    <lastmod>2025-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Navigate Planetary Aspects This Week: Understanding sextile Energy with Confidence - August 2025 Ast</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/crystal-recommendations-based-on-current-planetary.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Crystal Recommendations Based on Current Planetary Energy - February 05, 2026</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/todays-tarot-and-astrology-connection-the-world-an.html</loc>
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Today's Tarot and Astrology Connection: The World and Pluto - November 12, 2025</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/daily-horoscope-deep-dive-scorpio-season-insights-.html</loc>
+    <lastmod>2025-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Daily Horoscope Deep Dive: Scorpio Season Insights - November 20, 2025</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/chakra-alignment-with-todays-cosmic-influences-oct.html</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Chakra Alignment with Today's Cosmic Influences - October 19, 2025</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/todays-full-moon-in-capricorn-spiritual-significan.html</loc>
+    <lastmod>2026-01-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Today's Full Moon in Capricorn: Spiritual Significance and Rituals - January 10, 2026</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/astrological-house-focus-10th-house-career-reputat.html</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Astrological House Focus: 10th House (Career &amp; Reputation) House Activations This Month - October 11</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/todays-tarot-and-astrology-connection-the-sun-and-.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Today's Tarot and Astrology Connection: The Sun and Uranus - February 08, 2026</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/new-moon-manifestation-harnessing-libra-energy-for.html</loc>
+    <lastmod>2025-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>New Moon Manifestation: Harnessing Libra Energy for Growth - October 23, 2025</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/navigate-moon-phase-meditation-working-with-new-mo.html</loc>
+    <lastmod>2025-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Navigate Moon Phase Meditation: Working with New Moon Energy with Confidence - August 2025 Astrology</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/weekly-planetary-transits-what-the-stars-hold-for-.html</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Weekly Planetary Transits: What the Stars Hold for Each Zodiac Sign - January 23, 2026</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/todays-full-moon-in-sagittarius-spiritual-signific.html</loc>
+    <lastmod>2025-12-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Today's Full Moon in Sagittarius: Spiritual Significance and Rituals - December 02, 2025</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/navigate-crystal-recommendations-based-on-current-.html</loc>
+    <lastmod>2025-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Navigate Crystal Recommendations Based on Current Planetary Energy with Confidence - August 2025 Ast</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/planetary-aspects-this-week-understanding-oppositi.html</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Planetary Aspects This Week: Understanding opposition Energy - February 14, 2026</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/understanding-crystal-recommendations-based-on-cur.html</loc>
+    <lastmod>2025-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Understanding Crystal Recommendations Based on Current Planetary Energy: Current Cosmic Influences a</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/chakra-alignment-with-todays-cosmic-influences-jan.html</loc>
+    <lastmod>2026-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Chakra Alignment with Today's Cosmic Influences - January 30, 2026</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/todays-tarot-and-astrology-connection-the-star-and.html</loc>
+    <lastmod>2026-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Today's Tarot and Astrology Connection: The Star and Saturn - January 18, 2026</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://astroaura.me/blog/posts/current-retrograde-seasons-navigating-cosmic-slowd.html</loc>
+    <lastmod>2026-02-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc/>
+      <image:caption>Current Retrograde Seasons: Navigating Cosmic Slowdowns - February 17, 2026</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://astroaura.me/blog/posts/astrological-house-focus-3rd-house-communication-h.html</loc>
@@ -166,7 +406,7 @@
   </url>
   <url>
     <loc>https://astroaura.me/blog/posts/why-moon-cycles-and-emotional-balance-is-the-key-t.html</loc>
-    <lastmod>2026-02-16</lastmod>
+    <lastmod>2026-02-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -532,246 +772,6 @@
     <image:image>
       <image:loc/>
       <image:caption>Today's Full Moon in Virgo: Spiritual Significance and Rituals in Virgo Season - Cosmic Insights and</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/navigate-monthly-astrological-forecast-key-dates-a.html</loc>
-    <lastmod>2025-08-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Navigate Monthly Astrological Forecast: Key Dates and Cosmic Events with Confidence - August 2025 As</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/understanding-todays-tarot-and-astrology-connectio.html</loc>
-    <lastmod>2025-08-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Understanding Today's Tarot and Astrology Connection: The Sun and Saturn: Current Cosmic Influences </image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/todays-full-moon-in-scorpio-spiritual-significance.html</loc>
-    <lastmod>2025-11-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Today's Full Moon in Scorpio: Spiritual Significance and Rituals - November 08, 2025</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/current-mercury-retrograde-effects-and-survival-gu.html</loc>
-    <lastmod>2026-01-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Current Mercury Retrograde Effects and Survival Guide - January 17, 2026</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/navigate-planetary-aspects-this-week-understanding.html</loc>
-    <lastmod>2025-08-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Navigate Planetary Aspects This Week: Understanding sextile Energy with Confidence - August 2025 Ast</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/crystal-recommendations-based-on-current-planetary.html</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Crystal Recommendations Based on Current Planetary Energy - February 05, 2026</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/todays-tarot-and-astrology-connection-the-world-an.html</loc>
-    <lastmod>2025-11-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Today's Tarot and Astrology Connection: The World and Pluto - November 12, 2025</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/daily-horoscope-deep-dive-scorpio-season-insights-.html</loc>
-    <lastmod>2025-11-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Daily Horoscope Deep Dive: Scorpio Season Insights - November 20, 2025</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/chakra-alignment-with-todays-cosmic-influences-oct.html</loc>
-    <lastmod>2025-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Chakra Alignment with Today's Cosmic Influences - October 19, 2025</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/current-retrograde-seasons-navigating-cosmic-slowd.html</loc>
-    <lastmod>2026-02-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Current Retrograde Seasons: Navigating Cosmic Slowdowns - February 11, 2026</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/todays-full-moon-in-capricorn-spiritual-significan.html</loc>
-    <lastmod>2026-01-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Today's Full Moon in Capricorn: Spiritual Significance and Rituals - January 10, 2026</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/astrological-house-focus-10th-house-career-reputat.html</loc>
-    <lastmod>2025-10-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Astrological House Focus: 10th House (Career &amp; Reputation) House Activations This Month - October 11</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/todays-tarot-and-astrology-connection-the-sun-and-.html</loc>
-    <lastmod>2026-02-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Today's Tarot and Astrology Connection: The Sun and Uranus - February 08, 2026</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/new-moon-manifestation-harnessing-libra-energy-for.html</loc>
-    <lastmod>2025-10-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>New Moon Manifestation: Harnessing Libra Energy for Growth - October 23, 2025</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/navigate-moon-phase-meditation-working-with-new-mo.html</loc>
-    <lastmod>2025-08-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Navigate Moon Phase Meditation: Working with New Moon Energy with Confidence - August 2025 Astrology</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/weekly-planetary-transits-what-the-stars-hold-for-.html</loc>
-    <lastmod>2026-01-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Weekly Planetary Transits: What the Stars Hold for Each Zodiac Sign - January 23, 2026</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/todays-full-moon-in-sagittarius-spiritual-signific.html</loc>
-    <lastmod>2025-12-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Today's Full Moon in Sagittarius: Spiritual Significance and Rituals - December 02, 2025</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/navigate-crystal-recommendations-based-on-current-.html</loc>
-    <lastmod>2025-08-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Navigate Crystal Recommendations Based on Current Planetary Energy with Confidence - August 2025 Ast</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/understanding-crystal-recommendations-based-on-cur.html</loc>
-    <lastmod>2025-09-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Understanding Crystal Recommendations Based on Current Planetary Energy: Current Cosmic Influences a</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/chakra-alignment-with-todays-cosmic-influences-jan.html</loc>
-    <lastmod>2026-01-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Chakra Alignment with Today's Cosmic Influences - January 30, 2026</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/todays-tarot-and-astrology-connection-the-star-and.html</loc>
-    <lastmod>2026-01-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Today's Tarot and Astrology Connection: The Star and Saturn - January 18, 2026</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/planetary-aspects-this-week-understanding-oppositi.html</loc>
-    <lastmod>2026-02-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Planetary Aspects This Week: Understanding opposition Energy - February 14, 2026</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/moon-phase-meditation-working-with-waning-crescent.html</loc>
-    <lastmod>2025-10-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Moon Phase Meditation: Working with Waning Crescent Energy - October 21, 2025</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://astroaura.me/blog/posts/seasonal-astrological-shifts-navigating-winter-ene.html</loc>
-    <lastmod>2026-02-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc/>
-      <image:caption>Seasonal Astrological Shifts: Navigating Winter Energy - February 10, 2026</image:caption>
     </image:image>
   </url>
 </urlset>
